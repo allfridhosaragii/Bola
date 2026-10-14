@@ -40,7 +40,7 @@ python3 scripts/fetch_form.py
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
 ```
 
-Empat belas CSV mencakup tujuh liga; manifest di `.cache/form/` mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. `bola.form` hanya memasukkan hasil bertanggal **sebelum** cutoff, menghitung jendela 5/10/20 pertandingan, bobot waktu dengan paruh lima laga, pembagian kandang/tandang, statistik gol/tembakan/corner/kartu, serta surplus hasil terhadap Elo lawan sebelum pertandingan. Elo itu dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Snapshot liga yang sedang berjalan dapat berubah; form ini tidak mencakup pertandingan UEFA atau piala domestik.
+Empat belas CSV mencakup tujuh liga; manifest di `.cache/form/` mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. Setiap pengambilan kini juga disimpan di `.cache/form/snapshots/` sehingga snapshot lama tetap dapat dijalankan dengan `--data-dir` yang menunjuk folder tersebut. `bola.form` hanya memasukkan hasil bertanggal **sebelum** cutoff, menghitung jendela 5/10/20 pertandingan, bobot waktu dengan paruh lima laga, pembagian kandang/tandang, statistik gol/tembakan/corner/kartu, serta surplus hasil terhadap Elo lawan sebelum pertandingan. Elo itu dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Snapshot liga yang sedang berjalan dapat berubah; form ini tidak mencakup pertandingan UEFA atau piala domestik.
 
 ## Ledger bukti skuad
 
