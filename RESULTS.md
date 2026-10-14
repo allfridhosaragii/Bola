@@ -107,6 +107,18 @@ Tracking Game 1 menghasilkan 2.851 frame sampel babak pertama dan 2.950 babak ke
 
 Sumber tambahan: [StatsBomb open-data](https://github.com/statsbomb/open-data), commit `4b73468fc5b0f1950f9f66fada70ad3a4f9327cb`, pertandingan Argentina–Prancis, 18 Desember 2022. Pengolah membaca **4.407 event**, mencocokkan 11 pemain awal tiap tim antara event `Starting XI` dan berkas lineup, serta **mengecualikan 8 tembakan adu penalti** dari statistik pertandingan 3–3. Argentina tercatat 20 tembakan dan xG 2,7583 (1,9748 tanpa penalti); Prancis 10 tembakan dan xG 2,2726 (0,7056 tanpa penalti). Ini data setelah laga, bukan bukti lineup tersedia sebelum kick-off. Ringkasan ada di `reports/statsbomb.json`.
 
+### Uji lokasi pemulihan dan tembakan cepat
+
+Pada **64 laga Piala Dunia 2022**, pemulihan berhasil pertama yang ditandai StatsBomb dalam setiap penguasaan bola dikelompokkan menurut paruh lapangan. Hanya tembakan tim yang sama, dalam penguasaan dan babak yang sama, serta setelah event pemulihan yang dihitung. Berkas event diverifikasi dengan SHA-256.
+
+| Jendela setelah pemulihan | Area sendiri: penguasaan berakhir dengan tembakan | Area lawan: penguasaan berakhir dengan tembakan |
+| --- | ---: | ---: |
+| 10 detik | 30/2.809 = 1,07% | 340/1.626 = 20,91% |
+| 15 detik | 57/2.809 = 2,03% | 374/1.626 = 23,00% |
+| 30 detik | 117/2.809 = 4,17% | 409/1.626 = 25,15% |
+
+Selisih proporsi pada jendela 15 detik adalah **20,97 poin persentase**, interval bootstrap menurut laga 95% **[18,71; 22,98] poin**. Ini menunjukkan lokasi lapangan sangat berkaitan dengan peluang tembakan cepat dalam data tersebut. Tag `Ball Recovery` tidak mencakup semua pergantian bola, dan lokasi, skor, serta situasi pertandingan dapat menjelaskan sebagian hubungan. Angka ini **bukan** ukuran keberhasilan pressing, efek sebab akibat, atau bukti bahwa fitur ini meningkatkan prediksi klub UEFA. Ringkasan mesin ada di `reports/recovery.json`.
+
 ## Kondisi skuad dan batasan
 
 `bola.squad` sekarang menolak timestamp tanpa zona waktu, mengeluarkan bukti setelah waktu analisis, serta menandai lineup resmi kurang dari 11 pemain dan konflik status. Tesnya memakai **data sintetis**. Sembilan kandidat pertandingan pengguna diperiksa oleh `bola.fixtures`: dua telah melewati waktu mulai yang dilaporkan pada 14 Oktober 2026 pukul 23.47 WIB, tujuh belum. Pemeriksaan UEFA berikutnya memverifikasi kesembilan jadwal dan mendapati empat label matchday salah. Daftar skuad dan badge resmi sudah diperiksa, tetapi waktu publikasi tiap status, starting XI, dan dampaknya terhadap peluang belum tervalidasi.
