@@ -1,0 +1,14 @@
+{
+  "source_kind": "user_reported",
+  "fixtures": [
+    {"home": "Feyenoord", "away": "Como", "competition": "UEFA Champions League, matchday 2 (reported)", "kickoff": "2026-10-14T23:45:00+07:00"},
+    {"home": "LASK Linz", "away": "Liverpool", "competition": "UEFA Champions League, matchday 2 (reported)", "kickoff": "2026-10-14T23:45:00+07:00"},
+    {"home": "Shakhtar", "away": "AEK Athena", "competition": "UEFA Champions League, matchday 2 (reported)", "kickoff": "2026-10-15T02:00:00+07:00"},
+    {"home": "Betis", "away": "Porto", "competition": "UEFA Champions League, matchday 2 (reported)", "kickoff": "2026-10-15T02:00:00+07:00"},
+    {"home": "Roma", "away": "Madrid", "competition": "UEFA Champions League, matchday 2 (reported)", "kickoff": "2026-10-15T02:00:00+07:00"},
+    {"home": "Slovan Bratislava", "away": "VfB", "competition": "UEFA Champions League, matchday 3 (reported)", "kickoff": "2026-10-15T02:00:00+07:00"},
+    {"home": "Aston Villa", "away": "Fenerbahçe", "competition": "UEFA Champions League, matchday 3 (reported)", "kickoff": "2026-10-15T02:00:00+07:00"},
+    {"home": "Man City", "away": "PSG", "competition": "UEFA Champions League, matchday 3 (reported)", "kickoff": "2026-10-15T02:00:00+07:00"},
+    {"home": "Bodø/Glimt", "away": "Dortmund", "competition": "UEFA Champions League, matchday 3 (reported)", "kickoff": "2026-10-15T02:00:00+07:00"}
+  ]
+}

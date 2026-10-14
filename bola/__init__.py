@@ -1,0 +1,1 @@
+"""Reproducible football result baselines."""
