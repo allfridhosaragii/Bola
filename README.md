@@ -39,6 +39,8 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 
 `python3 -m bola.uefa_forecast` membekukan ramalan 1X2 **eksploratif** untuk tujuh laga UEFA 15 Oktober 2026 pukul 02.00 WIB, jika dijalankan sebelum kickoff. Ia memasukkan hanya hasil yang sudah `FINISHED` pada tanggal sebelumnya, menolak laga yang sudah dimulai, dan menyimpan waktu pembuatan serta checksum sumber dalam berkas `prospective/` yang tidak ditimpa. Perintah ini khusus untuk periode tersebut; berkasnya dipakai untuk pengujian setelah hasil keluar, bukan dua rekomendasi taruhan.
 
+Setelah ketujuh laga selesai, nilai arsip tanpa mengubah peluangnya: `python3 -m bola.uefa_score prospective/uefa_2026-10-14T18-02-34.009581+00-00.json --output reports/uefa_prospective_score.json`. Penilai menolak hasil yang belum `FINISHED`, mencocokkan ID/waktu/tim, dan menghitung log loss, Brier, serta akurasi pilihan tertinggi. Gunakan `--results-json` untuk respons UEFA mentah yang disimpan terpisah.
+
 Untuk form terkini, ambil snapshot liga domestik 2025/26 dan 2026/27 dari Football-Data, lalu pakai cutoff tanggal WIB:
 
 ```bash
