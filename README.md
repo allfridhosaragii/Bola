@@ -1,6 +1,6 @@
 # Bola: sistem analisis sepak bola yang dapat diaudit
 
-Proyek ini melanjutkan rancangan dalam percakapan pengguna dengan bukti yang dapat dijalankan ulang. Kini tersedia baseline probabilitas 1X2, pengolah event/tracking dari laga anonim, audit xG seluruh Piala Dunia 2022, dan pemeriksa kronologi bukti skuad. Hasil ada di [RESULTS.md](RESULTS.md), sedangkan syarat target 95% ada di [AUDIT.md](AUDIT.md). Tidak ada klaim akurasi atau kesiapan 95% tanpa pengujian yang sesuai.
+Proyek ini melanjutkan rancangan dalam percakapan pengguna dengan bukti yang dapat dijalankan ulang. Kini tersedia baseline probabilitas 1X2, pengolah event/tracking dari laga anonim, audit xG Piala Dunia 2018 dan 2022, dan pemeriksa kronologi bukti skuad. Hasil ada di [RESULTS.md](RESULTS.md), sedangkan syarat target 95% ada di [AUDIT.md](AUDIT.md). Tidak ada klaim akurasi atau kesiapan 95% tanpa pengujian yang sesuai.
 
 ## Menjalankan
 
@@ -12,6 +12,8 @@ bash scripts/fetch_data.sh
 bash scripts/fetch_tactics.sh
 bash scripts/fetch_statsbomb.sh
 python3 scripts/fetch_worldcup.py
+python3 scripts/fetch_worldcup_2018.py
+python3 scripts/fetch_epl_2015.py
 bash scripts/fetch_odds.sh
 python3 -m unittest discover -s tests -v
 python3 -m bola.backtest --data-dir .cache/openfootball --output reports/backtest.json
@@ -21,6 +23,7 @@ python3 -m bola.tactics --data-dir .cache/metrica --output reports/tactics.json
 python3 -m bola.tactics --game 2 --data-dir .cache/metrica --output reports/tactics_game2.json
 python3 -m bola.statsbomb --data-dir .cache/statsbomb --output reports/statsbomb.json
 python3 -m bola.worldcup --data-dir .cache/statsbomb --output reports/worldcup.json
+python3 -m bola.xg_transfer --output reports/xg_transfer.json
 python3 -m bola.recovery --data-dir .cache/statsbomb --seconds 15 --output reports/recovery.json
 python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_benchmark.json
 python3 -m bola.odds_multi --league de.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_bundesliga.json
@@ -30,6 +33,8 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 ```
 
 `fetch_data.sh` mengambil [OpenFootball football.json](https://github.com/openfootball/football.json) commit `e6744429ee395bc86f247348c6184bb08d4eb361` (CC0). `fetch_tactics.sh` mengambil [Metrica Sports sample-data](https://github.com/metrica-sports/sample-data) commit `e706dd506b360d69d9d123d5b8026e7294b13996`, hanya checkout Sample Game 1 dan 2; penggunaan publik harus menyebut Metrica Sports. `fetch_statsbomb.sh` mengambil event dan lineup [StatsBomb open-data](https://github.com/statsbomb/open-data) laga 3869685 pada commit `4b73468fc5b0f1950f9f66fada70ad3a4f9327cb`, dengan checksum SHA-256. `fetch_worldcup.py` mengambil semua 64 laga Piala Dunia 2022 pada commit yang sama; metadata pertandingan memiliki checksum tetap dan file lain dicatat dalam manifest checksum lokal untuk verifikasi ulang. Penggunaan publik harus menyebut StatsBomb. Dataset ada di `.cache/` dan diabaikan Git; data StatsBomb seluruh turnamen sekitar 193 MB. Script tidak mengunduh ulang jika data sudah sesuai. Tidak perlu kredensial API.
+
+`fetch_worldcup_2018.py` mengambil 64 berkas event Piala Dunia 2018 dengan checksum tetap di `data/statsbomb_2018_sha256.json`. `fetch_epl_2015.py` mengambil 380 laga Premier League 2015/16 dengan checksum tetap di `data/statsbomb_epl_2015_sha256.json` (sekitar 1,1 GB cache). `bola.xg_transfer` membandingkan kalibrasi xG 2018 dan 2022 serta seluruh musim klub; untuk musim klub, ia membekukan frekuensi gol hingga 31 Desember 2015 lalu menilainya pada laga mulai 1 Januari 2016. Ini pemeriksaan transfer antar sampel, bukan validasi independen model xG StatsBomb karena riwayat pelatihannya tidak diketahui.
 
 `fetch_odds.sh` mengambil CSV Premier League dan Bundesliga 2024/25–2025/26 serta Eredivisie 2024/25 dari [Football-Data](https://www.football-data.co.uk/), dengan checksum tetap. `bola.odds` dan `bola.odds_multi` mencocokkan seluruh **1.678** hasil uji menurut pasangan tim, tanggal, dan skor sebelum membandingkan probabilitas 1X2 model dengan odds rata-rata pembukaan/penutupan yang dinormalisasi. CSV tidak menyertakan timestamp tiap kutipan odds, sehingga hasilnya adalah benchmark historis, bukan simulasi keputusan taruhan saat itu.
 
