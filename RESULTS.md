@@ -44,6 +44,8 @@ Endpoint lineup resmi yang digunakan halaman UEFA, `https://match.uefa.com/v5/ma
 
 **Pembaruan pukul 00.51 WIB:** ketujuh laga pukul 02.00 sudah memiliki 11 starter resmi per tim di API UEFA, diamati sebelum kickoff. Pemeriksaan silang terhadap 32 pemain yang diberi badge pada daftar skuad menemukan **25 tidak tercantum dalam daftar hari pertandingan, 6 di bangku cadangan, dan 1 starter**. Contoh konflik: **Jeff Chabot** (Stuttgart) berlabel `Doubtful` tetapi starter, sedangkan **Luca Jaquez** (Stuttgart) berlabel `Injured` tetapi berada di bangku cadangan. Keduanya menunjukkan bahwa badge daftar skuad bukan keputusan final hari pertandingan; alasan medis atau pilihan pelatih tidak dapat disimpulkan dari perbandingan ini saja. Snapshot respons dan peran pemain tercatat di `reports/uefa_lineups.json` dan `reports/prematch_dossier.json` setelah perintah penyegaran dijalankan.
 
+Snapshot API yang diarsipkan membatasi waktu perubahan status, misalnya Real Betis–Porto masih `NOT_AVAILABLE` saat diamati **00.39.44 WIB**, lalu `TACTICAL_AVAILABLE` saat diamati **00.50.50 WIB**. Ini adalah rentang *pertama kali teramati* di lingkungan ini, bukan waktu pengumuman yang diterbitkan UEFA.
+
 ## Form liga domestik sebelum laga 15 Oktober 2026
 
 Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hingga 11–12 Oktober. Pemeriksa memakai cutoff eksklusif 15 Oktober WIB dan menghitung jendela 5, 10, serta 20 laga untuk **12 dari 18 tim** dalam daftar pengguna. Hasil lima laga domestik terakhir untuk tiga pasangan laga pukul 02.00 WIB yang datanya lengkap:
@@ -118,6 +120,8 @@ API resmi UEFA menyediakan **144 laga fase liga 2024/25**, **144 laga 2025/26**,
 | MD1 2026/27 | 18 | 0,9234 | 0,8509 | **0,8164** | 0,8301 |
 
 Selisih log loss campuran dikurangi frekuensi dasar pada 2025/26 adalah **−0,0388**, interval bootstrap menurut tanggal 95% **[−0,0584; −0,0186]**. Pada 18 laga MD1 2026/27 selisihnya **−0,0933 [−0,1487; 0,0173]**; interval itu melintasi nol. Ini adalah bukti awal model skor bekerja lebih baik dari frekuensi dasar pada satu musim UEFA, **bukan** kalibrasi antarliga yang stabil atau pembanding odds UEFA. Tidak ada xG, skuad, atau odds dalam model ini, dan snapshot historis tidak mencatat tanggal pertama hasil dipublikasikan. Detail di `reports/uefa_backtest.json`.
+
+Cakupan riwayat klub juga tidak seimbang untuk tujuh laga berikutnya: **Man City dan Paris masing-masing 17** laga dalam 306 hasil sumber, sedangkan **AEK Athens, Real Betis, Porto, Roma, dan Fenerbahçe masing-masing hanya 1**. Peluang yang dikeluarkan model untuk klub dengan satu laga akan sangat bergantung pada prior. Karena itu hasil uji UEFA ini belum mengubah gerbang `validated_cross_league_probability_model` pada dossier menjadi lulus.
 
 ## Data taktik aktual
 

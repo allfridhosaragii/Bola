@@ -14,6 +14,8 @@ Riset dan rancangan merupakan **penopang kelima bagian**, bukan bagian keenam ya
 
 **Akses saat audit:** `www.football-data.co.uk`, `www.uefa.com`, dan `match.uefa.com` berhasil diakses pada 14 Oktober 2026 UTC. Domain tersebut telah dicatat dalam draft konfigurasi lingkungan. Jadwal sembilan kandidat laga 14–15 Oktober WIB telah cocok dengan halaman UEFA; dua berstatus Live dan tujuh Upcoming saat diambil. Ketersediaan pemain dan odds spesifik pertandingan belum mempunyai bukti bertimestamp yang cukup. Tidak ada kredensial feed premium di lingkungan yang ditemukan melalui nama variabel yang relevan.
 
+Percobaan akses `www.oddsportal.com`, `www.oddschecker.com`, dan `www.pinnacle.com` pada 15 Oktober sekitar 00.53 WIB ditolak proxy lingkungan dengan HTTP CONNECT 403. Belum ada sumber odds UEFA saat ini yang dapat dibaca dan dicatat waktu pengambilannya di lingkungan ini. Domain tersebut belum dimasukkan sebagai sumber produksi karena kualitas, akses, dan hak penggunaan datanya belum diperiksa.
+
 Dossier prapertandingan pada 15 Oktober pukul 00.51 WIB menemukan form domestik lengkap untuk kedua tim pada tiga dari tujuh laga mendatang, serta daftar skuad dan starting XI resmi pada tujuh dari tujuh. API lineup sebelumnya menunjukkan `NOT_AVAILABLE` sekitar 00.39 WIB, lalu tersedia sebelum 00.51 WIB. **Nol dari tujuh** lulus semua gerbang untuk dua prediksi: odds kini bertimestamp dan model probabilitas antarliga yang stabil masih belum tersedia. Angka cakupan ini bukan persentase kesiapan masing-masing dari lima bagian.
 
 Skor 95% untuk kelima bagian tidak boleh dideklarasikan sampai gerbang wajib di atas lulus. Dua game anonim, 64 pertandingan dari satu turnamen, atau 1.678 prediksi uji tidak dapat dijadikan pengganti bukti tersebut.
