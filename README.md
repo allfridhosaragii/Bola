@@ -24,6 +24,7 @@ python3 -m bola.tactics --game 2 --data-dir .cache/metrica --output reports/tact
 python3 -m bola.statsbomb --data-dir .cache/statsbomb --output reports/statsbomb.json
 python3 -m bola.worldcup --data-dir .cache/statsbomb --output reports/worldcup.json
 python3 -m bola.xg_transfer --output reports/xg_transfer.json
+python3 -m bola.club_audit --output reports/club_audit.json
 python3 -m bola.recovery --data-dir .cache/statsbomb --seconds 15 --output reports/recovery.json
 python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_benchmark.json
 python3 -m bola.odds_multi --league de.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_bundesliga.json
@@ -39,6 +40,8 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 `fetch_odds.sh` mengambil CSV Premier League dan Bundesliga 2024/25–2025/26 serta Eredivisie 2024/25 dari [Football-Data](https://www.football-data.co.uk/), dengan checksum tetap. `bola.odds` dan `bola.odds_multi` mencocokkan seluruh **1.678** hasil uji menurut pasangan tim, tanggal, dan skor sebelum membandingkan probabilitas 1X2 model dengan odds rata-rata pembukaan/penutupan yang dinormalisasi. CSV tidak menyertakan timestamp tiap kutipan odds, sehingga hasilnya adalah benchmark historis, bukan simulasi keputusan taruhan saat itu.
 
 `bola.recovery` memeriksa checksum event 64 laga Piala Dunia 2022, lalu mengelompokkan pemulihan bola berhasil pertama per penguasaan bola berdasarkan paruh lapangan. Ia menghitung tembakan tim yang sama dalam penguasaan dan jendela waktu yang sama, serta interval bootstrap menurut pertandingan. Ini mengukur hubungan deskriptif lokasi pemulihan dan tembakan, bukan sebab akibat atau label pressing yang tervalidasi.
+
+`bola.club_audit` menerapkan pemeriksaan pemulihan yang sama pada 380 laga Premier League 2015/16, mencocokkan 760 starting XI dengan ID tim, dan menghitung jumlah starter berubah dari laga sebelumnya pada 740 penampilan tim yang memiliki pembanding. Ia membandingkan poin aktual dengan baseline Elo berbasis hasil terdahulu dalam tiga kelompok rotasi. Hasil rotasi bersifat deskriptif; alasan pemain tidak tampil tidak tersedia.
 
 `fetch_uefa_history.py` mengambil kalender dan hasil resmi 144 laga fase liga UEFA 2024/25, 144 laga 2025/26, serta 18 laga MD1 2026/27 dari [API pertandingan UEFA](https://match.uefa.com/v5/), lalu menyimpan respons mentah, checksum, dan waktu pengambilan dalam folder snapshot. `bola.uefa_backtest` menguji model skor 1X2 lintas klub dan liga secara kronologis dengan ID tim resmi: musim pertama untuk riwayat, musim kedua untuk validasi, dan 18 laga MD1 musim ketiga sebagai uji kecil berikutnya. Bobot campuran 0,5 berasal dari validasi Premier League, bukan dipilih menggunakan laga UEFA. Snapshot historis tidak menyediakan waktu pertama publikasi setiap hasil; uji tanggal mencegah pemakaian hasil laga mendatang dalam kode, tetapi tidak membuktikan histori feed sumber.
 
