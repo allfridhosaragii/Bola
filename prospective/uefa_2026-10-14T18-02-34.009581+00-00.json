@@ -1,0 +1,246 @@
+{
+  "generated_at": "2026-10-14T18:02:34.009581+00:00",
+  "model_code_commit": "5a4544ac984542514b7409f4be5d44532ae1a80f",
+  "source": {
+    "historical_snapshot": ".cache/uefa_history/20261014T174922499419Z",
+    "historical_sha256": "e9e9ce69ecc8ef035c0d49d79a193fbfb8c53976cd972c3a7b5769b42c0437bc",
+    "prior_url": "https://match.uefa.com/v5/matches?competitionId=1&fromDate=2026-10-13&limit=50&offset=0&order=ASC&phase=ALL&seasonYear=2027&toDate=2026-10-13&utcOffset=0",
+    "prior_sha256": "1ca8011582862cf49a6a291b1aa02bee9573ab7ceb1aae130ed47465b3872e93",
+    "current_url": "https://match.uefa.com/v5/matches?competitionId=1&fromDate=2026-10-14&limit=50&offset=0&order=ASC&phase=ALL&seasonYear=2027&toDate=2026-10-14&utcOffset=0",
+    "current_sha256": "ce6dc20e5354fafe4929922fc818a14d5165656891230fd62cf0f5fd4460a4ed",
+    "raw_snapshot_prefix": ".cache/uefa_forecast/20261014T180234009581Z"
+  },
+  "protocol": "Results-only UEFA Elo/Poisson blend with weight 0.5 frozen from EPL validation. Uses 306 completed matches from 2024/25–2025/26, 18 completed MD1 matches, and nine completed MD2 matches on 13 October. Two live matches are excluded. Probabilities order: home/draw/away.",
+  "predictions": [
+    {
+      "match_id": "2049580",
+      "home": "Man City",
+      "away": "Paris",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 17,
+        "away": 17
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.518868,
+          0.147799,
+          0.333333
+        ],
+        "elo": [
+          0.503138,
+          0.161338,
+          0.335524
+        ],
+        "poisson": [
+          0.440995,
+          0.234698,
+          0.324308
+        ],
+        "blend": [
+          0.472066,
+          0.198018,
+          0.329916
+        ]
+      }
+    },
+    {
+      "match_id": "2049581",
+      "home": "Roma",
+      "away": "Real Madrid",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 1,
+        "away": 17
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.518868,
+          0.147799,
+          0.333333
+        ],
+        "elo": [
+          0.444544,
+          0.167731,
+          0.387726
+        ],
+        "poisson": [
+          0.391414,
+          0.221251,
+          0.387335
+        ],
+        "blend": [
+          0.417979,
+          0.194491,
+          0.38753
+        ]
+      }
+    },
+    {
+      "match_id": "2049582",
+      "home": "Aston Villa",
+      "away": "Fenerbahçe",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 9,
+        "away": 1
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.518868,
+          0.147799,
+          0.333333
+        ],
+        "elo": [
+          0.543417,
+          0.156957,
+          0.299626
+        ],
+        "poisson": [
+          0.55202,
+          0.225343,
+          0.222637
+        ],
+        "blend": [
+          0.547718,
+          0.19115,
+          0.261132
+        ]
+      }
+    },
+    {
+      "match_id": "2049583",
+      "home": "Real Betis",
+      "away": "Porto",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 1,
+        "away": 1
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.518868,
+          0.147799,
+          0.333333
+        ],
+        "elo": [
+          0.52563,
+          0.158896,
+          0.315474
+        ],
+        "poisson": [
+          0.497339,
+          0.221141,
+          0.28152
+        ],
+        "blend": [
+          0.511485,
+          0.190018,
+          0.298497
+        ]
+      }
+    },
+    {
+      "match_id": "2049585",
+      "home": "Bodø/Glimt",
+      "away": "B. Dortmund",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 9,
+        "away": 17
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.518868,
+          0.147799,
+          0.333333
+        ],
+        "elo": [
+          0.463032,
+          0.165701,
+          0.371268
+        ],
+        "poisson": [
+          0.418246,
+          0.205001,
+          0.376753
+        ],
+        "blend": [
+          0.440639,
+          0.185351,
+          0.374011
+        ]
+      }
+    },
+    {
+      "match_id": "2049586",
+      "home": "Shakhtar",
+      "away": "AEK Athens",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 9,
+        "away": 1
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.518868,
+          0.147799,
+          0.333333
+        ],
+        "elo": [
+          0.456223,
+          0.166446,
+          0.377331
+        ],
+        "poisson": [
+          0.389417,
+          0.226713,
+          0.38387
+        ],
+        "blend": [
+          0.42282,
+          0.19658,
+          0.3806
+        ]
+      }
+    },
+    {
+      "match_id": "2049587",
+      "home": "S. Bratislava",
+      "away": "Stuttgart",
+      "kickoff": "2026-10-14T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 9,
+        "away": 9
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.518868,
+          0.147799,
+          0.333333
+        ],
+        "elo": [
+          0.402962,
+          0.169632,
+          0.427406
+        ],
+        "poisson": [
+          0.310611,
+          0.206511,
+          0.482877
+        ],
+        "blend": [
+          0.356787,
+          0.188072,
+          0.455142
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Exploratory predictions, not validated betting selections or two recommended bets.",
+    "No current odds, xG, lineup, injury, or tactical feature enters this model.",
+    "Several clubs have very few UEFA appearances in the training sample.",
+    "Do not revise this archived forecast after results are known; score it prospectively."
+  ]
+}

@@ -137,6 +137,10 @@ Selisih log loss campuran dikurangi frekuensi dasar pada 2025/26 adalah **−0,0
 
 Cakupan riwayat klub juga tidak seimbang untuk tujuh laga berikutnya: **Man City dan Paris masing-masing 17** laga dalam 306 hasil sumber, sedangkan **AEK Athens, Real Betis, Porto, Roma, dan Fenerbahçe masing-masing hanya 1**. Peluang yang dikeluarkan model untuk klub dengan satu laga akan sangat bergantung pada prior. Karena itu hasil uji UEFA ini belum mengubah gerbang `validated_cross_league_probability_model` pada dossier menjadi lulus.
 
+### Arsip prediksi prospektif 15 Oktober 2026
+
+Pada **15 Oktober pukul 01.02 WIB**, sebelum kickoff pukul 02.00 WIB, `bola.uefa_forecast` membekukan tujuh distribusi 1X2 dalam `prospective/uefa_2026-10-14T18-02-34.009581+00-00.json`. Kode model telah dicatat sebagai commit `5a4544ac984542514b7409f4be5d44532ae1a80f`. Arsip menyimpan waktu pembuatan, ID dan waktu laga, checksum hasil historis dan respons jadwal UEFA, serta jumlah penampilan UEFA tiap klub dalam sampel. Dua laga yang sudah Live dikecualikan. Model hanya memakai hasil akhir yang tersedia sebelum waktu pengambilan, tanpa odds, xG, lineup, atau berita pemain. Ini **baseline eksploratif untuk dinilai setelah hasil diketahui**, bukan dua rekomendasi taruhan atau bukti kalibrasi 95%.
+
 ## Data taktik aktual
 
 Sumber: [Metrica Sports sample-data](https://github.com/metrica-sports/sample-data), commit `e706dd506b360d69d9d123d5b8026e7294b13996`. Dua game anonim memuat **3.680 event** (Game 1: 1.745; Game 2: 1.935). Tracking 25 Hz dibaca dengan satu sampel setiap 25 frame. Arah serangan disimpulkan terpisah per tim dan babak dari tujuan tembakan. Tabel berikut menampilkan Game 1.
@@ -166,6 +170,6 @@ Selisih proporsi pada jendela 15 detik adalah **20,97 poin persentase**, interva
 
 ## Kondisi skuad dan batasan
 
-`bola.squad` sekarang menolak timestamp tanpa zona waktu, mengeluarkan bukti setelah waktu analisis, serta menandai lineup resmi kurang dari 11 pemain dan konflik status. Tesnya memakai **data sintetis**. Sembilan kandidat pertandingan pengguna diperiksa oleh `bola.fixtures`: dua telah melewati waktu mulai yang dilaporkan pada 14 Oktober 2026 pukul 23.47 WIB, tujuh belum. Pemeriksaan UEFA berikutnya memverifikasi kesembilan jadwal dan mendapati empat label matchday salah. Daftar skuad dan badge resmi sudah diperiksa, tetapi waktu publikasi tiap status, starting XI, dan dampaknya terhadap peluang belum tervalidasi.
+`bola.squad` sekarang menolak timestamp tanpa zona waktu, mengeluarkan bukti setelah waktu analisis, serta menandai lineup resmi kurang dari 11 pemain dan konflik status. Tesnya memakai **data sintetis**. Sembilan kandidat pertandingan pengguna diperiksa oleh `bola.fixtures`: dua telah melewati waktu mulai yang dilaporkan pada 14 Oktober 2026 pukul 23.47 WIB, tujuh belum. Pemeriksaan UEFA berikutnya memverifikasi kesembilan jadwal dan mendapati empat label matchday salah. Starting XI resmi untuk tujuh laga yang belum dimulai teramati sebelum kickoff dan badge pemain direkonsiliasi dengan peran matchday. Waktu publikasi tiap badge dan dampak absensi terhadap peluang belum tervalidasi.
 
 Belum ada odds historis dengan timestamp tiap kutipan, xG lintas musim/kompetisi yang direkonsiliasi, berita skuad lengkap, atau video. Nilai taruhan dan dampak pemain absen belum diukur. Target 95% adalah tujuan kelengkapan proses; belum ada bukti bahwa setiap bagian sudah mencapainya atau bahwa prediksi dapat akurat 95%.
