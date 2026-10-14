@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import hashlib
@@ -21,7 +22,10 @@ def comparison(prior: dict, current: dict) -> dict:
     return {"retained_starters": len(old & new),
             "changed_starters": len(new - old),
             "new_starters_from_prior_bench": len((new - old) & bench),
-            "new_starters_not_in_prior_matchday_list": len((new - old) - bench)}
+            "new_starters_not_in_prior_matchday_list": len((new - old) - bench),
+            "new_starters_by_uefa_position": dict(Counter(row.get("position", "UNKNOWN")
+                                                     for row in current["starters"]
+                                                     if str(row["id"]) not in old))}
 
 
 def report(lineups: dict, history_dir: Path, cache_dir: Path) -> dict:

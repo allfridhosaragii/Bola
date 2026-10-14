@@ -55,7 +55,8 @@ def parse(match: dict, lineup: dict, fixture: dict, retrieved_at: str) -> dict:
             raise ValueError(f"Duplicate players or more than eleven starters: {mid} {name}")
         def player(record: dict) -> dict:
             return {"id": record["player"]["id"], "name": record["player"]["internationalName"],
-                    "jersey_number": record.get("jerseyNumber"), "position": record.get("type")}
+                    "jersey_number": record.get("jerseyNumber"),
+                    "position": record["player"].get("fieldPosition")}
         starters = [player(row) for row in field]
         complete &= len(starters) == 11
         teams[name] = {"team_id": source["team"]["id"],

@@ -83,7 +83,7 @@ python3 -m bola.rotation --lineups reports/uefa_lineups.json --output reports/ue
 
 `bola.uefa_lineup_api` membaca endpoint resmi yang dipakai halaman lineup UEFA, memeriksa identitas tim dan kickoff, lalu memerlukan tepat 11 pemain unik per tim sebelum menandai starting XI lengkap. Respons dan checksum SHA-256 disimpan di `.cache/uefa/api`. Waktu pengambilan dibedakan dari waktu pengumuman lineup, yang tidak ada pada respons API. Lineup yang baru diamati setelah kickoff tidak dapat dipakai sebagai bukti keputusan prapertandingan.
 
-`bola.rotation` membandingkan ID 11 starter UEFA MD1 dengan lineup yang diamati sebelum MD2. Hasilnya menghitung starter yang dipertahankan, starter baru dari bangku cadangan MD1, dan starter baru yang tidak ada di daftar hari pertandingan MD1. Perubahan ini tidak mengidentifikasi sebab pergantian. Jalankan setelah `fetch_uefa_history.py` dan `bola.uefa_lineup_api`.
+`bola.rotation` membandingkan ID 11 starter UEFA MD1 dengan lineup yang diamati sebelum MD2. Hasilnya menghitung starter yang dipertahankan, starter baru dari bangku cadangan MD1, starter baru yang tidak ada di daftar hari pertandingan MD1, serta posisi umum pemain baru menurut UEFA. Perubahan ini tidak mengidentifikasi sebab pergantian atau formasi taktik. Jalankan setelah `fetch_uefa_history.py` dan `bola.uefa_lineup_api`.
 
 Untuk menggabungkan fixture UEFA, daftar skuad, dan form domestik pada satu waktu analisis:
 

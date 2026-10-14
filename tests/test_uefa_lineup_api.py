@@ -13,11 +13,13 @@ class UefaLineupApiTests(unittest.TestCase):
         lineup = {"matchId": "1", "lineupStatus": "INITIAL_AVAILABLE"}
         for side, team_id in (("homeTeam", "10"), ("awayTeam", "20")):
             lineup[side] = {"team": {"id": team_id}, "field": [
-                {"player": {"id": f"{team_id}-{n}", "internationalName": str(n)}, "type": "MIDFIELDER"}
+                {"player": {"id": f"{team_id}-{n}", "internationalName": str(n),
+                            "fieldPosition": "MIDFIELDER"}, "type": "PLAYER"}
                 for n in range(11)], "bench": []}
         result = parse(match, lineup, fixture, "2026-10-14T18:00:00Z")
         self.assertTrue(result["official_starting_xi"])
         self.assertTrue(result["before_kickoff_at_retrieval"])
+        self.assertEqual(result["teams"]["A"]["starters"][0]["position"], "MIDFIELDER")
         lineup["awayTeam"]["field"].pop()
         self.assertFalse(parse(match, lineup, fixture, "2026-10-14T19:01:00Z")["official_starting_xi"])
         lineup["awayTeam"]["team"]["id"] = "wrong"
