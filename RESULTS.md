@@ -6,6 +6,28 @@ Kode dan perintah tersedia di [README.md](README.md). Hasil probabilitas 1X2 di 
 
 Pada 64 pertandingan, pemeriksa membaca 234.637 event dan mencocokkan 128 starting XI dengan dua struktur data sumber. Ada 1.453 tembakan sebelum adu penalti, 169 gol dari event tembakan, total xG 155,8987 termasuk penalti dan 137,8782 tanpa penalti. Sebanyak 41 tembakan adu penalti dikecualikan. Pemeriksaan deskriptif kalibrasi xG tingkat tembakan menghasilkan Brier 0,0781, log loss 0,2715, dan ECE 10 bin 0,0131; Brier prediktor konstan dengan frekuensi gol sampel ini 0,1028. Hasil ini berasal dari satu turnamen; riwayat pelatihan model xG StatsBomb tidak diketahui di sini, sehingga bukan validasi holdout independen. Rincian ada di `reports/worldcup.json` setelah skrip dijalankan.
 
+## Pembanding odds historis
+
+Untuk **760** laga Premier League 2024/25–2025/26, hasil, tanggal, dan pasangan tim OpenFootball cocok dengan CSV Football-Data. Odds rata-rata penutupan yang dinormalisasi menghasilkan akurasi 1X2 **52,50%** dan log loss **0,98925**; Elo berbasis skor menghasilkan **50,79%** dan **1,01474**. Selisih log loss Elo dikurangi pasar adalah **0,02549**, interval bootstrap berpasangan menurut tanggal 95% **[0,01144; 0,03863]**. Odds pembukaan menghasilkan log loss **0,99290**. Pasar lebih baik pada kedua musim uji: log loss pasar/Elo **0,96673/0,99770** pada 2024/25 dan **1,01177/1,03177** pada 2025/26. CSV tidak memberi waktu publikasi tiap harga, jadi pembanding penutupan tidak membuktikan peluang transaksi yang bisa diambil sebelum laga. Rincian ada di `reports/odds_benchmark.json`.
+
+## Verifikasi jadwal UEFA 14–15 Oktober 2026 WIB
+
+Sitemap dan halaman pertandingan UEFA mengonfirmasi **sembilan** pasangan laga serta jam yang dilaporkan pengguna. Saat diambil sekitar **15 Oktober 2026 pukul 00.01 WIB**, Feyenoord–Como dan LASK–Liverpool berstatus `Live`, sedangkan tujuh laga pukul 02.00 WIB berstatus `Upcoming`. UEFA menandai **kesembilannya sebagai MD2**; empat laga yang dilaporkan sebagai MD3 ternyata MD2. “Madrid” merujuk **Real Madrid**, “VfB” merujuk **Stuttgart**, dan “PSG” ditampilkan UEFA sebagai **Paris**. URL, waktu pengambilan, dan checksum HTML ada di `reports/uefa_fixtures.json`.
+
+| Laga menurut UEFA | Jadwal WIB | Status saat diambil |
+| --- | --- | --- |
+| [Feyenoord–Como](https://www.uefa.com/uefachampionsleague/match/2049584--feyenoord-vs-como/) | 14 Okt 23.45 | Live |
+| [LASK–Liverpool](https://www.uefa.com/uefachampionsleague/match/2049588--lask-vs-liverpool/) | 14 Okt 23.45 | Live |
+| [Shakhtar–AEK Athens](https://www.uefa.com/uefachampionsleague/match/2049586--shakhtar-vs-aek-athens/) | 15 Okt 02.00 | Upcoming |
+| [Real Betis–Porto](https://www.uefa.com/uefachampionsleague/match/2049583--real-betis-vs-porto/) | 15 Okt 02.00 | Upcoming |
+| [Roma–Real Madrid](https://www.uefa.com/uefachampionsleague/match/2049581--roma-vs-real-madrid/) | 15 Okt 02.00 | Upcoming |
+| [S. Bratislava–Stuttgart](https://www.uefa.com/uefachampionsleague/match/2049587--s-bratislava-vs-stuttgart/) | 15 Okt 02.00 | Upcoming |
+| [Aston Villa–Fenerbahçe](https://www.uefa.com/uefachampionsleague/match/2049582--aston-villa-vs-fenerbahce/) | 15 Okt 02.00 | Upcoming |
+| [Man City–Paris](https://www.uefa.com/uefachampionsleague/match/2049580--man-city-vs-paris/) | 15 Okt 02.00 | Upcoming |
+| [Bodø/Glimt–B. Dortmund](https://www.uefa.com/uefachampionsleague/match/2049585--bodo-glimt-vs-b-dortmund/) | 15 Okt 02.00 | Upcoming |
+
+Halaman daftar skuad UEFA yang diambil sekitar **00.02 WIB** menampilkan badge `Injured` untuk **Irakli Azarov** (Shakhtar) dan **Thomas Strakosha** (AEK Athens), serta `Doubtful` untuk **Marlon Santos** (Shakhtar) dan **Barnabás Varga** (AEK Athens). Ini adalah label pada daftar skuad terdaftar, bukan starting XI atau konfirmasi bahwa pemain tidak tersedia pada laga tersebut. Semua 14 tim dalam tujuh laga mendatang diperiksa; rincian di `reports/uefa_squads.json`.
+
 ## Kualitas data
 
 | Liga dan musim | Skor `score.ft` | Skor array | Total |
@@ -58,6 +80,6 @@ Sumber tambahan: [StatsBomb open-data](https://github.com/statsbomb/open-data), 
 
 ## Kondisi skuad dan batasan
 
-`bola.squad` sekarang menolak timestamp tanpa zona waktu, mengeluarkan bukti setelah waktu analisis, serta menandai lineup resmi kurang dari 11 pemain dan konflik status. Tesnya memakai **data sintetis**. Sembilan kandidat pertandingan pengguna diperiksa oleh `bola.fixtures`: dua telah melewati waktu mulai yang dilaporkan pada 14 Oktober 2026 pukul 23.47 WIB, tujuh belum. Jadwal, status aktual, dan URL sumber belum terverifikasi, sehingga belum ada pertandingan target yang layak disebut siap untuk analisis pra-laga. Kondisi skuad pertandingan nyata **belum tervalidasi**.
+`bola.squad` sekarang menolak timestamp tanpa zona waktu, mengeluarkan bukti setelah waktu analisis, serta menandai lineup resmi kurang dari 11 pemain dan konflik status. Tesnya memakai **data sintetis**. Sembilan kandidat pertandingan pengguna diperiksa oleh `bola.fixtures`: dua telah melewati waktu mulai yang dilaporkan pada 14 Oktober 2026 pukul 23.47 WIB, tujuh belum. Pemeriksaan UEFA berikutnya memverifikasi kesembilan jadwal dan mendapati empat label matchday salah. Daftar skuad dan badge resmi sudah diperiksa, tetapi waktu publikasi tiap status, starting XI, dan dampaknya terhadap peluang belum tervalidasi.
 
-Belum ada odds historis bertimestamp, xG lintas musim, berita skuad lengkap, atau video. Nilai taruhan dan dampak pemain absen belum diukur. Target 95% adalah tujuan kelengkapan proses; belum ada bukti bahwa setiap bagian sudah mencapainya atau bahwa prediksi dapat akurat 95%.
+Belum ada odds historis dengan timestamp tiap kutipan, xG lintas musim/kompetisi yang direkonsiliasi, berita skuad lengkap, atau video. Nilai taruhan dan dampak pemain absen belum diukur. Target 95% adalah tujuan kelengkapan proses; belum ada bukti bahwa setiap bagian sudah mencapainya atau bahwa prediksi dapat akurat 95%.

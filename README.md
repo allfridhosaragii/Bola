@@ -12,6 +12,7 @@ bash scripts/fetch_data.sh
 bash scripts/fetch_tactics.sh
 bash scripts/fetch_statsbomb.sh
 python3 scripts/fetch_worldcup.py
+bash scripts/fetch_odds.sh
 python3 -m unittest discover -s tests -v
 python3 -m bola.backtest --data-dir .cache/openfootball --output reports/backtest.json
 python3 -m bola.backtest --league de.1 --fixed-poisson-weight 0.5 --data-dir .cache/openfootball --output reports/backtest_bundesliga.json
@@ -20,9 +21,12 @@ python3 -m bola.tactics --data-dir .cache/metrica --output reports/tactics.json
 python3 -m bola.tactics --game 2 --data-dir .cache/metrica --output reports/tactics_game2.json
 python3 -m bola.statsbomb --data-dir .cache/statsbomb --output reports/statsbomb.json
 python3 -m bola.worldcup --data-dir .cache/statsbomb --output reports/worldcup.json
+python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_benchmark.json
 ```
 
 `fetch_data.sh` mengambil [OpenFootball football.json](https://github.com/openfootball/football.json) commit `e6744429ee395bc86f247348c6184bb08d4eb361` (CC0). `fetch_tactics.sh` mengambil [Metrica Sports sample-data](https://github.com/metrica-sports/sample-data) commit `e706dd506b360d69d9d123d5b8026e7294b13996`, hanya checkout Sample Game 1 dan 2; penggunaan publik harus menyebut Metrica Sports. `fetch_statsbomb.sh` mengambil event dan lineup [StatsBomb open-data](https://github.com/statsbomb/open-data) laga 3869685 pada commit `4b73468fc5b0f1950f9f66fada70ad3a4f9327cb`, dengan checksum SHA-256. `fetch_worldcup.py` mengambil semua 64 laga Piala Dunia 2022 pada commit yang sama; metadata pertandingan memiliki checksum tetap dan file lain dicatat dalam manifest checksum lokal untuk verifikasi ulang. Penggunaan publik harus menyebut StatsBomb. Dataset ada di `.cache/` dan diabaikan Git; data StatsBomb seluruh turnamen sekitar 193 MB. Script tidak mengunduh ulang jika data sudah sesuai. Tidak perlu kredensial API.
+
+`fetch_odds.sh` mengambil CSV Premier League 2024/25 dan 2025/26 dari [Football-Data](https://www.football-data.co.uk/englandm.php), dengan checksum tetap. `bola.odds` mencocokkan tepat 760 hasil pertandingan menurut tim, tanggal, dan skor sebelum membandingkan probabilitas 1X2 model dengan odds rata-rata pembukaan/penutupan yang dinormalisasi. CSV tidak menyertakan timestamp tiap kutipan odds, sehingga hasilnya adalah benchmark historis, bukan simulasi keputusan taruhan saat itu.
 
 ## Ledger bukti skuad
 
@@ -47,6 +51,15 @@ python3 -m bola.fixtures examples/candidate_fixtures_2026-10-14.json --as-of 202
 ```
 
 Pada waktu tersebut, dua kandidat pukul 23.45 WIB sudah melewati waktu mulai yang dilaporkan; tujuh kandidat pukul 02.00 WIB masih sebelum waktu mulai yang dilaporkan. Status pertandingan aktual, identitas singkatan seperti “Madrid” dan “VfB”, kompetisi, serta jadwal harus dikonfirmasi dengan sumber pertandingan yang dapat diakses sebelum analisis pra-laga. Pemeriksaan ini tidak mengubah laporan pengguna menjadi verifikasi resmi.
+
+Verifikasi resmi yang kemudian berhasil dijalankan:
+
+```bash
+python3 -m bola.uefa --output reports/uefa_fixtures.json
+python3 -m bola.uefa_squad --fixtures reports/uefa_fixtures.json --output reports/uefa_squads.json
+```
+
+`bola.uefa` membaca [sitemap pertandingan Liga Champions UEFA](https://www.uefa.com/sitemap/matches/uefachampionsleague.xml) dan halaman sembilan pertandingan, lalu memeriksa pasangan tim, waktu mulai, kompetisi, status, dan matchday. `bola.uefa_squad` membaca daftar skuad resmi serta badge status pemain untuk laga yang masih berstatus Upcoming. Snapshot HTML dan checksum disimpan di `.cache/uefa`; laporan waktu pengambilan di `reports/`. Daftar skuad tidak sama dengan starting XI; badge pemain tidak mempunyai timestamp publikasi pada halaman tersebut dan tidak boleh dijadikan konfirmasi absen dalam pertandingan tertentu tanpa pemeriksaan lanjutan.
 
 ## Protokol model
 
