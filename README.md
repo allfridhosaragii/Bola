@@ -71,17 +71,20 @@ Verifikasi resmi yang kemudian berhasil dijalankan:
 ```bash
 python3 -m bola.uefa --output reports/uefa_fixtures.json
 python3 -m bola.uefa_squad --fixtures reports/uefa_fixtures.json --output reports/uefa_squads.json
+python3 -m bola.uefa_lineup_api --fixtures reports/uefa_fixtures.json --output reports/uefa_lineups.json
 ```
 
 `bola.uefa` membaca [sitemap pertandingan Liga Champions UEFA](https://www.uefa.com/sitemap/matches/uefachampionsleague.xml) dan halaman sembilan pertandingan, lalu memeriksa pasangan tim, waktu mulai, kompetisi, status, dan matchday. `bola.uefa_squad` membaca daftar skuad resmi serta badge status pemain untuk laga yang masih berstatus Upcoming. Snapshot HTML dan checksum disimpan di `.cache/uefa`; laporan waktu pengambilan di `reports/`. Daftar skuad tidak sama dengan starting XI; badge pemain tidak mempunyai timestamp publikasi pada halaman tersebut dan tidak boleh dijadikan konfirmasi absen dalam pertandingan tertentu tanpa pemeriksaan lanjutan.
 
+`bola.uefa_lineup_api` membaca endpoint resmi yang dipakai halaman lineup UEFA, memeriksa identitas tim dan kickoff, lalu memerlukan tepat 11 pemain unik per tim sebelum menandai starting XI lengkap. Respons dan checksum SHA-256 disimpan di `.cache/uefa/api`. Waktu pengambilan dibedakan dari waktu pengumuman lineup, yang tidak ada pada respons API. Lineup yang baru diamati setelah kickoff tidak dapat dipakai sebagai bukti keputusan prapertandingan.
+
 Untuk menggabungkan fixture UEFA, daftar skuad, dan form domestik pada satu waktu analisis:
 
 ```bash
-python3 -m bola.dossier --fixtures reports/uefa_fixtures.json --squads reports/uefa_squads.json --form reports/current_form.json --as-of 2026-10-15T00:20:00+07:00 --output reports/prematch_dossier.json
+python3 -m bola.dossier --fixtures reports/uefa_fixtures.json --squads reports/uefa_squads.json --lineups reports/uefa_lineups.json --form reports/current_form.json --output reports/prematch_dossier.json
 ```
 
-`bola.dossier` memeriksa kecocokan fixture dan waktu sumber, lalu memberi gerbang bukti per laga. Status fixture dan daftar skuad perlu diambil ulang jika snapshot lebih tua dari 30 menit. Laporan tersebut belum menyatakan siap menghasilkan dua prediksi sampai tersedia starting XI resmi, odds kini dengan waktu pengambilan, serta model probabilitas antarliga yang tervalidasi. Waktu `--as-of` harus sesuai dengan saat sumber sudah tersedia.
+`bola.dossier` memeriksa kecocokan fixture dan waktu sumber, lalu memberi gerbang bukti per laga. Status fixture, daftar skuad, dan lineup perlu diambil ulang jika snapshot lebih tua dari 30 menit. Laporan tersebut belum menyatakan siap menghasilkan dua prediksi sampai tersedia starting XI resmi sebelum kickoff, odds kini dengan waktu pengambilan, serta model probabilitas antarliga yang tervalidasi. Jika memakai `--as-of`, waktunya harus sesuai dengan saat sumber sudah tersedia.
 
 ## Protokol model
 

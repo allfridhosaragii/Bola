@@ -32,6 +32,18 @@ class DossierTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             assemble(self.fixtures, self.squads, self.form, "2026-10-15T00:20:00+07:00")
 
+    def test_lineup_must_be_observed_before_kickoff(self):
+        lineup = {"fixtures": [{"match_id": "1", "home": "A", "away": "B",
+                                "kickoff": "2026-10-14T19:00:00Z",
+                                "retrieved_at": "2026-10-14T17:15:00Z",
+                                "official_starting_xi": True, "before_kickoff_at_retrieval": True,
+                                "lineup_status": "INITIAL_AVAILABLE", "lineup_url": "https://match.uefa.com/test"}]}
+        result = assemble(self.fixtures, self.squads, self.form, "2026-10-14T17:20:00Z", lineup)
+        self.assertTrue(result["fixtures"][0]["evidence_gates"]["official_starting_xi"])
+        lineup["fixtures"][0]["before_kickoff_at_retrieval"] = False
+        result = assemble(self.fixtures, self.squads, self.form, "2026-10-14T17:20:00Z", lineup)
+        self.assertFalse(result["fixtures"][0]["evidence_gates"]["official_starting_xi"])
+
 
 if __name__ == "__main__":
     unittest.main()

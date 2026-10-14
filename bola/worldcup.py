@@ -39,6 +39,13 @@ def shot_calibration(shots: list[tuple[float, int]]) -> dict:
             "bins": calibration_bins}
 
 
+def shot_origin(event: dict) -> str:
+    """Separate penalties before using StatsBomb's possession play pattern."""
+    if event["shot"]["type"]["name"] == "Penalty":
+        return "Penalty"
+    return event["play_pattern"]["name"]
+
+
 def summarize(data_dir: Path) -> dict:
     matches = json.loads((data_dir / "matches_43_106.json").read_text(encoding="utf-8"))
     if len(matches) != 64 or len({m["match_id"] for m in matches}) != 64:
@@ -46,6 +53,7 @@ def summarize(data_dir: Path) -> dict:
     totals = Counter()
     stages = Counter()
     shots = []
+    shot_origins = {}
     for match in matches:
         match_id = match["match_id"]
         events = json.loads((data_dir / f"events_{match_id}.json").read_text(encoding="utf-8"))
@@ -56,7 +64,13 @@ def summarize(data_dir: Path) -> dict:
         result = audit(events, lineups, match_id)
         for event in events:
             if event["type"]["name"] == "Shot" and event["period"] in (1, 2, 3, 4):
-                shots.append((event["shot"]["statsbomb_xg"], int(event["shot"]["outcome"]["name"] == "Goal")))
+                xg = event["shot"]["statsbomb_xg"]
+                goal = int(event["shot"]["outcome"]["name"] == "Goal")
+                shots.append((xg, goal))
+                bucket = shot_origins.setdefault(shot_origin(event), {"shots": 0, "goals": 0, "xg": 0.0})
+                bucket["shots"] += 1
+                bucket["goals"] += goal
+                bucket["xg"] += xg
         totals["events"] += result["event_rows"]
         totals["shootout_shots_excluded"] += result["shootout_shots_excluded"]
         totals["starting_xis_cross_checked"] += len(result["teams"])
@@ -69,17 +83,24 @@ def summarize(data_dir: Path) -> dict:
     calibration = shot_calibration(shots)
     if calibration["shots"] != totals["shots"] or calibration["goals"] != totals["goals_from_shot_events"]:
         raise ValueError("Shot calibration disagrees with event audit totals")
+    if sum(row["shots"] for row in shot_origins.values()) != calibration["shots"]:
+        raise ValueError("Shot pattern breakdown disagrees with calibration")
     return {
         "source": "https://github.com/statsbomb/open-data", "commit": SOURCE_COMMIT,
         "competition": "2022 FIFA World Cup", "matches": len(matches),
         "stages": dict(stages),
         "totals": {key: round(value, 4) if key.startswith("xg_") else value for key, value in totals.items()},
         "shot_xg_calibration": calibration,
+        "shot_origins": {name: {**{key: round(value, 4) if key == "xg" else value
+                                     for key, value in values.items()},
+                                 "xg_per_shot": round(values["xg"] / values["shots"], 4)}
+                         for name, values in sorted(shot_origins.items())},
         "limitations": [
             "Open data was published after matches; it cannot establish pre-match information availability.",
             "This is a single tournament, not a representative sample of club football.",
             "StatsBomb xG model training data are not established here; calibration is descriptive, not an independent holdout validation.",
             "Tagged pressure events do not establish pressing success or tactical intent.",
+            "Play pattern is StatsBomb's possession-origin label; it does not identify every set-piece second phase or establish tactical intent.",
             "Match score is not necessarily identical to goals from Shot events because own goals are separate.",
         ],
     }

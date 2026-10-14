@@ -14,7 +14,7 @@ from .squad import instant
 WIB = ZoneInfo("Asia/Jakarta")
 
 
-def assemble(fixtures: dict, squads: dict, form: dict, as_of: str) -> dict:
+def assemble(fixtures: dict, squads: dict, form: dict, as_of: str, lineups: dict | None = None) -> dict:
     now = instant(as_of)
     cutoff = now.astimezone(WIB).date().isoformat()
     if form["cutoff_exclusive_date_wib"] != cutoff:
@@ -25,13 +25,22 @@ def assemble(fixtures: dict, squads: dict, form: dict, as_of: str) -> dict:
     squads_by_id = {row["match_id"]: row for row in squads["fixtures"]}
     if len(squads_by_id) != len(squads["fixtures"]):
         raise ValueError("Duplicate UEFA squad match ID")
+    lineups_by_id = {row["match_id"]: row for row in lineups["fixtures"]} if lineups else {}
+    if lineups and len(lineups_by_id) != len(lineups["fixtures"]):
+        raise ValueError("Duplicate UEFA API lineup match ID")
     results = []
     for fixture in fixtures["fixtures"]:
         if instant(fixture["retrieved_at"]) > now:
             raise ValueError(f"UEFA fixture source appears after as-of: {fixture['match_id']}")
         squad = squads_by_id.get(fixture["match_id"])
+        lineup = lineups_by_id.get(fixture["match_id"])
         if squad and instant(squad["retrieved_at"]) > now:
             raise ValueError(f"UEFA squad source appears after as-of: {fixture['match_id']}")
+        if lineup and instant(lineup["retrieved_at"]) > now:
+            raise ValueError(f"UEFA lineup source appears after as-of: {fixture['match_id']}")
+        if lineup and (lineup["home"] != fixture["home"] or lineup["away"] != fixture["away"] or
+                       instant(lineup["kickoff"]) != instant(fixture["kickoff"])):
+            raise ValueError(f"UEFA API lineup and fixture metadata disagree: {fixture['match_id']}")
         if squad and (squad.get("home", fixture["home"]) != fixture["home"] or
                       squad.get("away", fixture["away"]) != fixture["away"] or
                       instant(squad.get("kickoff", fixture["kickoff"])) != instant(fixture["kickoff"])):
@@ -50,7 +59,9 @@ def assemble(fixtures: dict, squads: dict, form: dict, as_of: str) -> dict:
                  "before_official_kickoff": before_kickoff,
                  "domestic_form_for_both": all(teams[name]["domestic_form"] for name in teams),
                  "uefa_squad_page_for_both": all(teams[name]["registered_squad_count"] for name in teams),
-                 "official_starting_xi": bool(squad and squad["official_starting_xi_parsed"]),
+                 "official_starting_xi": bool(lineup and lineup["official_starting_xi"] and
+                                              lineup["before_kickoff_at_retrieval"] and
+                                              now - instant(lineup["retrieved_at"]) <= timedelta(minutes=30)),
                  "current_odds_with_retrieval_time": False,
                  "validated_cross_league_probability_model": False}
         results.append({"match_id": fixture["match_id"], "home": fixture["home"], "away": fixture["away"],
@@ -58,6 +69,9 @@ def assemble(fixtures: dict, squads: dict, form: dict, as_of: str) -> dict:
                         "uefa_fixture_url": fixture["url"], "uefa_fixture_retrieved_at": fixture["retrieved_at"],
                         "uefa_squad_url": squad["url"] if squad else None,
                         "uefa_squad_retrieved_at": squad["retrieved_at"] if squad else None,
+                        "uefa_lineup_status": lineup["lineup_status"] if lineup else None,
+                        "uefa_lineup_retrieved_at": lineup["retrieved_at"] if lineup else None,
+                        "uefa_lineup_url": lineup["lineup_url"] if lineup else None,
                         "teams": teams, "evidence_gates": gates,
                         "ready_for_two_predictions": all(gates.values())})
     return {"as_of": as_of, "fixtures": results,
@@ -72,11 +86,13 @@ def main() -> None:
     parser.add_argument("--fixtures", type=Path, default=Path("reports/uefa_fixtures.json"))
     parser.add_argument("--squads", type=Path, default=Path("reports/uefa_squads.json"))
     parser.add_argument("--form", type=Path, default=Path("reports/current_form.json"))
+    parser.add_argument("--lineups", type=Path)
     parser.add_argument("--as-of", default=datetime.now(timezone.utc).isoformat())
     parser.add_argument("--output", type=Path, default=Path("reports/prematch_dossier.json"))
     args = parser.parse_args()
     result = assemble(*(json.loads(path.read_text(encoding="utf-8")) for path in
-                        (args.fixtures, args.squads, args.form)), as_of=args.as_of)
+                        (args.fixtures, args.squads, args.form)), as_of=args.as_of,
+                      lineups=json.loads(args.lineups.read_text(encoding="utf-8")) if args.lineups else None)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))

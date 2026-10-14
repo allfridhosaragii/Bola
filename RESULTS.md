@@ -6,6 +6,8 @@ Kode dan perintah tersedia di [README.md](README.md). Hasil probabilitas 1X2 di 
 
 Pada 64 pertandingan, pemeriksa membaca 234.637 event dan mencocokkan 128 starting XI dengan dua struktur data sumber. Ada 1.453 tembakan sebelum adu penalti, 169 gol dari event tembakan, total xG 155,8987 termasuk penalti dan 137,8782 tanpa penalti. Sebanyak 41 tembakan adu penalti dikecualikan. Pemeriksaan deskriptif kalibrasi xG tingkat tembakan menghasilkan Brier 0,0781, log loss 0,2715, dan ECE 10 bin 0,0131; Brier prediktor konstan dengan frekuensi gol sampel ini 0,1028. Hasil ini berasal dari satu turnamen; riwayat pelatihan model xG StatsBomb tidak diketahui di sini, sehingga bukan validasi holdout independen. Rincian ada di `reports/worldcup.json` setelah skrip dijalankan.
 
+Rincian menurut label asal penguasaan bola StatsBomb, setelah memisahkan penalti: `From Corner` **223 tembakan, 17 gol, 22,7609 xG**; `From Free Kick` **285 tembakan, 29 gol, 23,1375 xG**; `Regular Play` **446 tembakan, 51 gol, 43,5295 xG**. Label ini mencakup peluang dalam rangkaian penguasaan bola setelah restart, bukan hanya tendangan langsung. Angka tersebut memperluas pemeriksaan bola mati, tetapi belum menyediakan post-shot xG untuk menilai keterampilan penjaga gawang atau rekonsiliasi antarprovider.
+
 ## Pembanding odds historis
 
 Untuk **760** laga Premier League 2024/25–2025/26, hasil, tanggal, dan pasangan tim OpenFootball cocok dengan CSV Football-Data. Odds rata-rata penutupan yang dinormalisasi menghasilkan akurasi 1X2 **52,50%** dan log loss **0,98925**; Elo berbasis skor menghasilkan **50,79%** dan **1,01474**. Selisih log loss Elo dikurangi pasar adalah **0,02549**, interval bootstrap berpasangan menurut tanggal 95% **[0,01144; 0,03863]**. Odds pembukaan menghasilkan log loss **0,99290**. Pasar lebih baik pada kedua musim uji: log loss pasar/Elo **0,96673/0,99770** pada 2024/25 dan **1,01177/1,03177** pada 2025/26. CSV tidak memberi waktu publikasi tiap harga, jadi pembanding penutupan tidak membuktikan peluang transaksi yang bisa diambil sebelum laga. Rincian ada di `reports/odds_benchmark.json`.
@@ -38,6 +40,8 @@ Sitemap dan halaman pertandingan UEFA mengonfirmasi **sembilan** pasangan laga s
 
 Halaman daftar skuad UEFA yang diambil sekitar **00.02 WIB** menampilkan badge `Injured` untuk **Irakli Azarov** (Shakhtar) dan **Thomas Strakosha** (AEK Athens), serta `Doubtful` untuk **Marlon Santos** (Shakhtar) dan **Barnabás Varga** (AEK Athens). Ini adalah label pada daftar skuad terdaftar, bukan starting XI atau konfirmasi bahwa pemain tidak tersedia pada laga tersebut. Semua 14 tim dalam tujuh laga mendatang diperiksa; rincian di `reports/uefa_squads.json`.
 
+Endpoint lineup resmi yang digunakan halaman UEFA, `https://match.uefa.com/v5/matches/{id}/lineups`, diperiksa sekitar **00.35 WIB**. Dua laga yang sudah `Live` berstatus `TACTICAL_AVAILABLE` dan masing-masing memiliki 11 pemain awal per tim. Ketujuh laga pukul 02.00 WIB masih berstatus `NOT_AVAILABLE`, tanpa daftar pemain awal. Respons API tidak menyertakan waktu pengumuman asli; dua lineup yang baru diambil setelah kickoff **tidak diperlakukan sebagai bukti prapertandingan**. Identitas tim, kickoff, jumlah pemain, waktu pengambilan, dan checksum respons ada di `reports/uefa_lineups.json`.
+
 ## Form liga domestik sebelum laga 15 Oktober 2026
 
 Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hingga 11–12 Oktober. Pemeriksa memakai cutoff eksklusif 15 Oktober WIB dan menghitung jendela 5, 10, serta 20 laga untuk **12 dari 18 tim** dalam daftar pengguna. Hasil lima laga domestik terakhir untuk tiga pasangan laga pukul 02.00 WIB yang datanya lengkap:
@@ -53,7 +57,7 @@ Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hing
 
 Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada xG, laga UEFA, atau penyesuaian kualitas antarliga dalam tabel tersebut. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json`; enam tim lain tidak tercakup oleh tujuh liga sumber. Form ini belum menghasilkan probabilitas pertandingan.
 
-`bola.dossier` menggabungkan bukti pada **15 Oktober pukul 00.15 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
+`bola.dossier` menggabungkan bukti terbaru pada **15 Oktober pukul 00.35 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
 
 | Laga pukul 02.00 WIB | Form kedua tim | Skuad terdaftar UEFA kedua tim | Starting XI resmi | Odds kini bertimestamp | Model antarliga tervalidasi |
 | --- | --- | --- | --- | --- | --- |
