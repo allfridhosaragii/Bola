@@ -46,6 +46,20 @@ Endpoint lineup resmi yang digunakan halaman UEFA, `https://match.uefa.com/v5/ma
 
 Snapshot API yang diarsipkan membatasi waktu perubahan status, misalnya Real Betis–Porto masih `NOT_AVAILABLE` saat diamati **00.39.44 WIB**, lalu `TACTICAL_AVAILABLE` saat diamati **00.50.50 WIB**. Ini adalah rentang *pertama kali teramati* di lingkungan ini, bukan waktu pengumuman yang diterbitkan UEFA.
 
+Perbandingan ID starter resmi fase liga MD1 dan MD2 untuk ketujuh laga mendatang memberikan jumlah **starter baru** berikut. Respons MD1 dan checksum disimpan terpisah di `.cache/uefa/rotation/`.
+
+| Laga | Tuan rumah | Tamu |
+| --- | ---: | ---: |
+| Shakhtar–AEK Athens | 2 | 1 |
+| Real Betis–Porto | 5 | 3 |
+| Roma–Real Madrid | 3 | 3 |
+| S. Bratislava–Stuttgart | 1 | 3 |
+| Aston Villa–Fenerbahçe | 4 | 4 |
+| Man City–Paris | 3 | 3 |
+| Bodø/Glimt–B. Dortmund | 3 | 4 |
+
+Ini bukan ukuran kelelahan atau bukti penyebab rotasi. Laga domestik dan piala di antara kedua matchday tidak tercakup; jumlah pemain baru dari bangku cadangan MD1 dan yang tidak terdaftar pada MD1 tersedia di `reports/uefa_rotation.json`.
+
 ## Form liga domestik sebelum laga 15 Oktober 2026
 
 Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hingga 11–12 Oktober. Pemeriksa memakai cutoff eksklusif 15 Oktober WIB dan menghitung jendela 5, 10, serta 20 laga untuk **12 dari 18 tim** dalam daftar pengguna. Hasil lima laga domestik terakhir untuk tiga pasangan laga pukul 02.00 WIB yang datanya lengkap:

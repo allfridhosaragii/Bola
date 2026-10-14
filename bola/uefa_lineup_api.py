@@ -8,12 +8,26 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import time
+from urllib.error import HTTPError
 from urllib.request import urlopen
 
 from .squad import instant
 
 
 API = "https://match.uefa.com/v5"
+
+
+def fetch_body(url: str) -> bytes:
+    for attempt in range(3):
+        try:
+            with urlopen(url, timeout=25) as response:
+                return response.read()
+        except HTTPError as error:
+            if error.code not in (429, 502, 503, 504) or attempt == 2:
+                raise
+            time.sleep(2 ** attempt)
+    raise AssertionError("Unreachable UEFA API retry state")
 
 
 def parse(match: dict, lineup: dict, fixture: dict, retrieved_at: str) -> dict:
@@ -44,7 +58,8 @@ def parse(match: dict, lineup: dict, fixture: dict, retrieved_at: str) -> dict:
                     "jersey_number": record.get("jerseyNumber"), "position": record.get("type")}
         starters = [player(row) for row in field]
         complete &= len(starters) == 11
-        teams[name] = {"starters": starters, "bench": [player(row) for row in bench],
+        teams[name] = {"team_id": source["team"]["id"],
+                       "starters": starters, "bench": [player(row) for row in bench],
                        "bench_count": len(bench)}
     observed = instant(retrieved_at)
     return {"match_id": mid, "home": fixture["home"], "away": fixture["away"],
@@ -64,8 +79,7 @@ def fetch(fixtures: dict, cache_dir: Path) -> dict:
         urls = (f"{API}/matches?matchId={mid}", f"{API}/matches/{mid}/lineups")
         bodies = []
         for url in urls:
-            with urlopen(url, timeout=25) as response:
-                bodies.append(response.read())
+            bodies.append(fetch_body(url))
         retrieved_at = datetime.now(timezone.utc).isoformat()
         stamp = datetime.fromisoformat(retrieved_at).strftime("%Y%m%dT%H%M%S%fZ")
         saved_files = {}
