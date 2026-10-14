@@ -39,11 +39,13 @@ def parse(match: dict, lineup: dict, fixture: dict, retrieved_at: str) -> dict:
         ids = [row["player"]["id"] for row in field + bench]
         if len(ids) != len(set(ids)) or len(field) > 11:
             raise ValueError(f"Duplicate players or more than eleven starters: {mid} {name}")
-        starters = [{"id": row["player"]["id"], "name": row["player"]["internationalName"],
-                     "jersey_number": row.get("jerseyNumber"), "position": row.get("type")}
-                    for row in field]
+        def player(record: dict) -> dict:
+            return {"id": record["player"]["id"], "name": record["player"]["internationalName"],
+                    "jersey_number": record.get("jerseyNumber"), "position": record.get("type")}
+        starters = [player(row) for row in field]
         complete &= len(starters) == 11
-        teams[name] = {"starters": starters, "bench_count": len(bench)}
+        teams[name] = {"starters": starters, "bench": [player(row) for row in bench],
+                       "bench_count": len(bench)}
     observed = instant(retrieved_at)
     return {"match_id": mid, "home": fixture["home"], "away": fixture["away"],
             "kickoff": fixture["kickoff"], "api_match_status": match["status"],

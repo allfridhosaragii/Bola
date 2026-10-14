@@ -6,6 +6,7 @@ import argparse
 from datetime import datetime, timedelta, timezone
 import json
 from pathlib import Path
+import re
 from zoneinfo import ZoneInfo
 
 from .squad import instant
@@ -50,9 +51,25 @@ def assemble(fixtures: dict, squads: dict, form: dict, as_of: str, lineups: dict
         teams = {}
         for name in (fixture["home"], fixture["away"]):
             source_team = squad["teams"].get(name) if squad else None
+            lineup_team = lineup.get("teams", {}).get(name) if lineup and lineup["before_kickoff_at_retrieval"] else None
+            starters = {str(row["id"]) for row in lineup_team["starters"]} if lineup_team else set()
+            bench = {str(row["id"]) for row in lineup_team.get("bench", [])} if lineup_team else set()
+            badge_status = []
+            if source_team and lineup_team and lineup["official_starting_xi"]:
+                for player in source_team["flagged_players"]:
+                    found = re.search(r"/players/(\d+)(?:--|/)", player["player_url"])
+                    if not found:
+                        raise ValueError(f"UEFA squad player ID missing: {player['player_url']}")
+                    player_id = found.group(1)
+                    badge_status.append({"player": player["name"], "badges": player["badges"],
+                                         "lineup_role": "starter" if player_id in starters else
+                                                        "bench" if player_id in bench else "not_in_matchday_list"})
             teams[name] = {"domestic_form": form["teams"].get(name),
                            "registered_squad_count": source_team["registered_players"] if source_team else None,
-                           "uefa_badge_players": source_team["flagged_players"] if source_team else None}
+                           "uefa_badge_players": source_team["flagged_players"] if source_team else None,
+                           "official_starters": lineup_team["starters"] if lineup_team else None,
+                           "official_bench": lineup_team.get("bench") if lineup_team else None,
+                           "badge_players_in_official_matchday_list": badge_status if lineup_team else None}
         gates = {"uefa_fixture_upcoming_at_snapshot": fixture["status"] == "Upcoming",
                  "uefa_fixture_snapshot_within_30m": now - instant(fixture["retrieved_at"]) <= timedelta(minutes=30),
                  "uefa_squad_snapshot_within_30m": bool(squad and now - instant(squad["retrieved_at"]) <= timedelta(minutes=30)),

@@ -44,6 +44,20 @@ class DossierTests(unittest.TestCase):
         result = assemble(self.fixtures, self.squads, self.form, "2026-10-14T17:20:00Z", lineup)
         self.assertFalse(result["fixtures"][0]["evidence_gates"]["official_starting_xi"])
 
+    def test_badge_cross_checked_against_matchday_role(self):
+        self.squads["fixtures"][0]["teams"]["A"]["flagged_players"] = [
+            {"name": "Player A", "player_url": "https://www.uefa.com/clubs/players/123--player-a/",
+             "badges": ["Injured"]}]
+        lineup = {"fixtures": [{"match_id": "1", "home": "A", "away": "B",
+                                "kickoff": "2026-10-14T19:00:00Z", "retrieved_at": "2026-10-14T17:15:00Z",
+                                "official_starting_xi": True, "before_kickoff_at_retrieval": True,
+                                "lineup_status": "AVAILABLE", "lineup_url": "https://match.uefa.com/test",
+                                "teams": {"A": {"starters": [], "bench": [{"id": "123"}]},
+                                          "B": {"starters": [], "bench": []}}}]}
+        result = assemble(self.fixtures, self.squads, self.form, "2026-10-14T17:20:00Z", lineup)
+        badges = result["fixtures"][0]["teams"]["A"]["badge_players_in_official_matchday_list"]
+        self.assertEqual(badges[0]["lineup_role"], "bench")
+
 
 if __name__ == "__main__":
     unittest.main()

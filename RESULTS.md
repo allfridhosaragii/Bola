@@ -42,6 +42,8 @@ Halaman daftar skuad UEFA yang diambil sekitar **00.02 WIB** menampilkan badge `
 
 Endpoint lineup resmi yang digunakan halaman UEFA, `https://match.uefa.com/v5/matches/{id}/lineups`, diperiksa sekitar **00.35 WIB**. Dua laga yang sudah `Live` berstatus `TACTICAL_AVAILABLE` dan masing-masing memiliki 11 pemain awal per tim. Ketujuh laga pukul 02.00 WIB masih berstatus `NOT_AVAILABLE`, tanpa daftar pemain awal. Respons API tidak menyertakan waktu pengumuman asli; dua lineup yang baru diambil setelah kickoff **tidak diperlakukan sebagai bukti prapertandingan**. Identitas tim, kickoff, jumlah pemain, waktu pengambilan, dan checksum respons ada di `reports/uefa_lineups.json`.
 
+**Pembaruan pukul 00.51 WIB:** ketujuh laga pukul 02.00 sudah memiliki 11 starter resmi per tim di API UEFA, diamati sebelum kickoff. Pemeriksaan silang terhadap 32 pemain yang diberi badge pada daftar skuad menemukan **25 tidak tercantum dalam daftar hari pertandingan, 6 di bangku cadangan, dan 1 starter**. Contoh konflik: **Jeff Chabot** (Stuttgart) berlabel `Doubtful` tetapi starter, sedangkan **Luca Jaquez** (Stuttgart) berlabel `Injured` tetapi berada di bangku cadangan. Keduanya menunjukkan bahwa badge daftar skuad bukan keputusan final hari pertandingan; alasan medis atau pilihan pelatih tidak dapat disimpulkan dari perbandingan ini saja. Snapshot respons dan peran pemain tercatat di `reports/uefa_lineups.json` dan `reports/prematch_dossier.json` setelah perintah penyegaran dijalankan.
+
 ## Form liga domestik sebelum laga 15 Oktober 2026
 
 Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hingga 11–12 Oktober. Pemeriksa memakai cutoff eksklusif 15 Oktober WIB dan menghitung jendela 5, 10, serta 20 laga untuk **12 dari 18 tim** dalam daftar pengguna. Hasil lima laga domestik terakhir untuk tiga pasangan laga pukul 02.00 WIB yang datanya lengkap:
@@ -57,17 +59,17 @@ Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hing
 
 Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada xG, laga UEFA, atau penyesuaian kualitas antarliga dalam tabel tersebut. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json`; enam tim lain tidak tercakup oleh tujuh liga sumber. Form ini belum menghasilkan probabilitas pertandingan.
 
-`bola.dossier` menggabungkan bukti pada **15 Oktober pukul 00.39 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
+`bola.dossier` menggabungkan bukti pada **15 Oktober pukul 00.51 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad dan starting XI resmi UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
 
 | Laga pukul 02.00 WIB | Form kedua tim | Skuad terdaftar UEFA kedua tim | Starting XI resmi | Odds kini bertimestamp | Model antarliga tervalidasi |
 | --- | --- | --- | --- | --- | --- |
-| Shakhtar–AEK Athens | Tidak | Ya | Belum | Belum | Belum |
-| Real Betis–Porto | Ya | Ya | Belum | Belum | Belum |
-| Roma–Real Madrid | Ya | Ya | Belum | Belum | Belum |
-| S. Bratislava–Stuttgart | Tidak | Ya | Belum | Belum | Belum |
-| Aston Villa–Fenerbahçe | Tidak | Ya | Belum | Belum | Belum |
-| Man City–Paris | Ya | Ya | Belum | Belum | Belum |
-| Bodø/Glimt–B. Dortmund | Tidak | Ya | Belum | Belum | Belum |
+| Shakhtar–AEK Athens | Tidak | Ya | Ya | Belum | Belum |
+| Real Betis–Porto | Ya | Ya | Ya | Belum | Belum |
+| Roma–Real Madrid | Ya | Ya | Ya | Belum | Belum |
+| S. Bratislava–Stuttgart | Tidak | Ya | Ya | Belum | Belum |
+| Aston Villa–Fenerbahçe | Tidak | Ya | Ya | Belum | Belum |
+| Man City–Paris | Ya | Ya | Ya | Belum | Belum |
+| Bodø/Glimt–B. Dortmund | Tidak | Ya | Ya | Belum | Belum |
 
 Semua tujuh **belum siap untuk dua prediksi yang memenuhi protokol**. Gerbang snapshot UEFA menjadi kedaluwarsa setelah 30 menit dan harus diperiksa kembali; status `Upcoming` di tabel adalah status saat snapshot, bukan feed langsung. Rincian per laga ada di `reports/prematch_dossier.json` setelah perintah di README dijalankan.
 
@@ -105,6 +107,17 @@ Uji Bundesliga awal mengungkap cacat rumus Elo lama: tim lemah bisa mendapat pro
 |  | Campuran | **54,90%** | 0,56954 | 0,95943 |
 
 Selisih log loss Elo dikurangi campuran dan interval bootstrap berpasangan menurut tanggal (95%, 1.000 pengambilan ulang): Premier League **−0,00193 [−0,00899; 0,00492]**; Bundesliga **0,00574 [−0,00100; 0,01272]**; Eredivisie **0,02046 [0,00863; 0,03132]**. Hasil antar liga berbeda; satu campuran universal belum terbukti lebih baik di semua kompetisi. RPS, ECE, dan hasil per musim ada di `reports/backtest*.json`.
+
+### Uji silang antarliga pada fase liga UEFA
+
+API resmi UEFA menyediakan **144 laga fase liga 2024/25**, **144 laga 2025/26**, dan **18 laga MD1 2026/27**. Respons per tanggal, checksum, serta waktu pengambilan disimpan di `.cache/uefa_history/`. Model hasil skor yang sama memakai ID klub UEFA, memperbarui rating hanya setelah laga pada tanggal UTC tersebut diprediksi. Musim pertama membentuk riwayat; 2025/26 dan MD1 2026/27 diuji berurutan. Bobot campuran 0,5 dibekukan dari validasi Premier League.
+
+| Periode uji | N | Log loss frekuensi dasar | Elo | Poisson | Campuran |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2025/26 | 144 | 1,0258 | 0,9909 | 0,9953 | **0,9870** |
+| MD1 2026/27 | 18 | 0,9234 | 0,8509 | **0,8164** | 0,8301 |
+
+Selisih log loss campuran dikurangi frekuensi dasar pada 2025/26 adalah **−0,0388**, interval bootstrap menurut tanggal 95% **[−0,0584; −0,0186]**. Pada 18 laga MD1 2026/27 selisihnya **−0,0933 [−0,1487; 0,0173]**; interval itu melintasi nol. Ini adalah bukti awal model skor bekerja lebih baik dari frekuensi dasar pada satu musim UEFA, **bukan** kalibrasi antarliga yang stabil atau pembanding odds UEFA. Tidak ada xG, skuad, atau odds dalam model ini, dan snapshot historis tidak mencatat tanggal pertama hasil dipublikasikan. Detail di `reports/uefa_backtest.json`.
 
 ## Data taktik aktual
 
