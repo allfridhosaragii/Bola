@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 import json
 from pathlib import Path
 import re
@@ -51,6 +51,8 @@ def assemble(fixtures: dict, squads: dict, form: dict, as_of: str, lineups: dict
         teams = {}
         for name in (fixture["home"], fixture["away"]):
             source_team = squad["teams"].get(name) if squad else None
+            domestic = form["teams"].get(name)
+            last_domestic = domestic.get("last_five_games", [])[-1]["date"] if domestic and domestic.get("last_five_games") else None
             lineup_team = lineup.get("teams", {}).get(name) if lineup and lineup["before_kickoff_at_retrieval"] else None
             starters = {str(row["id"]) for row in lineup_team["starters"]} if lineup_team else set()
             bench = {str(row["id"]) for row in lineup_team.get("bench", [])} if lineup_team else set()
@@ -64,7 +66,10 @@ def assemble(fixtures: dict, squads: dict, form: dict, as_of: str, lineups: dict
                     badge_status.append({"player": player["name"], "badges": player["badges"],
                                          "lineup_role": "starter" if player_id in starters else
                                                         "bench" if player_id in bench else "not_in_matchday_list"})
-            teams[name] = {"domestic_form": form["teams"].get(name),
+            teams[name] = {"domestic_form": domestic,
+                           "days_since_last_captured_domestic_league_game":
+                               (kickoff.astimezone(WIB).date() - date.fromisoformat(last_domestic)).days
+                               if last_domestic else None,
                            "registered_squad_count": source_team["registered_players"] if source_team else None,
                            "uefa_badge_players": source_team["flagged_players"] if source_team else None,
                            "official_starters": lineup_team["starters"] if lineup_team else None,

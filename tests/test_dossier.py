@@ -22,6 +22,9 @@ class DossierTests(unittest.TestCase):
         result = assemble(self.fixtures, self.squads, self.form, "2026-10-15T00:20:00+07:00")
         gate = result["fixtures"][0]["evidence_gates"]
         self.assertTrue(gate["domestic_form_for_both"])
+        self.form["teams"]["A"]["last_five_games"] = [{"date": "2026-10-10"}]
+        result = assemble(self.fixtures, self.squads, self.form, "2026-10-15T00:20:00+07:00")
+        self.assertEqual(result["fixtures"][0]["teams"]["A"]["days_since_last_captured_domestic_league_game"], 5)
         self.assertTrue(gate["uefa_fixture_snapshot_within_30m"])
         self.assertFalse(result["fixtures"][0]["ready_for_two_predictions"])
         old = assemble(self.fixtures, self.squads, self.form, "2026-10-15T00:50:00+07:00")
