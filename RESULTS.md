@@ -10,6 +10,16 @@ Pada 64 pertandingan, pemeriksa membaca 234.637 event dan mencocokkan 128 starti
 
 Untuk **760** laga Premier League 2024/25–2025/26, hasil, tanggal, dan pasangan tim OpenFootball cocok dengan CSV Football-Data. Odds rata-rata penutupan yang dinormalisasi menghasilkan akurasi 1X2 **52,50%** dan log loss **0,98925**; Elo berbasis skor menghasilkan **50,79%** dan **1,01474**. Selisih log loss Elo dikurangi pasar adalah **0,02549**, interval bootstrap berpasangan menurut tanggal 95% **[0,01144; 0,03863]**. Odds pembukaan menghasilkan log loss **0,99290**. Pasar lebih baik pada kedua musim uji: log loss pasar/Elo **0,96673/0,99770** pada 2024/25 dan **1,01177/1,03177** pada 2025/26. CSV tidak memberi waktu publikasi tiap harga, jadi pembanding penutupan tidak membuktikan peluang transaksi yang bisa diambil sebelum laga. Rincian ada di `reports/odds_benchmark.json`.
 
+Pencocokan ketat yang sama juga berhasil untuk **612/612** laga Bundesliga dan **306/306** laga Eredivisie yang masuk uji. Totalnya **1.678/1.678** baris uji model memiliki pasangan odds dengan tanggal dan skor final identik.
+
+| Liga | N | Log loss pasar pembukaan | Log loss pasar penutupan | Log loss Elo | Log loss campuran |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Premier League | 760 | 0,99290 | **0,98925** | 1,01474 | 1,01667 |
+| Bundesliga | 612 | 0,97164 | **0,96901** | 1,00197 | 0,99623 |
+| Eredivisie | 306 | 0,94788 | **0,93848** | 0,97990 | 0,95943 |
+
+Pada Bundesliga, selisih log loss campuran dikurangi pasar penutupan **0,02722**, interval bootstrap berpasangan menurut tanggal 95% **[0,01350; 0,04070]**; pada Eredivisie **0,02096 [0,00265; 0,04080]**. Selisih positif berarti pasar lebih baik pada sampel ini. Hasil Bundesliga tetap eksplorasi karena modelnya diperbaiki setelah hasil liga itu dilihat. Ketiadaan timestamp tiap harga juga berlaku pada dua liga tambahan; angka tersebut tidak menguji keputusan taruhan yang dapat dibuat saat itu. Detail di `reports/odds_bundesliga.json` dan `reports/odds_eredivisie.json`.
+
 ## Verifikasi jadwal UEFA 14–15 Oktober 2026 WIB
 
 Sitemap dan halaman pertandingan UEFA mengonfirmasi **sembilan** pasangan laga serta jam yang dilaporkan pengguna. Saat diambil sekitar **15 Oktober 2026 pukul 00.01 WIB**, Feyenoord–Como dan LASK–Liverpool berstatus `Live`, sedangkan tujuh laga pukul 02.00 WIB berstatus `Upcoming`. UEFA menandai **kesembilannya sebagai MD2**; empat laga yang dilaporkan sebagai MD3 ternyata MD2. “Madrid” merujuk **Real Madrid**, “VfB” merujuk **Stuttgart**, dan “PSG” ditampilkan UEFA sebagai **Paris**. URL, waktu pengambilan, dan checksum HTML ada di `reports/uefa_fixtures.json`.
