@@ -65,14 +65,19 @@ def fetch(fixtures: dict, cache_dir: Path) -> dict:
             with urlopen(url, timeout=25) as response:
                 bodies.append(response.read())
         retrieved_at = datetime.now(timezone.utc).isoformat()
+        stamp = datetime.fromisoformat(retrieved_at).strftime("%Y%m%dT%H%M%S%fZ")
+        saved_files = {}
         for label, body in zip(("match", "lineup"), bodies):
-            (cache_dir / f"{mid}_{label}.json").write_bytes(body)
+            path = cache_dir / f"{mid}_{stamp}_{label}.json"
+            path.write_bytes(body)
+            saved_files[label] = str(path)
         matches = json.loads(bodies[0])
         if not isinstance(matches, list) or len(matches) != 1:
             raise ValueError(f"Expected one UEFA match: {mid}")
         result = parse(matches[0], json.loads(bodies[1]), fixture, retrieved_at)
         result["source_sha256"] = {label: hashlib.sha256(body).hexdigest()
                                    for label, body in zip(("match", "lineup"), bodies)}
+        result["source_files"] = saved_files
         return result
 
     with ThreadPoolExecutor(max_workers=4) as pool:

@@ -57,7 +57,7 @@ Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hing
 
 Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada xG, laga UEFA, atau penyesuaian kualitas antarliga dalam tabel tersebut. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json`; enam tim lain tidak tercakup oleh tujuh liga sumber. Form ini belum menghasilkan probabilitas pertandingan.
 
-`bola.dossier` menggabungkan bukti terbaru pada **15 Oktober pukul 00.35 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
+`bola.dossier` menggabungkan bukti pada **15 Oktober pukul 00.39 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
 
 | Laga pukul 02.00 WIB | Form kedua tim | Skuad terdaftar UEFA kedua tim | Starting XI resmi | Odds kini bertimestamp | Model antarliga tervalidasi |
 | --- | --- | --- | --- | --- | --- |

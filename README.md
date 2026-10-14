@@ -86,6 +86,8 @@ python3 -m bola.dossier --fixtures reports/uefa_fixtures.json --squads reports/u
 
 `bola.dossier` memeriksa kecocokan fixture dan waktu sumber, lalu memberi gerbang bukti per laga. Status fixture, daftar skuad, dan lineup perlu diambil ulang jika snapshot lebih tua dari 30 menit. Laporan tersebut belum menyatakan siap menghasilkan dua prediksi sampai tersedia starting XI resmi sebelum kickoff, odds kini dengan waktu pengambilan, serta model probabilitas antarliga yang tervalidasi. Jika memakai `--as-of`, waktunya harus sesuai dengan saat sumber sudah tersedia.
 
+Jalankan `bash scripts/refresh_uefa_prematch.sh` untuk mengambil ulang ketiga sumber UEFA dan menyusun dossier pada waktu terkini. Snapshot respons API lineup disimpan dengan nama bertimestamp agar perubahan status sebelum kickoff dapat diperiksa kemudian. Pastikan `reports/current_form.json` sudah memakai cutoff tanggal WIB yang sama dengan hari pemeriksaan.
+
 ## Protokol model
 
 - Riwayat awal 2020/21–2022/23, validasi 2023/24, lalu pengujian pada musim setelahnya. Semua laga bertanggal sama diprediksi sebelum hasil tanggal itu dimasukkan.
