@@ -28,6 +28,35 @@ Sitemap dan halaman pertandingan UEFA mengonfirmasi **sembilan** pasangan laga s
 
 Halaman daftar skuad UEFA yang diambil sekitar **00.02 WIB** menampilkan badge `Injured` untuk **Irakli Azarov** (Shakhtar) dan **Thomas Strakosha** (AEK Athens), serta `Doubtful` untuk **Marlon Santos** (Shakhtar) dan **Barnabás Varga** (AEK Athens). Ini adalah label pada daftar skuad terdaftar, bukan starting XI atau konfirmasi bahwa pemain tidak tersedia pada laga tersebut. Semua 14 tim dalam tujuh laga mendatang diperiksa; rincian di `reports/uefa_squads.json`.
 
+## Form liga domestik sebelum laga 15 Oktober 2026
+
+Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hingga 11–12 Oktober. Pemeriksa memakai cutoff eksklusif 15 Oktober WIB dan menghitung jendela 5, 10, serta 20 laga untuk **12 dari 18 tim** dalam daftar pengguna. Hasil lima laga domestik terakhir untuk tiga pasangan laga pukul 02.00 WIB yang datanya lengkap:
+
+| Tim | W–D–L | Gol per laga | Kebobolan per laga |
+| --- | ---: | ---: | ---: |
+| Real Betis | 4–1–0 | 2,0 | 0,8 |
+| Porto | 5–0–0 | 2,8 | 0,8 |
+| Roma | 3–2–0 | 2,0 | 0,6 |
+| Real Madrid | 3–0–2 | 1,8 | 1,2 |
+| Man City | 5–0–0 | 2,8 | 0,8 |
+| Paris SG | 3–1–1 | 1,8 | 1,2 |
+
+Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada xG, laga UEFA, atau penyesuaian kualitas antarliga dalam tabel tersebut. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json`; enam tim lain tidak tercakup oleh tujuh liga sumber. Form ini belum menghasilkan probabilitas pertandingan.
+
+`bola.dossier` menggabungkan bukti pada **15 Oktober pukul 00.15 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
+
+| Laga pukul 02.00 WIB | Form kedua tim | Skuad terdaftar UEFA kedua tim | Starting XI resmi | Odds kini bertimestamp | Model antarliga tervalidasi |
+| --- | --- | --- | --- | --- | --- |
+| Shakhtar–AEK Athens | Tidak | Ya | Belum | Belum | Belum |
+| Real Betis–Porto | Ya | Ya | Belum | Belum | Belum |
+| Roma–Real Madrid | Ya | Ya | Belum | Belum | Belum |
+| S. Bratislava–Stuttgart | Tidak | Ya | Belum | Belum | Belum |
+| Aston Villa–Fenerbahçe | Tidak | Ya | Belum | Belum | Belum |
+| Man City–Paris | Ya | Ya | Belum | Belum | Belum |
+| Bodø/Glimt–B. Dortmund | Tidak | Ya | Belum | Belum | Belum |
+
+Semua tujuh **belum siap untuk dua prediksi yang memenuhi protokol**. Gerbang snapshot UEFA menjadi kedaluwarsa setelah 30 menit dan harus diperiksa kembali; status `Upcoming` di tabel adalah status saat snapshot, bukan feed langsung. Rincian per laga ada di `reports/prematch_dossier.json` setelah perintah di README dijalankan.
+
 ## Kualitas data
 
 | Liga dan musim | Skor `score.ft` | Skor array | Total |

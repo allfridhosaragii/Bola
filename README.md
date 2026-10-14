@@ -28,6 +28,15 @@ python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --o
 
 `fetch_odds.sh` mengambil CSV Premier League 2024/25 dan 2025/26 dari [Football-Data](https://www.football-data.co.uk/englandm.php), dengan checksum tetap. `bola.odds` mencocokkan tepat 760 hasil pertandingan menurut tim, tanggal, dan skor sebelum membandingkan probabilitas 1X2 model dengan odds rata-rata pembukaan/penutupan yang dinormalisasi. CSV tidak menyertakan timestamp tiap kutipan odds, sehingga hasilnya adalah benchmark historis, bukan simulasi keputusan taruhan saat itu.
 
+Untuk form terkini, ambil snapshot liga domestik 2025/26 dan 2026/27 dari Football-Data, lalu pakai cutoff tanggal WIB:
+
+```bash
+python3 scripts/fetch_form.py
+python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
+```
+
+Empat belas CSV mencakup tujuh liga; manifest di `.cache/form/` mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. `bola.form` hanya memasukkan hasil bertanggal **sebelum** cutoff, menghitung jendela 5/10/20 pertandingan, bobot waktu dengan paruh lima laga, pembagian kandang/tandang, statistik gol/tembakan/corner/kartu, serta surplus hasil terhadap Elo lawan sebelum pertandingan. Elo itu dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Snapshot liga yang sedang berjalan dapat berubah; form ini tidak mencakup pertandingan UEFA atau piala domestik.
+
 ## Ledger bukti skuad
 
 Modul `bola.squad` menerima JSON dengan `fixture.home`, `fixture.away`, `fixture.kickoff`, `as_of`, dan daftar `evidence`. Tiap bukti berisi `team`, `player`, `claim`, `source_kind`, `source_url`, `published_at`, dan `retrieved_at`. Gunakan timestamp ISO 8601 dengan zona waktu. `claim`: `starting`, `bench`, `out_injured`, `out_suspended`, `doubtful`, `available`.
@@ -60,6 +69,14 @@ python3 -m bola.uefa_squad --fixtures reports/uefa_fixtures.json --output report
 ```
 
 `bola.uefa` membaca [sitemap pertandingan Liga Champions UEFA](https://www.uefa.com/sitemap/matches/uefachampionsleague.xml) dan halaman sembilan pertandingan, lalu memeriksa pasangan tim, waktu mulai, kompetisi, status, dan matchday. `bola.uefa_squad` membaca daftar skuad resmi serta badge status pemain untuk laga yang masih berstatus Upcoming. Snapshot HTML dan checksum disimpan di `.cache/uefa`; laporan waktu pengambilan di `reports/`. Daftar skuad tidak sama dengan starting XI; badge pemain tidak mempunyai timestamp publikasi pada halaman tersebut dan tidak boleh dijadikan konfirmasi absen dalam pertandingan tertentu tanpa pemeriksaan lanjutan.
+
+Untuk menggabungkan fixture UEFA, daftar skuad, dan form domestik pada satu waktu analisis:
+
+```bash
+python3 -m bola.dossier --fixtures reports/uefa_fixtures.json --squads reports/uefa_squads.json --form reports/current_form.json --as-of 2026-10-15T00:20:00+07:00 --output reports/prematch_dossier.json
+```
+
+`bola.dossier` memeriksa kecocokan fixture dan waktu sumber, lalu memberi gerbang bukti per laga. Status fixture dan daftar skuad perlu diambil ulang jika snapshot lebih tua dari 30 menit. Laporan tersebut belum menyatakan siap menghasilkan dua prediksi sampai tersedia starting XI resmi, odds kini dengan waktu pengambilan, serta model probabilitas antarliga yang tervalidasi. Waktu `--as-of` harus sesuai dengan saat sumber sudah tersedia.
 
 ## Protokol model
 
