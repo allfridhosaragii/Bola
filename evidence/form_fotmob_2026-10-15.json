@@ -1,0 +1,1045 @@
+{
+  "cutoff_exclusive_date_wib": "2026-10-15",
+  "source": "https://www.fotmob.com/",
+  "snapshot_manifest": {
+    "snapshot_folder": ".cache/fotmob_form/snapshots/20261015T083015386790Z",
+    "files": {
+      "176_2526.html": {
+        "url": "https://www.fotmob.com/leagues/176/overview/1-liga?season=2025%2F2026",
+        "sha256": "3107a6889ef4d64eebc724b9bff1b80fbf7caf8c2840b2d2e7cfe9215c4ebeca",
+        "retrieved_at": "2026-10-15T08:30:16.247265+00:00",
+        "bytes": 840988
+      },
+      "176_2627.html": {
+        "url": "https://www.fotmob.com/leagues/176/overview/1-liga?season=2026%2F2027",
+        "sha256": "b45a599dc12a142830cc916545d4b48dc0b0a44d545f8ca1d5d7db347f3a3b44",
+        "retrieved_at": "2026-10-15T08:30:16.304740+00:00",
+        "bytes": 744286
+      },
+      "441_2526.html": {
+        "url": "https://www.fotmob.com/leagues/441/overview/premier-league?season=2025%2F2026",
+        "sha256": "13e832b7f34f3016ba7861f7cd0217fc8576a9dca0d794fe1cfd966fe588b1f0",
+        "retrieved_at": "2026-10-15T08:30:16.228360+00:00",
+        "bytes": 867757
+      },
+      "441_2627.html": {
+        "url": "https://www.fotmob.com/leagues/441/overview/premier-league?season=2026%2F2027",
+        "sha256": "57b0fe4e67a2840678a794189bc87b14a7a436628f6b26bab942621babb71326",
+        "retrieved_at": "2026-10-15T08:30:16.604402+00:00",
+        "bytes": 843715
+      }
+    }
+  },
+  "covered_teams": 2,
+  "teams": {
+    "S. Bratislava": {
+      "league": "Slovakia 1. liga",
+      "source_team_name": "Slovan Bratislava",
+      "source_team_id": 6019,
+      "games_before_cutoff": 41,
+      "windows": {
+        "5": {
+          "games": 5,
+          "from": "2026-08-30",
+          "through": "2026-10-10",
+          "season_counts": {
+            "2026/2027": 5
+          },
+          "record": {
+            "W": 1,
+            "D": 2,
+            "L": 2
+          },
+          "btts_rate": 0.8,
+          "over_2_5_rate": 0.6,
+          "clean_sheet_rate": 0.0,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "mean_opponent_elo_before": 1499.4,
+          "metrics": {
+            "goals_for": {
+              "observed_games": 5,
+              "mean": 1.4,
+              "recency_weighted_mean": 1.447
+            },
+            "goals_against": {
+              "observed_games": 5,
+              "mean": 1.8,
+              "recency_weighted_mean": 1.712
+            },
+            "shots_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "elo_result_surplus": {
+              "observed_games": 5,
+              "mean": -0.235,
+              "recency_weighted_mean": -0.182
+            }
+          }
+        },
+        "10": {
+          "games": 10,
+          "from": "2026-05-16",
+          "through": "2026-10-10",
+          "season_counts": {
+            "2025/2026": 1,
+            "2026/2027": 9
+          },
+          "record": {
+            "W": 5,
+            "D": 2,
+            "L": 3
+          },
+          "btts_rate": 0.5,
+          "over_2_5_rate": 0.7,
+          "clean_sheet_rate": 0.3,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "mean_opponent_elo_before": 1492.8,
+          "metrics": {
+            "goals_for": {
+              "observed_games": 10,
+              "mean": 2.1,
+              "recency_weighted_mean": 1.937
+            },
+            "goals_against": {
+              "observed_games": 10,
+              "mean": 1.2,
+              "recency_weighted_mean": 1.327
+            },
+            "shots_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "elo_result_surplus": {
+              "observed_games": 10,
+              "mean": -0.06,
+              "recency_weighted_mean": -0.064
+            }
+          }
+        },
+        "20": {
+          "games": 20,
+          "from": "2026-02-28",
+          "through": "2026-10-10",
+          "season_counts": {
+            "2025/2026": 11,
+            "2026/2027": 9
+          },
+          "record": {
+            "W": 13,
+            "D": 3,
+            "L": 4
+          },
+          "btts_rate": 0.4,
+          "over_2_5_rate": 0.6,
+          "clean_sheet_rate": 0.45,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "mean_opponent_elo_before": 1512.4,
+          "metrics": {
+            "goals_for": {
+              "observed_games": 20,
+              "mean": 2.0,
+              "recency_weighted_mean": 1.893
+            },
+            "goals_against": {
+              "observed_games": 20,
+              "mean": 0.85,
+              "recency_weighted_mean": 1.16
+            },
+            "shots_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "elo_result_surplus": {
+              "observed_games": 20,
+              "mean": 0.109,
+              "recency_weighted_mean": 0.012
+            }
+          }
+        }
+      },
+      "last_five_games": [
+        {
+          "date": "2026-08-30",
+          "season": "2026/2027",
+          "venue": "home",
+          "opponent": "Zemplín Michalovce",
+          "result": "L",
+          "opponent_elo_before": 1481.1,
+          "goals_for": 1,
+          "goals_against": 2,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": -0.7749
+        },
+        {
+          "date": "2026-09-06",
+          "season": "2026/2027",
+          "venue": "away",
+          "opponent": "DAC 1904 Dunajska Streda",
+          "result": "L",
+          "opponent_elo_before": 1588.7,
+          "goals_for": 0,
+          "goals_against": 2,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": -0.4451
+        },
+        {
+          "date": "2026-09-14",
+          "season": "2026/2027",
+          "venue": "home",
+          "opponent": "Žilina",
+          "result": "D",
+          "opponent_elo_before": 1555.3,
+          "goals_for": 3,
+          "goals_against": 3,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": -0.1612
+        },
+        {
+          "date": "2026-09-20",
+          "season": "2026/2027",
+          "venue": "away",
+          "opponent": "Komárno",
+          "result": "W",
+          "opponent_elo_before": 1428.9,
+          "goals_for": 2,
+          "goals_against": 1,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": 0.3476
+        },
+        {
+          "date": "2026-10-10",
+          "season": "2026/2027",
+          "venue": "away",
+          "opponent": "Skalica",
+          "result": "D",
+          "opponent_elo_before": 1443.0,
+          "goals_for": 1,
+          "goals_against": 1,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": -0.1431
+        }
+      ]
+    },
+    "Shakhtar": {
+      "league": "Ukraine Premier League",
+      "source_team_name": "Shakhtar Donetsk",
+      "source_team_id": 9728,
+      "games_before_cutoff": 38,
+      "windows": {
+        "5": {
+          "games": 5,
+          "from": "2026-08-29",
+          "through": "2026-10-09",
+          "season_counts": {
+            "2026/2027": 5
+          },
+          "record": {
+            "W": 4,
+            "D": 0,
+            "L": 1
+          },
+          "btts_rate": 0.2,
+          "over_2_5_rate": 0.6,
+          "clean_sheet_rate": 0.6,
+          "venue_counts": {
+            "home": 3,
+            "away": 2
+          },
+          "mean_opponent_elo_before": 1529.0,
+          "metrics": {
+            "goals_for": {
+              "observed_games": 5,
+              "mean": 2.0,
+              "recency_weighted_mean": 2.187
+            },
+            "goals_against": {
+              "observed_games": 5,
+              "mean": 0.6,
+              "recency_weighted_mean": 0.468
+            },
+            "shots_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "elo_result_surplus": {
+              "observed_games": 5,
+              "mean": 0.114,
+              "recency_weighted_mean": 0.162
+            }
+          }
+        },
+        "10": {
+          "games": 10,
+          "from": "2026-05-17",
+          "through": "2026-10-09",
+          "season_counts": {
+            "2025/2026": 2,
+            "2026/2027": 8
+          },
+          "record": {
+            "W": 8,
+            "D": 0,
+            "L": 2
+          },
+          "btts_rate": 0.3,
+          "over_2_5_rate": 0.5,
+          "clean_sheet_rate": 0.5,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "mean_opponent_elo_before": 1518.1,
+          "metrics": {
+            "goals_for": {
+              "observed_games": 10,
+              "mean": 2.1,
+              "recency_weighted_mean": 2.17
+            },
+            "goals_against": {
+              "observed_games": 10,
+              "mean": 0.7,
+              "recency_weighted_mean": 0.534
+            },
+            "shots_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "elo_result_surplus": {
+              "observed_games": 10,
+              "mean": 0.126,
+              "recency_weighted_mean": 0.165
+            }
+          }
+        },
+        "20": {
+          "games": 20,
+          "from": "2026-03-06",
+          "through": "2026-10-09",
+          "season_counts": {
+            "2025/2026": 12,
+            "2026/2027": 8
+          },
+          "record": {
+            "W": 17,
+            "D": 1,
+            "L": 2
+          },
+          "btts_rate": 0.4,
+          "over_2_5_rate": 0.6,
+          "clean_sheet_rate": 0.5,
+          "venue_counts": {
+            "home": 9,
+            "away": 11
+          },
+          "mean_opponent_elo_before": 1504.7,
+          "metrics": {
+            "goals_for": {
+              "observed_games": 20,
+              "mean": 2.15,
+              "recency_weighted_mean": 2.228
+            },
+            "goals_against": {
+              "observed_games": 20,
+              "mean": 0.65,
+              "recency_weighted_mean": 0.56
+            },
+            "shots_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "shots_on_target_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "corners_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "yellow_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "red_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "first_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "second_half_goals_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_for": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "xg_against": {
+              "observed_games": 0,
+              "mean": null,
+              "recency_weighted_mean": null
+            },
+            "elo_result_surplus": {
+              "observed_games": 20,
+              "mean": 0.218,
+              "recency_weighted_mean": 0.193
+            }
+          }
+        }
+      },
+      "last_five_games": [
+        {
+          "date": "2026-08-29",
+          "season": "2026/2027",
+          "venue": "home",
+          "opponent": "Polissya Zhytomyr",
+          "result": "L",
+          "opponent_elo_before": 1580.0,
+          "goals_for": 0,
+          "goals_against": 2,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": -0.6956
+        },
+        {
+          "date": "2026-09-05",
+          "season": "2026/2027",
+          "venue": "away",
+          "opponent": "Karpaty",
+          "result": "W",
+          "opponent_elo_before": 1539.9,
+          "goals_for": 2,
+          "goals_against": 1,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": 0.4429
+        },
+        {
+          "date": "2026-09-14",
+          "season": "2026/2027",
+          "venue": "home",
+          "opponent": "Chornomorets Odesa",
+          "result": "W",
+          "opponent_elo_before": 1491.9,
+          "goals_for": 2,
+          "goals_against": 0,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": 0.2133
+        },
+        {
+          "date": "2026-09-20",
+          "season": "2026/2027",
+          "venue": "home",
+          "opponent": "LNZ Cherkasy",
+          "result": "W",
+          "opponent_elo_before": 1566.0,
+          "goals_for": 3,
+          "goals_against": 0,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": 0.2885
+        },
+        {
+          "date": "2026-10-09",
+          "season": "2026/2027",
+          "venue": "away",
+          "opponent": "Veres Rivne",
+          "result": "W",
+          "opponent_elo_before": 1467.2,
+          "goals_for": 3,
+          "goals_against": 0,
+          "shots_for": null,
+          "shots_against": null,
+          "shots_on_target_for": null,
+          "shots_on_target_against": null,
+          "corners_for": null,
+          "corners_against": null,
+          "yellow_for": null,
+          "yellow_against": null,
+          "red_for": null,
+          "red_against": null,
+          "first_half_goals_for": null,
+          "first_half_goals_against": null,
+          "second_half_goals_for": null,
+          "second_half_goals_against": null,
+          "xg_for": null,
+          "xg_against": null,
+          "elo_result_surplus": 0.3195
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Results are FotMob/enet league-page snapshots, not independent official league score feeds.",
+    "The pages were first retrieved after the specified historical cutoff, so source availability before kickoff is not proven.",
+    "Postponed, abandoned, and awarded fixtures are excluded from played-match form.",
+    "No shots, possession, xG, or post-shot goalkeeper metric is included in these league fixture rows.",
+    "Elo adjusts for results and venue within each league, not cross-league team strength."
+  ]
+}

@@ -16,6 +16,8 @@ python3 scripts/fetch_worldcup_2018.py
 python3 scripts/fetch_epl_2015.py
 python3 scripts/fetch_form.py
 python3 scripts/fetch_form_extra.py
+python3 scripts/fetch_fotmob_form.py
+python3 scripts/fetch_fotmob_recent.py
 python3 scripts/fetch_understat.py
 bash scripts/fetch_odds.sh
 python3 -m unittest discover -s tests -v
@@ -34,6 +36,8 @@ python3 -m bola.rotation_predict --output reports/rotation_predict.json
 python3 -m bola.shot_endpoint_audit --output reports/shot_endpoints.json
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
 python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
+python3 -m bola.form_fotmob --cutoff-date-wib 2026-10-15 --output reports/current_form_fotmob.json
+python3 -m bola.fotmob_recent_stats --output reports/fotmob_recent_stats.json
 python3 -m bola.recovery --data-dir .cache/statsbomb --seconds 15 --output reports/recovery.json
 python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_benchmark.json
 python3 -m bola.odds_multi --league de.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_bundesliga.json
@@ -73,9 +77,17 @@ python3 scripts/fetch_form.py
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
 python3 scripts/fetch_form_extra.py
 python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
+python3 scripts/fetch_fotmob_form.py
+python3 -m bola.form_fotmob --cutoff-date-wib 2026-10-15 --output reports/current_form_fotmob.json
+python3 scripts/fetch_fotmob_recent.py
+python3 -m bola.fotmob_recent_stats --output reports/fotmob_recent_stats.json
 ```
 
 Delapan belas CSV mencakup sembilan liga dalam `.cache/form/`; dua CSV lain untuk Austria dan Norwegia ada di `.cache/form_extra/`. Manifest mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. Snapshot lama tersimpan di subfolder `snapshots/` dan dapat dijalankan ulang dengan `--data-dir` yang menunjuk foldernya. Kedua pengolah hanya memasukkan hasil bertanggal **sebelum** cutoff serta menghitung jendela 5/10/20 laga, bobot waktu, pembagian kandang/tandang, gol, dan surplus hasil terhadap Elo lawan sebelum pertandingan. Statistik tembakan, corner, kartu, dan xG hanya tersedia pada liga dan baris tertentu. Elo dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Form ini tidak mencakup pertandingan UEFA atau piala domestik.
+
+`fetch_fotmob_form.py` membekukan empat halaman liga FotMob/enet Slovakia dan Ukraina 2025/26–2026/27 dengan waktu pengambilan dan SHA-256. `bola.form_fotmob` memeriksa ID liga, musim, ID tim, status serta skor laga, menyingkirkan laga yang dibatalkan atau diputuskan administratif, dan menghitung form Shakhtar serta Slovan Bratislava. Gabungan tiga laporan form kini mencakup **18 dari 18 tim**. Halaman FotMob ini baru diambil **setelah** kickoff 15 Oktober, sehingga angka untuk dua klub tersebut adalah rekonstruksi retrospektif sebelum tanggal laga, bukan bukti informasi sudah tersedia pada saat prediksi prapertandingan. Ringkasan dan manifestnya ada di `evidence/form_fotmob_2026-10-15.json`.
+
+`fetch_fotmob_recent.py` membekukan halaman pertandingan untuk lima laga liga terakhir sebelum cutoff dari masing-masing dua klub itu. `bola.fotmob_recent_stats` memeriksa identitas laga, waktu, skor, dan checksum, kemudian menghitung rata-rata statistik yang **benar-benar ada** pada halaman. Kedua tim memiliki data tembakan, tepat sasaran, penguasaan bola, dan corner pada 5/5 laga. FotMob menyediakan metrik lebih lengkap untuk Slovan daripada Shakhtar; kolom yang tidak tersedia tidak diisi dengan perkiraan. Rincian dan cakupan tiap metrik ada di `evidence/fotmob_recent_stats_2026-10-15.json`.
 
 ## Ledger bukti skuad
 

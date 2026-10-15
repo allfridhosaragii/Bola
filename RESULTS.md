@@ -95,7 +95,18 @@ Snapshot awal Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga
 | LASK | 2–1–2 | 2,0 | 1,6 |
 | Bodø/Glimt | 4–0–1 | 2,6 | 1,6 |
 
-Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada laga UEFA atau penyesuaian kualitas antarliga dalam tabel tersebut. CSV Turki dan Yunani memuat xG pada sebagian laga terkini, tetapi identitas model dan riwayat pelatihannya belum diketahui; kolom tersebut belum direkonsiliasi dengan StatsBomb. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json` dan `reports/current_form_extra.json`. Shakhtar dan Slovan Bratislava masih belum tercakup. Form ini belum menghasilkan probabilitas pertandingan.
+Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada laga UEFA atau penyesuaian kualitas antarliga dalam tabel tersebut. CSV Turki dan Yunani memuat xG pada sebagian laga terkini, tetapi identitas model dan riwayat pelatihannya belum diketahui; kolom tersebut belum direkonsiliasi dengan StatsBomb. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json` dan `reports/current_form_extra.json`. Shakhtar dan Slovan Bratislava belum tercakup dalam snapshot prapertandingan tersebut. Form ini belum menghasilkan probabilitas pertandingan.
+
+Setelah kickoff, empat halaman liga FotMob/enet 2025/26–2026/27 dibekukan untuk mengisi dua tim tersisa. Semua hasil dengan tanggal WIB **15 Oktober atau sesudahnya** dikecualikan. Shakhtar memiliki **38** hasil liga sebelum cutoff; lima terakhir **4–0–1**, rata-rata gol **2,0** dan kebobolan **0,6**. Slovan Bratislava memiliki **41** hasil; lima terakhir **1–2–2**, gol **1,4** dan kebobolan **1,8**. Jendela 5/10/20 tersedia untuk keduanya, sehingga cakupan retrospektif menjadi **18 dari 18 tim**. Halaman sumber baru diambil setelah kickoff dan tidak membuktikan informasi tersebut sudah diterbitkan sebelum pertandingan; dua laga di dossier prapertandingan tetap berstatus form belum tersedia pada waktu snapshotnya. Rincian per laga serta checksum ada di `evidence/form_fotmob_2026-10-15.json`.
+
+Sepuluh halaman laga liga, lima per tim, kemudian diperiksa terhadap ID pertandingan, skor akhir, kickoff, dan checksum. Semua **5/5** laga untuk masing-masing tim memiliki penguasaan bola, tembakan, tembakan tepat sasaran, dan corner berikut:
+
+| Tim | Penguasaan bola | Tembakan | Tepat sasaran | Corner |
+| --- | ---: | ---: | ---: | ---: |
+| Shakhtar | 63,0% | 14,0 | 6,0 | 5,4 |
+| Slovan Bratislava | 66,6% | 16,8 | 4,8 | 6,4 |
+
+Slovan juga memiliki data peluang besar **3,0/laga**, akurasi operan **85,2%**, dan penyelamatan kiper **1,6/laga** pada 5/5 halaman; statistik tiap babak tersedia. Kelima halaman Shakhtar tidak memuat metrik tambahan itu atau xG, sehingga tidak ada angka pengganti yang dihitung. Penguasaan bola Slovan yang tinggi bersamaan dengan rekor **1–2–2** menunjukkan bahwa porsi bola saja tidak menjamin hasil pada sampel ini. Semua halaman diambil setelah kickoff; ringkasan ini audit retrospektif, bukan input yang terbukti tersedia sebelum laga. Rincian dan cakupan setiap metrik ada di `evidence/fotmob_recent_stats_2026-10-15.json`.
 
 `bola.dossier` pertama kali menggabungkan bukti pada **15 Oktober pukul 00.51 WIB**. Pada penyegaran **01.33 WIB**, tujuh laga masih sebelum kickoff resmi; daftar skuad dan starting XI resmi UEFA tersedia untuk kedua tim pada semuanya. Form domestik kedua tim kini tersedia pada lima laga berikut.
 

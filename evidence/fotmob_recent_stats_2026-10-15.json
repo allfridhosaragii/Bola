@@ -1,0 +1,1315 @@
+{
+  "cutoff_exclusive_date_wib": "2026-10-15",
+  "source": "https://www.fotmob.com/",
+  "snapshot_manifest": {
+    "cutoff_exclusive_date_wib": "2026-10-15",
+    "league_snapshot": ".cache/fotmob_form/snapshots/20261015T083015386790Z",
+    "league_source_sha256": {
+      "176_2627.html": "b45a599dc12a142830cc916545d4b48dc0b0a44d545f8ca1d5d7db347f3a3b44",
+      "441_2627.html": "57b0fe4e67a2840678a794189bc87b14a7a436628f6b26bab942621babb71326"
+    },
+    "snapshot_folder": ".cache/fotmob_recent/snapshots/20261015T153723020524+0700",
+    "files": {
+      "5772169.html": {
+        "team": "S. Bratislava",
+        "team_id": 6019,
+        "league_id": "176",
+        "match_id": "5772169",
+        "kickoff": "2026-08-30T15:00:00Z",
+        "score": "1 - 2",
+        "url": "https://www.fotmob.com/matches/slovan-bratislava-vs-zemplin-michalovce/23ftgk",
+        "sha256": "f89f4ff52a2f57b68f9cbff8dda4fbd21a7532386ff590ae14593fea6fc90bc5",
+        "retrieved_at": "2026-10-15T15:37:23.299819+07:00",
+        "bytes": 1005051
+      },
+      "5772178.html": {
+        "team": "S. Bratislava",
+        "team_id": 6019,
+        "league_id": "176",
+        "match_id": "5772178",
+        "kickoff": "2026-09-05T18:30:00Z",
+        "score": "2 - 0",
+        "url": "https://www.fotmob.com/matches/slovan-bratislava-vs-dac-1904-dunajska-streda/2rd0dos",
+        "sha256": "c31970ee30f7e8caead756eed56acd03733f9e769dc3034327ef66bf752489f8",
+        "retrieved_at": "2026-10-15T15:37:23.353175+07:00",
+        "bytes": 1007214
+      },
+      "5772184.html": {
+        "team": "S. Bratislava",
+        "team_id": 6019,
+        "league_id": "176",
+        "match_id": "5772184",
+        "kickoff": "2026-09-13T17:00:00Z",
+        "score": "3 - 3",
+        "url": "https://www.fotmob.com/matches/slovan-bratislava-vs-zilina/17614j",
+        "sha256": "d546a3a853b66feaf34095c88419a47f3abb3b915775d658d52570bd7f7fee7f",
+        "retrieved_at": "2026-10-15T15:37:23.569870+07:00",
+        "bytes": 1082728
+      },
+      "5772190.html": {
+        "team": "S. Bratislava",
+        "team_id": 6019,
+        "league_id": "176",
+        "match_id": "5772190",
+        "kickoff": "2026-09-19T18:30:00Z",
+        "score": "1 - 2",
+        "url": "https://www.fotmob.com/matches/slovan-bratislava-vs-komarno/2fpx6zrs",
+        "sha256": "fc3351f95e1fae1ff64e0f576d27b6c0ce54ddba9f4bb4f03356236651ee3798",
+        "retrieved_at": "2026-10-15T15:37:23.484906+07:00",
+        "bytes": 983742
+      },
+      "5772261.html": {
+        "team": "S. Bratislava",
+        "team_id": 6019,
+        "league_id": "176",
+        "match_id": "5772261",
+        "kickoff": "2026-10-10T13:30:00Z",
+        "score": "1 - 1",
+        "url": "https://www.fotmob.com/matches/slovan-bratislava-vs-skalica/20dcgc37",
+        "sha256": "af89ecc8e6480e5e7a2e2b2c1b9ea97e98210f5de3b7c7d7885e99fa1bdce2e2",
+        "retrieved_at": "2026-10-15T15:37:23.503479+07:00",
+        "bytes": 945066
+      },
+      "5909144.html": {
+        "team": "Shakhtar",
+        "team_id": 9728,
+        "league_id": "441",
+        "match_id": "5909144",
+        "kickoff": "2026-08-29T15:00:00Z",
+        "score": "0 - 2",
+        "url": "https://www.fotmob.com/matches/shakhtar-donetsk-vs-polissya-zhytomyr/91uc7f40",
+        "sha256": "b906ab5fea1801f26c3bf10020832d0ddf161f5413a44a9039f73d43a68fc6a8",
+        "retrieved_at": "2026-10-15T15:37:23.788998+07:00",
+        "bytes": 819165
+      },
+      "5909149.html": {
+        "team": "Shakhtar",
+        "team_id": 9728,
+        "league_id": "441",
+        "match_id": "5909149",
+        "kickoff": "2026-09-05T15:00:00Z",
+        "score": "1 - 2",
+        "url": "https://www.fotmob.com/matches/karpaty-vs-shakhtar-donetsk/2t05se",
+        "sha256": "a3c213692e217b139778b02ab59a6d403dd14d91654e49c5aa7ce33b933bd6ec",
+        "retrieved_at": "2026-10-15T15:37:24.018898+07:00",
+        "bytes": 847308
+      },
+      "5909159.html": {
+        "team": "Shakhtar",
+        "team_id": 9728,
+        "league_id": "441",
+        "match_id": "5909159",
+        "kickoff": "2026-09-14T15:00:00Z",
+        "score": "2 - 0",
+        "url": "https://www.fotmob.com/matches/chornomorets-odesa-vs-shakhtar-donetsk/2sqapr",
+        "sha256": "4c7081591159c6b93b41b0c153bb6999c46a1004eded3f820f71c33f1630ebea",
+        "retrieved_at": "2026-10-15T15:37:23.799284+07:00",
+        "bytes": 822388
+      },
+      "5909168.html": {
+        "team": "Shakhtar",
+        "team_id": 9728,
+        "league_id": "441",
+        "match_id": "5909168",
+        "kickoff": "2026-09-20T15:00:00Z",
+        "score": "3 - 0",
+        "url": "https://www.fotmob.com/matches/lnz-cherkasy-vs-shakhtar-donetsk/15yjm8",
+        "sha256": "1bbe7a93286cefe6da19f5c1eacffc786a1362f29e75116625da51aa53972dfe",
+        "retrieved_at": "2026-10-15T15:37:24.122911+07:00",
+        "bytes": 812158
+      },
+      "5909176.html": {
+        "team": "Shakhtar",
+        "team_id": 9728,
+        "league_id": "441",
+        "match_id": "5909176",
+        "kickoff": "2026-10-09T12:30:00Z",
+        "score": "0 - 3",
+        "url": "https://www.fotmob.com/matches/shakhtar-donetsk-vs-veres-rivne/8ym2so2e",
+        "sha256": "eabe94078582630a38c345fce40d31476f1ee20064a4f14c75a6de72cfe1af68",
+        "retrieved_at": "2026-10-15T15:37:24.183332+07:00",
+        "bytes": 718578
+      }
+    }
+  },
+  "teams": {
+    "S. Bratislava": {
+      "games": [
+        {
+          "match_id": "5772169",
+          "kickoff": "2026-08-30T15:00:00Z",
+          "team": "S. Bratislava",
+          "opponent": "Zemplín Michalovce",
+          "venue": "home",
+          "score": "1 - 2",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 79,
+                "opponent": 21
+              },
+              "shots": {
+                "team": 20,
+                "opponent": 6
+              },
+              "shots_on_target": {
+                "team": 3,
+                "opponent": 4
+              },
+              "touches_opponent_box": {
+                "team": 52,
+                "opponent": 5
+              },
+              "big_chances": {
+                "team": 4,
+                "opponent": 1
+              },
+              "pass_accuracy_pct": {
+                "team": 87,
+                "opponent": 59
+              },
+              "yellow_cards": {
+                "team": 1,
+                "opponent": 3
+              },
+              "corners": {
+                "team": 12,
+                "opponent": 2
+              },
+              "offsides": {
+                "team": 2,
+                "opponent": 0
+              },
+              "keeper_saves": {
+                "team": 2,
+                "opponent": 2
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 9,
+                "opponent": 14
+              }
+            },
+            "FirstHalf": {
+              "possession_pct": {
+                "team": 73,
+                "opponent": 27
+              },
+              "shots": {
+                "team": 8,
+                "opponent": 2
+              },
+              "shots_on_target": {
+                "team": 1,
+                "opponent": 2
+              },
+              "touches_opponent_box": {
+                "team": 15,
+                "opponent": 2
+              },
+              "big_chances": {
+                "team": 1,
+                "opponent": 0
+              },
+              "pass_accuracy_pct": {
+                "team": 88,
+                "opponent": 67
+              },
+              "yellow_cards": {
+                "team": 1,
+                "opponent": 1
+              },
+              "corners": {
+                "team": 6,
+                "opponent": 1
+              },
+              "offsides": {
+                "team": 2,
+                "opponent": 0
+              },
+              "keeper_saves": {
+                "team": 1,
+                "opponent": 0
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 4,
+                "opponent": 5
+              }
+            },
+            "SecondHalf": {
+              "possession_pct": {
+                "team": 85,
+                "opponent": 15
+              },
+              "shots": {
+                "team": 12,
+                "opponent": 4
+              },
+              "shots_on_target": {
+                "team": 2,
+                "opponent": 2
+              },
+              "touches_opponent_box": {
+                "team": 37,
+                "opponent": 3
+              },
+              "big_chances": {
+                "team": 3,
+                "opponent": 1
+              },
+              "pass_accuracy_pct": {
+                "team": 86,
+                "opponent": 45
+              },
+              "yellow_cards": {
+                "team": 0,
+                "opponent": 2
+              },
+              "corners": {
+                "team": 6,
+                "opponent": 1
+              },
+              "offsides": {
+                "team": 0,
+                "opponent": 0
+              },
+              "keeper_saves": {
+                "team": 1,
+                "opponent": 2
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 5,
+                "opponent": 9
+              }
+            }
+          }
+        },
+        {
+          "match_id": "5772178",
+          "kickoff": "2026-09-05T18:30:00Z",
+          "team": "S. Bratislava",
+          "opponent": "DAC 1904 Dunajska Streda",
+          "venue": "away",
+          "score": "2 - 0",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 57,
+                "opponent": 43
+              },
+              "shots": {
+                "team": 8,
+                "opponent": 17
+              },
+              "shots_on_target": {
+                "team": 1,
+                "opponent": 3
+              },
+              "touches_opponent_box": {
+                "team": 24,
+                "opponent": 24
+              },
+              "big_chances": {
+                "team": 0,
+                "opponent": 3
+              },
+              "pass_accuracy_pct": {
+                "team": 82,
+                "opponent": 81
+              },
+              "yellow_cards": {
+                "team": 2,
+                "opponent": 2
+              },
+              "corners": {
+                "team": 3,
+                "opponent": 1
+              },
+              "offsides": {
+                "team": 2,
+                "opponent": 0
+              },
+              "keeper_saves": {
+                "team": 1,
+                "opponent": 1
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 13,
+                "opponent": 11
+              }
+            },
+            "FirstHalf": {
+              "possession_pct": {
+                "team": 53,
+                "opponent": 47
+              },
+              "shots": {
+                "team": 2,
+                "opponent": 10
+              },
+              "shots_on_target": {
+                "team": 0,
+                "opponent": 1
+              },
+              "touches_opponent_box": {
+                "team": 10,
+                "opponent": 12
+              },
+              "big_chances": {
+                "team": 0,
+                "opponent": 1
+              },
+              "pass_accuracy_pct": {
+                "team": 83,
+                "opponent": 84
+              },
+              "yellow_cards": {
+                "team": 1,
+                "opponent": 0
+              },
+              "corners": {
+                "team": 0,
+                "opponent": 1
+              },
+              "offsides": {
+                "team": 1,
+                "opponent": 0
+              },
+              "keeper_saves": {
+                "team": 1,
+                "opponent": 0
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 7,
+                "opponent": 5
+              }
+            },
+            "SecondHalf": {
+              "possession_pct": {
+                "team": 61,
+                "opponent": 39
+              },
+              "shots": {
+                "team": 6,
+                "opponent": 7
+              },
+              "shots_on_target": {
+                "team": 1,
+                "opponent": 2
+              },
+              "touches_opponent_box": {
+                "team": 14,
+                "opponent": 12
+              },
+              "big_chances": {
+                "team": 0,
+                "opponent": 2
+              },
+              "pass_accuracy_pct": {
+                "team": 80,
+                "opponent": 78
+              },
+              "yellow_cards": {
+                "team": 1,
+                "opponent": 2
+              },
+              "corners": {
+                "team": 3,
+                "opponent": 0
+              },
+              "offsides": {
+                "team": 1,
+                "opponent": 0
+              },
+              "keeper_saves": {
+                "team": 0,
+                "opponent": 1
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 6,
+                "opponent": 6
+              }
+            }
+          }
+        },
+        {
+          "match_id": "5772184",
+          "kickoff": "2026-09-13T17:00:00Z",
+          "team": "S. Bratislava",
+          "opponent": "Žilina",
+          "venue": "home",
+          "score": "3 - 3",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 64,
+                "opponent": 36
+              },
+              "shots": {
+                "team": 27,
+                "opponent": 14
+              },
+              "shots_on_target": {
+                "team": 12,
+                "opponent": 7
+              },
+              "touches_opponent_box": {
+                "team": 36,
+                "opponent": 13
+              },
+              "big_chances": {
+                "team": 7,
+                "opponent": 2
+              },
+              "pass_accuracy_pct": {
+                "team": 87,
+                "opponent": 78
+              },
+              "yellow_cards": {
+                "team": 3,
+                "opponent": 3
+              },
+              "corners": {
+                "team": 7,
+                "opponent": 2
+              },
+              "offsides": {
+                "team": 5,
+                "opponent": 4
+              },
+              "keeper_saves": {
+                "team": 4,
+                "opponent": 9
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 10,
+                "opponent": 14
+              }
+            },
+            "FirstHalf": {
+              "possession_pct": {
+                "team": 59,
+                "opponent": 41
+              },
+              "shots": {
+                "team": 11,
+                "opponent": 8
+              },
+              "shots_on_target": {
+                "team": 5,
+                "opponent": 3
+              },
+              "touches_opponent_box": {
+                "team": 15,
+                "opponent": 9
+              },
+              "big_chances": {
+                "team": 4,
+                "opponent": 0
+              },
+              "pass_accuracy_pct": {
+                "team": 87,
+                "opponent": 81
+              },
+              "yellow_cards": {
+                "team": 0,
+                "opponent": 1
+              },
+              "corners": {
+                "team": 3,
+                "opponent": 2
+              },
+              "offsides": {
+                "team": 3,
+                "opponent": 2
+              },
+              "keeper_saves": {
+                "team": 2,
+                "opponent": 5
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 4,
+                "opponent": 8
+              }
+            },
+            "SecondHalf": {
+              "possession_pct": {
+                "team": 68,
+                "opponent": 32
+              },
+              "shots": {
+                "team": 16,
+                "opponent": 6
+              },
+              "shots_on_target": {
+                "team": 7,
+                "opponent": 4
+              },
+              "touches_opponent_box": {
+                "team": 21,
+                "opponent": 4
+              },
+              "big_chances": {
+                "team": 3,
+                "opponent": 2
+              },
+              "pass_accuracy_pct": {
+                "team": 87,
+                "opponent": 74
+              },
+              "yellow_cards": {
+                "team": 3,
+                "opponent": 2
+              },
+              "corners": {
+                "team": 4,
+                "opponent": 0
+              },
+              "offsides": {
+                "team": 2,
+                "opponent": 2
+              },
+              "keeper_saves": {
+                "team": 2,
+                "opponent": 4
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 6,
+                "opponent": 6
+              }
+            }
+          }
+        },
+        {
+          "match_id": "5772190",
+          "kickoff": "2026-09-19T18:30:00Z",
+          "team": "S. Bratislava",
+          "opponent": "Komárno",
+          "venue": "away",
+          "score": "1 - 2",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 63,
+                "opponent": 37
+              },
+              "shots": {
+                "team": 11,
+                "opponent": 9
+              },
+              "shots_on_target": {
+                "team": 3,
+                "opponent": 1
+              },
+              "touches_opponent_box": {
+                "team": 22,
+                "opponent": 19
+              },
+              "big_chances": {
+                "team": 2,
+                "opponent": 4
+              },
+              "pass_accuracy_pct": {
+                "team": 81,
+                "opponent": 67
+              },
+              "yellow_cards": {
+                "team": 4,
+                "opponent": 4
+              },
+              "corners": {
+                "team": 5,
+                "opponent": 5
+              },
+              "offsides": {
+                "team": 5,
+                "opponent": 2
+              },
+              "keeper_saves": {
+                "team": 0,
+                "opponent": 1
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 13,
+                "opponent": 24
+              }
+            },
+            "FirstHalf": {
+              "possession_pct": {
+                "team": 67,
+                "opponent": 33
+              },
+              "shots": {
+                "team": 4,
+                "opponent": 4
+              },
+              "shots_on_target": {
+                "team": 1,
+                "opponent": 1
+              },
+              "touches_opponent_box": {
+                "team": 8,
+                "opponent": 10
+              },
+              "big_chances": {
+                "team": 0,
+                "opponent": 4
+              },
+              "pass_accuracy_pct": {
+                "team": 81,
+                "opponent": 70
+              },
+              "yellow_cards": {
+                "team": 1,
+                "opponent": 1
+              },
+              "corners": {
+                "team": 3,
+                "opponent": 1
+              },
+              "offsides": {
+                "team": 3,
+                "opponent": 2
+              },
+              "keeper_saves": {
+                "team": 0,
+                "opponent": 1
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 5,
+                "opponent": 11
+              }
+            },
+            "SecondHalf": {
+              "possession_pct": {
+                "team": 58,
+                "opponent": 42
+              },
+              "shots": {
+                "team": 7,
+                "opponent": 5
+              },
+              "shots_on_target": {
+                "team": 2,
+                "opponent": 0
+              },
+              "touches_opponent_box": {
+                "team": 14,
+                "opponent": 9
+              },
+              "big_chances": {
+                "team": 2,
+                "opponent": 0
+              },
+              "pass_accuracy_pct": {
+                "team": 80,
+                "opponent": 63
+              },
+              "yellow_cards": {
+                "team": 3,
+                "opponent": 3
+              },
+              "corners": {
+                "team": 2,
+                "opponent": 4
+              },
+              "offsides": {
+                "team": 2,
+                "opponent": 0
+              },
+              "keeper_saves": {
+                "team": 0,
+                "opponent": 0
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 8,
+                "opponent": 13
+              }
+            }
+          }
+        },
+        {
+          "match_id": "5772261",
+          "kickoff": "2026-10-10T13:30:00Z",
+          "team": "S. Bratislava",
+          "opponent": "Skalica",
+          "venue": "away",
+          "score": "1 - 1",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 70,
+                "opponent": 30
+              },
+              "shots": {
+                "team": 18,
+                "opponent": 10
+              },
+              "shots_on_target": {
+                "team": 5,
+                "opponent": 2
+              },
+              "touches_opponent_box": {
+                "team": 34,
+                "opponent": 10
+              },
+              "big_chances": {
+                "team": 2,
+                "opponent": 0
+              },
+              "pass_accuracy_pct": {
+                "team": 89,
+                "opponent": 72
+              },
+              "yellow_cards": {
+                "team": 2,
+                "opponent": 4
+              },
+              "corners": {
+                "team": 5,
+                "opponent": 4
+              },
+              "offsides": {
+                "team": 0,
+                "opponent": 2
+              },
+              "keeper_saves": {
+                "team": 1,
+                "opponent": 4
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 10,
+                "opponent": 15
+              }
+            },
+            "FirstHalf": {
+              "possession_pct": {
+                "team": 65,
+                "opponent": 35
+              },
+              "shots": {
+                "team": 6,
+                "opponent": 6
+              },
+              "shots_on_target": {
+                "team": 2,
+                "opponent": 1
+              },
+              "touches_opponent_box": {
+                "team": 11,
+                "opponent": 6
+              },
+              "big_chances": {
+                "team": 1,
+                "opponent": 0
+              },
+              "pass_accuracy_pct": {
+                "team": 91,
+                "opponent": 80
+              },
+              "yellow_cards": {
+                "team": 1,
+                "opponent": 2
+              },
+              "corners": {
+                "team": 5,
+                "opponent": 4
+              },
+              "offsides": {
+                "team": 0,
+                "opponent": 1
+              },
+              "keeper_saves": {
+                "team": 1,
+                "opponent": 2
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 3,
+                "opponent": 6
+              }
+            },
+            "SecondHalf": {
+              "possession_pct": {
+                "team": 77,
+                "opponent": 23
+              },
+              "shots": {
+                "team": 12,
+                "opponent": 4
+              },
+              "shots_on_target": {
+                "team": 3,
+                "opponent": 1
+              },
+              "touches_opponent_box": {
+                "team": 23,
+                "opponent": 4
+              },
+              "big_chances": {
+                "team": 1,
+                "opponent": 0
+              },
+              "pass_accuracy_pct": {
+                "team": 88,
+                "opponent": 59
+              },
+              "yellow_cards": {
+                "team": 1,
+                "opponent": 2
+              },
+              "corners": {
+                "team": 0,
+                "opponent": 0
+              },
+              "offsides": {
+                "team": 0,
+                "opponent": 1
+              },
+              "keeper_saves": {
+                "team": 0,
+                "opponent": 2
+              },
+              "red_cards": {
+                "team": 0,
+                "opponent": 0
+              },
+              "fouls": {
+                "team": 7,
+                "opponent": 9
+              }
+            }
+          }
+        }
+      ],
+      "averages": {
+        "All": {
+          "big_chances": {
+            "observed_games": 5,
+            "team_mean": 3.0,
+            "opponent_mean": 2.0
+          },
+          "corners": {
+            "observed_games": 5,
+            "team_mean": 6.4,
+            "opponent_mean": 2.8
+          },
+          "fouls": {
+            "observed_games": 5,
+            "team_mean": 11.0,
+            "opponent_mean": 15.6
+          },
+          "keeper_saves": {
+            "observed_games": 5,
+            "team_mean": 1.6,
+            "opponent_mean": 3.4
+          },
+          "offsides": {
+            "observed_games": 5,
+            "team_mean": 2.8,
+            "opponent_mean": 1.6
+          },
+          "pass_accuracy_pct": {
+            "observed_games": 5,
+            "team_mean": 85.2,
+            "opponent_mean": 71.4
+          },
+          "possession_pct": {
+            "observed_games": 5,
+            "team_mean": 66.6,
+            "opponent_mean": 33.4
+          },
+          "red_cards": {
+            "observed_games": 5,
+            "team_mean": 0.0,
+            "opponent_mean": 0.0
+          },
+          "shots": {
+            "observed_games": 5,
+            "team_mean": 16.8,
+            "opponent_mean": 11.2
+          },
+          "shots_on_target": {
+            "observed_games": 5,
+            "team_mean": 4.8,
+            "opponent_mean": 3.4
+          },
+          "touches_opponent_box": {
+            "observed_games": 5,
+            "team_mean": 33.6,
+            "opponent_mean": 14.2
+          },
+          "yellow_cards": {
+            "observed_games": 5,
+            "team_mean": 2.4,
+            "opponent_mean": 3.2
+          }
+        },
+        "FirstHalf": {
+          "big_chances": {
+            "observed_games": 5,
+            "team_mean": 1.2,
+            "opponent_mean": 1.0
+          },
+          "corners": {
+            "observed_games": 5,
+            "team_mean": 3.4,
+            "opponent_mean": 1.8
+          },
+          "fouls": {
+            "observed_games": 5,
+            "team_mean": 4.6,
+            "opponent_mean": 7.0
+          },
+          "keeper_saves": {
+            "observed_games": 5,
+            "team_mean": 1.0,
+            "opponent_mean": 1.6
+          },
+          "offsides": {
+            "observed_games": 5,
+            "team_mean": 1.8,
+            "opponent_mean": 1.0
+          },
+          "pass_accuracy_pct": {
+            "observed_games": 5,
+            "team_mean": 86.0,
+            "opponent_mean": 76.4
+          },
+          "possession_pct": {
+            "observed_games": 5,
+            "team_mean": 63.4,
+            "opponent_mean": 36.6
+          },
+          "red_cards": {
+            "observed_games": 5,
+            "team_mean": 0.0,
+            "opponent_mean": 0.0
+          },
+          "shots": {
+            "observed_games": 5,
+            "team_mean": 6.2,
+            "opponent_mean": 6.0
+          },
+          "shots_on_target": {
+            "observed_games": 5,
+            "team_mean": 1.8,
+            "opponent_mean": 1.6
+          },
+          "touches_opponent_box": {
+            "observed_games": 5,
+            "team_mean": 11.8,
+            "opponent_mean": 7.8
+          },
+          "yellow_cards": {
+            "observed_games": 5,
+            "team_mean": 0.8,
+            "opponent_mean": 1.0
+          }
+        },
+        "SecondHalf": {
+          "big_chances": {
+            "observed_games": 5,
+            "team_mean": 1.8,
+            "opponent_mean": 1.0
+          },
+          "corners": {
+            "observed_games": 5,
+            "team_mean": 3.0,
+            "opponent_mean": 1.0
+          },
+          "fouls": {
+            "observed_games": 5,
+            "team_mean": 6.4,
+            "opponent_mean": 8.6
+          },
+          "keeper_saves": {
+            "observed_games": 5,
+            "team_mean": 0.6,
+            "opponent_mean": 1.8
+          },
+          "offsides": {
+            "observed_games": 5,
+            "team_mean": 1.0,
+            "opponent_mean": 0.6
+          },
+          "pass_accuracy_pct": {
+            "observed_games": 5,
+            "team_mean": 84.2,
+            "opponent_mean": 63.8
+          },
+          "possession_pct": {
+            "observed_games": 5,
+            "team_mean": 69.8,
+            "opponent_mean": 30.2
+          },
+          "red_cards": {
+            "observed_games": 5,
+            "team_mean": 0.0,
+            "opponent_mean": 0.0
+          },
+          "shots": {
+            "observed_games": 5,
+            "team_mean": 10.6,
+            "opponent_mean": 5.2
+          },
+          "shots_on_target": {
+            "observed_games": 5,
+            "team_mean": 3.0,
+            "opponent_mean": 1.8
+          },
+          "touches_opponent_box": {
+            "observed_games": 5,
+            "team_mean": 21.8,
+            "opponent_mean": 6.4
+          },
+          "yellow_cards": {
+            "observed_games": 5,
+            "team_mean": 1.6,
+            "opponent_mean": 2.2
+          }
+        }
+      }
+    },
+    "Shakhtar": {
+      "games": [
+        {
+          "match_id": "5909144",
+          "kickoff": "2026-08-29T15:00:00Z",
+          "team": "Shakhtar",
+          "opponent": "Polissya Zhytomyr",
+          "venue": "home",
+          "score": "0 - 2",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 63,
+                "opponent": 37
+              },
+              "shots": {
+                "team": 11,
+                "opponent": 6
+              },
+              "shots_on_target": {
+                "team": 3,
+                "opponent": 4
+              },
+              "corners": {
+                "team": 6,
+                "opponent": 2
+              }
+            },
+            "FirstHalf": {},
+            "SecondHalf": {}
+          }
+        },
+        {
+          "match_id": "5909149",
+          "kickoff": "2026-09-05T15:00:00Z",
+          "team": "Shakhtar",
+          "opponent": "Karpaty",
+          "venue": "away",
+          "score": "1 - 2",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 57,
+                "opponent": 43
+              },
+              "shots": {
+                "team": 5,
+                "opponent": 1
+              },
+              "shots_on_target": {
+                "team": 2,
+                "opponent": 1
+              },
+              "corners": {
+                "team": 3,
+                "opponent": 4
+              }
+            },
+            "FirstHalf": {},
+            "SecondHalf": {}
+          }
+        },
+        {
+          "match_id": "5909159",
+          "kickoff": "2026-09-14T15:00:00Z",
+          "team": "Shakhtar",
+          "opponent": "Chornomorets Odesa",
+          "venue": "home",
+          "score": "2 - 0",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 59,
+                "opponent": 41
+              },
+              "shots": {
+                "team": 19,
+                "opponent": 5
+              },
+              "shots_on_target": {
+                "team": 8,
+                "opponent": 1
+              },
+              "corners": {
+                "team": 1,
+                "opponent": 3
+              }
+            },
+            "FirstHalf": {},
+            "SecondHalf": {}
+          }
+        },
+        {
+          "match_id": "5909168",
+          "kickoff": "2026-09-20T15:00:00Z",
+          "team": "Shakhtar",
+          "opponent": "LNZ Cherkasy",
+          "venue": "home",
+          "score": "3 - 0",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 69,
+                "opponent": 31
+              },
+              "shots": {
+                "team": 15,
+                "opponent": 6
+              },
+              "shots_on_target": {
+                "team": 8,
+                "opponent": 5
+              },
+              "corners": {
+                "team": 4,
+                "opponent": 3
+              }
+            },
+            "FirstHalf": {},
+            "SecondHalf": {}
+          }
+        },
+        {
+          "match_id": "5909176",
+          "kickoff": "2026-10-09T12:30:00Z",
+          "team": "Shakhtar",
+          "opponent": "Veres Rivne",
+          "venue": "away",
+          "score": "0 - 3",
+          "periods": {
+            "All": {
+              "possession_pct": {
+                "team": 67,
+                "opponent": 33
+              },
+              "shots": {
+                "team": 20,
+                "opponent": 4
+              },
+              "shots_on_target": {
+                "team": 9,
+                "opponent": 2
+              },
+              "corners": {
+                "team": 13,
+                "opponent": 3
+              }
+            },
+            "FirstHalf": {},
+            "SecondHalf": {}
+          }
+        }
+      ],
+      "averages": {
+        "All": {
+          "corners": {
+            "observed_games": 5,
+            "team_mean": 5.4,
+            "opponent_mean": 3.0
+          },
+          "possession_pct": {
+            "observed_games": 5,
+            "team_mean": 63.0,
+            "opponent_mean": 37.0
+          },
+          "shots": {
+            "observed_games": 5,
+            "team_mean": 14.0,
+            "opponent_mean": 4.4
+          },
+          "shots_on_target": {
+            "observed_games": 5,
+            "team_mean": 6.0,
+            "opponent_mean": 2.6
+          }
+        },
+        "FirstHalf": {},
+        "SecondHalf": {}
+      }
+    }
+  },
+  "limitations": [
+    "These match pages were retrieved after the historical kickoff; pre-match source availability is not established.",
+    "Metrics are reported only when present in each source page. Ukrainian league pages lack xG, big chances, keeper saves, and half-by-half stats in this sample.",
+    "Keeper saves are raw counts, not post-shot expected goals or a quality-adjusted goalkeeper rating.",
+    "The data come from one platform; agreement with independent official match statistics is not established."
+  ]
+}
