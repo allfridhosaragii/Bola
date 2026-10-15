@@ -1,0 +1,66 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "input_audit": {
+    "matches": 380,
+    "event_rows": 1313773,
+    "non_penalty_shots": 9817,
+    "non_penalty_xg": 900.082795,
+    "checksums_verified": 381
+  },
+  "feature": "Home minus away mean non-penalty xG difference over exactly five prior matches.",
+  "chronology": "All matches on the same date are predicted before any result or event from that date is observed.",
+  "tuning": {
+    "period": "Before 2016-01-01",
+    "n": 140,
+    "beta_grid": [
+      -1.0,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "training_log_loss": {
+      "-1.0": 1.4270575160694503,
+      "-0.5": 1.1910305654969666,
+      "-0.25": 1.1126421726742217,
+      "0.0": 1.066174978538999,
+      "0.25": 1.051956545961368,
+      "0.5": 1.0668181018835363,
+      "1.0": 1.1635753362872212
+    },
+    "selected_beta": 0.25
+  },
+  "holdout": {
+    "period": "2016-01-01 through season end",
+    "n": 190,
+    "score_only_elo": {
+      "n": 190,
+      "log_loss": 1.0274758096315517,
+      "brier": 0.615577089627973
+    },
+    "elo_plus_prior_five_npxg": {
+      "n": 190,
+      "log_loss": 1.0120160059676013,
+      "brier": 0.605811574957872
+    },
+    "log_loss_difference_augmented_minus_elo": -0.015459803663950389,
+    "match_date_bootstrap_95_ci": [
+      -0.0380296633822789,
+      0.007800847810507768
+    ]
+  },
+  "decision": {
+    "rule": "Retain only if holdout log loss improves and the entire bootstrap interval is below zero.",
+    "retained": false,
+    "result": "Rejected: the 95% interval includes zero, so the feature is not added to the UEFA model."
+  },
+  "limitations": [
+    "StatsBomb xG is a provider model whose training history is not independently known here.",
+    "Event files were published after matches; actual pregame availability is unverified.",
+    "A single older EPL season is inadequate to establish transfer to UEFA or future seasons.",
+    "The feature summarizes shot quality and does not identify tactics, injuries, or player availability."
+  ]
+}
