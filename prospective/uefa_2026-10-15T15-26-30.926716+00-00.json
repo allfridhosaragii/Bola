@@ -1,0 +1,322 @@
+{
+  "generated_at": "2026-10-15T15:26:30.926716+00:00",
+  "target_date_utc": "2026-10-20",
+  "season_year": 2027,
+  "training_matches": 1114,
+  "excluded_unfinished_prior_matches": [],
+  "excluded_target_matches": [],
+  "predictions": [
+    {
+      "match_id": "2049595",
+      "home": "Fenerbahçe",
+      "away": "Slavia Praha",
+      "kickoff": "2026-10-20T16:45:00Z",
+      "historical_uefa_appearances": {
+        "home": 18,
+        "away": 14
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.56257,
+          0.183528,
+          0.253902
+        ],
+        "poisson": [
+          0.650993,
+          0.224726,
+          0.124281
+        ],
+        "blend": [
+          0.606781,
+          0.204127,
+          0.189091
+        ]
+      }
+    },
+    {
+      "match_id": "2049597",
+      "home": "Sabah",
+      "away": "B. Dortmund",
+      "kickoff": "2026-10-20T16:45:00Z",
+      "historical_uefa_appearances": {
+        "home": 10,
+        "away": 47
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.447498,
+          0.199019,
+          0.353483
+        ],
+        "poisson": [
+          0.583502,
+          0.21186,
+          0.204639
+        ],
+        "blend": [
+          0.5155,
+          0.205439,
+          0.279061
+        ]
+      }
+    },
+    {
+      "match_id": "2049589",
+      "home": "Paris",
+      "away": "Barcelona",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 56,
+        "away": 44
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.517494,
+          0.18964,
+          0.292866
+        ],
+        "poisson": [
+          0.547704,
+          0.188371,
+          0.263925
+        ],
+        "blend": [
+          0.532599,
+          0.189005,
+          0.278395
+        ]
+      }
+    },
+    {
+      "match_id": "2049590",
+      "home": "Liverpool",
+      "away": "Villarreal",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 32,
+        "away": 10
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.642048,
+          0.1721,
+          0.185852
+        ],
+        "poisson": [
+          0.708935,
+          0.173654,
+          0.117411
+        ],
+        "blend": [
+          0.675491,
+          0.172877,
+          0.151632
+        ]
+      }
+    },
+    {
+      "match_id": "2049591",
+      "home": "Man City",
+      "away": "AEK Athens",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 45,
+        "away": 8
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.576825,
+          0.181557,
+          0.241618
+        ],
+        "poisson": [
+          0.667315,
+          0.188798,
+          0.143887
+        ],
+        "blend": [
+          0.62207,
+          0.185177,
+          0.192753
+        ]
+      }
+    },
+    {
+      "match_id": "2049592",
+      "home": "Roma",
+      "away": "S. Bratislava",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 2,
+        "away": 38
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.477466,
+          0.194996,
+          0.327538
+        ],
+        "poisson": [
+          0.463048,
+          0.229116,
+          0.307835
+        ],
+        "blend": [
+          0.470257,
+          0.212056,
+          0.317687
+        ]
+      }
+    },
+    {
+      "match_id": "2049593",
+      "home": "Porto",
+      "away": "PSV",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 18,
+        "away": 38
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.494078,
+          0.192775,
+          0.313147
+        ],
+        "poisson": [
+          0.423846,
+          0.24964,
+          0.326514
+        ],
+        "blend": [
+          0.458962,
+          0.221207,
+          0.319831
+        ]
+      }
+    },
+    {
+      "match_id": "2049594",
+      "home": "Napoli",
+      "away": "Bodø/Glimt",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 28,
+        "away": 34
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.390939,
+          0.204945,
+          0.404117
+        ],
+        "poisson": [
+          0.573921,
+          0.214203,
+          0.211876
+        ],
+        "blend": [
+          0.48243,
+          0.209574,
+          0.307996
+        ]
+      }
+    },
+    {
+      "match_id": "2049596",
+      "home": "Stuttgart",
+      "away": "Atleti",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "historical_uefa_appearances": {
+        "home": 10,
+        "away": 44
+      },
+      "probabilities_h_d_a": {
+        "base": [
+          0.488809,
+          0.202328,
+          0.308863
+        ],
+        "elo": [
+          0.409629,
+          0.204182,
+          0.38619
+        ],
+        "poisson": [
+          0.431674,
+          0.213593,
+          0.354733
+        ],
+        "blend": [
+          0.420651,
+          0.208887,
+          0.370461
+        ]
+      }
+    }
+  ],
+  "protocol": "Results-only UEFA Elo/Poisson blend at fixed 0.5 weight from EPL validation. Uses all completed Champions League phases from 2022/23 through 14 October 2026. All target-date fixtures use the same prior state. Probability order: home/draw/away.",
+  "limitations": [
+    "Exploratory probabilities; not calibrated betting recommendations.",
+    "No live odds, injuries, xG, tactical labels, or player-strength adjustments enter the model.",
+    "Historical API snapshots do not prove first-publication times of older results.",
+    "A team with few UEFA appearances has a weak club-specific prior."
+  ],
+  "history_mode": "all_ucl_phases_2022_23_through_2026_10_14",
+  "repository_base_commit": "1070307d307ef3309e156fb38faf22c73bc2bd4d",
+  "model_code_sha256": {
+    "uefa_forecast_live.py": "9ae2456e7e989ead9580454b6980092dad7df3f24918d06fca43a507222008c8",
+    "backtest.py": "7441b6393ebf1db04edaf910eae2b963f7221ac379ea20f47a8acc0ed06486f0"
+  },
+  "source": {
+    "historical_snapshot": ".cache/uefa_extended_history/20261015T152515125054Z",
+    "historical_sha256": "a8a09a3034421374f55f311c50b7ef51aec26d824f17793d9072f3d30455a9ce",
+    "current_snapshot_files": {
+      "target.json": {
+        "url": "https://match.uefa.com/v5/matches?competitionId=1&fromDate=2026-10-20&limit=50&offset=0&order=ASC&phase=ALL&seasonYear=2027&toDate=2026-10-20&utcOffset=0",
+        "sha256": "ac06714c5a31b88fa6acc3b22aa75e8055130ff1a086b97fdb4401cec40da800",
+        "snapshot": ".cache/uefa_forecast/20261015T152630926716Z/target.json"
+      }
+    }
+  }
+}

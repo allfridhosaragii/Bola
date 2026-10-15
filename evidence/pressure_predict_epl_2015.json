@@ -1,0 +1,57 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "feature": "Difference in mean prior-match unique possessions regained within five seconds of a tagged pressure.",
+  "event_counts": {
+    "pressures": 115402,
+    "unique_pressure_led_regains": 11295
+  },
+  "training": {
+    "period": "Before 2016-01-01",
+    "n": 140,
+    "beta_grid": [
+      -2.0,
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "selected_beta": 0.0,
+    "training_log_loss": {
+      "-2.0": 1.1227779766562123,
+      "-1.0": 1.0825792237377299,
+      "-0.5": 1.0712961476238136,
+      "0.0": 1.066174978538999,
+      "0.5": 1.0672482462816448,
+      "1.0": 1.0743980225703065,
+      "2.0": 1.1058327805635206
+    }
+  },
+  "holdout": {
+    "period": "2016-01-01 through season end",
+    "n": 190,
+    "score_only_elo": {
+      "n": 190,
+      "log_loss": 1.0274758096315517,
+      "brier": 0.615577089627973
+    },
+    "elo_plus_pressure_regains": {
+      "n": 190,
+      "log_loss": 1.0274758096315517,
+      "brier": 0.615577089627973
+    },
+    "log_loss_difference_augmented_minus_elo": 0.0,
+    "match_date_bootstrap_95_ci": [
+      0.0,
+      0.0
+    ]
+  },
+  "limitations": [
+    "StatsBomb pressure tags and possession segmentation are provider definitions, not independent video labels.",
+    "A possession change after pressure is an association and does not establish sole causation by that pressure.",
+    "Event files were published after matches, so historical pre-kickoff availability is unverified.",
+    "One older EPL season cannot establish transfer to current UEFA teams."
+  ]
+}

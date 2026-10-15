@@ -52,7 +52,7 @@ def completed_match(row: dict, season: int) -> Match:
 
 def build_forecast(history: list[dict], prior_days: dict[str, list[dict]],
                    target_rows: list[dict], target_day: date, season: int,
-                   captured: datetime) -> dict:
+                   captured: datetime, include_current_history: bool = False) -> dict:
     if captured.tzinfo is None:
         raise ValueError("Capture time must include timezone")
     if len({str(row["id"]) for row in history}) != len(history):
@@ -68,10 +68,10 @@ def build_forecast(history: list[dict], prior_days: dict[str, list[dict]],
     inputs = []
     seen = set()
     for row in history:
-        if str(row["season"]) >= str(season):
+        if not include_current_history and str(row["season"]) >= str(season):
             continue  # The current season comes from a freshly captured API snapshot.
         kickoff = instant(row["kickoff"])
-        if kickoff >= captured:
+        if kickoff >= captured or kickoff.date() >= target_day:
             raise ValueError(f"Historical result comes after capture: {row['id']}")
         mid = str(row["id"])
         seen.add(mid)
@@ -185,6 +185,45 @@ def forecast(history_dir: Path, cache_dir: Path, target_day: date, season: int) 
     return result
 
 
+def forecast_extended(history_dir: Path, cache_dir: Path, target_day: date, season: int) -> dict:
+    if season != 2027 or target_day != date(2026, 10, 20):
+        raise ValueError("The extended snapshot currently supports the 20 October 2026 UTC target only")
+    manifest = json.loads((history_dir / "manifest.json").read_text(encoding="utf-8"))
+    normalized = (history_dir / "matches_normalized.json").read_bytes()
+    if hashlib.sha256(normalized).hexdigest() != manifest["files"]["matches_normalized.json"]["sha256"]:
+        raise ValueError("Extended historical UEFA source checksum mismatch")
+    history = json.loads(normalized)
+    expected = {"2023": 214, "2024": 214, "2025": 279, "2026": 281, "2027": 126}
+    if Counter(str(row["season"]) for row in history) != expected:
+        raise ValueError("Expected fixed extended UEFA training sample")
+    target_url = match_date_url(target_day, season)
+    target_body = fetch_body(target_url)
+    captured = datetime.now(timezone.utc)
+    result = build_forecast(history, {}, json.loads(target_body), target_day, season, captured,
+                            include_current_history=True)
+    result["history_mode"] = "all_ucl_phases_2022_23_through_2026_10_14"
+    result["protocol"] = ("Results-only UEFA Elo/Poisson blend at fixed 0.5 weight from EPL validation. "
+                          "Uses all completed Champions League phases from 2022/23 through 14 October 2026. "
+                          "All target-date fixtures use the same prior state. Probability order: home/draw/away.")
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    stamp = captured.strftime("%Y%m%dT%H%M%S%fZ")
+    snapshot_dir = cache_dir / stamp
+    snapshot_dir.mkdir()
+    target_path = snapshot_dir / "target.json"
+    target_path.write_bytes(target_body)
+    result["repository_base_commit"] = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    result["model_code_sha256"] = {
+        name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest()
+        for name in ("uefa_forecast_live.py", "backtest.py")}
+    result["source"] = {
+        "historical_snapshot": str(history_dir),
+        "historical_sha256": hashlib.sha256(normalized).hexdigest(),
+        "current_snapshot_files": {"target.json": {"url": target_url,
+            "sha256": hashlib.sha256(target_body).hexdigest(), "snapshot": str(target_path)}},
+    }
+    return result
+
+
 def verify_archive(archive: dict) -> dict:
     """Replay a frozen forecast from its checksummed local source snapshots."""
     historical_path = Path(archive["source"]["historical_snapshot"]) / "matches_normalized.json"
@@ -201,15 +240,17 @@ def verify_archive(archive: dict) -> dict:
     for name, digest in code_hashes.items():
         if hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() != digest:
             raise ValueError(f"Model code differs from archived version: {name}")
+    extended = archive.get("history_mode") == "all_ucl_phases_2022_23_through_2026_10_14"
     prior = {name.removeprefix("prior_").removesuffix(".json"): rows
              for name, rows in bodies.items() if name.startswith("prior_")}
-    calendar = bodies["calendar.json"]["data"]
-    if {row["date"]: row["numberOfMatches"] for row in calendar} != {
-            day: len(rows) for day, rows in prior.items()} or len(calendar) != len(prior):
-        raise ValueError("Archived calendar and prior match snapshots disagree")
+    if not extended:
+        calendar = bodies["calendar.json"]["data"]
+        if {row["date"]: row["numberOfMatches"] for row in calendar} != {
+                day: len(rows) for day, rows in prior.items()} or len(calendar) != len(prior):
+            raise ValueError("Archived calendar and prior match snapshots disagree")
     replay = build_forecast(json.loads(historical_bytes), prior, bodies["target.json"],
                             date.fromisoformat(archive["target_date_utc"]), archive["season_year"],
-                            instant(archive["generated_at"]))
+                            instant(archive["generated_at"]), include_current_history=extended)
     for field in ("training_matches", "excluded_unfinished_prior_matches",
                   "excluded_target_matches", "predictions"):
         if replay[field] != archive[field]:
@@ -223,6 +264,7 @@ def main() -> None:
     parser.add_argument("--target-date-utc", type=date.fromisoformat)
     parser.add_argument("--season-year", type=int, default=2027)
     parser.add_argument("--history-dir", type=Path)
+    parser.add_argument("--extended-history-dir", type=Path)
     parser.add_argument("--cache-dir", type=Path, default=Path(".cache/uefa_forecast"))
     parser.add_argument("--output", type=Path)
     parser.add_argument("--verify", type=Path, help="Replay an existing forecast from saved source snapshots")
@@ -232,8 +274,14 @@ def main() -> None:
         return
     if args.target_date_utc is None:
         parser.error("--target-date-utc is required unless --verify is used")
-    history_dir = args.history_dir or sorted(Path(".cache/uefa_history").glob("*/manifest.json"))[-1].parent
-    result = forecast(history_dir, args.cache_dir, args.target_date_utc, args.season_year)
+    if args.extended_history_dir and args.history_dir:
+        parser.error("Use only one of --history-dir and --extended-history-dir")
+    if args.extended_history_dir:
+        result = forecast_extended(args.extended_history_dir, args.cache_dir,
+                                   args.target_date_utc, args.season_year)
+    else:
+        history_dir = args.history_dir or sorted(Path(".cache/uefa_history").glob("*/manifest.json"))[-1].parent
+        result = forecast(history_dir, args.cache_dir, args.target_date_utc, args.season_year)
     output = args.output or Path("prospective") / ("uefa_" + result["generated_at"].replace(":", "-") + ".json")
     output.parent.mkdir(parents=True, exist_ok=True)
     if output.exists():

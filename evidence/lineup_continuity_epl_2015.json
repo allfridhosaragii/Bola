@@ -1,0 +1,55 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "feature": "Away minus home absence load. Absence load sums each missing player's start share over five prior league matches.",
+  "training": {
+    "period": "Before 2016-01-01",
+    "n": 140,
+    "beta_grid": [
+      -2.0,
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "selected_beta": 1.0,
+    "training_log_loss": {
+      "-2.0": 1.130304815446773,
+      "-1.0": 1.0894436684247566,
+      "-0.5": 1.0755783693454908,
+      "0.0": 1.066174978538999,
+      "0.5": 1.061210158703042,
+      "1.0": 1.0605936470092676,
+      "2.0": 1.0717641482592302
+    }
+  },
+  "holdout": {
+    "period": "2016-01-01 through season end",
+    "n": 190,
+    "score_only_elo": {
+      "n": 190,
+      "log_loss": 1.0274758096315517,
+      "brier": 0.615577089627973
+    },
+    "elo_plus_lineup_continuity": {
+      "n": 190,
+      "log_loss": 1.0421053492656567,
+      "brier": 0.6262064946872599
+    },
+    "log_loss_difference_augmented_minus_elo": 0.01462953963410496,
+    "match_date_bootstrap_95_ci": [
+      -0.008335411416120828,
+      0.03708788273904114
+    ],
+    "mean_home_absence_load": 2.9663157894736845,
+    "mean_away_absence_load": 3.0494736842105263
+  },
+  "limitations": [
+    "A missing recent starter may reflect tactics, transfer, suspension, rotation, or injury.",
+    "All players are weighted by recent starts, not position, minutes, or independently estimated ability.",
+    "Historical event files do not establish that lineups were publicly available before kickoff.",
+    "One older EPL season cannot validate player-impact estimates for current UEFA teams."
+  ]
+}

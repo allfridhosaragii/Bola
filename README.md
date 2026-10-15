@@ -33,6 +33,8 @@ python3 -m bola.xg_provider_compare --output reports/xg_provider_compare.json
 python3 -m bola.club_audit --output reports/club_audit.json
 python3 -m bola.tactic_predict --output reports/tactic_predict.json
 python3 -m bola.rotation_predict --output reports/rotation_predict.json
+python3 -m bola.pressure_predict --output reports/pressure_predict.json
+python3 -m bola.lineup_continuity_predict --output reports/lineup_continuity_predict.json
 python3 -m bola.shot_endpoint_audit --output reports/shot_endpoints.json
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
 python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
@@ -44,6 +46,8 @@ python3 -m bola.odds_multi --league de.1 --scores-dir .cache/openfootball --odds
 python3 -m bola.odds_multi --league nl.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_eredivisie.json
 python3 scripts/fetch_uefa_history.py
 python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
+python3 scripts/fetch_uefa_extended_history.py
+python3 -m bola.uefa_extended_backtest --output reports/uefa_extended_backtest.json
 ```
 
 `fetch_data.sh` mengambil [OpenFootball football.json](https://github.com/openfootball/football.json) commit `e6744429ee395bc86f247348c6184bb08d4eb361` (CC0). `fetch_tactics.sh` mengambil [Metrica Sports sample-data](https://github.com/metrica-sports/sample-data) commit `e706dd506b360d69d9d123d5b8026e7294b13996`, hanya checkout Sample Game 1 dan 2; penggunaan publik harus menyebut Metrica Sports. `fetch_statsbomb.sh` mengambil event dan lineup [StatsBomb open-data](https://github.com/statsbomb/open-data) laga 3869685 pada commit `4b73468fc5b0f1950f9f66fada70ad3a4f9327cb`, dengan checksum SHA-256. `fetch_worldcup.py` mengambil semua 64 laga Piala Dunia 2022 pada commit yang sama; metadata pertandingan memiliki checksum tetap dan file lain dicatat dalam manifest checksum lokal untuk verifikasi ulang. Penggunaan publik harus menyebut StatsBomb. Dataset ada di `.cache/` dan diabaikan Git; data StatsBomb seluruh turnamen sekitar 193 MB. Script tidak mengunduh ulang jika data sudah sesuai. Tidak perlu kredensial API.
@@ -64,9 +68,13 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 
 `bola.rotation_predict` menguji jumlah starter berubah dibanding laga sebelumnya sebagai fitur tambahan 1X2: koefisien dipilih dari 180 laga sebelum 1 Januari 2016 dan diuji pada 190 laga berikutnya. Fitur itu juga tidak memperbaiki log loss uji. Ini bukan estimasi dampak pemain absen karena alasan rotasi tidak tersedia.
 
+`bola.pressure_predict` memeriksa 115.402 event tekanan dan 11.295 penguasaan unik yang berpindah ke tim penekan dalam lima detik. Koefisien dipilih tanpa melihat 190 laga holdout; nilai yang terpilih adalah **0**, sehingga fitur tekanan ditolak. `bola.lineup_continuity_predict` memberi bobot pemain yang tidak masuk XI menurut frekuensi start dalam lima laga sebelumnya. Fitur itu dipilih pada 140 laga awal, tetapi log loss holdout memburuk dari **1,02748** menjadi **1,04211** pada 190 laga. Interval perbedaannya melintasi nol. Kedua hasil ini mencegah metrik taktik atau skuad yang belum terbukti masuk ke peluang pertandingan.
+
 `fetch_uefa_history.py` mengambil kalender dan hasil resmi 144 laga fase liga UEFA 2024/25, 144 laga 2025/26, serta 18 laga MD1 2026/27 dari [API pertandingan UEFA](https://match.uefa.com/v5/), lalu menyimpan respons mentah, checksum, dan waktu pengambilan dalam folder snapshot. `bola.uefa_backtest` menguji model skor 1X2 lintas klub dan liga secara kronologis dengan ID tim resmi: musim pertama untuk riwayat, musim kedua untuk validasi, dan 18 laga MD1 musim ketiga sebagai uji kecil berikutnya. Bobot campuran 0,5 berasal dari validasi Premier League, bukan dipilih menggunakan laga UEFA. Snapshot historis tidak menyediakan waktu pertama publikasi setiap hasil; uji tanggal mencegah pemakaian hasil laga mendatang dalam kode, tetapi tidak membuktikan histori feed sumber.
 
 `python3 -m bola.uefa_forecast` membekukan ramalan 1X2 **eksploratif** untuk tujuh laga UEFA 15 Oktober 2026 pukul 02.00 WIB, jika dijalankan sebelum kickoff. Ia memasukkan hanya hasil yang sudah `FINISHED` pada tanggal sebelumnya, menolak laga yang sudah dimulai, dan menyimpan waktu pembuatan serta checksum sumber dalam berkas `prospective/` yang tidak ditimpa. Perintah ini khusus untuk periode tersebut; berkasnya dipakai untuk pengujian setelah hasil keluar, bukan dua rekomendasi taruhan.
+
+Riwayat UEFA yang diperluas berisi **1.114 pertandingan resmi** dari 2022/23 sampai 14 Oktober 2026: kualifikasi, fase grup/liga, dan gugur. Model tetap dinilai hanya pada fase liga yang ditetapkan sebelumnya. Pada 18 laga Matchday 2 musim 2026/27, log loss campuran adalah **0,9016**, dibanding baseline frekuensi **0,9451**. Sampel itu merupakan holdout retrospektif setelah hasil selesai dan belum dibandingkan dengan odds pasar. Laporan terverifikasi ada di `evidence/uefa_extended_backtest_2026-10-15.json`.
 
 ### Alur analis untuk tanggal UEFA berikutnya
 
@@ -74,18 +82,18 @@ Untuk tanggal pertandingan baru, jalankan `bola.uefa_forecast_live` dengan **tan
 
 ```bash
 python3 -m bola.uefa_forecast_live --target-date-utc 2026-10-20 --season-year 2027
-python3 -m bola.uefa_forecast_live --verify prospective/uefa_2026-10-15T09-09-44.309038+00-00.json
+python3 -m bola.uefa_forecast_live --verify prospective/uefa_2026-10-15T15-26-30.926716+00-00.json
 ```
 
 Satu perintah untuk penyegaran menyeluruh sebelum kickoff adalah `bash scripts/refresh_uefa_target.sh 2026-10-20`. Perintah ini mengambil ulang data form, membuat arsip peluang baru, memeriksa ulang sumbernya, lalu menyimpan status fixture, skuad, lineup, dan form sebagai laporan bertimestamp di `reports/`. Alur ini telah dijalankan ujung ke ujung pada 15 Oktober: sembilan fixture, sembilan pasangan skuad terdaftar, nol XI resmi, dan form 18/18 tim. Jalankan ulang menjelang pertandingan; hasil lama tidak otomatis menjadi bukti keadaan saat kickoff. Saat ini protokol riwayat model mendukung musim UEFA 2026/27.
 
-Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh yang dibekukan ada di `evidence/analyst_report_2026-10-15.json`. Untuk merakitnya secara manual:
+Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh dengan riwayat UEFA diperluas ada di `evidence/analyst_report_extended_2026-10-15.json`. Untuk merakitnya secara manual:
 
 ```bash
 python3 -m bola.analyst_report \
-  --forecast prospective/uefa_2026-10-15T09-09-44.309038+00-00.json \
+  --forecast prospective/uefa_2026-10-15T15-26-30.926716+00-00.json \
   --form evidence/uefa_target_form_2026-10-15.json \
-  --squad evidence/uefa_target_squad_2026-10-15.json \
+  --squad evidence/uefa_target_squad_extended_2026-10-15.json \
   --output reports/analyst_report.json
 ```
 
@@ -98,7 +106,7 @@ Pada hari pertandingan, cocokkan dulu nama tim, kompetisi, waktu, dan ID pertand
 Untuk snapshot resmi fixture, daftar skuad, dan status lineup dari arsip target, jalankan:
 
 ```bash
-python3 -m bola.uefa_target_snapshot --forecast prospective/uefa_2026-10-15T09-09-44.309038+00-00.json --output reports/uefa_target_2026-10-20_refresh.json
+python3 -m bola.uefa_target_snapshot --forecast prospective/uefa_2026-10-15T15-26-30.926716+00-00.json --output reports/uefa_target_2026-10-20_refresh.json
 ```
 
 Snapshot awal 15 Oktober ada di `evidence/uefa_target_squad_2026-10-15.json`: sembilan fixture masih Upcoming; daftar pemain terdaftar tersedia untuk 18 tim, tetapi belum ada starting XI resmi. Nama dan waktu dari halaman UEFA diperiksa terhadap arsip model. Untuk statistik liga, `bola.target_form_audit` menyatukan tiga sumber form yang telah diperiksa waktu pengambilannya. Snapshot awal ada di `evidence/uefa_target_form_2026-10-15.json`: jendela 5/10/20 tersedia untuk **18 dari 18 tim** setelah liga Czech dan Azerbaijan ditambahkan dari FotMob. Dua liga itu hanya memiliki satu penyedia hasil yang diverifikasi dalam proyek ini. Ambil ulang data form setelah pertandingan liga berikutnya sebelum memakai ringkasan itu dekat kickoff.
@@ -106,7 +114,7 @@ Snapshot awal 15 Oktober ada di `evidence/uefa_target_squad_2026-10-15.json`: se
 Jika ada tangkapan layar odds 1X2, transkripsikan nilainya ke JSON lokal dengan `match_id`, `home`, `away`, `kickoff`, `observed_at` berzona waktu, `bookmaker`, `market` bernilai `1X2_regular_time`, `decimal_odds` berisi `home`/`draw`/`away`, dan `screenshot_path`. Lalu jalankan:
 
 ```bash
-python3 -m bola.market_snapshot --forecast prospective/uefa_2026-10-15T09-09-44.309038+00-00.json --quote /tmp/odds_quote.json --output reports/odds_quote_comparison.json
+python3 -m bola.market_snapshot --forecast prospective/uefa_2026-10-15T15-26-30.926716+00-00.json --quote /tmp/odds_quote.json --output reports/odds_quote_comparison.json
 ```
 
 Modul ini menolak identitas laga yang berbeda, harga invalid, bukti gambar kosong, serta waktu setelah kickoff. Ia menyimpan SHA-256 gambar, menghitung margin pasar dan probabilitas 1X2 pasar setelah margin dinormalisasi. Jam dan angka di gambar masih memerlukan pemeriksaan manusia: transkripsi JSON tidak membuktikan isi layar atau bahwa harga dapat dipasang saat itu. Perbandingan tersebut bukan sinyal taruhan. Jika odds, lineup, atau bukti kualitas model tidak memadai, hasil analisis adalah **tunda/tidak ada pilihan**, bukan dua pilihan yang dipaksakan.
@@ -114,7 +122,7 @@ Modul ini menolak identitas laga yang berbeda, harga invalid, bukti gambar koson
 Setelah semua laga dalam arsip selesai, nilai distribusi yang **sudah dibekukan** terhadap skor resmi UEFA:
 
 ```bash
-python3 -m bola.uefa_score prospective/uefa_2026-10-15T09-09-44.309038+00-00.json --output reports/uefa_score_2026-10-20.json
+python3 -m bola.uefa_score prospective/uefa_2026-10-15T15-26-30.926716+00-00.json --output reports/uefa_score_2026-10-20.json
 ```
 
 Perintah penilaian menolak hasil yang belum final, perubahan identitas fixture, serta arsip yang dibuat sesudah kickoff. Ulangi pengamatan prospektif pada banyak tanggal sebelum menyimpulkan kalibrasi atau manfaat terhadap pasar.
@@ -130,6 +138,8 @@ python3 scripts/fetch_form_extra.py
 python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
 python3 scripts/fetch_fotmob_form.py
 python3 -m bola.form_fotmob --cutoff-date-wib 2026-10-15 --output reports/current_form_fotmob.json
+python3 scripts/fetch_fotmob_target_teams.py
+python3 -m bola.form_crosscheck --form reports/current_form.json --extra-form reports/current_form_extra.json --fotmob-form reports/current_form_fotmob.json --cutoff-date-wib 2026-10-15 --output reports/form_crosscheck.json
 python3 scripts/fetch_fotmob_recent.py
 python3 -m bola.fotmob_recent_stats --output reports/fotmob_recent_stats.json
 ```
@@ -137,6 +147,8 @@ python3 -m bola.fotmob_recent_stats --output reports/fotmob_recent_stats.json
 Delapan belas CSV mencakup sembilan liga dalam `.cache/form/`; dua CSV lain untuk Austria dan Norwegia ada di `.cache/form_extra/`. Manifest mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. Snapshot lama tersimpan di subfolder `snapshots/` dan dapat dijalankan ulang dengan `--data-dir` yang menunjuk foldernya. Kedua pengolah hanya memasukkan hasil bertanggal **sebelum** cutoff serta menghitung jendela 5/10/20 laga, bobot waktu, pembagian kandang/tandang, gol, dan surplus hasil terhadap Elo lawan sebelum pertandingan. Statistik tembakan, corner, kartu, dan xG hanya tersedia pada liga dan baris tertentu. Elo dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Form ini tidak mencakup pertandingan UEFA atau piala domestik.
 
 `fetch_fotmob_form.py` membekukan delapan halaman liga FotMob/enet Slovakia, Ukraina, Czech, dan Azerbaijan untuk 2025/26–2026/27 dengan waktu pengambilan dan SHA-256. `bola.form_fotmob` memeriksa ID liga, musim, ID tim, status serta skor laga, menyingkirkan laga yang dibatalkan atau diputuskan administratif, lalu menghitung form Shakhtar, Slovan Bratislava, Slavia Praha, dan Sabah. Halaman Slovakia/Ukraina pertama kali diambil **setelah** kickoff laga 15 Oktober, sehingga angka dua klub itu hanya rekonstruksi retrospektif untuk laga lama. Halaman Czech/Azerbaijan diambil sebelum laga target 20 Oktober UTC. Semua halaman tetap berupa satu penyedia dan belum menggantikan verifikasi hasil dengan sumber independen.
+
+`fetch_fotmob_target_teams.py` mengambil halaman tim terpisah untuk 18 klub target. `bola.form_crosscheck` hanya membandingkan pertandingan liga utama yang selesai sebelum cutoff. Lima hasil terakhir untuk **15 tim**, total **75 pertandingan**, cocok antara sumber utama Football-Data dan FotMob pada tanggal (toleransi satu hari karena zona waktu), venue, dan skor. Slavia Praha, Sabah, dan Slovan Bratislava memakai FotMob pada kedua sisi sehingga ditandai `same-provider` dan tidak dihitung sebagai verifikasi independen. Artefak lengkap ada di `evidence/form_crosscheck_target_2026-10-15.json`.
 
 `fetch_fotmob_recent.py` membekukan halaman pertandingan untuk lima laga liga terakhir sebelum cutoff dari masing-masing dua klub itu. `bola.fotmob_recent_stats` memeriksa identitas laga, waktu, skor, dan checksum, kemudian menghitung rata-rata statistik yang **benar-benar ada** pada halaman. Kedua tim memiliki data tembakan, tepat sasaran, penguasaan bola, dan corner pada 5/5 laga. FotMob menyediakan metrik lebih lengkap untuk Slovan daripada Shakhtar; kolom yang tidak tersedia tidak diisi dengan perkiraan. Rincian dan cakupan tiap metrik ada di `evidence/fotmob_recent_stats_2026-10-15.json`.
 

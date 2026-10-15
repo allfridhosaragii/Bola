@@ -51,6 +51,14 @@ class ForecastLiveTests(unittest.TestCase):
         self.assertEqual(result["training_matches"], 0)
         self.assertEqual(result["excluded_unfinished_prior_matches"], ["4"])
 
+    def test_extended_mode_includes_completed_current_season_history(self):
+        historical = [{"id": "9", "season": 2027, "kickoff": "2026-10-18T19:00:00Z",
+                       "home_id": "1", "away_id": "2", "home_goals": 3, "away_goals": 0}]
+        result = build_forecast(historical, {}, self.target, date(2026, 10, 20), 2027, self.now,
+                                include_current_history=True)
+        self.assertEqual(result["training_matches"], 1)
+        self.assertEqual(result["predictions"][0]["historical_uefa_appearances"], {"home": 1, "away": 1})
+
 
 if __name__ == "__main__":
     unittest.main()

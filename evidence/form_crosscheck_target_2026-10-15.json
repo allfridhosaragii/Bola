@@ -1,0 +1,1312 @@
+{
+  "cutoff_exclusive_date_wib": "2026-10-15",
+  "teams": {
+    "Fenerbahçe": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 8695,
+      "fotmob_name": "Fenerbahçe",
+      "primary_league_id": 71,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-30",
+          "fotmob_date_wib": "2026-08-31",
+          "venue": "away",
+          "score": [
+            2,
+            0
+          ],
+          "source_opponent": "Samsunspor",
+          "fotmob_opponent": "Samsunspor",
+          "fotmob_match_id": "5904730"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-06",
+          "venue": "home",
+          "score": [
+            1,
+            2
+          ],
+          "source_opponent": "Besiktas",
+          "fotmob_opponent": "Beşiktaş",
+          "fotmob_match_id": "5904737"
+        },
+        {
+          "source_date": "2026-09-14",
+          "fotmob_date_wib": "2026-09-15",
+          "venue": "away",
+          "score": [
+            0,
+            0
+          ],
+          "source_opponent": "Gaziantep",
+          "fotmob_opponent": "Gaziantep FK",
+          "fotmob_match_id": "5904740"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "home",
+          "score": [
+            8,
+            0
+          ],
+          "source_opponent": "Eyupspor",
+          "fotmob_opponent": "Eyüpspor",
+          "fotmob_match_id": "5904755"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "away",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Rizespor",
+          "fotmob_opponent": "Rizespor",
+          "fotmob_match_id": "5904761"
+        }
+      ]
+    },
+    "Slavia Praha": {
+      "primary_source_label": "fotmob",
+      "primary_source": "https://www.fotmob.com/",
+      "fotmob_team_id": 7787,
+      "fotmob_name": "Slavia Prague",
+      "primary_league_id": 122,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": false,
+      "matches": [
+        {
+          "source_date": "2026-08-31",
+          "fotmob_date_wib": "2026-08-31",
+          "venue": "away",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Sparta Prague",
+          "fotmob_opponent": "Sparta Prague",
+          "fotmob_match_id": "5831155"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "home",
+          "score": [
+            4,
+            0
+          ],
+          "source_opponent": "FC Zbrojovka Brno",
+          "fotmob_opponent": "FC Zbrojovka Brno",
+          "fotmob_match_id": "5831162"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-13",
+          "venue": "away",
+          "score": [
+            2,
+            0
+          ],
+          "source_opponent": "Teplice",
+          "fotmob_opponent": "Teplice",
+          "fotmob_match_id": "5831171"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "home",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Viktoria Plzeň",
+          "fotmob_opponent": "Viktoria Plzeň",
+          "fotmob_match_id": "5831179"
+        },
+        {
+          "source_date": "2026-10-09",
+          "fotmob_date_wib": "2026-10-09",
+          "venue": "away",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "FC Zlín",
+          "fotmob_opponent": "FC Zlín",
+          "fotmob_match_id": "5831188"
+        }
+      ]
+    },
+    "Sabah": {
+      "primary_source_label": "fotmob",
+      "primary_source": "https://www.fotmob.com/",
+      "fotmob_team_id": 951893,
+      "fotmob_name": "Sabah FK",
+      "primary_league_id": 262,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": false,
+      "matches": [
+        {
+          "source_date": "2026-08-31",
+          "fotmob_date_wib": "2026-08-31",
+          "venue": "away",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "Araz PFK",
+          "fotmob_opponent": "Araz PFK",
+          "fotmob_match_id": "5987503"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "home",
+          "score": [
+            5,
+            0
+          ],
+          "source_opponent": "Zira",
+          "fotmob_opponent": "Zira",
+          "fotmob_match_id": "5987513"
+        },
+        {
+          "source_date": "2026-09-14",
+          "fotmob_date_wib": "2026-09-14",
+          "venue": "away",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Shafa",
+          "fotmob_opponent": "Shafa",
+          "fotmob_match_id": "5987518"
+        },
+        {
+          "source_date": "2026-09-19",
+          "fotmob_date_wib": "2026-09-19",
+          "venue": "home",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Imisli FK",
+          "fotmob_opponent": "Imisli FK",
+          "fotmob_match_id": "5987524"
+        },
+        {
+          "source_date": "2026-10-09",
+          "fotmob_date_wib": "2026-10-09",
+          "venue": "away",
+          "score": [
+            0,
+            0
+          ],
+          "source_opponent": "FK Neftchi",
+          "fotmob_opponent": "FK Neftchi",
+          "fotmob_match_id": "5987529"
+        }
+      ]
+    },
+    "B. Dortmund": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 9789,
+      "fotmob_name": "Borussia Dortmund",
+      "primary_league_id": 54,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-29",
+          "fotmob_date_wib": "2026-08-29",
+          "venue": "home",
+          "score": [
+            2,
+            0
+          ],
+          "source_opponent": "Hamburg",
+          "fotmob_opponent": "Hamburger SV",
+          "fotmob_match_id": "5881145"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "away",
+          "score": [
+            3,
+            2
+          ],
+          "source_opponent": "Hoffenheim",
+          "fotmob_opponent": "Hoffenheim",
+          "fotmob_match_id": "5881156"
+        },
+        {
+          "source_date": "2026-09-12",
+          "fotmob_date_wib": "2026-09-12",
+          "venue": "home",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Paderborn",
+          "fotmob_opponent": "Paderborn",
+          "fotmob_match_id": "5881162"
+        },
+        {
+          "source_date": "2026-09-19",
+          "fotmob_date_wib": "2026-09-19",
+          "venue": "away",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "Stuttgart",
+          "fotmob_opponent": "VfB Stuttgart",
+          "fotmob_match_id": "5881177"
+        },
+        {
+          "source_date": "2026-10-09",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "home",
+          "score": [
+            2,
+            2
+          ],
+          "source_opponent": "Werder Bremen",
+          "fotmob_opponent": "Werder Bremen",
+          "fotmob_match_id": "5881180"
+        }
+      ]
+    },
+    "Paris": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 9847,
+      "fotmob_name": "Paris Saint-Germain",
+      "primary_league_id": 53,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-28",
+          "fotmob_date_wib": "2026-08-29",
+          "venue": "away",
+          "score": [
+            2,
+            2
+          ],
+          "source_opponent": "Lille",
+          "fotmob_opponent": "Lille",
+          "fotmob_match_id": "5802918"
+        },
+        {
+          "source_date": "2026-09-04",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "home",
+          "score": [
+            1,
+            2
+          ],
+          "source_opponent": "Monaco",
+          "fotmob_opponent": "Monaco",
+          "fotmob_match_id": "5802925"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-14",
+          "venue": "away",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "Brest",
+          "fotmob_opponent": "Brest",
+          "fotmob_match_id": "5802929"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-21",
+          "venue": "away",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Marseille",
+          "fotmob_opponent": "Marseille",
+          "fotmob_match_id": "5802945"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-11",
+          "venue": "home",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Le Mans",
+          "fotmob_opponent": "Le Mans",
+          "fotmob_match_id": "5802952"
+        }
+      ]
+    },
+    "Barcelona": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 8634,
+      "fotmob_name": "Barcelona",
+      "primary_league_id": 87,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-09-06",
+          "fotmob_date_wib": "2026-09-06",
+          "venue": "away",
+          "score": [
+            5,
+            0
+          ],
+          "source_opponent": "Valencia",
+          "fotmob_opponent": "Valencia",
+          "fotmob_match_id": "5868049"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-13",
+          "venue": "away",
+          "score": [
+            4,
+            2
+          ],
+          "source_opponent": "Levante",
+          "fotmob_opponent": "Levante",
+          "fotmob_match_id": "5868054"
+        },
+        {
+          "source_date": "2026-09-16",
+          "fotmob_date_wib": "2026-09-17",
+          "venue": "home",
+          "score": [
+            7,
+            2
+          ],
+          "source_opponent": "Santander",
+          "fotmob_opponent": "Racing Santander",
+          "fotmob_match_id": "5868066"
+        },
+        {
+          "source_date": "2026-09-19",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "away",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Sevilla",
+          "fotmob_opponent": "Sevilla",
+          "fotmob_match_id": "5868078"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "home",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Getafe",
+          "fotmob_opponent": "Getafe",
+          "fotmob_match_id": "5868084"
+        }
+      ]
+    },
+    "Liverpool": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 8650,
+      "fotmob_name": "Liverpool",
+      "primary_league_id": 47,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-29",
+          "fotmob_date_wib": "2026-08-29",
+          "venue": "home",
+          "score": [
+            2,
+            2
+          ],
+          "source_opponent": "Nott'm Forest",
+          "fotmob_opponent": "Nottm Forest",
+          "fotmob_match_id": "5795431"
+        },
+        {
+          "source_date": "2026-09-04",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "away",
+          "score": [
+            2,
+            0
+          ],
+          "source_opponent": "Ipswich",
+          "fotmob_opponent": "Ipswich",
+          "fotmob_match_id": "5795441"
+        },
+        {
+          "source_date": "2026-09-12",
+          "fotmob_date_wib": "2026-09-12",
+          "venue": "home",
+          "score": [
+            0,
+            0
+          ],
+          "source_opponent": "Fulham",
+          "fotmob_opponent": "Fulham",
+          "fotmob_match_id": "5795451"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "away",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "Bournemouth",
+          "fotmob_opponent": "Bournemouth",
+          "fotmob_match_id": "5795455"
+        },
+        {
+          "source_date": "2026-10-11",
+          "fotmob_date_wib": "2026-10-11",
+          "venue": "home",
+          "score": [
+            0,
+            3
+          ],
+          "source_opponent": "Man City",
+          "fotmob_opponent": "Man City",
+          "fotmob_match_id": "5795472"
+        }
+      ]
+    },
+    "Villarreal": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 10205,
+      "fotmob_name": "Villarreal",
+      "primary_league_id": 87,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-06",
+          "venue": "home",
+          "score": [
+            2,
+            3
+          ],
+          "source_opponent": "La Coruna",
+          "fotmob_opponent": "Deportivo A Coruña",
+          "fotmob_match_id": "5868050"
+        },
+        {
+          "source_date": "2026-09-14",
+          "fotmob_date_wib": "2026-09-15",
+          "venue": "home",
+          "score": [
+            1,
+            2
+          ],
+          "source_opponent": "Betis",
+          "fotmob_opponent": "Real Betis",
+          "fotmob_match_id": "5868060"
+        },
+        {
+          "source_date": "2026-09-17",
+          "fotmob_date_wib": "2026-09-18",
+          "venue": "away",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Malaga",
+          "fotmob_opponent": "Málaga",
+          "fotmob_match_id": "5868068"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "home",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Levante",
+          "fotmob_opponent": "Levante",
+          "fotmob_match_id": "5868080"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-11",
+          "venue": "away",
+          "score": [
+            0,
+            1
+          ],
+          "source_opponent": "Real Madrid",
+          "fotmob_opponent": "Real Madrid",
+          "fotmob_match_id": "5868089"
+        }
+      ]
+    },
+    "Man City": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 8456,
+      "fotmob_name": "Manchester City",
+      "primary_league_id": 47,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-28",
+          "fotmob_date_wib": "2026-08-29",
+          "venue": "away",
+          "score": [
+            4,
+            1
+          ],
+          "source_opponent": "Crystal Palace",
+          "fotmob_opponent": "Crystal Palace",
+          "fotmob_match_id": "5795429"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "home",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "Coventry",
+          "fotmob_opponent": "Coventry",
+          "fotmob_match_id": "5795442"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-13",
+          "venue": "away",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "Man United",
+          "fotmob_opponent": "Man United",
+          "fotmob_match_id": "5795452"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "home",
+          "score": [
+            5,
+            3
+          ],
+          "source_opponent": "Sunderland",
+          "fotmob_opponent": "Sunderland",
+          "fotmob_match_id": "5795461"
+        },
+        {
+          "source_date": "2026-10-11",
+          "fotmob_date_wib": "2026-10-11",
+          "venue": "away",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Liverpool",
+          "fotmob_opponent": "Liverpool",
+          "fotmob_match_id": "5795472"
+        }
+      ]
+    },
+    "AEK Athens": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 8563,
+      "fotmob_name": "AEK Athens",
+      "primary_league_id": 135,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-30",
+          "fotmob_date_wib": "2026-08-31",
+          "venue": "away",
+          "score": [
+            1,
+            1
+          ],
+          "source_opponent": "Kifisia",
+          "fotmob_opponent": "Kifisia FC",
+          "fotmob_match_id": "5943235"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-06",
+          "venue": "home",
+          "score": [
+            5,
+            0
+          ],
+          "source_opponent": "Aris",
+          "fotmob_opponent": "Aris Thessaloniki",
+          "fotmob_match_id": "5943239"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-13",
+          "venue": "away",
+          "score": [
+            1,
+            1
+          ],
+          "source_opponent": "Asteras Tripolis",
+          "fotmob_opponent": "Asteras Tripolis",
+          "fotmob_match_id": "5943246"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "away",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Volos NFC",
+          "fotmob_opponent": "NFC Volos",
+          "fotmob_match_id": "5943259"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "home",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "OFI Crete",
+          "fotmob_opponent": "OFI Crete",
+          "fotmob_match_id": "5943260"
+        }
+      ]
+    },
+    "Roma": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 8686,
+      "fotmob_name": "Roma",
+      "primary_league_id": 55,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-31",
+          "fotmob_date_wib": "2026-08-31",
+          "venue": "away",
+          "score": [
+            4,
+            0
+          ],
+          "source_opponent": "Lecce",
+          "fotmob_opponent": "Lecce",
+          "fotmob_match_id": "5749656"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-06",
+          "venue": "home",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Atalanta",
+          "fotmob_opponent": "Atalanta",
+          "fotmob_match_id": "5749660"
+        },
+        {
+          "source_date": "2026-09-14",
+          "fotmob_date_wib": "2026-09-14",
+          "venue": "away",
+          "score": [
+            2,
+            0
+          ],
+          "source_opponent": "Torino",
+          "fotmob_opponent": "Torino",
+          "fotmob_match_id": "5749678"
+        },
+        {
+          "source_date": "2026-09-19",
+          "fotmob_date_wib": "2026-09-19",
+          "venue": "home",
+          "score": [
+            2,
+            2
+          ],
+          "source_opponent": "Inter",
+          "fotmob_opponent": "Inter",
+          "fotmob_match_id": "5749681"
+        },
+        {
+          "source_date": "2026-10-11",
+          "fotmob_date_wib": "2026-10-11",
+          "venue": "away",
+          "score": [
+            0,
+            0
+          ],
+          "source_opponent": "Como",
+          "fotmob_opponent": "Como",
+          "fotmob_match_id": "5749692"
+        }
+      ]
+    },
+    "S. Bratislava": {
+      "primary_source_label": "fotmob",
+      "primary_source": "https://www.fotmob.com/",
+      "fotmob_team_id": 6019,
+      "fotmob_name": "Slovan Bratislava",
+      "primary_league_id": 176,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": false,
+      "matches": [
+        {
+          "source_date": "2026-08-30",
+          "fotmob_date_wib": "2026-08-30",
+          "venue": "home",
+          "score": [
+            1,
+            2
+          ],
+          "source_opponent": "Zemplín Michalovce",
+          "fotmob_opponent": "Zemplín Michalovce",
+          "fotmob_match_id": "5772169"
+        },
+        {
+          "source_date": "2026-09-06",
+          "fotmob_date_wib": "2026-09-06",
+          "venue": "away",
+          "score": [
+            0,
+            2
+          ],
+          "source_opponent": "DAC 1904 Dunajska Streda",
+          "fotmob_opponent": "DAC 1904 Dunajska Streda",
+          "fotmob_match_id": "5772178"
+        },
+        {
+          "source_date": "2026-09-14",
+          "fotmob_date_wib": "2026-09-14",
+          "venue": "home",
+          "score": [
+            3,
+            3
+          ],
+          "source_opponent": "Žilina",
+          "fotmob_opponent": "Žilina",
+          "fotmob_match_id": "5772184"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "away",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Komárno",
+          "fotmob_opponent": "Komárno",
+          "fotmob_match_id": "5772190"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "away",
+          "score": [
+            1,
+            1
+          ],
+          "source_opponent": "Skalica",
+          "fotmob_opponent": "Skalica",
+          "fotmob_match_id": "5772261"
+        }
+      ]
+    },
+    "Porto": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 9773,
+      "fotmob_name": "FC Porto",
+      "primary_league_id": 61,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-29",
+          "fotmob_date_wib": "2026-08-30",
+          "venue": "away",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Academico Viseu",
+          "fotmob_opponent": "Académico Viseu",
+          "fotmob_match_id": "5887609"
+        },
+        {
+          "source_date": "2026-09-04",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "home",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Moreirense",
+          "fotmob_opponent": "Moreirense",
+          "fotmob_match_id": "5887623"
+        },
+        {
+          "source_date": "2026-09-12",
+          "fotmob_date_wib": "2026-09-13",
+          "venue": "away",
+          "score": [
+            4,
+            1
+          ],
+          "source_opponent": "Casa Pia",
+          "fotmob_opponent": "Casa Pia AC",
+          "fotmob_match_id": "5887630"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-21",
+          "venue": "home",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Benfica",
+          "fotmob_opponent": "Benfica",
+          "fotmob_match_id": "5887641"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-11",
+          "venue": "away",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Maritimo",
+          "fotmob_opponent": "Marítimo",
+          "fotmob_match_id": "5887650"
+        }
+      ]
+    },
+    "PSV": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 8640,
+      "fotmob_name": "PSV Eindhoven",
+      "primary_league_id": 57,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-30",
+          "fotmob_date_wib": "2026-08-30",
+          "venue": "away",
+          "score": [
+            6,
+            1
+          ],
+          "source_opponent": "Utrecht",
+          "fotmob_opponent": "FC Utrecht",
+          "fotmob_match_id": "5781726"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-06",
+          "venue": "away",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Ajax",
+          "fotmob_opponent": "Ajax",
+          "fotmob_match_id": "5781735"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-14",
+          "venue": "home",
+          "score": [
+            4,
+            1
+          ],
+          "source_opponent": "Sparta Rotterdam",
+          "fotmob_opponent": "Sparta Rotterdam",
+          "fotmob_match_id": "5781743"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "away",
+          "score": [
+            2,
+            3
+          ],
+          "source_opponent": "Twente",
+          "fotmob_opponent": "FC Twente",
+          "fotmob_match_id": "5781753"
+        },
+        {
+          "source_date": "2026-10-09",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "home",
+          "score": [
+            2,
+            0
+          ],
+          "source_opponent": "Heerenveen",
+          "fotmob_opponent": "SC Heerenveen",
+          "fotmob_match_id": "5781762"
+        }
+      ]
+    },
+    "Napoli": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 9875,
+      "fotmob_name": "Napoli",
+      "primary_league_id": 55,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-30",
+          "fotmob_date_wib": "2026-08-30",
+          "venue": "home",
+          "score": [
+            1,
+            2
+          ],
+          "source_opponent": "Como",
+          "fotmob_opponent": "Como",
+          "fotmob_match_id": "5749658"
+        },
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "away",
+          "score": [
+            2,
+            3
+          ],
+          "source_opponent": "Inter",
+          "fotmob_opponent": "Inter",
+          "fotmob_match_id": "5749666"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-13",
+          "venue": "home",
+          "score": [
+            1,
+            0
+          ],
+          "source_opponent": "Bologna",
+          "fotmob_opponent": "Bologna",
+          "fotmob_match_id": "5749676"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "away",
+          "score": [
+            1,
+            1
+          ],
+          "source_opponent": "Fiorentina",
+          "fotmob_opponent": "Fiorentina",
+          "fotmob_match_id": "5749683"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-11",
+          "venue": "home",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Frosinone",
+          "fotmob_opponent": "Frosinone",
+          "fotmob_match_id": "5749697"
+        }
+      ]
+    },
+    "Bodø/Glimt": {
+      "primary_source_label": "football_data_extra",
+      "primary_source": "https://www.football-data.co.uk/new/",
+      "fotmob_team_id": 8402,
+      "fotmob_name": "Bodø/Glimt",
+      "primary_league_id": 59,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-30",
+          "fotmob_date_wib": "2026-08-30",
+          "venue": "home",
+          "score": [
+            4,
+            2
+          ],
+          "source_opponent": "Rosenborg",
+          "fotmob_opponent": "Rosenborg",
+          "fotmob_match_id": "5104986"
+        },
+        {
+          "source_date": "2026-09-04",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "away",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Fredrikstad",
+          "fotmob_opponent": "Fredrikstad",
+          "fotmob_match_id": "5104994"
+        },
+        {
+          "source_date": "2026-09-14",
+          "fotmob_date_wib": "2026-09-15",
+          "venue": "home",
+          "score": [
+            3,
+            2
+          ],
+          "source_opponent": "Sandefjord",
+          "fotmob_opponent": "Sandefjord",
+          "fotmob_match_id": "5105005"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-21",
+          "venue": "away",
+          "score": [
+            1,
+            2
+          ],
+          "source_opponent": "Brann",
+          "fotmob_opponent": "Brann",
+          "fotmob_match_id": "5105011"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "home",
+          "score": [
+            3,
+            1
+          ],
+          "source_opponent": "Kristiansund",
+          "fotmob_opponent": "Kristiansund",
+          "fotmob_match_id": "5105017"
+        }
+      ]
+    },
+    "Stuttgart": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 10269,
+      "fotmob_name": "VfB Stuttgart",
+      "primary_league_id": 54,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-08-28",
+          "fotmob_date_wib": "2026-08-29",
+          "venue": "away",
+          "score": [
+            1,
+            5
+          ],
+          "source_opponent": "Bayern Munich",
+          "fotmob_opponent": "Bayern München",
+          "fotmob_match_id": "5881143"
+        },
+        {
+          "source_date": "2026-09-04",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "home",
+          "score": [
+            4,
+            1
+          ],
+          "source_opponent": "FC Koln",
+          "fotmob_opponent": "Köln",
+          "fotmob_match_id": "5881159"
+        },
+        {
+          "source_date": "2026-09-12",
+          "fotmob_date_wib": "2026-09-12",
+          "venue": "away",
+          "score": [
+            1,
+            2
+          ],
+          "source_opponent": "Hoffenheim",
+          "fotmob_opponent": "Hoffenheim",
+          "fotmob_match_id": "5881166"
+        },
+        {
+          "source_date": "2026-09-19",
+          "fotmob_date_wib": "2026-09-19",
+          "venue": "home",
+          "score": [
+            0,
+            1
+          ],
+          "source_opponent": "Dortmund",
+          "fotmob_opponent": "Dortmund",
+          "fotmob_match_id": "5881177"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "away",
+          "score": [
+            2,
+            0
+          ],
+          "source_opponent": "Paderborn",
+          "fotmob_opponent": "Paderborn",
+          "fotmob_match_id": "5881185"
+        }
+      ]
+    },
+    "Atleti": {
+      "primary_source_label": "football_data",
+      "primary_source": "https://www.football-data.co.uk/",
+      "fotmob_team_id": 9906,
+      "fotmob_name": "Atlético Madrid",
+      "primary_league_id": 87,
+      "matches_checked": 5,
+      "all_scores_agree": true,
+      "independent_provider": true,
+      "matches": [
+        {
+          "source_date": "2026-09-05",
+          "fotmob_date_wib": "2026-09-05",
+          "venue": "away",
+          "score": [
+            0,
+            3
+          ],
+          "source_opponent": "Ath Bilbao",
+          "fotmob_opponent": "Athletic Club",
+          "fotmob_match_id": "5868042"
+        },
+        {
+          "source_date": "2026-09-13",
+          "fotmob_date_wib": "2026-09-14",
+          "venue": "away",
+          "score": [
+            3,
+            0
+          ],
+          "source_opponent": "Sociedad",
+          "fotmob_opponent": "Real Sociedad",
+          "fotmob_match_id": "5868058"
+        },
+        {
+          "source_date": "2026-09-16",
+          "fotmob_date_wib": "2026-09-17",
+          "venue": "home",
+          "score": [
+            4,
+            0
+          ],
+          "source_opponent": "Osasuna",
+          "fotmob_opponent": "Osasuna",
+          "fotmob_match_id": "5868062"
+        },
+        {
+          "source_date": "2026-09-20",
+          "fotmob_date_wib": "2026-09-20",
+          "venue": "home",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Real Madrid",
+          "fotmob_opponent": "Real Madrid",
+          "fotmob_match_id": "5868072"
+        },
+        {
+          "source_date": "2026-10-10",
+          "fotmob_date_wib": "2026-10-10",
+          "venue": "away",
+          "score": [
+            2,
+            1
+          ],
+          "source_opponent": "Alaves",
+          "fotmob_opponent": "Deportivo Alavés",
+          "fotmob_match_id": "5868081"
+        }
+      ]
+    }
+  },
+  "teams_checked": 18,
+  "independent_teams": 15,
+  "same_provider_teams": 3,
+  "independent_matches_checked": 75,
+  "limitations": [
+    "Matching permits a one-day date difference because source dates may be local while FotMob is converted to WIB.",
+    "Opponent names are retained from both providers but are not required to be text-identical.",
+    "FotMob comparisons for teams whose primary form also uses FotMob are marked same-provider, not independent.",
+    "This verifies dates, venues, and final scores for five recent league games, not every advanced statistic."
+  ],
+  "source_snapshot": ".cache/fotmob_target_teams/20261015T153242904204Z"
+}

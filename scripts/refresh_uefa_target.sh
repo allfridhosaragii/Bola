@@ -9,14 +9,26 @@ if [[ ! "$target_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
 fi
 stamp="$(python3 -c 'from datetime import datetime, timezone; print(datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))')"
 cutoff_wib="$(TZ=Asia/Jakarta date +%F)"
-forecast_path="$(python3 -m bola.uefa_forecast_live --target-date-utc "$target_date")"
+extended_history=""
+if [[ -d .cache/uefa_extended_history ]]; then
+  extended_history="$(find .cache/uefa_extended_history -mindepth 2 -maxdepth 2 -name manifest.json -print | sort | tail -1)"
+fi
+if [[ -z "$extended_history" ]]; then
+  python3 scripts/fetch_uefa_extended_history.py > /dev/null
+  extended_history="$(find .cache/uefa_extended_history -mindepth 2 -maxdepth 2 -name manifest.json -print | sort | tail -1)"
+fi
+forecast_path="$(python3 -m bola.uefa_forecast_live --target-date-utc "$target_date" --extended-history-dir "$(dirname "$extended_history")")"
 python3 -m bola.uefa_forecast_live --verify "$forecast_path" > /dev/null
 python3 scripts/fetch_form.py > /dev/null
 python3 scripts/fetch_form_extra.py > /dev/null
 python3 scripts/fetch_fotmob_form.py > /dev/null
+python3 scripts/fetch_fotmob_target_teams.py > /dev/null
 python3 -m bola.form --cutoff-date-wib "$cutoff_wib" --output "reports/form_${stamp}.json" > /dev/null
 python3 -m bola.form_extra --cutoff-date-wib "$cutoff_wib" --output "reports/form_extra_${stamp}.json" > /dev/null
 python3 -m bola.form_fotmob --cutoff-date-wib "$cutoff_wib" --output "reports/form_fotmob_${stamp}.json" > /dev/null
+python3 -m bola.form_crosscheck --form "reports/form_${stamp}.json" \
+  --extra-form "reports/form_extra_${stamp}.json" --fotmob-form "reports/form_fotmob_${stamp}.json" \
+  --cutoff-date-wib "$cutoff_wib" --output "reports/form_crosscheck_${stamp}.json" > /dev/null
 python3 -m bola.uefa_target_snapshot --forecast "$forecast_path" --output "reports/uefa_target_${stamp}.json" > /dev/null
 python3 -m bola.target_form_audit --forecast "$forecast_path" \
   --form "reports/form_${stamp}.json" --extra-form "reports/form_extra_${stamp}.json" \
@@ -33,6 +45,7 @@ archive = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
 stamp = sys.argv[2]
 squad = json.loads(Path(f"reports/uefa_target_{stamp}.json").read_text(encoding="utf-8"))
 form = json.loads(Path(f"reports/target_form_{stamp}.json").read_text(encoding="utf-8"))
+crosscheck = json.loads(Path(f"reports/form_crosscheck_{stamp}.json").read_text(encoding="utf-8"))
 analyst = json.loads(Path(f"reports/analyst_{stamp}.json").read_text(encoding="utf-8"))
 print("Forecast:", sys.argv[1], "| matches:", len(archive["predictions"]))
 print("UEFA squad/lineup:", f"reports/uefa_target_{stamp}.json",
@@ -40,6 +53,8 @@ print("UEFA squad/lineup:", f"reports/uefa_target_{stamp}.json",
       "| official XI:", sum(row["official_starting_xi_before_kickoff"] for row in squad["fixtures"]))
 print("Domestic form:", f"reports/target_form_{stamp}.json",
       "| covered:", form["teams_covered"], "/", form["teams_requested"])
+print("Independent score cross-check:", crosscheck["independent_matches_checked"], "matches across",
+      crosscheck["independent_teams"], "teams")
 print("Analyst report:", f"reports/analyst_{stamp}.json",
       "| eligible:", analyst["summary"]["eligible_for_review"],
       "| no selection:", analyst["summary"]["no_selection"])
