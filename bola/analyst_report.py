@@ -15,7 +15,8 @@ OUTCOMES = ("home", "draw", "away")
 
 
 def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
-             markets: list[dict] | None = None, schedule: dict | None = None) -> dict:
+             markets: list[dict] | None = None, schedule: dict | None = None,
+             recent_stats: dict | None = None) -> dict:
     now = instant(as_of)
     generated = instant(forecast["generated_at"])
     if generated > now:
@@ -29,6 +30,9 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
     if schedule and (instant(schedule["forecast_generated_at"]) != generated or
                      schedule["target_date_utc"] != forecast["target_date_utc"]):
         raise ValueError("Schedule-load audit belongs to a different forecast")
+    if recent_stats and (instant(recent_stats["generated_at"]) > now or
+                         instant(recent_stats["source_retrieved_at_latest"]) > now):
+        raise ValueError("Recent-match statistics are newer than report time")
 
     predictions = {row["match_id"]: row for row in forecast["predictions"]}
     fixtures = {row["match_id"]: row for row in squad["fixtures"]}
@@ -46,6 +50,7 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
     if set(market_by_id) - set(predictions):
         raise ValueError("Market snapshot contains a match outside the forecast")
     schedule_teams = schedule["teams"] if schedule else {}
+    recent_teams = recent_stats["teams"] if recent_stats else {}
     schedule_matches = {row["match_id"]: row for row in schedule.get("target_fixture_crosscheck", [])} if schedule else {}
     if schedule and set(schedule_matches) != set(predictions):
         raise ValueError("Schedule-load and forecast match sets disagree")
@@ -65,6 +70,13 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
         registered = fixture.get("registered_players") or {}
         team_form = {name: form["teams"].get(name) for name in (prediction["home"], prediction["away"])}
         team_schedule = {name: schedule_teams.get(name) for name in (prediction["home"], prediction["away"])}
+        team_recent = {}
+        for name in (prediction["home"], prediction["away"]):
+            recent = recent_teams.get(name)
+            team_recent[name] = ({key: recent.get(key) for key in
+                                  ("stats_available_games", "lineup_available_games", "distinct_starters",
+                                   "core_starters", "mean_starter_changes", "averages")}
+                                 if recent else None)
         if schedule:
             check = schedule_matches[mid]
             if (check["home"], check["away"]) != (prediction["home"], prediction["away"]):
@@ -87,6 +99,8 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "official_fixture_snapshot_within_30m": now - fixture_time <= timedelta(minutes=30),
             "domestic_form_5_10_20_for_both": all(team_form.values()),
             "schedule_load_for_both": all(team_schedule.values()),
+            "recent_match_stats_for_both": all(row and row.get("stats_available_games", 0) > 0
+                                                for row in team_recent.values()),
             "registered_squad_for_both": set(registered) == {prediction["home"], prediction["away"]}
                                                 and all(registered.values()),
             "official_starting_xi_before_kickoff": bool(fixture["official_starting_xi_before_kickoff"]),
@@ -104,6 +118,7 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "historical_uefa_appearances": prediction["historical_uefa_appearances"],
             "form": team_form,
             "schedule_load": team_schedule,
+            "recent_match_stats": team_recent,
             "registered_players": registered,
             "flagged_players": fixture.get("flagged_players"),
             "lineup_status": fixture["lineup_status"],
@@ -122,6 +137,7 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "no_selection": sum(row["selection_status"] == "no_selection" for row in rows),
             "form_complete": sum(row["evidence_gates"]["domestic_form_5_10_20_for_both"] for row in rows),
             "schedule_load_complete": sum(row["evidence_gates"]["schedule_load_for_both"] for row in rows),
+            "recent_match_stats_complete": sum(row["evidence_gates"]["recent_match_stats_for_both"] for row in rows),
             "official_lineups": sum(row["evidence_gates"]["official_starting_xi_before_kickoff"] for row in rows),
             "fresh_markets": sum(row["evidence_gates"]["fresh_market_screenshot"] for row in rows),
         },
@@ -131,6 +147,7 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "Domestic form is descriptive and is not an input to the frozen UEFA probability model.",
             "Player badges do not prove match-specific absence, injury severity, or starting status.",
             "Schedule load counts team fixtures but does not measure player minutes, travel, sleep, or fatigue.",
+            "Recent match statistics are descriptive, come from one provider, and are not a validated tactical model.",
             "No current tactical feature has passed a predictive holdout test.",
             "The results-only UEFA model has not demonstrated a stable edge over current market prices.",
         ],
@@ -144,6 +161,7 @@ def main() -> None:
     parser.add_argument("--squad", type=Path, required=True)
     parser.add_argument("--market", type=Path, action="append", default=[])
     parser.add_argument("--schedule", type=Path)
+    parser.add_argument("--recent-stats", type=Path)
     parser.add_argument("--as-of", default=datetime.now(timezone.utc).isoformat())
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -153,11 +171,14 @@ def main() -> None:
     forecast, form, squad = (json.loads(path.read_text(encoding="utf-8")) for path in inputs.values())
     markets = [json.loads(path.read_text(encoding="utf-8")) for path in args.market]
     schedule = json.loads(args.schedule.read_text(encoding="utf-8")) if args.schedule else None
-    result = assemble(forecast, form, squad, args.as_of, markets, schedule)
+    recent_stats = json.loads(args.recent_stats.read_text(encoding="utf-8")) if args.recent_stats else None
+    result = assemble(forecast, form, squad, args.as_of, markets, schedule, recent_stats)
     result["input_sha256"] = {name: hashlib.sha256(path.read_bytes()).hexdigest()
                               for name, path in inputs.items()}
     result["market_input_sha256"] = [hashlib.sha256(path.read_bytes()).hexdigest() for path in args.market]
     result["schedule_input_sha256"] = hashlib.sha256(args.schedule.read_bytes()).hexdigest() if args.schedule else None
+    result["recent_stats_input_sha256"] = (hashlib.sha256(args.recent_stats.read_bytes()).hexdigest()
+                                           if args.recent_stats else None)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(args.output)

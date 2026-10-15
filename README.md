@@ -85,9 +85,9 @@ python3 -m bola.uefa_forecast_live --target-date-utc 2026-10-20 --season-year 20
 python3 -m bola.uefa_forecast_live --verify prospective/uefa_2026-10-15T15-53-23.675934+00-00.json
 ```
 
-Satu perintah untuk penyegaran menyeluruh sebelum kickoff adalah `bash scripts/refresh_uefa_target.sh 2026-10-20`. Perintah ini mengambil ulang data form dan kalender tim, membuat arsip peluang baru, memeriksa ulang sumbernya, lalu menyimpan status fixture, beban jadwal, skuad, lineup, dan form sebagai laporan bertimestamp di `reports/`. Alur ini telah dijalankan ujung ke ujung pada 15 Oktober: sembilan fixture, sembilan pasangan skuad terdaftar, sembilan pasangan kalender yang cocok, nol XI resmi, dan form 18/18 tim. Jalankan ulang menjelang pertandingan; hasil lama tidak otomatis menjadi bukti keadaan saat kickoff. Saat ini protokol riwayat model mendukung musim UEFA 2026/27.
+Satu perintah untuk penyegaran menyeluruh sebelum kickoff adalah `bash scripts/refresh_uefa_target.sh 2026-10-20`. Perintah ini mengambil ulang data form, kalender, dan lima pertandingan terkini tiap tim, membuat arsip peluang baru, memeriksa ulang sumbernya, lalu menyimpan status fixture, beban jadwal, statistik pertandingan, skuad, lineup, dan form sebagai laporan bertimestamp di `reports/`. Alur ini telah dijalankan ujung ke ujung pada 15 Oktober: sembilan fixture, sembilan pasangan skuad terdaftar, sembilan pasangan kalender yang cocok, statistik terkini 18/18 tim, nol XI target resmi, dan form 18/18 tim. Jalankan ulang menjelang pertandingan; hasil lama tidak otomatis menjadi bukti keadaan saat kickoff. Saat ini protokol riwayat model mendukung musim UEFA 2026/27.
 
-Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh terbaru dengan riwayat UEFA diperluas, parameter model, dan beban jadwal tercatat ada di `evidence/analyst_report_schedule_2026-10-15.json`. Untuk merakitnya secara manual:
+Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh terbaru dengan riwayat UEFA diperluas, parameter model, beban jadwal, dan statistik terkini tercatat ada di `evidence/analyst_report_current_stats_2026-10-15.json`. Untuk merakitnya secara manual:
 
 ```bash
 python3 -m bola.analyst_report \
@@ -95,6 +95,7 @@ python3 -m bola.analyst_report \
   --form evidence/uefa_target_form_2026-10-15.json \
   --squad evidence/uefa_target_squad_model_gate_2026-10-15.json \
   --schedule evidence/schedule_load_target_2026-10-15.json \
+  --recent-stats evidence/fotmob_target_recent_stats_2026-10-15.json \
   --output reports/analyst_report.json
 ```
 
@@ -142,6 +143,8 @@ python3 -m bola.form_fotmob --cutoff-date-wib 2026-10-15 --output reports/curren
 python3 scripts/fetch_fotmob_target_teams.py
 python3 -m bola.form_crosscheck --form reports/current_form.json --extra-form reports/current_form_extra.json --fotmob-form reports/current_form_fotmob.json --cutoff-date-wib 2026-10-15 --output reports/form_crosscheck.json
 python3 -m bola.schedule_load --forecast prospective/uefa_2026-10-15T15-53-23.675934+00-00.json --output reports/schedule_load.json
+python3 scripts/fetch_fotmob_target_recent.py
+python3 -m bola.fotmob_recent_stats --data-dir .cache/fotmob_target_recent/LOKASI_SNAPSHOT --output reports/target_recent_stats.json
 python3 scripts/fetch_fotmob_recent.py
 python3 -m bola.fotmob_recent_stats --output reports/fotmob_recent_stats.json
 ```
@@ -153,6 +156,8 @@ Delapan belas CSV mencakup sembilan liga dalam `.cache/form/`; dua CSV lain untu
 `fetch_fotmob_target_teams.py` mengambil halaman tim terpisah untuk 18 klub target. `bola.form_crosscheck` hanya membandingkan pertandingan liga utama yang selesai sebelum cutoff. Lima hasil terakhir untuk **15 tim**, total **75 pertandingan**, cocok antara sumber utama Football-Data dan FotMob pada tanggal (toleransi satu hari karena zona waktu), venue, dan skor. Slavia Praha, Sabah, dan Slovan Bratislava memakai FotMob pada kedua sisi sehingga ditandai `same-provider` dan tidak dihitung sebagai verifikasi independen. Artefak lengkap ada di `evidence/form_crosscheck_target_2026-10-15.json`.
 
 `bola.schedule_load` memeriksa checksum 18 halaman tim, mencocokkan kandang/tandang dan kickoff dengan arsip UEFA, lalu menghitung pertandingan kompetitif selesai dalam 14/28 hari dan jadwal di antara waktu pengambilan dan kickoff target. Kedua halaman tim menyepakati ID FotMob untuk **9/9 pertandingan**. Sebanyak **17 dari 18 tim** memiliki satu pertandingan terjadwal sebelum target; Porto tidak. Waktu istirahat terproyeksi terpendek adalah **72,25 jam**. Angka ini tidak mengukur menit pemain, perjalanan, tidur, atau kelelahan. Bukti ada di `evidence/schedule_load_target_2026-10-15.json`.
+
+`fetch_fotmob_target_recent.py` membekukan lima pertandingan kompetitif terakhir bagi 18 tim dengan 90 observasi tim-pertandingan dari 82 laga unik. `bola.fotmob_recent_stats` memeriksa ID, kompetisi, kickoff, status, skor, checksum, serta XI. Statistik tersedia pada **84/90 observasi** dan seluruh 18 tim memiliki setidaknya satu halaman statistik; 14 tim lengkap 5/5. XI lengkap tersedia pada **86/90 observasi**, dengan 16 tim lengkap 5/5. Ringkasan mencakup tembakan, tepat sasaran, peluang besar, sentuhan kotak lawan, penguasaan, operan, corner, disiplin, penyelamatan, formasi, pemain inti, dan perubahan starter. Ini data deskriptif dari satu penyedia dan tidak dianggap sebagai model taktik tervalidasi. Bukti ada di `evidence/fotmob_target_recent_stats_2026-10-15.json`.
 
 `fetch_fotmob_recent.py` membekukan halaman pertandingan untuk lima laga liga terakhir sebelum cutoff dari masing-masing dua klub itu. `bola.fotmob_recent_stats` memeriksa identitas laga, waktu, skor, dan checksum, kemudian menghitung rata-rata statistik yang **benar-benar ada** pada halaman. Kedua tim memiliki data tembakan, tepat sasaran, penguasaan bola, dan corner pada 5/5 laga. FotMob menyediakan metrik lebih lengkap untuk Slovan daripada Shakhtar; kolom yang tidak tersedia tidak diisi dengan perkiraan. Rincian dan cakupan tiap metrik ada di `evidence/fotmob_recent_stats_2026-10-15.json`.
 

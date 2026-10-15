@@ -23,6 +23,9 @@ python3 scripts/fetch_form.py > /dev/null
 python3 scripts/fetch_form_extra.py > /dev/null
 python3 scripts/fetch_fotmob_form.py > /dev/null
 python3 scripts/fetch_fotmob_target_teams.py > /dev/null
+target_recent_dir="$(python3 scripts/fetch_fotmob_target_recent.py)"
+python3 -m bola.fotmob_recent_stats --data-dir "$target_recent_dir" \
+  --output "reports/target_recent_stats_${stamp}.json" > /dev/null
 python3 -m bola.form --cutoff-date-wib "$cutoff_wib" --output "reports/form_${stamp}.json" > /dev/null
 python3 -m bola.form_extra --cutoff-date-wib "$cutoff_wib" --output "reports/form_extra_${stamp}.json" > /dev/null
 python3 -m bola.form_fotmob --cutoff-date-wib "$cutoff_wib" --output "reports/form_fotmob_${stamp}.json" > /dev/null
@@ -40,6 +43,7 @@ python3 -m bola.target_form_audit --forecast "$forecast_path" \
 python3 -m bola.analyst_report --forecast "$forecast_path" \
   --form "reports/target_form_${stamp}.json" --squad "reports/uefa_target_${stamp}.json" \
   --schedule "reports/schedule_load_${stamp}.json" \
+  --recent-stats "reports/target_recent_stats_${stamp}.json" \
   --output "reports/analyst_${stamp}.json" > /dev/null
 python3 - "$forecast_path" "$stamp" <<'PY'
 import json
@@ -52,6 +56,7 @@ form = json.loads(Path(f"reports/target_form_{stamp}.json").read_text(encoding="
 crosscheck = json.loads(Path(f"reports/form_crosscheck_{stamp}.json").read_text(encoding="utf-8"))
 analyst = json.loads(Path(f"reports/analyst_{stamp}.json").read_text(encoding="utf-8"))
 schedule = json.loads(Path(f"reports/schedule_load_{stamp}.json").read_text(encoding="utf-8"))
+recent = json.loads(Path(f"reports/target_recent_stats_{stamp}.json").read_text(encoding="utf-8"))
 print("Forecast:", sys.argv[1], "| matches:", len(archive["predictions"]))
 print("UEFA squad/lineup:", f"reports/uefa_target_{stamp}.json",
       "| registered pairs:", sum(bool(row["registered_players"]) for row in squad["fixtures"]),
@@ -64,6 +69,10 @@ print("Schedule load:", f"reports/schedule_load_{stamp}.json",
       "| target pairs checked:", schedule["summary"]["target_pairs_agree"],
       "| teams with an intervening match:", schedule["summary"]["teams_with_scheduled_match_before_target"],
       "| minimum projected rest hours:", schedule["summary"]["minimum_projected_rest_hours"])
+print("Recent match stats:", f"reports/target_recent_stats_{stamp}.json",
+      "| teams:", recent["summary"]["teams"],
+      "| observations with stats:", recent["summary"]["observations_with_stats"], "/",
+      recent["summary"]["team_match_observations"])
 print("Analyst report:", f"reports/analyst_{stamp}.json",
       "| eligible:", analyst["summary"]["eligible_for_review"],
       "| no selection:", analyst["summary"]["no_selection"])

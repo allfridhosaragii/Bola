@@ -63,6 +63,18 @@ class AnalystReportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "identity disagree"):
             assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z", schedule=schedule)
 
+    def test_recent_match_stats_are_time_checked(self):
+        recent = {"generated_at": "2026-10-20T18:41:00Z",
+                  "source_retrieved_at_latest": "2026-10-20T18:40:00Z",
+                  "teams": {"A": {"stats_available_games": 5}, "B": {"stats_available_games": 4}}}
+        report = assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z",
+                          recent_stats=recent)
+        self.assertTrue(report["matches"][0]["evidence_gates"]["recent_match_stats_for_both"])
+        recent["source_retrieved_at_latest"] = "2026-10-20T18:46:00Z"
+        with self.assertRaisesRegex(ValueError, "newer"):
+            assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z",
+                     recent_stats=recent)
+
 
 if __name__ == "__main__":
     unittest.main()

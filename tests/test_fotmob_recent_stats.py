@@ -1,6 +1,7 @@
+from datetime import datetime
 import unittest
 
-from bola.fotmob_recent_stats import period_stats
+from bola.fotmob_recent_stats import parse_match, period_stats
 
 
 class RecentStatsTests(unittest.TestCase):
@@ -16,6 +17,22 @@ class RecentStatsTests(unittest.TestCase):
         period["stats"][1]["stats"][0]["stats"] = [15, 5]
         with self.assertRaises(ValueError):
             period_stats(period)
+
+    def test_missing_stats_remains_explicitly_unavailable(self):
+        import json
+        body = json.dumps({"page": "/matches/[seo]/[h2h]", "props": {"pageProps": {
+            "general": {"matchId": "1", "leagueId": "9"},
+            "header": {"teams": [{"id": 10, "name": "A"}, {"id": 11, "name": "B"}],
+                       "status": {"utcTime": "2026-10-10T12:00:00Z", "finished": True,
+                                  "cancelled": False, "awarded": False, "scoreStr": "1 - 0"}},
+            "content": {}}}})
+        html = ('<script id="__NEXT_DATA__" type="application/json">' + body + "</script>").encode()
+        source = {"match_id": "1", "league_id": "9", "team_id": 10, "team": "A",
+                  "score": "1 - 0", "kickoff": "2026-10-10T12:00:00Z"}
+        game = parse_match(html, source, captured_at=datetime.fromisoformat("2026-10-15T12:00:00+00:00"))
+        self.assertFalse(game["stats_available"])
+        self.assertFalse(game["lineup_available"])
+        self.assertEqual(game["periods"]["All"], {})
 
     def test_possession_and_shot_bounds_are_checked(self):
         period = {"stats": [{"stats": [
