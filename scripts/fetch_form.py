@@ -11,7 +11,7 @@ from urllib.request import urlopen
 
 
 SEASONS = ("2526", "2627")
-LEAGUES = ("E0", "F1", "I1", "SP1", "D1", "N1", "P1")
+LEAGUES = ("E0", "F1", "I1", "SP1", "D1", "N1", "P1", "T1", "G1")
 TARGET = Path(".cache/form")
 
 

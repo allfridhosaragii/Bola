@@ -14,6 +14,8 @@ bash scripts/fetch_statsbomb.sh
 python3 scripts/fetch_worldcup.py
 python3 scripts/fetch_worldcup_2018.py
 python3 scripts/fetch_epl_2015.py
+python3 scripts/fetch_form.py
+python3 scripts/fetch_form_extra.py
 bash scripts/fetch_odds.sh
 python3 -m unittest discover -s tests -v
 python3 -m bola.backtest --data-dir .cache/openfootball --output reports/backtest.json
@@ -27,6 +29,9 @@ python3 -m bola.xg_transfer --output reports/xg_transfer.json
 python3 -m bola.club_audit --output reports/club_audit.json
 python3 -m bola.tactic_predict --output reports/tactic_predict.json
 python3 -m bola.rotation_predict --output reports/rotation_predict.json
+python3 -m bola.shot_endpoint_audit --output reports/shot_endpoints.json
+python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
+python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
 python3 -m bola.recovery --data-dir .cache/statsbomb --seconds 15 --output reports/recovery.json
 python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_benchmark.json
 python3 -m bola.odds_multi --league de.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_bundesliga.json
@@ -38,6 +43,8 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 `fetch_data.sh` mengambil [OpenFootball football.json](https://github.com/openfootball/football.json) commit `e6744429ee395bc86f247348c6184bb08d4eb361` (CC0). `fetch_tactics.sh` mengambil [Metrica Sports sample-data](https://github.com/metrica-sports/sample-data) commit `e706dd506b360d69d9d123d5b8026e7294b13996`, hanya checkout Sample Game 1 dan 2; penggunaan publik harus menyebut Metrica Sports. `fetch_statsbomb.sh` mengambil event dan lineup [StatsBomb open-data](https://github.com/statsbomb/open-data) laga 3869685 pada commit `4b73468fc5b0f1950f9f66fada70ad3a4f9327cb`, dengan checksum SHA-256. `fetch_worldcup.py` mengambil semua 64 laga Piala Dunia 2022 pada commit yang sama; metadata pertandingan memiliki checksum tetap dan file lain dicatat dalam manifest checksum lokal untuk verifikasi ulang. Penggunaan publik harus menyebut StatsBomb. Dataset ada di `.cache/` dan diabaikan Git; data StatsBomb seluruh turnamen sekitar 193 MB. Script tidak mengunduh ulang jika data sudah sesuai. Tidak perlu kredensial API.
 
 `fetch_worldcup_2018.py` mengambil 64 berkas event Piala Dunia 2018 dengan checksum tetap di `data/statsbomb_2018_sha256.json`. `fetch_epl_2015.py` mengambil 380 laga Premier League 2015/16 dengan checksum tetap di `data/statsbomb_epl_2015_sha256.json` (sekitar 1,1 GB cache). `bola.xg_transfer` membandingkan kalibrasi xG 2018 dan 2022 serta seluruh musim klub; untuk musim klub, ia membekukan frekuensi gol hingga 31 Desember 2015 lalu menilainya pada laga mulai 1 Januari 2016. Ini pemeriksaan transfer antar sampel, bukan validasi independen model xG StatsBomb karena riwayat pelatihannya tidak diketahui.
+
+`bola.shot_endpoint_audit` memeriksa ketersediaan kolom post-shot xG dan letak akhir tembakan Saved/Goal dalam seluruh musim klub. Endpoint Saved di luar interval lateral gawang nominal menunjukkan bahwa koordinat tersebut tidak boleh langsung dipakai sebagai titik sasaran untuk model post-shot.
 
 `fetch_odds.sh` mengambil CSV Premier League dan Bundesliga 2024/25–2025/26 serta Eredivisie 2024/25 dari [Football-Data](https://www.football-data.co.uk/), dengan checksum tetap. `bola.odds` dan `bola.odds_multi` mencocokkan seluruh **1.678** hasil uji menurut pasangan tim, tanggal, dan skor sebelum membandingkan probabilitas 1X2 model dengan odds rata-rata pembukaan/penutupan yang dinormalisasi. CSV tidak menyertakan timestamp tiap kutipan odds, sehingga hasilnya adalah benchmark historis, bukan simulasi keputusan taruhan saat itu.
 
@@ -53,16 +60,18 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 
 `python3 -m bola.uefa_forecast` membekukan ramalan 1X2 **eksploratif** untuk tujuh laga UEFA 15 Oktober 2026 pukul 02.00 WIB, jika dijalankan sebelum kickoff. Ia memasukkan hanya hasil yang sudah `FINISHED` pada tanggal sebelumnya, menolak laga yang sudah dimulai, dan menyimpan waktu pembuatan serta checksum sumber dalam berkas `prospective/` yang tidak ditimpa. Perintah ini khusus untuk periode tersebut; berkasnya dipakai untuk pengujian setelah hasil keluar, bukan dua rekomendasi taruhan.
 
-Setelah ketujuh laga selesai, nilai arsip tanpa mengubah peluangnya: `python3 -m bola.uefa_score prospective/uefa_2026-10-14T18-02-34.009581+00-00.json --output reports/uefa_prospective_score.json`. Penilai menolak hasil yang belum `FINISHED`, mencocokkan ID/waktu/tim, dan menghitung log loss, Brier, serta akurasi pilihan tertinggi. Gunakan `--results-json` untuk respons UEFA mentah yang disimpan terpisah.
+Ketujuh laga sudah selesai dan arsip dinilai tanpa mengubah peluangnya. Jalankan ulang dengan respons resmi yang dibekukan: `python3 -m bola.uefa_score prospective/uefa_2026-10-14T18-02-34.009581+00-00.json --results-json prospective/uefa_results_2026-10-15T07-58-54Z.json --output reports/uefa_prospective_score.json`. Hapus laporan lama terlebih dahulu jika menjalankan ulang; perintah sengaja menolak menimpanya. Penilai mencocokkan ID/waktu/tim dan menghitung log loss, Brier, serta akurasi pilihan tertinggi. Laporan penilaian yang dapat ditinjau ada di `prospective/uefa_score_2026-10-15T07-58-07Z.json`.
 
 Untuk form terkini, ambil snapshot liga domestik 2025/26 dan 2026/27 dari Football-Data, lalu pakai cutoff tanggal WIB:
 
 ```bash
 python3 scripts/fetch_form.py
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
+python3 scripts/fetch_form_extra.py
+python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
 ```
 
-Empat belas CSV mencakup tujuh liga; manifest di `.cache/form/` mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. Setiap pengambilan kini juga disimpan di `.cache/form/snapshots/` sehingga snapshot lama tetap dapat dijalankan dengan `--data-dir` yang menunjuk folder tersebut. `bola.form` hanya memasukkan hasil bertanggal **sebelum** cutoff, menghitung jendela 5/10/20 pertandingan, bobot waktu dengan paruh lima laga, pembagian kandang/tandang, statistik gol/tembakan/corner/kartu, serta surplus hasil terhadap Elo lawan sebelum pertandingan. Elo itu dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Snapshot liga yang sedang berjalan dapat berubah; form ini tidak mencakup pertandingan UEFA atau piala domestik.
+Delapan belas CSV mencakup sembilan liga dalam `.cache/form/`; dua CSV lain untuk Austria dan Norwegia ada di `.cache/form_extra/`. Manifest mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. Snapshot lama tersimpan di subfolder `snapshots/` dan dapat dijalankan ulang dengan `--data-dir` yang menunjuk foldernya. Kedua pengolah hanya memasukkan hasil bertanggal **sebelum** cutoff serta menghitung jendela 5/10/20 laga, bobot waktu, pembagian kandang/tandang, gol, dan surplus hasil terhadap Elo lawan sebelum pertandingan. Statistik tembakan, corner, kartu, dan xG hanya tersedia pada liga dan baris tertentu. Elo dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Form ini tidak mencakup pertandingan UEFA atau piala domestik.
 
 ## Ledger bukti skuad
 
@@ -106,7 +115,7 @@ python3 -m bola.rotation --lineups reports/uefa_lineups.json --output reports/ue
 Untuk menggabungkan fixture UEFA, daftar skuad, dan form domestik pada satu waktu analisis:
 
 ```bash
-python3 -m bola.dossier --fixtures reports/uefa_fixtures.json --squads reports/uefa_squads.json --lineups reports/uefa_lineups.json --form reports/current_form.json --output reports/prematch_dossier.json
+python3 -m bola.dossier --fixtures reports/uefa_fixtures.json --squads reports/uefa_squads.json --lineups reports/uefa_lineups.json --form reports/current_form.json --extra-form reports/current_form_extra.json --output reports/prematch_dossier.json
 ```
 
 `bola.dossier` memeriksa kecocokan fixture dan waktu sumber, membandingkan badge skuad dengan peran starter/bangku cadangan resmi menurut ID pemain, mencatat hari sejak laga **liga domestik yang tercakup sumber**, lalu memberi gerbang bukti per laga. Jumlah hari itu bukan ukuran istirahat total karena laga piala dan tim nasional tidak tercakup. Status fixture, daftar skuad, dan lineup perlu diambil ulang jika snapshot lebih tua dari 30 menit. Laporan tersebut belum menyatakan siap menghasilkan dua prediksi sampai tersedia starting XI resmi sebelum kickoff, odds kini dengan waktu pengambilan, serta model probabilitas antarliga yang tervalidasi. Jika memakai `--as-of`, waktunya harus sesuai dengan saat sumber sudah tersedia.

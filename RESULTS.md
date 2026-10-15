@@ -16,6 +16,8 @@ Tambahan 64 pertandingan Piala Dunia putra 2018 dari commit StatsBomb yang sama 
 
 Seluruh **380 laga Premier League 2015/16** dari StatsBomb yang sama memuat **9.908 tembakan** sebelum adu penalti, 988 gol, Brier xG 0,0712, dan ECE 10 bin 0,0034. Frekuensi gol dari 190 laga hingga 31 Desember 2015 dibekukan sebagai pembanding konstan untuk 190 laga mulai 1 Januari 2016. Pada **5.011 tembakan** di separuh musim kedua, selisih Brier xG dikurangi pembanding adalah **−0,017389**, interval bootstrap menurut pertandingan 95% **[−0,020854; −0,013988]**. Tanpa penalti, selisihnya **−0,013355 [−0,016519; −0,010529]**. Ini menambah sampel klub yang lengkap, tetapi tetap satu musim lama dan satu penyedia; riwayat pelatihan model xG StatsBomb tidak tersedia. Total tiga sampel kini **508 laga dan 13.028 tembakan**. Semua berkas klub dicocokkan dengan checksum tetap; detail di `reports/xg_transfer.json`.
 
+Audit kolom tembakan klub menemukan **nol kolom post-shot xG** pada 9.908 tembakan. Dari 2.209 tembakan berlabel `Saved`, **342** memiliki koordinat akhir lateral di luar interval gawang nominal 36–44 pada skala StatsBomb; dari 988 gol, **1** demikian. Penjaga gawang lawan tampak unik pada freeze frame **3.112 dari 3.197** tembakan `Saved` atau `Goal`, tetapi koordinat akhir tersebut tidak dapat langsung diperlakukan sebagai lokasi lintasan bola saat melintasi garis gawang. Oleh karena itu, penghitungan post-shot xG atau *goals prevented* dari koordinat ini tanpa definisi dan validasi tambahan berisiko menyesatkan. Rincian dan checksum ada di `reports/shot_endpoints.json`.
+
 ## Pembanding odds historis
 
 Untuk **760** laga Premier League 2024/25–2025/26, hasil, tanggal, dan pasangan tim OpenFootball cocok dengan CSV Football-Data. Odds rata-rata penutupan yang dinormalisasi menghasilkan akurasi 1X2 **52,50%** dan log loss **0,98925**; Elo berbasis skor menghasilkan **50,79%** dan **1,01474**. Selisih log loss Elo dikurangi pasar adalah **0,02549**, interval bootstrap berpasangan menurut tanggal 95% **[0,01144; 0,03863]**. Odds pembukaan menghasilkan log loss **0,99290**. Pasar lebih baik pada kedua musim uji: log loss pasar/Elo **0,96673/0,99770** pada 2024/25 dan **1,01177/1,03177** pada 2025/26. CSV tidak memberi waktu publikasi tiap harga, jadi pembanding penutupan tidak membuktikan peluang transaksi yang bisa diambil sebelum laga. Rincian ada di `reports/odds_benchmark.json`.
@@ -70,7 +72,7 @@ Ini bukan ukuran kelelahan atau bukti penyebab rotasi. Laga domestik dan piala d
 
 ## Form liga domestik sebelum laga 15 Oktober 2026
 
-Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hingga 11–12 Oktober. Pemeriksa memakai cutoff eksklusif 15 Oktober WIB dan menghitung jendela 5, 10, serta 20 laga untuk **12 dari 18 tim** dalam daftar pengguna. Hasil lima laga domestik terakhir untuk tiga pasangan laga pukul 02.00 WIB yang datanya lengkap:
+Snapshot awal Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hingga 11–12 Oktober. Sumber tambahan Turki, Yunani, Austria, dan Norwegia kemudian diverifikasi sebelum kickoff. Pemeriksa memakai cutoff eksklusif 15 Oktober WIB dan menghitung jendela 5, 10, serta 20 laga untuk **16 dari 18 tim** dalam daftar pengguna. Hasil lima laga domestik terakhir untuk tim yang ditambahkan dan tiga pasangan awal:
 
 | Tim | W–D–L | Gol per laga | Kebobolan per laga |
 | --- | ---: | ---: | ---: |
@@ -80,10 +82,14 @@ Snapshot Football-Data yang diambil sekitar **00.14 WIB** memuat hasil liga hing
 | Real Madrid | 3–0–2 | 1,8 | 1,2 |
 | Man City | 5–0–0 | 2,8 | 0,8 |
 | Paris SG | 3–1–1 | 1,8 | 1,2 |
+| AEK Athens | 3–2–0 | 2,4 | 0,6 |
+| Fenerbahçe | 3–1–1 | 2,8 | 0,4 |
+| LASK | 2–1–2 | 2,0 | 1,6 |
+| Bodø/Glimt | 4–0–1 | 2,6 | 1,6 |
 
-Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada xG, laga UEFA, atau penyesuaian kualitas antarliga dalam tabel tersebut. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json`; enam tim lain tidak tercakup oleh tujuh liga sumber. Form ini belum menghasilkan probabilitas pertandingan.
+Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada laga UEFA atau penyesuaian kualitas antarliga dalam tabel tersebut. CSV Turki dan Yunani memuat xG pada sebagian laga terkini, tetapi identitas model dan riwayat pelatihannya belum diketahui; kolom tersebut belum direkonsiliasi dengan StatsBomb. Surplus terhadap Elo lawan serta data tiap laga ada di `reports/current_form.json` dan `reports/current_form_extra.json`. Shakhtar dan Slovan Bratislava masih belum tercakup. Form ini belum menghasilkan probabilitas pertandingan.
 
-`bola.dossier` menggabungkan bukti pada **15 Oktober pukul 00.51 WIB**. Tujuh laga masih sebelum kickoff resmi pada waktu itu. Daftar skuad dan starting XI resmi UEFA tersedia untuk kedua tim pada semua tujuh laga; form domestik kedua tim hanya tersedia pada tiga laga berikut.
+`bola.dossier` pertama kali menggabungkan bukti pada **15 Oktober pukul 00.51 WIB**. Pada penyegaran **01.33 WIB**, tujuh laga masih sebelum kickoff resmi; daftar skuad dan starting XI resmi UEFA tersedia untuk kedua tim pada semuanya. Form domestik kedua tim kini tersedia pada lima laga berikut.
 
 | Laga pukul 02.00 WIB | Form kedua tim | Skuad terdaftar UEFA kedua tim | Starting XI resmi | Odds kini bertimestamp | Model antarliga tervalidasi |
 | --- | --- | --- | --- | --- | --- |
@@ -91,9 +97,9 @@ Angka ini **deskriptif dan berasal dari liga yang berbeda**. Tidak ada xG, laga 
 | Real Betis–Porto | Ya | Ya | Ya | Belum | Belum |
 | Roma–Real Madrid | Ya | Ya | Ya | Belum | Belum |
 | S. Bratislava–Stuttgart | Tidak | Ya | Ya | Belum | Belum |
-| Aston Villa–Fenerbahçe | Tidak | Ya | Ya | Belum | Belum |
+| Aston Villa–Fenerbahçe | Ya | Ya | Ya | Belum | Belum |
 | Man City–Paris | Ya | Ya | Ya | Belum | Belum |
-| Bodø/Glimt–B. Dortmund | Tidak | Ya | Ya | Belum | Belum |
+| Bodø/Glimt–B. Dortmund | Ya | Ya | Ya | Belum | Belum |
 
 Semua tujuh **belum siap untuk dua prediksi yang memenuhi protokol**. Gerbang snapshot UEFA menjadi kedaluwarsa setelah 30 menit dan harus diperiksa kembali; status `Upcoming` di tabel adalah status saat snapshot, bukan feed langsung. Rincian per laga ada di `reports/prematch_dossier.json` setelah perintah di README dijalankan.
 
@@ -148,6 +154,8 @@ Cakupan riwayat klub juga tidak seimbang untuk tujuh laga berikutnya: **Man City
 ### Arsip prediksi prospektif 15 Oktober 2026
 
 Pada **15 Oktober pukul 01.02 WIB**, sebelum kickoff pukul 02.00 WIB, `bola.uefa_forecast` membekukan tujuh distribusi 1X2 dalam `prospective/uefa_2026-10-14T18-02-34.009581+00-00.json`. Kode model telah dicatat sebagai commit `5a4544ac984542514b7409f4be5d44532ae1a80f`. Arsip menyimpan waktu pembuatan, ID dan waktu laga, checksum hasil historis dan respons jadwal UEFA, serta jumlah penampilan UEFA tiap klub dalam sampel. Dua laga yang sudah Live dikecualikan. Model hanya memakai hasil akhir yang tersedia sebelum waktu pengambilan, tanpa odds, xG, lineup, atau berita pemain. Ini **baseline eksploratif untuk dinilai setelah hasil diketahui**, bukan dua rekomendasi taruhan atau bukti kalibrasi 95%.
+
+Setelah tujuh laga selesai, respons hasil resmi UEFA diambil **15 Oktober pukul 14.58 WIB**, disimpan sebagai `prospective/uefa_results_2026-10-15T07-58-54Z.json` dengan SHA-256 `16589628bb55fb09a8f6a97d8c28293bd9ea0cda8acb0c25aa8b1817ab2e9d09`, lalu dicocokkan dengan arsip tanpa mengubah probabilitas. Model campuran memperoleh **5/7 pilihan hasil benar**, log loss **0,8281**, dan Brier **0,4907**; pembanding frekuensi dasar **4/7**, log loss **0,8458**, Brier **0,5235**. Elo murni juga 5/7 dengan log loss **0,8139**. Tujuh laga terlalu sedikit untuk menyimpulkan kalibrasi atau keunggulan stabil. Rincian setiap laga dan penilaian ada di `prospective/uefa_score_2026-10-15T07-58-07Z.json`.
 
 ## Data taktik aktual
 

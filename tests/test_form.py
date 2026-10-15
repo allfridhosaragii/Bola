@@ -40,6 +40,20 @@ class FormTests(unittest.TestCase):
         self.assertEqual(result["metrics"]["goals_for"]["mean"], 1)
         self.assertGreater(result["metrics"]["goals_for"]["recency_weighted_mean"], 1)
 
+    def test_repeated_greek_fixture_on_different_dates_and_xg(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            files = {}
+            for season, rows in (("2526", "G1,01/09/2025,AEK,B,2,1,1.6,0.8\nG1,01/05/2026,AEK,B,1,0,1.2,0.5\n"),
+                                 ("2627", "G1,01/10/2026,AEK,C,3,0,2.4,0.2\n")):
+                body = ("Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,HxG,AxG\n" + rows).encode()
+                name = f"{season}_G1.csv"
+                (root / name).write_bytes(body)
+                files[name] = {"sha256": hashlib.sha256(body).hexdigest()}
+            rows = read_league(root, {"files": files}, "G1", date(2026, 10, 15))
+            self.assertEqual(len(rows), 3)
+            self.assertEqual(team_rows(rows)["AEK"][-1]["xg_for"], 2.4)
+
 
 if __name__ == "__main__":
     unittest.main()

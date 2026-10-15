@@ -18,13 +18,15 @@ TEAMS = {
     "Real Madrid": ("SP1", "Real Madrid"), "Stuttgart": ("D1", "Stuttgart"),
     "Aston Villa": ("E0", "Aston Villa"), "Man City": ("E0", "Man City"),
     "Paris": ("F1", "Paris SG"), "B. Dortmund": ("D1", "Dortmund"),
+    "Fenerbahçe": ("T1", "Fenerbahce"), "AEK Athens": ("G1", "AEK"),
 }
-UNSUPPORTED = ("LASK", "Shakhtar", "AEK Athens", "S. Bratislava", "Fenerbahçe", "Bodø/Glimt")
+UNSUPPORTED = ("LASK", "Shakhtar", "S. Bratislava", "Bodø/Glimt")
 SEASONS = ("2526", "2627")
 FIELDS = ("goals_for", "goals_against", "shots_for", "shots_against", "shots_on_target_for",
           "shots_on_target_against", "corners_for", "corners_against", "yellow_for", "yellow_against",
           "red_for", "red_against", "first_half_goals_for", "first_half_goals_against",
-          "second_half_goals_for", "second_half_goals_against", "elo_result_surplus")
+          "second_half_goals_for", "second_half_goals_against", "xg_for", "xg_against",
+          "elo_result_surplus")
 
 
 def read_league(data_dir: Path, manifest: dict, league: str, cutoff: date) -> list[dict]:
@@ -41,7 +43,7 @@ def read_league(data_dir: Path, manifest: dict, league: str, cutoff: date) -> li
             day = datetime.strptime(row["Date"], "%d/%m/%Y").date()
             if day >= cutoff:
                 continue
-            key = season, row["HomeTeam"], row["AwayTeam"]
+            key = season, day, row["HomeTeam"], row["AwayTeam"]
             if key in seen:
                 raise ValueError(f"Duplicate domestic fixture: {key}")
             seen.add(key)
@@ -54,6 +56,11 @@ def read_league(data_dir: Path, manifest: dict, league: str, cutoff: date) -> li
 def number(row: dict, field: str) -> int | None:
     value = row.get(field)
     return int(value) if value not in (None, "") else None
+
+
+def decimal(row: dict, field: str) -> float | None:
+    value = row.get(field)
+    return float(value) if value not in (None, "") else None
 
 
 def team_rows(matches: list[dict]) -> dict[str, list[dict]]:
@@ -91,6 +98,8 @@ def team_rows(matches: list[dict]) -> dict[str, list[dict]]:
                     "first_half_goals_for": htg, "first_half_goals_against": hta,
                     "second_half_goals_for": gf - htg if htg is not None else None,
                     "second_half_goals_against": ga - hta if hta is not None else None,
+                    "xg_for": decimal(row, "HxG" if is_home else "AxG"),
+                    "xg_against": decimal(row, "AxG" if is_home else "HxG"),
                     "elo_result_surplus": round(actual - expected, 4),
                 })
         for home, away, change in updates:
@@ -106,13 +115,14 @@ def summarize_window(rows: list[dict], n: int) -> dict:
     weights = [0.5 ** (age / 5) for age in range(n - 1, -1, -1)]
     metrics = {}
     for field in FIELDS:
-        available = [(row[field], weight) for row, weight in zip(current, weights) if row[field] is not None]
+        available = [(row.get(field), weight) for row, weight in zip(current, weights) if row.get(field) is not None]
         metrics[field] = {"observed_games": len(available),
                           "mean": round(sum(value for value, _ in available) / len(available), 3) if available else None,
                           "recency_weighted_mean": round(sum(value * weight for value, weight in available) /
                                                          sum(weight for _, weight in available), 3) if available else None}
     return {"games": n, "from": current[0]["date"], "through": current[-1]["date"],
-            "season_counts": {season: sum(row["season"] == season for row in current) for season in SEASONS},
+            "season_counts": {season: sum(row["season"] == season for row in current)
+                              for season in sorted({row["season"] for row in current})},
             "record": {result: sum(row["result"] == result for row in current) for result in "WDL"},
             "btts_rate": round(sum(row["goals_for"] > 0 and row["goals_against"] > 0 for row in current) / n, 3),
             "over_2_5_rate": round(sum(row["goals_for"] + row["goals_against"] > 2 for row in current) / n, 3),
@@ -144,7 +154,7 @@ def report(data_dir: Path, cutoff: date) -> dict:
             "limitations": ["Domestic league matches only; UEFA, cups, and national-team games are absent.",
                             "The current-season CSV is a source snapshot, not a historical feed of publication timestamps.",
                             "Elo surplus adjusts for opponent rating and venue within each league but is not comparable across leagues or a calibrated win probability.",
-                            "No xG, big chances, goalkeeper shot quality, or possession is available in these CSV rows."]}
+                            "Only some Turkish and Greek rows include xG; its provider and training provenance are unknown. Big chances, goalkeeper post-shot quality, and possession are unavailable."]}
 
 
 def main() -> None:

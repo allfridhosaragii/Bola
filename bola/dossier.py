@@ -15,14 +15,25 @@ from .squad import instant
 WIB = ZoneInfo("Asia/Jakarta")
 
 
-def assemble(fixtures: dict, squads: dict, form: dict, as_of: str, lineups: dict | None = None) -> dict:
+def assemble(fixtures: dict, squads: dict, form: dict, as_of: str, lineups: dict | None = None,
+             extra_form: dict | None = None) -> dict:
     now = instant(as_of)
     cutoff = now.astimezone(WIB).date().isoformat()
     if form["cutoff_exclusive_date_wib"] != cutoff:
         raise ValueError("Domestic form cutoff date must equal the as-of WIB calendar date")
-    for name, source in form["snapshot_manifest"]["files"].items():
-        if instant(source["retrieved_at"]) > now:
-            raise ValueError(f"Domestic source appears after as-of time: {name}")
+    forms = (form, extra_form) if extra_form else (form,)
+    for source_form in forms:
+        if source_form["cutoff_exclusive_date_wib"] != cutoff:
+            raise ValueError("Extra domestic form cutoff date must equal the as-of WIB calendar date")
+        for name, source in source_form["snapshot_manifest"]["files"].items():
+            if instant(source["retrieved_at"]) > now:
+                raise ValueError(f"Domestic source appears after as-of time: {name}")
+    domestic_teams = dict(form["teams"])
+    if extra_form:
+        overlap = domestic_teams.keys() & extra_form["teams"].keys()
+        if overlap:
+            raise ValueError(f"Duplicate domestic form team: {sorted(overlap)}")
+        domestic_teams.update(extra_form["teams"])
     squads_by_id = {row["match_id"]: row for row in squads["fixtures"]}
     if len(squads_by_id) != len(squads["fixtures"]):
         raise ValueError("Duplicate UEFA squad match ID")
@@ -51,7 +62,7 @@ def assemble(fixtures: dict, squads: dict, form: dict, as_of: str, lineups: dict
         teams = {}
         for name in (fixture["home"], fixture["away"]):
             source_team = squad["teams"].get(name) if squad else None
-            domestic = form["teams"].get(name)
+            domestic = domestic_teams.get(name)
             last_domestic = domestic.get("last_five_games", [])[-1]["date"] if domestic and domestic.get("last_five_games") else None
             lineup_team = lineup.get("teams", {}).get(name) if lineup and lineup["before_kickoff_at_retrieval"] else None
             starters = {str(row["id"]) for row in lineup_team["starters"]} if lineup_team else set()
@@ -108,13 +119,15 @@ def main() -> None:
     parser.add_argument("--fixtures", type=Path, default=Path("reports/uefa_fixtures.json"))
     parser.add_argument("--squads", type=Path, default=Path("reports/uefa_squads.json"))
     parser.add_argument("--form", type=Path, default=Path("reports/current_form.json"))
+    parser.add_argument("--extra-form", type=Path)
     parser.add_argument("--lineups", type=Path)
     parser.add_argument("--as-of", default=datetime.now(timezone.utc).isoformat())
     parser.add_argument("--output", type=Path, default=Path("reports/prematch_dossier.json"))
     args = parser.parse_args()
     result = assemble(*(json.loads(path.read_text(encoding="utf-8")) for path in
                         (args.fixtures, args.squads, args.form)), as_of=args.as_of,
-                      lineups=json.loads(args.lineups.read_text(encoding="utf-8")) if args.lineups else None)
+                      lineups=json.loads(args.lineups.read_text(encoding="utf-8")) if args.lineups else None,
+                      extra_form=json.loads(args.extra_form.read_text(encoding="utf-8")) if args.extra_form else None)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))

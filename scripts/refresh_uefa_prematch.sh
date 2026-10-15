@@ -7,6 +7,7 @@ python3 -m bola.uefa_squad --fixtures reports/uefa_fixtures.json --output report
 python3 -m bola.uefa_lineup_api --fixtures reports/uefa_fixtures.json --output reports/uefa_lineups.json > /dev/null
 python3 -m bola.dossier --fixtures reports/uefa_fixtures.json --squads reports/uefa_squads.json \
   --lineups reports/uefa_lineups.json --form reports/current_form.json \
+  --extra-form reports/current_form_extra.json \
   --output reports/prematch_dossier.json > /dev/null
 python3 - <<'PY'
 import json

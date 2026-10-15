@@ -1,0 +1,255 @@
+{
+  "forecast_generated_at": "2026-10-14T18:02:34.009581+00:00",
+  "scored_at": "2026-10-15T07:58:07.347256+00:00",
+  "result_sha256": "16589628bb55fb09a8f6a97d8c28293bd9ea0cda8acb0c25aa8b1817ab2e9d09",
+  "n": 7,
+  "aggregate": {
+    "base": {
+      "log_loss": 0.8457518456722963,
+      "brier": 0.523473434714,
+      "correct_top_probability": 0.5714285714285714
+    },
+    "elo": {
+      "log_loss": 0.8139011089777661,
+      "brier": 0.4903488079145714,
+      "correct_top_probability": 0.7142857142857143
+    },
+    "poisson": {
+      "log_loss": 0.8442806668797791,
+      "brier": 0.49514387942714283,
+      "correct_top_probability": 0.7142857142857143
+    },
+    "blend": {
+      "log_loss": 0.8281135478374893,
+      "brier": 0.4907375990462857,
+      "correct_top_probability": 0.7142857142857143
+    }
+  },
+  "games": [
+    {
+      "match_id": "2049580",
+      "home": "Man City",
+      "away": "Paris",
+      "goals": [
+        2,
+        4
+      ],
+      "outcome": "away",
+      "metrics": {
+        "base": {
+          "log_loss": 1.0986132886686097,
+          "brier": 0.735513434714,
+          "correct_top_probability": false
+        },
+        "elo": {
+          "log_loss": 1.0920617901065537,
+          "brier": 0.720706151864,
+          "correct_top_probability": false
+        },
+        "poisson": {
+          "log_loss": 1.1260615974563222,
+          "brier": 0.706119420093,
+          "correct_top_probability": false
+        },
+        "blend": {
+          "log_loss": 1.1089172023783496,
+          "brier": 0.711070003736,
+          "correct_top_probability": false
+        }
+      }
+    },
+    {
+      "match_id": "2049581",
+      "home": "Roma",
+      "away": "Real Madrid",
+      "goals": [
+        3,
+        4
+      ],
+      "outcome": "away",
+      "metrics": {
+        "base": {
+          "log_loss": 1.0986132886686097,
+          "brier": 0.735513434714,
+          "correct_top_probability": false
+        },
+        "elo": {
+          "log_loss": 0.9474563743923547,
+          "brier": 0.6006325073729999,
+          "correct_top_probability": false
+        },
+        "poisson": {
+          "log_loss": 0.9484653273216581,
+          "brier": 0.577515326622,
+          "correct_top_probability": false
+        },
+        "blend": {
+          "log_loss": 0.9479620138306203,
+          "brier": 0.5876526944220001,
+          "correct_top_probability": false
+        }
+      }
+    },
+    {
+      "match_id": "2049582",
+      "home": "Aston Villa",
+      "away": "Fenerbahçe",
+      "goals": [
+        6,
+        0
+      ],
+      "outcome": "home",
+      "metrics": {
+        "base": {
+          "log_loss": 0.6561057634250613,
+          "brier": 0.364443434714,
+          "correct_top_probability": true
+        },
+        "elo": {
+          "log_loss": 0.6098782979742708,
+          "brier": 0.322879275614,
+          "correct_top_probability": true
+        },
+        "poisson": {
+          "log_loss": 0.5941710014773427,
+          "brier": 0.30103278181800003,
+          "correct_top_probability": true
+        },
+        "blend": {
+          "log_loss": 0.6019947230255376,
+          "brier": 0.30928725144799996,
+          "correct_top_probability": true
+        }
+      }
+    },
+    {
+      "match_id": "2049583",
+      "home": "Real Betis",
+      "away": "Porto",
+      "goals": [
+        3,
+        2
+      ],
+      "outcome": "home",
+      "metrics": {
+        "base": {
+          "log_loss": 0.6561057634250613,
+          "brier": 0.364443434714,
+          "correct_top_probability": true
+        },
+        "elo": {
+          "log_loss": 0.6431577358150311,
+          "brier": 0.34979868039199996,
+          "correct_top_probability": true
+        },
+        "poisson": {
+          "log_loss": 0.6984833928495763,
+          "brier": 0.380824933202,
+          "correct_top_probability": true
+        },
+        "blend": {
+          "log_loss": 0.6704370195336536,
+          "brier": 0.36385420455800005,
+          "correct_top_probability": true
+        }
+      }
+    },
+    {
+      "match_id": "2049585",
+      "home": "Bodø/Glimt",
+      "away": "B. Dortmund",
+      "goals": [
+        1,
+        0
+      ],
+      "outcome": "home",
+      "metrics": {
+        "base": {
+          "log_loss": 0.6561057634250613,
+          "brier": 0.364443434714,
+          "correct_top_probability": true
+        },
+        "elo": {
+          "log_loss": 0.7699591128133556,
+          "brier": 0.45363138224899996,
+          "correct_top_probability": true
+        },
+        "poisson": {
+          "log_loss": 0.871685502819035,
+          "brier": 0.522405949526,
+          "correct_top_probability": true
+        },
+        "blend": {
+          "log_loss": 0.8195293328707112,
+          "brier": 0.487123949643,
+          "correct_top_probability": true
+        }
+      }
+    },
+    {
+      "match_id": "2049586",
+      "home": "Shakhtar",
+      "away": "AEK Athens",
+      "goals": [
+        3,
+        1
+      ],
+      "outcome": "home",
+      "metrics": {
+        "base": {
+          "log_loss": 0.6561057634250613,
+          "brier": 0.364443434714,
+          "correct_top_probability": true
+        },
+        "elo": {
+          "log_loss": 0.7847735539187194,
+          "brier": 0.465776380206,
+          "correct_top_probability": true
+        },
+        "poisson": {
+          "log_loss": 0.943104530088909,
+          "brier": 0.571566561158,
+          "correct_top_probability": true
+        },
+        "blend": {
+          "log_loss": 0.860808722415151,
+          "brier": 0.5166368088,
+          "correct_top_probability": true
+        }
+      }
+    },
+    {
+      "match_id": "2049587",
+      "home": "S. Bratislava",
+      "away": "Stuttgart",
+      "goals": [
+        0,
+        3
+      ],
+      "outcome": "away",
+      "metrics": {
+        "base": {
+          "log_loss": 1.0986132886686097,
+          "brier": 0.735513434714,
+          "correct_top_probability": false
+        },
+        "elo": {
+          "log_loss": 0.8500208978240779,
+          "brier": 0.5190172777040001,
+          "correct_top_probability": true
+        },
+        "poisson": {
+          "log_loss": 0.72799331614561,
+          "brier": 0.406542183571,
+          "correct_top_probability": true
+        },
+        "blend": {
+          "log_loss": 0.7871458208084012,
+          "brier": 0.45953828071700004,
+          "correct_top_probability": true
+        }
+      }
+    }
+  ],
+  "warning": "Seven matches are a small prospective sample; do not infer calibration or betting value."
+}
