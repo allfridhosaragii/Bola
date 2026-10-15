@@ -29,6 +29,9 @@ python3 -m bola.form_fotmob --cutoff-date-wib "$cutoff_wib" --output "reports/fo
 python3 -m bola.form_crosscheck --form "reports/form_${stamp}.json" \
   --extra-form "reports/form_extra_${stamp}.json" --fotmob-form "reports/form_fotmob_${stamp}.json" \
   --cutoff-date-wib "$cutoff_wib" --output "reports/form_crosscheck_${stamp}.json" > /dev/null
+fotmob_team_manifest="$(find .cache/fotmob_target_teams -mindepth 2 -maxdepth 2 -name manifest.json -print | sort | tail -1)"
+python3 -m bola.schedule_load --forecast "$forecast_path" --data-dir "$(dirname "$fotmob_team_manifest")" \
+  --output "reports/schedule_load_${stamp}.json" > /dev/null
 python3 -m bola.uefa_target_snapshot --forecast "$forecast_path" --output "reports/uefa_target_${stamp}.json" > /dev/null
 python3 -m bola.target_form_audit --forecast "$forecast_path" \
   --form "reports/form_${stamp}.json" --extra-form "reports/form_extra_${stamp}.json" \
@@ -36,6 +39,7 @@ python3 -m bola.target_form_audit --forecast "$forecast_path" \
   --output "reports/target_form_${stamp}.json" > /dev/null
 python3 -m bola.analyst_report --forecast "$forecast_path" \
   --form "reports/target_form_${stamp}.json" --squad "reports/uefa_target_${stamp}.json" \
+  --schedule "reports/schedule_load_${stamp}.json" \
   --output "reports/analyst_${stamp}.json" > /dev/null
 python3 - "$forecast_path" "$stamp" <<'PY'
 import json
@@ -47,6 +51,7 @@ squad = json.loads(Path(f"reports/uefa_target_{stamp}.json").read_text(encoding=
 form = json.loads(Path(f"reports/target_form_{stamp}.json").read_text(encoding="utf-8"))
 crosscheck = json.loads(Path(f"reports/form_crosscheck_{stamp}.json").read_text(encoding="utf-8"))
 analyst = json.loads(Path(f"reports/analyst_{stamp}.json").read_text(encoding="utf-8"))
+schedule = json.loads(Path(f"reports/schedule_load_{stamp}.json").read_text(encoding="utf-8"))
 print("Forecast:", sys.argv[1], "| matches:", len(archive["predictions"]))
 print("UEFA squad/lineup:", f"reports/uefa_target_{stamp}.json",
       "| registered pairs:", sum(bool(row["registered_players"]) for row in squad["fixtures"]),
@@ -55,6 +60,10 @@ print("Domestic form:", f"reports/target_form_{stamp}.json",
       "| covered:", form["teams_covered"], "/", form["teams_requested"])
 print("Independent score cross-check:", crosscheck["independent_matches_checked"], "matches across",
       crosscheck["independent_teams"], "teams")
+print("Schedule load:", f"reports/schedule_load_{stamp}.json",
+      "| target pairs checked:", schedule["summary"]["target_pairs_agree"],
+      "| teams with an intervening match:", schedule["summary"]["teams_with_scheduled_match_before_target"],
+      "| minimum projected rest hours:", schedule["summary"]["minimum_projected_rest_hours"])
 print("Analyst report:", f"reports/analyst_{stamp}.json",
       "| eligible:", analyst["summary"]["eligible_for_review"],
       "| no selection:", analyst["summary"]["no_selection"])

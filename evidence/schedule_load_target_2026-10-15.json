@@ -1,0 +1,641 @@
+{
+  "generated_at": "2026-10-15T16:20:41.685147+00:00",
+  "forecast_generated_at": "2026-10-15T15:53:23.675934+00:00",
+  "target_date_utc": "2026-10-20",
+  "teams": {
+    "AEK Athens": {
+      "fotmob_team_id": 8563,
+      "source_retrieved_at": "2026-10-15T15:54:50.740601+00:00",
+      "target_fotmob_match_id": "6106257",
+      "completed_competitive_matches_before_capture": 13,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106337",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Shakhtar Donetsk",
+        "away": "AEK Athens",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5943267",
+          "kickoff": "2026-10-17T16:30:00+00:00",
+          "home": "Atromitos",
+          "away": "AEK Athens",
+          "competition": "Super League",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 74.5,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Atleti": {
+      "fotmob_team_id": 9906,
+      "source_retrieved_at": "2026-10-15T15:54:51.104510+00:00",
+      "target_fotmob_match_id": "6106397",
+      "completed_competitive_matches_before_capture": 10,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106267",
+        "kickoff": "2026-10-13T19:00:00+00:00",
+        "home": "Atlético Madrid",
+        "away": "Man United",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 168.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5868094",
+          "kickoff": "2026-10-17T12:00:00+00:00",
+          "home": "Espanyol",
+          "away": "Atlético Madrid",
+          "competition": "LaLiga",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 79.0,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "B. Dortmund": {
+      "fotmob_team_id": 9789,
+      "source_retrieved_at": "2026-10-15T15:54:50.385990+00:00",
+      "target_fotmob_match_id": "6106422",
+      "completed_competitive_matches_before_capture": 9,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106315",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Bodø/Glimt",
+        "away": "Dortmund",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 141.75,
+      "scheduled_before_target": [
+        {
+          "match_id": "5881195",
+          "kickoff": "2026-10-17T13:30:00+00:00",
+          "home": "Union Berlin",
+          "away": "Dortmund",
+          "competition": "Bundesliga",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 75.25,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Barcelona": {
+      "fotmob_team_id": 8634,
+      "source_retrieved_at": "2026-10-15T15:54:50.489231+00:00",
+      "target_fotmob_match_id": "6106234",
+      "completed_competitive_matches_before_capture": 10,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106338",
+        "kickoff": "2026-10-13T19:00:00+00:00",
+        "home": "Galatasaray",
+        "away": "Barcelona",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 168.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5868091",
+          "kickoff": "2026-10-17T16:30:00+00:00",
+          "home": "Real Betis",
+          "away": "Barcelona",
+          "competition": "LaLiga",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 74.5,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Bodø/Glimt": {
+      "fotmob_team_id": 8402,
+      "source_retrieved_at": "2026-10-15T15:54:50.989569+00:00",
+      "target_fotmob_match_id": "6106320",
+      "completed_competitive_matches_before_capture": 38,
+      "completed_in_previous_14_days": 3,
+      "completed_in_previous_28_days": 4,
+      "last_completed": {
+        "match_id": "6106315",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Bodø/Glimt",
+        "away": "Dortmund",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5105025",
+          "kickoff": "2026-10-17T12:00:00+00:00",
+          "home": "HamKam",
+          "away": "Bodø/Glimt",
+          "competition": "Eliteserien",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 79.0,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Fenerbahçe": {
+      "fotmob_team_id": 8695,
+      "source_retrieved_at": "2026-10-15T15:54:50.478273+00:00",
+      "target_fotmob_match_id": "6106333",
+      "completed_competitive_matches_before_capture": 15,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106284",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Aston Villa",
+        "away": "Fenerbahçe",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 141.75,
+      "scheduled_before_target": [
+        {
+          "match_id": "5904773",
+          "kickoff": "2026-10-17T16:00:00+00:00",
+          "home": "Fenerbahçe",
+          "away": "Alanyaspor",
+          "competition": "Super Lig",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 72.75,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Liverpool": {
+      "fotmob_team_id": 8650,
+      "source_retrieved_at": "2026-10-15T15:54:50.436500+00:00",
+      "target_fotmob_match_id": "6106248",
+      "completed_competitive_matches_before_capture": 9,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106405",
+        "kickoff": "2026-10-14T16:45:00+00:00",
+        "home": "LASK",
+        "away": "Liverpool",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 146.25,
+      "scheduled_before_target": [
+        {
+          "match_id": "5795476",
+          "kickoff": "2026-10-17T14:00:00+00:00",
+          "home": "Brentford",
+          "away": "Liverpool",
+          "competition": "Premier League",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 77.0,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Man City": {
+      "fotmob_team_id": 8456,
+      "source_retrieved_at": "2026-10-15T15:54:50.781400+00:00",
+      "target_fotmob_match_id": "6106257",
+      "completed_competitive_matches_before_capture": 10,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 4,
+      "last_completed": {
+        "match_id": "6106254",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Man City",
+        "away": "PSG",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5795481",
+          "kickoff": "2026-10-17T14:00:00+00:00",
+          "home": "Man City",
+          "away": "Ipswich",
+          "competition": "Premier League",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 77.0,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Napoli": {
+      "fotmob_team_id": 9875,
+      "source_retrieved_at": "2026-10-15T15:54:50.856219+00:00",
+      "target_fotmob_match_id": "6106320",
+      "completed_competitive_matches_before_capture": 8,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106328",
+        "kickoff": "2026-10-13T19:00:00+00:00",
+        "home": "Villarreal",
+        "away": "Napoli",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 168.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5749709",
+          "kickoff": "2026-10-17T13:00:00+00:00",
+          "home": "Venezia",
+          "away": "Napoli",
+          "competition": "Serie A",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 78.0,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "PSV": {
+      "fotmob_team_id": 8640,
+      "source_retrieved_at": "2026-10-15T15:54:51.070888+00:00",
+      "target_fotmob_match_id": "6106287",
+      "completed_competitive_matches_before_capture": 11,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106323",
+        "kickoff": "2026-10-13T19:00:00+00:00",
+        "home": "RB Leipzig",
+        "away": "PSV Eindhoven",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 168.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5781776",
+          "kickoff": "2026-10-17T14:30:00+00:00",
+          "home": "ADO Den Haag",
+          "away": "PSV Eindhoven",
+          "competition": "Eredivisie",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 76.5,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Paris": {
+      "fotmob_team_id": 9847,
+      "source_retrieved_at": "2026-10-15T15:54:50.540237+00:00",
+      "target_fotmob_match_id": "6106234",
+      "completed_competitive_matches_before_capture": 10,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106254",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Man City",
+        "away": "PSG",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5802962",
+          "kickoff": "2026-10-17T15:15:00+00:00",
+          "home": "Strasbourg",
+          "away": "PSG",
+          "competition": "Ligue 1",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 75.75,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Porto": {
+      "fotmob_team_id": 9773,
+      "source_retrieved_at": "2026-10-15T15:54:50.788254+00:00",
+      "target_fotmob_match_id": "6106287",
+      "completed_competitive_matches_before_capture": 11,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106299",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Real Betis",
+        "away": "FC Porto",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [],
+      "scheduled_matches_before_target": 0,
+      "projected_hours_from_preceding_fixture_to_target": 144.0,
+      "projected_preceding_fixture_status": "finished"
+    },
+    "Roma": {
+      "fotmob_team_id": 8686,
+      "source_retrieved_at": "2026-10-15T15:54:50.652903+00:00",
+      "target_fotmob_match_id": "6106277",
+      "completed_competitive_matches_before_capture": 8,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106274",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Roma",
+        "away": "Real Madrid",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5749701",
+          "kickoff": "2026-10-17T18:45:00+00:00",
+          "home": "Roma",
+          "away": "Genoa",
+          "competition": "Serie A",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 72.25,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "S. Bratislava": {
+      "fotmob_team_id": 6019,
+      "source_retrieved_at": "2026-10-15T15:54:50.779048+00:00",
+      "target_fotmob_match_id": "6106277",
+      "completed_competitive_matches_before_capture": 18,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106396",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Slovan Bratislava",
+        "away": "VfB Stuttgart",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5772199",
+          "kickoff": "2026-10-17T16:00:00+00:00",
+          "home": "Spartak Trnava",
+          "away": "Slovan Bratislava",
+          "competition": "1. Liga",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 75.0,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Sabah": {
+      "fotmob_team_id": 951893,
+      "source_retrieved_at": "2026-10-15T15:54:50.412695+00:00",
+      "target_fotmob_match_id": "6106422",
+      "completed_competitive_matches_before_capture": 16,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106424",
+        "kickoff": "2026-10-13T16:45:00+00:00",
+        "home": "Sabah FK",
+        "away": "Slavia Prague",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 168.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5987533",
+          "kickoff": "2026-10-17T12:00:00+00:00",
+          "home": "FK Qabala",
+          "away": "Sabah FK",
+          "competition": "Premier League",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 76.75,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Slavia Praha": {
+      "fotmob_team_id": 7787,
+      "source_retrieved_at": "2026-10-15T15:54:50.258717+00:00",
+      "target_fotmob_match_id": "6106333",
+      "completed_competitive_matches_before_capture": 13,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106424",
+        "kickoff": "2026-10-13T16:45:00+00:00",
+        "home": "Sabah FK",
+        "away": "Slavia Prague",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 168.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5831195",
+          "kickoff": "2026-10-17T13:00:00+00:00",
+          "home": "Slavia Prague",
+          "away": "Hradec Králové",
+          "competition": "1. Liga",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 75.75,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Stuttgart": {
+      "fotmob_team_id": 10269,
+      "source_retrieved_at": "2026-10-15T15:54:50.979436+00:00",
+      "target_fotmob_match_id": "6106397",
+      "completed_competitive_matches_before_capture": 8,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 3,
+      "last_completed": {
+        "match_id": "6106396",
+        "kickoff": "2026-10-14T19:00:00+00:00",
+        "home": "Slovan Bratislava",
+        "away": "VfB Stuttgart",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 144.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5881193",
+          "kickoff": "2026-10-17T13:30:00+00:00",
+          "home": "Hamburger SV",
+          "away": "VfB Stuttgart",
+          "competition": "Bundesliga",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 77.5,
+      "projected_preceding_fixture_status": "scheduled"
+    },
+    "Villarreal": {
+      "fotmob_team_id": 10205,
+      "source_retrieved_at": "2026-10-15T15:54:50.720816+00:00",
+      "target_fotmob_match_id": "6106248",
+      "completed_competitive_matches_before_capture": 10,
+      "completed_in_previous_14_days": 2,
+      "completed_in_previous_28_days": 4,
+      "last_completed": {
+        "match_id": "6106328",
+        "kickoff": "2026-10-13T19:00:00+00:00",
+        "home": "Villarreal",
+        "away": "Napoli",
+        "competition": "Champions League",
+        "status": "finished"
+      },
+      "hours_from_last_completed_to_target": 168.0,
+      "scheduled_before_target": [
+        {
+          "match_id": "5868100",
+          "kickoff": "2026-10-17T14:15:00+00:00",
+          "home": "Villarreal",
+          "away": "Elche",
+          "competition": "LaLiga",
+          "status": "scheduled"
+        }
+      ],
+      "scheduled_matches_before_target": 1,
+      "projected_hours_from_preceding_fixture_to_target": 76.75,
+      "projected_preceding_fixture_status": "scheduled"
+    }
+  },
+  "target_fixture_crosscheck": [
+    {
+      "match_id": "2049595",
+      "home": "Fenerbahçe",
+      "away": "Slavia Praha",
+      "fotmob_match_id": "6106333",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049597",
+      "home": "Sabah",
+      "away": "B. Dortmund",
+      "fotmob_match_id": "6106422",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049589",
+      "home": "Paris",
+      "away": "Barcelona",
+      "fotmob_match_id": "6106234",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049590",
+      "home": "Liverpool",
+      "away": "Villarreal",
+      "fotmob_match_id": "6106248",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049591",
+      "home": "Man City",
+      "away": "AEK Athens",
+      "fotmob_match_id": "6106257",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049592",
+      "home": "Roma",
+      "away": "S. Bratislava",
+      "fotmob_match_id": "6106277",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049593",
+      "home": "Porto",
+      "away": "PSV",
+      "fotmob_match_id": "6106287",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049594",
+      "home": "Napoli",
+      "away": "Bodø/Glimt",
+      "fotmob_match_id": "6106320",
+      "both_team_pages_agree": true
+    },
+    {
+      "match_id": "2049596",
+      "home": "Stuttgart",
+      "away": "Atleti",
+      "fotmob_match_id": "6106397",
+      "both_team_pages_agree": true
+    }
+  ],
+  "summary": {
+    "teams": 18,
+    "target_pairs_agree": 9,
+    "teams_with_scheduled_match_before_target": 17,
+    "minimum_projected_rest_hours": 72.25
+  },
+  "limitations": [
+    "The workload snapshot comes from one provider; only the target fixture is cross-checked to the UEFA archive.",
+    "A scheduled match may be postponed, cancelled, or played with a rotated lineup after this capture.",
+    "Fixture count and elapsed time do not measure player-level minutes, travel, sleep, injury, or fatigue.",
+    "Friendly matches are excluded from competitive workload counts."
+  ],
+  "source": {
+    "snapshot_folder": ".cache/fotmob_target_teams/20261015T155450099237Z",
+    "manifest_sha256": "bad6e027513ca19df67acf28b3f9c5ee4c8a44df6df841f4783cbcf28dc33a80",
+    "team_page_sha256": {
+      "Fenerbahçe": "b4f05df412f6501cce5668f515a9007246e728a740960e90ba73b48bfccd9dce",
+      "Slavia Praha": "5c97c1b61748de5f56dfda31412feca34b5aa734e28f651738782de04f86d447",
+      "Sabah": "d0ff70e6dad391645fbf725dc67d8a890823a8c99f7c20d64c3084b09e776e4a",
+      "B. Dortmund": "c21769b204c91fb6e6a7923cfca5a16dd1ae03e0363cff0e04bf935894c980e3",
+      "Paris": "69e074ec0f3880c7b8321bedf8d9757ebae506ca6a4db085a384e1a37000afda",
+      "Barcelona": "059ea8068218c8b6e4cf1a60020ae9a6cbf2520c575a7a05a8a8a091189a67b0",
+      "Liverpool": "e480527581466673848455fbeba4c8c99ae7c7e32e0e690672a2e005110d9c54",
+      "Villarreal": "faf0ce3e297baf9dae785989b1867c149779210946267effa717c0e2b97a3ffb",
+      "Man City": "f9d8ec8ec1cf9dfd4f23063e79ca8225a978ddae92e0e8bfc6ada618c02d2215",
+      "AEK Athens": "4d3337bbe75c9512b705d2ead1b06e8246322c8da9a9a8d5158c6ac4568d7f94",
+      "Roma": "b17b603490e1d2cb547409c82907c0a64a98f4e63ec2ac49df391c19f1bc868f",
+      "S. Bratislava": "075b20c00a776b74ca658810e2ffc9a6dc8ed194a90a81fe03e94d62794719a7",
+      "Porto": "709784c532026bf1b90f8e27c2540a8d5aa5de79b09d35de9e86a89aa57648bd",
+      "PSV": "17b6a7daf921ea3abf94608676d333d7c1099d890b43e59891e22d1bf3e2c1d4",
+      "Napoli": "9523e8f0024d996716e37007d723f1321ca25c1a8c3db21d8a3444efa7878870",
+      "Bodø/Glimt": "d7e922d7c9b79a8f062d451b5c845e480ff3e489a08bf7ac3b06bc05fa4e2409",
+      "Stuttgart": "c72022b129e91710fef2b6d5049a4a024d52b748fa61f8593613e5374b5cdd61",
+      "Atleti": "a1b8447248df42efa9273735e18ea6a2f619a8f8c2765b5b7b97cd103706bb01"
+    },
+    "forecast": "prospective/uefa_2026-10-15T15-53-23.675934+00-00.json",
+    "forecast_sha256": "be035342996824620b8fab0f65ea813c1e23dd0ec735368ab548aed1fa35dab3"
+  }
+}

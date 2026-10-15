@@ -49,6 +49,20 @@ class AnalystReportTests(unittest.TestCase):
         report = assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z")
         self.assertFalse(report["matches"][0]["evidence_gates"]["official_fixture_snapshot_within_30m"])
 
+    def test_schedule_load_is_checked_and_included(self):
+        schedule = {"generated_at": "2026-10-20T18:41:00Z",
+                    "forecast_generated_at": "2026-10-20T17:00:00Z", "target_date_utc": "2026-10-20",
+                    "teams": {"A": {"projected_hours_from_preceding_fixture_to_target": 72},
+                              "B": {"projected_hours_from_preceding_fixture_to_target": 80}},
+                    "target_fixture_crosscheck": [{"match_id": "1", "home": "A", "away": "B"}]}
+        report = assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z", schedule=schedule)
+        row = report["matches"][0]
+        self.assertTrue(row["evidence_gates"]["schedule_load_for_both"])
+        self.assertEqual(report["summary"]["schedule_load_complete"], 1)
+        schedule["target_fixture_crosscheck"][0]["away"] = "C"
+        with self.assertRaisesRegex(ValueError, "identity disagree"):
+            assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z", schedule=schedule)
+
 
 if __name__ == "__main__":
     unittest.main()

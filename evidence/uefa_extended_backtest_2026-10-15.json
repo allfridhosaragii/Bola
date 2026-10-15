@@ -55,7 +55,48 @@
       "2026_league_phase",
       "2027_md1",
       "2027_md2"
-    ]
+    ],
+    "combined_locked_period": "locked_combined"
+  },
+  "calibration_candidate": {
+    "method": "Multiply home/draw/away probabilities by observed-to-expected class ratios, then renormalize.",
+    "fit_period": "2026_league_phase",
+    "factors_h_d_a": [
+      1.0322911701411956,
+      0.8198439563121672,
+      1.0731689234298654
+    ],
+    "evaluation_periods": [
+      "2027_md1",
+      "2027_md2"
+    ],
+    "evaluation_matches": 36,
+    "uncorrected_metrics": {
+      "n": 36,
+      "accuracy": 0.6388888888888888,
+      "brier": 0.5137775472560823,
+      "log_loss": 0.8773655100422695,
+      "rps": 0.21079542337785825,
+      "top_label_ece_10_bins": 0.1378157704948147
+    },
+    "corrected_metrics": {
+      "n": 36,
+      "accuracy": 0.6111111111111112,
+      "brier": 0.5007682603168983,
+      "log_loss": 0.8527661814601509,
+      "rps": 0.20826341978515456,
+      "top_label_ece_10_bins": 0.11156825920353255
+    },
+    "corrected_minus_uncorrected_log_loss": {
+      "difference_a_minus_b": -0.024599328582118676,
+      "ci95": [
+        -0.04718224380458408,
+        0.006781673355899399
+      ]
+    },
+    "deployment_rule": "Deploy only if the upper endpoint of the paired date-block bootstrap 95% interval is below zero.",
+    "decision": "candidate_rejected",
+    "applied_to_target_forecast": false
   },
   "results": {
     "2025_league_phase": {
@@ -92,6 +133,87 @@
           "log_loss": 0.9598285660438867,
           "rps": 0.22611096408787304,
           "top_label_ece_10_bins": 0.07819967079008754
+        }
+      },
+      "blend_classwise_calibration_5_bins": {
+        "H": {
+          "ece": 0.06897063892079931,
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 35,
+              "mean_probability": 0.34797112018578635,
+              "observed_rate": 0.42857142857142855,
+              "gap": 0.0806003083856422
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 97,
+              "mean_probability": 0.487673249880285,
+              "observed_rate": 0.5567010309278351,
+              "gap": 0.06902778104755009
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.8,
+              "matches": 12,
+              "mean_probability": 0.6320777958762278,
+              "observed_rate": 0.6666666666666666,
+              "gap": 0.03458887079043882
+            }
+          ]
+        },
+        "D": {
+          "ece": 0.11993141846931665,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 12,
+              "mean_probability": 0.18841316771073888,
+              "observed_rate": 0.3333333333333333,
+              "gap": 0.14492016562259444
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 132,
+              "mean_probability": 0.2237203202432611,
+              "observed_rate": 0.10606060606060606,
+              "gap": -0.11765971418265504
+            }
+          ]
+        },
+        "A": {
+          "ece": 0.042529823304475564,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 12,
+              "mean_probability": 0.1776677614916771,
+              "observed_rate": 0.08333333333333333,
+              "gap": -0.09433442815834377
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 110,
+              "mean_probability": 0.3026398082019783,
+              "observed_rate": 0.32727272727272727,
+              "gap": 0.024632919070748993
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 22,
+              "mean_probability": 0.441697258174456,
+              "observed_rate": 0.5454545454545454,
+              "gap": 0.10375728728008943
+            }
+          ]
         }
       },
       "blend_minus_base_log_loss": {
@@ -145,6 +267,87 @@
           "top_label_ece_10_bins": 0.05657384216320099
         }
       },
+      "blend_classwise_calibration_5_bins": {
+        "H": {
+          "ece": 0.04746608063736882,
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 38,
+              "mean_probability": 0.3501863130782368,
+              "observed_rate": 0.2894736842105263,
+              "gap": -0.06071262886771045
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 84,
+              "mean_probability": 0.4936859484979531,
+              "observed_rate": 0.5238095238095238,
+              "gap": 0.030123575311570727
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.8,
+              "matches": 22,
+              "mean_probability": 0.6364702096074468,
+              "observed_rate": 0.7272727272727273,
+              "gap": 0.09080251766528047
+            }
+          ]
+        },
+        "D": {
+          "ece": 0.038150053650108665,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 29,
+              "mean_probability": 0.18335305066186744,
+              "observed_rate": 0.10344827586206896,
+              "gap": -0.07990477479979848
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 115,
+              "mean_probability": 0.21892495005583906,
+              "observed_rate": 0.19130434782608696,
+              "gap": -0.0276206022297521
+            }
+          ]
+        },
+        "A": {
+          "ece": 0.03481093901309621,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 19,
+              "mean_probability": 0.1783038544818947,
+              "observed_rate": 0.21052631578947367,
+              "gap": 0.03222246130757897
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 97,
+              "mean_probability": 0.297629501598481,
+              "observed_rate": 0.28865979381443296,
+              "gap": -0.008969707784048042
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 28,
+              "mean_probability": 0.4453397572146716,
+              "observed_rate": 0.5714285714285714,
+              "gap": 0.12608881421389978
+            }
+          ]
+        }
+      },
       "blend_minus_base_log_loss": {
         "difference_a_minus_b": -0.04216230561667652,
         "ci95": [
@@ -194,6 +397,87 @@
           "log_loss": 0.8531754496524787,
           "rps": 0.19277276419543007,
           "top_label_ece_10_bins": 0.15229717048378538
+        }
+      },
+      "blend_classwise_calibration_5_bins": {
+        "H": {
+          "ece": 0.11513011911218174,
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 3,
+              "mean_probability": 0.3672010038011398,
+              "observed_rate": 0.3333333333333333,
+              "gap": -0.03386767046780648
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 11,
+              "mean_probability": 0.496722310922658,
+              "observed_rate": 0.5454545454545454,
+              "gap": 0.04873223453188741
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.8,
+              "matches": 4,
+              "mean_probability": 0.6413288618087274,
+              "observed_rate": 1.0,
+              "gap": 0.3586711381912726
+            }
+          ]
+        },
+        "D": {
+          "ece": 0.09434522902734073,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 6,
+              "mean_probability": 0.1850610527452654,
+              "observed_rate": 0.16666666666666666,
+              "gap": -0.01839438607859875
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 12,
+              "mean_probability": 0.21565398383504505,
+              "observed_rate": 0.08333333333333333,
+              "gap": -0.1323206505017117
+            }
+          ]
+        },
+        "A": {
+          "ece": 0.07058668539855834,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 3,
+              "mean_probability": 0.17300862451149487,
+              "observed_rate": 0.0,
+              "gap": -0.17300862451149487
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 14,
+              "mean_probability": 0.3001225210294779,
+              "observed_rate": 0.2857142857142857,
+              "gap": -0.014408235315192197
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 1,
+              "mean_probability": 0.4501808307731254,
+              "observed_rate": 1.0,
+              "gap": 0.5498191692268746
+            }
+          ]
         }
       },
       "blend_minus_base_log_loss": {
@@ -247,11 +531,224 @@
           "top_label_ece_10_bins": 0.123334370505844
         }
       },
+      "blend_classwise_calibration_5_bins": {
+        "H": {
+          "ece": 0.09484377999340779,
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 7,
+              "mean_probability": 0.3572733493764475,
+              "observed_rate": 0.42857142857142855,
+              "gap": 0.07129807919498105
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 9,
+              "mean_probability": 0.5002702017067491,
+              "observed_rate": 0.5555555555555556,
+              "gap": 0.05528535384880651
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.8,
+              "matches": 2,
+              "mean_probability": 0.6447333495613928,
+              "observed_rate": 1.0,
+              "gap": 0.35526665043860717
+            }
+          ]
+        },
+        "D": {
+          "ece": 0.15312468084582875,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 4,
+              "mean_probability": 0.1819544816441735,
+              "observed_rate": 0.0,
+              "gap": -0.1819544816441735
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 14,
+              "mean_probability": 0.21631616633201595,
+              "observed_rate": 0.07142857142857142,
+              "gap": -0.14488759490344452
+            }
+          ]
+        },
+        "A": {
+          "ece": 0.09565061110811143,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 2,
+              "mean_probability": 0.16816369615060728,
+              "observed_rate": 0.0,
+              "gap": -0.16816369615060728
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 11,
+              "mean_probability": 0.31070318941280134,
+              "observed_rate": 0.36363636363636365,
+              "gap": 0.05293317422356231
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 5,
+              "mean_probability": 0.4393762617628788,
+              "observed_rate": 0.6,
+              "gap": 0.16062373823712117
+            }
+          ]
+        }
+      },
       "blend_minus_base_log_loss": {
         "difference_a_minus_b": -0.04353749612481161,
         "ci95": [
           -0.05209001285479001,
           -0.034984979394833214
+        ]
+      },
+      "deployed_blend_minus_fixed_0_5_log_loss": {
+        "difference_a_minus_b": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "locked_combined": {
+      "matches": 180,
+      "metrics": {
+        "base": {
+          "n": 180,
+          "accuracy": 0.5111111111111111,
+          "brier": 0.6072262451175264,
+          "log_loss": 1.0068800511037361,
+          "rps": 0.236706052891827,
+          "top_label_ece_10_bins": 0.02664802324832921
+        },
+        "elo": {
+          "n": 180,
+          "accuracy": 0.5833333333333334,
+          "brier": 0.5677240233166144,
+          "log_loss": 0.9554645206975174,
+          "rps": 0.21754711675334432,
+          "top_label_ece_10_bins": 0.09623550120153634
+        },
+        "poisson": {
+          "n": 180,
+          "accuracy": 0.5555555555555556,
+          "brier": 0.5818511242139088,
+          "log_loss": 0.9809721691366936,
+          "rps": 0.22328182920979017,
+          "top_label_ece_10_bins": 0.06992637290589991
+        },
+        "blend": {
+          "n": 180,
+          "accuracy": 0.5722222222222222,
+          "brier": 0.5704858919101865,
+          "log_loss": 0.9597040265429355,
+          "rps": 0.218468137200692,
+          "top_label_ece_10_bins": 0.07282222782952369
+        }
+      },
+      "blend_classwise_calibration_5_bins": {
+        "H": {
+          "ece": 0.053424848260844336,
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 48,
+              "mean_probability": 0.3522832573752406,
+              "observed_rate": 0.3125,
+              "gap": -0.03978325737524058
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 104,
+              "mean_probability": 0.49457689335901966,
+              "observed_rate": 0.5288461538461539,
+              "gap": 0.03426926048713419
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.8,
+              "matches": 28,
+              "mean_probability": 0.637754527061483,
+              "observed_rate": 0.7857142857142857,
+              "gap": 0.14795975865280275
+            }
+          ]
+        },
+        "D": {
+          "ece": 0.05526703390740388,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 39,
+              "mean_probability": 0.1834723772369857,
+              "observed_rate": 0.10256410256410256,
+              "gap": -0.08090827467288314
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 141,
+              "mean_probability": 0.21838754178078196,
+              "observed_rate": 0.1702127659574468,
+              "gap": -0.04817477582333515
+            }
+          ]
+        },
+        "A": {
+          "ece": 0.03120035106888635,
+          "bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.2,
+              "matches": 24,
+              "mean_probability": 0.17679693754132075,
+              "observed_rate": 0.16666666666666666,
+              "gap": -0.010130270874654096
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.4,
+              "matches": 122,
+              "mean_probability": 0.29909436092628006,
+              "observed_rate": 0.29508196721311475,
+              "gap": -0.004012393713165308
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.6,
+              "matches": 34,
+              "mean_probability": 0.44460515710583304,
+              "observed_rate": 0.5882352941176471,
+              "gap": 0.14363013701181404
+            }
+          ]
+        }
+      },
+      "blend_minus_base_log_loss": {
+        "difference_a_minus_b": -0.04717602456080165,
+        "ci95": [
+          -0.0728990511471226,
+          -0.02219264528869685
         ]
       },
       "deployed_blend_minus_fixed_0_5_log_loss": {
@@ -456,6 +953,7 @@
     "Qualifying strength is connected through match results only; there is no domestic-league or club-coefficient prior.",
     "The source snapshot does not reveal first-publication timestamps for historical results.",
     "The candidate-selection protocol was implemented after all reported periods had completed; later periods are untouched by optimization but remain retrospective evidence rather than a preregistered prospective trial.",
+    "The class-reweighting candidate is fitted on 2025/26 and checked on 36 later matches, but remains rejected because its paired bootstrap interval includes zero.",
     "No odds, xG, lineup, injury, or tactical variable enters this model."
   ],
   "source": "https://match.uefa.com/v5",
