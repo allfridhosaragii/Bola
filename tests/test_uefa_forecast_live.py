@@ -24,6 +24,7 @@ class ForecastLiveTests(unittest.TestCase):
         self.assertEqual(result["training_matches"], 1)
         self.assertEqual(len(result["predictions"]), 1)
         self.assertAlmostEqual(sum(result["predictions"][0]["probabilities_h_d_a"]["blend"]), 1, places=5)
+        self.assertEqual(result["model_parameters"], {"elo_weight": 0.5, "poisson_weight": 0.5})
         same_day_finished = fixture(3, "2026-10-20", "FINISHED", score=(6, 0))
         altered = build_forecast([], self.prior, [same_day_finished, *self.target],
                                  date(2026, 10, 20), 2027, self.now)
@@ -58,6 +59,20 @@ class ForecastLiveTests(unittest.TestCase):
                                 include_current_history=True)
         self.assertEqual(result["training_matches"], 1)
         self.assertEqual(result["predictions"][0]["historical_uefa_appearances"], {"home": 1, "away": 1})
+
+    def test_explicit_blend_weight_is_recorded_and_changes_prediction(self):
+        first = build_forecast([], self.prior, self.target, date(2026, 10, 20), 2027, self.now,
+                               blend_weight=0.25)
+        second = build_forecast([], self.prior, self.target, date(2026, 10, 20), 2027, self.now,
+                                blend_weight=0.75)
+        self.assertEqual(second["model_parameters"]["elo_weight"], 0.75)
+        self.assertNotEqual(first["predictions"][0]["probabilities_h_d_a"]["blend"],
+                            second["predictions"][0]["probabilities_h_d_a"]["blend"])
+
+    def test_rejects_invalid_blend_weight(self):
+        with self.assertRaisesRegex(ValueError, "Blend weight"):
+            build_forecast([], self.prior, self.target, date(2026, 10, 20), 2027, self.now,
+                           blend_weight=1.01)
 
 
 if __name__ == "__main__":

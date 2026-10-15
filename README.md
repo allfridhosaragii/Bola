@@ -74,7 +74,7 @@ python3 -m bola.uefa_extended_backtest --output reports/uefa_extended_backtest.j
 
 `python3 -m bola.uefa_forecast` membekukan ramalan 1X2 **eksploratif** untuk tujuh laga UEFA 15 Oktober 2026 pukul 02.00 WIB, jika dijalankan sebelum kickoff. Ia memasukkan hanya hasil yang sudah `FINISHED` pada tanggal sebelumnya, menolak laga yang sudah dimulai, dan menyimpan waktu pembuatan serta checksum sumber dalam berkas `prospective/` yang tidak ditimpa. Perintah ini khusus untuk periode tersebut; berkasnya dipakai untuk pengujian setelah hasil keluar, bukan dua rekomendasi taruhan.
 
-Riwayat UEFA yang diperluas berisi **1.114 pertandingan resmi** dari 2022/23 sampai 14 Oktober 2026: kualifikasi, fase grup/liga, dan gugur. Model tetap dinilai hanya pada fase liga yang ditetapkan sebelumnya. Pada 18 laga Matchday 2 musim 2026/27, log loss campuran adalah **0,9016**, dibanding baseline frekuensi **0,9451**. Sampel itu merupakan holdout retrospektif setelah hasil selesai dan belum dibandingkan dengan odds pasar. Laporan terverifikasi ada di `evidence/uefa_extended_backtest_2026-10-15.json`.
+Riwayat UEFA yang diperluas berisi **1.114 pertandingan resmi** dari 2022/23 sampai 14 Oktober 2026: kualifikasi, fase grup/liga, dan gugur. Model tetap dinilai hanya pada fase liga yang ditetapkan sebelumnya. Grid 2024/25 memilih bobot Elo 0,75, tetapi perbaikannya terhadap bobot 0,50 hanya **0,000013 log loss** dengan interval bootstrap 95% **[−0,00753; 0,00698]**. Karena interval melintasi nol, aturan penerapan mempertahankan bobot 0,50. Pada 18 laga Matchday 2 musim 2026/27, log loss campuran yang dipertahankan adalah **0,9016**, dibanding baseline frekuensi **0,9451**. Sampel itu merupakan holdout retrospektif setelah hasil selesai dan belum dibandingkan dengan odds pasar. Laporan terverifikasi ada di `evidence/uefa_extended_backtest_2026-10-15.json`.
 
 ### Alur analis untuk tanggal UEFA berikutnya
 
@@ -82,18 +82,18 @@ Untuk tanggal pertandingan baru, jalankan `bola.uefa_forecast_live` dengan **tan
 
 ```bash
 python3 -m bola.uefa_forecast_live --target-date-utc 2026-10-20 --season-year 2027
-python3 -m bola.uefa_forecast_live --verify prospective/uefa_2026-10-15T15-26-30.926716+00-00.json
+python3 -m bola.uefa_forecast_live --verify prospective/uefa_2026-10-15T15-53-23.675934+00-00.json
 ```
 
 Satu perintah untuk penyegaran menyeluruh sebelum kickoff adalah `bash scripts/refresh_uefa_target.sh 2026-10-20`. Perintah ini mengambil ulang data form, membuat arsip peluang baru, memeriksa ulang sumbernya, lalu menyimpan status fixture, skuad, lineup, dan form sebagai laporan bertimestamp di `reports/`. Alur ini telah dijalankan ujung ke ujung pada 15 Oktober: sembilan fixture, sembilan pasangan skuad terdaftar, nol XI resmi, dan form 18/18 tim. Jalankan ulang menjelang pertandingan; hasil lama tidak otomatis menjadi bukti keadaan saat kickoff. Saat ini protokol riwayat model mendukung musim UEFA 2026/27.
 
-Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh dengan riwayat UEFA diperluas ada di `evidence/analyst_report_extended_2026-10-15.json`. Untuk merakitnya secara manual:
+Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh terbaru dengan riwayat UEFA diperluas dan parameter model tercatat ada di `evidence/analyst_report_model_gate_2026-10-15.json`. Untuk merakitnya secara manual:
 
 ```bash
 python3 -m bola.analyst_report \
-  --forecast prospective/uefa_2026-10-15T15-26-30.926716+00-00.json \
+  --forecast prospective/uefa_2026-10-15T15-53-23.675934+00-00.json \
   --form evidence/uefa_target_form_2026-10-15.json \
-  --squad evidence/uefa_target_squad_extended_2026-10-15.json \
+  --squad evidence/uefa_target_squad_model_gate_2026-10-15.json \
   --output reports/analyst_report.json
 ```
 
@@ -106,7 +106,7 @@ Pada hari pertandingan, cocokkan dulu nama tim, kompetisi, waktu, dan ID pertand
 Untuk snapshot resmi fixture, daftar skuad, dan status lineup dari arsip target, jalankan:
 
 ```bash
-python3 -m bola.uefa_target_snapshot --forecast prospective/uefa_2026-10-15T15-26-30.926716+00-00.json --output reports/uefa_target_2026-10-20_refresh.json
+python3 -m bola.uefa_target_snapshot --forecast prospective/uefa_2026-10-15T15-53-23.675934+00-00.json --output reports/uefa_target_2026-10-20_refresh.json
 ```
 
 Snapshot awal 15 Oktober ada di `evidence/uefa_target_squad_2026-10-15.json`: sembilan fixture masih Upcoming; daftar pemain terdaftar tersedia untuk 18 tim, tetapi belum ada starting XI resmi. Nama dan waktu dari halaman UEFA diperiksa terhadap arsip model. Untuk statistik liga, `bola.target_form_audit` menyatukan tiga sumber form yang telah diperiksa waktu pengambilannya. Snapshot awal ada di `evidence/uefa_target_form_2026-10-15.json`: jendela 5/10/20 tersedia untuk **18 dari 18 tim** setelah liga Czech dan Azerbaijan ditambahkan dari FotMob. Dua liga itu hanya memiliki satu penyedia hasil yang diverifikasi dalam proyek ini. Ambil ulang data form setelah pertandingan liga berikutnya sebelum memakai ringkasan itu dekat kickoff.
@@ -114,7 +114,7 @@ Snapshot awal 15 Oktober ada di `evidence/uefa_target_squad_2026-10-15.json`: se
 Jika ada tangkapan layar odds 1X2, transkripsikan nilainya ke JSON lokal dengan `match_id`, `home`, `away`, `kickoff`, `observed_at` berzona waktu, `bookmaker`, `market` bernilai `1X2_regular_time`, `decimal_odds` berisi `home`/`draw`/`away`, dan `screenshot_path`. Lalu jalankan:
 
 ```bash
-python3 -m bola.market_snapshot --forecast prospective/uefa_2026-10-15T15-26-30.926716+00-00.json --quote /tmp/odds_quote.json --output reports/odds_quote_comparison.json
+python3 -m bola.market_snapshot --forecast prospective/uefa_2026-10-15T15-53-23.675934+00-00.json --quote /tmp/odds_quote.json --output reports/odds_quote_comparison.json
 ```
 
 Modul ini menolak identitas laga yang berbeda, harga invalid, bukti gambar kosong, serta waktu setelah kickoff. Ia menyimpan SHA-256 gambar, menghitung margin pasar dan probabilitas 1X2 pasar setelah margin dinormalisasi. Jam dan angka di gambar masih memerlukan pemeriksaan manusia: transkripsi JSON tidak membuktikan isi layar atau bahwa harga dapat dipasang saat itu. Perbandingan tersebut bukan sinyal taruhan. Jika odds, lineup, atau bukti kualitas model tidak memadai, hasil analisis adalah **tunda/tidak ada pilihan**, bukan dua pilihan yang dipaksakan.
@@ -122,7 +122,7 @@ Modul ini menolak identitas laga yang berbeda, harga invalid, bukti gambar koson
 Setelah semua laga dalam arsip selesai, nilai distribusi yang **sudah dibekukan** terhadap skor resmi UEFA:
 
 ```bash
-python3 -m bola.uefa_score prospective/uefa_2026-10-15T15-26-30.926716+00-00.json --output reports/uefa_score_2026-10-20.json
+python3 -m bola.uefa_score prospective/uefa_2026-10-15T15-53-23.675934+00-00.json --output reports/uefa_score_2026-10-20.json
 ```
 
 Perintah penilaian menolak hasil yang belum final, perubahan identitas fixture, serta arsip yang dibuat sesudah kickoff. Ulangi pengamatan prospektif pada banyak tanggal sebelum menyimpulkan kalibrasi atau manfaat terhadap pasar.

@@ -28,6 +28,12 @@ class ExtendedUefaBacktestTests(unittest.TestCase):
         self.assertEqual(report["results"]["2027_md1"]["matches"], 18)
         self.assertEqual(report["results"]["2027_md2"]["matches"], 18)
         self.assertEqual(sum(report["sample"].values()), 1114)
+        self.assertIn(report["weight_selection"]["candidate_weight"], (0.0, 0.25, 0.5, 0.75, 1.0))
+        self.assertIn(report["weight_selection"]["deployed_weight"], (0.0, 0.25, 0.5, 0.75, 1.0))
+        self.assertIn(report["weight_selection"]["decision"], ("candidate_accepted", "incumbent_retained"))
+        self.assertEqual(report["weight_selection"]["locked_evaluation_periods"],
+                         ["2026_league_phase", "2027_md1", "2027_md2"])
+        self.assertIn("deployed_blend_minus_fixed_0_5_log_loss", report["results"]["2027_md2"])
 
     def test_rejects_incomplete_sample(self):
         with self.assertRaisesRegex(ValueError, "Unexpected extended"):

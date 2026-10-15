@@ -1,0 +1,549 @@
+{
+  "refreshed_at": "2026-10-15T15:53:46.695345+00:00",
+  "forecast_generated_at": "2026-10-15T15:53:23.675934+00:00",
+  "sitemap_sha256": "2917b96ed04fe4c3a27fb119664914cef88cab74ba10da05a36e7d2e32eb75ae",
+  "snapshot_folder": ".cache/uefa_target/20261015T155336435025Z",
+  "fixtures": [
+    {
+      "match_id": "2049595",
+      "home": "Fenerbahçe",
+      "away": "Slavia Praha",
+      "kickoff": "2026-10-20T16:45:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049595--fenerbahce-vs-slavia-praha/",
+      "fixture_retrieved_at": "2026-10-15T15:53:38.230528+00:00",
+      "fixture_html_sha256": "4d8238ec5ebb378f6f5e1fbf39482866ad70e948440f1af377b3b889c64581d6",
+      "squad_retrieved_at": "2026-10-15T15:53:40.987678+00:00",
+      "registered_players": {
+        "Fenerbahçe": 34,
+        "Slavia Praha": 45
+      },
+      "flagged_players": {
+        "Fenerbahçe": [
+          {
+            "name": "Mert Müldür",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250097238--mert-muldur/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Slavia Praha": [
+          {
+            "name": "Štěpán Chaloupek",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250190353--stepan-chaloupek/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Ivan Schranz",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250012660--ivan-schranz/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Pavel Kačor",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250218489--pavel-kacor/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "David Jurásek",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250166772--david-jurasek/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Adonija Ouanda",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250223132--adonija-ouanda/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:44.449344+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "dbf94bdadc5c1d7e855afaf35336e2a5e30b8d847d73e51b49e5ea9f55440539",
+        "lineup": "818e25072971ae4932f6289124fb43d7adbe1a04b92c15f15039c54b9c521588"
+      }
+    },
+    {
+      "match_id": "2049597",
+      "home": "Sabah",
+      "away": "B. Dortmund",
+      "kickoff": "2026-10-20T16:45:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049597--sabah-vs-b-dortmund/",
+      "fixture_retrieved_at": "2026-10-15T15:53:37.751350+00:00",
+      "fixture_html_sha256": "2e484b247e9379e9eae14bbbf68e33505a709d31f66dedbc3a88c2d0eb8f3043",
+      "squad_retrieved_at": "2026-10-15T15:53:40.812472+00:00",
+      "registered_players": {
+        "Sabah": 27,
+        "B. Dortmund": 29
+      },
+      "flagged_players": {
+        "Sabah": [
+          {
+            "name": "Khayal Aliyev",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250169206--khayal-aliyev/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "B. Dortmund": [
+          {
+            "name": "Nico Schlotterbeck",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250134856--nico-schlotterbeck/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:44.496829+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "51f9a553e084ef82c320bb16ac693cf1412f7783c8582850a1b220949eaf7f86",
+        "lineup": "5cca8490c7f72efbe8d091b17632022beff76edc433fcb22604ec1b12bcf3394"
+      }
+    },
+    {
+      "match_id": "2049589",
+      "home": "Paris",
+      "away": "Barcelona",
+      "kickoff": "2026-10-20T19:00:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049589--paris-vs-barcelona/",
+      "fixture_retrieved_at": "2026-10-15T15:53:37.772732+00:00",
+      "fixture_html_sha256": "fcedaf1437c9254d073c94a29cbe5b14629299abec2790fce3a0f3f75b697714",
+      "squad_retrieved_at": "2026-10-15T15:53:40.570880+00:00",
+      "registered_players": {
+        "Paris": 27,
+        "Barcelona": 35
+      },
+      "flagged_players": {
+        "Paris": [
+          {
+            "name": "Senny Mayulu",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250177597--senny-mayulu/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Barcelona": [
+          {
+            "name": "Andreas Christensen",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250041718--andreas-christensen/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Frenkie de Jong",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/50327423--frenkie-de-jong/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Raphinha",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250112880--raphinha/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:44.764100+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "55a83fba2044d8773c24ecbbe55340f532c587758fe3f9eb26b8821f514f738f",
+        "lineup": "cc4b8ed2a98cecf1304084d92efb3d7c1009151e32c0d52b335865ef4ad061ea"
+      }
+    },
+    {
+      "match_id": "2049590",
+      "home": "Liverpool",
+      "away": "Villarreal",
+      "kickoff": "2026-10-20T19:00:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049590--liverpool-vs-villarreal/",
+      "fixture_retrieved_at": "2026-10-15T15:53:38.367866+00:00",
+      "fixture_html_sha256": "a1b13c9438dee6f4e2562938481d87f60ab6341d3ed5d2cfb1452bc03d3965a1",
+      "squad_retrieved_at": "2026-10-15T15:53:40.822865+00:00",
+      "registered_players": {
+        "Liverpool": 48,
+        "Villarreal": 33
+      },
+      "flagged_players": {
+        "Liverpool": [
+          {
+            "name": "Conor Bradley",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250135607--conor-bradley/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Giovanni Leoni",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250203207--giovanni-leoni/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Dominik Szoboszlai",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250104066--dominik-szoboszlai/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Alexander Isak",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250089868--alexander-isak/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Cody Gakpo",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250096849--cody-gakpo/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Hugo Ekitiké",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250144643--hugo-ekitike/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Villarreal": [
+          {
+            "name": "Tajon Buchanan",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250173127--tajon-buchanan/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Nicolas Pépé",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250106003--nicolas-pepe/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:44.657841+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "240aa95f400f013ebd9595228c28a0543723e1e0ca8c7ee4e2c66817df1e777a",
+        "lineup": "314ca71e0333489e7c2b984b2becd930c959c95258e454cf6356d9759b93c24e"
+      }
+    },
+    {
+      "match_id": "2049591",
+      "home": "Man City",
+      "away": "AEK Athens",
+      "kickoff": "2026-10-20T19:00:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049591--man-city-vs-aek-athens/",
+      "fixture_retrieved_at": "2026-10-15T15:53:38.757921+00:00",
+      "fixture_html_sha256": "e50e6ad1073efcf29000cd498169e34e5062d512a52a212a0be7e66d47e0c5bd",
+      "squad_retrieved_at": "2026-10-15T15:53:41.012237+00:00",
+      "registered_players": {
+        "Man City": 27,
+        "AEK Athens": 22
+      },
+      "flagged_players": {
+        "Man City": [],
+        "AEK Athens": [
+          {
+            "name": "Thomas Strakosha",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250046901--thomas-strakosha/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:45.365959+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "0932e55750fe4aff91cda480822c5d70a787eea5e531fc96de4b7f6fc8d08b59",
+        "lineup": "9fb9e14b6aca48d046ab9e4710de6df671579b29817f075b19fb0bf51b399a56"
+      }
+    },
+    {
+      "match_id": "2049592",
+      "home": "Roma",
+      "away": "S. Bratislava",
+      "kickoff": "2026-10-20T19:00:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049592--roma-vs-s-bratislava/",
+      "fixture_retrieved_at": "2026-10-15T15:53:38.653056+00:00",
+      "fixture_html_sha256": "e9f33dd7ac6fbb34d94cd6afbc7b7ae42e30a32d3c8bba4616259b35fd089ffb",
+      "squad_retrieved_at": "2026-10-15T15:53:42.086593+00:00",
+      "registered_players": {
+        "Roma": 24,
+        "S. Bratislava": 28
+      },
+      "flagged_players": {
+        "Roma": [
+          {
+            "name": "Bryan Cristante",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250041741--bryan-cristante/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Manu Koné",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250132062--manu-kone/",
+            "badges": [
+              "Doubtful"
+            ]
+          }
+        ],
+        "S. Bratislava": []
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:45.820428+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "42f4a66d2956ee9955e06e28da65561d21976684f4c465ec1106cdba585ead2f",
+        "lineup": "c860e8dc7eab2e6dbe0c98223bc3172ced00606e424c40b1943934dca1da323d"
+      }
+    },
+    {
+      "match_id": "2049593",
+      "home": "Porto",
+      "away": "PSV",
+      "kickoff": "2026-10-20T19:00:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049593--porto-vs-psv/",
+      "fixture_retrieved_at": "2026-10-15T15:53:39.089184+00:00",
+      "fixture_html_sha256": "71fde4adf2591dd8681d320cdda1ed9e9f1ef74b73c10a4d56d2c5d0c1036735",
+      "squad_retrieved_at": "2026-10-15T15:53:42.146208+00:00",
+      "registered_players": {
+        "Porto": 35,
+        "PSV": 52
+      },
+      "flagged_players": {
+        "Porto": [
+          {
+            "name": "William Gomes",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250205755--william-gomes/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "PSV": [
+          {
+            "name": "Kiliann Sildillia",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250177927--kiliann-sildillia/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Paul Wanner",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250163784--paul-wanner/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Ricardo Pepi",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250187620--ricardo-pepi/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Sami Ouaissa",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250216420--sami-ouaissa/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Sam Lammers",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250088106--sam-lammers/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:45.304747+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "aa9e002f2c65da2dfaa1daf4c4e294aa8b3a8865bebb47a640528bfba145a2b8",
+        "lineup": "360843738b98057c03443db2cc0d1c14f4c93c551c1c5a2b64e68f65bf48dbc2"
+      }
+    },
+    {
+      "match_id": "2049594",
+      "home": "Napoli",
+      "away": "Bodø/Glimt",
+      "kickoff": "2026-10-20T19:00:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049594--napoli-vs-bodo-glimt/",
+      "fixture_retrieved_at": "2026-10-15T15:53:39.431798+00:00",
+      "fixture_html_sha256": "971673b1858c5eda4f85ad4fe52a34a3ee62042a75472e26e6637e4d04f3a049",
+      "squad_retrieved_at": "2026-10-15T15:53:43.544113+00:00",
+      "registered_players": {
+        "Napoli": 24,
+        "Bodø/Glimt": 32
+      },
+      "flagged_players": {
+        "Napoli": [
+          {
+            "name": "Mathías Olivera",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250134196--mathias-olivera/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Frank Anguissa",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250086987--frank-anguissa/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Antonio Vergara",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250165363--antonio-vergara/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Alisson Santos",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250211008--alisson-santos/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Bodø/Glimt": [
+          {
+            "name": "Magnus Riisnæs",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250138997--magnus-riisn%C3%A6s/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Håkon Evjen",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250107249--hakon-evjen/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "August Mikkelsen",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250186245--august-mikkelsen/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:45.582506+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "f03542703f54fc549d4206ff82383b5e568cbc33771e7eff972ffceeb4dc2675",
+        "lineup": "a537d785bdd86ec8ab7687b290720ebc152e3c883e78bb10bf74394aefce57e1"
+      }
+    },
+    {
+      "match_id": "2049596",
+      "home": "Stuttgart",
+      "away": "Atleti",
+      "kickoff": "2026-10-20T19:00:00+00:00",
+      "status_at_retrieval": "Upcoming",
+      "fixture_url": "https://www.uefa.com/uefachampionsleague/match/2049596--stuttgart-vs-atleti/",
+      "fixture_retrieved_at": "2026-10-15T15:53:39.431493+00:00",
+      "fixture_html_sha256": "15dfd4955dc8e534f949064e4bc1ea8e55ea3e0110aa58c4ae46b1753e5c374f",
+      "squad_retrieved_at": "2026-10-15T15:53:42.409084+00:00",
+      "registered_players": {
+        "Stuttgart": 32,
+        "Atleti": 47
+      },
+      "flagged_players": {
+        "Stuttgart": [
+          {
+            "name": "Ameen Al-Dakhil",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250127149--ameen-al-dakhil/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Maximilian Mittelstädt",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250090766--maximilian-mittelstadt/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Luca Jaquez",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250186841--luca-jaquez/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Nikolas Nartey",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250101564--nikolas-nartey/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Tiago Tomás",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250126369--tiago-tomas/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Atleti": []
+      },
+      "lineup_retrieved_at": "2026-10-15T15:53:46.694101+00:00",
+      "lineup_status": "NOT_AVAILABLE",
+      "official_starting_xi_before_kickoff": false,
+      "lineup_source_sha256": {
+        "match": "b6f5e51e09db312d1d1721ce1c24d6cd9f508492d3590e14b33fb2277c669910",
+        "lineup": "39513afc699f8806bc9392c114a999999fe319a208b6185c05b416449fe88d08"
+      }
+    }
+  ],
+  "limitations": [
+    "A registered squad or player badge does not establish fitness or selection for this fixture.",
+    "The UEFA pages do not provide first-publication times of individual player badges.",
+    "Refresh lineups and injury news near kickoff; this snapshot is time-specific."
+  ]
+}

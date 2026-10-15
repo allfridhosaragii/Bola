@@ -17,6 +17,8 @@ from .uefa_lineup_api import fetch_body
 
 
 API = "https://match.uefa.com/v5"
+DEFAULT_BLEND_WEIGHT = 0.5
+EXTENDED_BLEND_WEIGHT = 0.5
 
 
 def url_for(path: str, **params: object) -> str:
@@ -52,9 +54,12 @@ def completed_match(row: dict, season: int) -> Match:
 
 def build_forecast(history: list[dict], prior_days: dict[str, list[dict]],
                    target_rows: list[dict], target_day: date, season: int,
-                   captured: datetime, include_current_history: bool = False) -> dict:
+                   captured: datetime, include_current_history: bool = False,
+                   blend_weight: float = DEFAULT_BLEND_WEIGHT) -> dict:
     if captured.tzinfo is None:
         raise ValueError("Capture time must include timezone")
+    if not 0 <= blend_weight <= 1:
+        raise ValueError("Blend weight must be between zero and one")
     if len({str(row["id"]) for row in history}) != len(history):
         raise ValueError("Duplicate historical UEFA match ID")
     if len({str(row["id"]) for rows in prior_days.values() for row in rows}) != sum(map(len, prior_days.values())):
@@ -109,7 +114,7 @@ def build_forecast(history: list[dict], prior_days: dict[str, list[dict]],
         home, away = str(row["homeTeam"]["id"]), str(row["awayTeam"]["id"])
         candidate = Match(str(season), kickoff.date(), home, away, 0, 0, "unplayed")
         probabilities = model.predict(candidate)
-        probabilities["blend"] = mix(probabilities["elo"], probabilities["poisson"], 0.5)
+        probabilities["blend"] = mix(probabilities["elo"], probabilities["poisson"], blend_weight)
         predictions.append({"match_id": mid, "home": row["homeTeam"]["internationalName"],
                             "away": row["awayTeam"]["internationalName"],
                             "kickoff": row["kickOffTime"]["dateTime"],
@@ -120,10 +125,11 @@ def build_forecast(history: list[dict], prior_days: dict[str, list[dict]],
         raise ValueError("No unstarted UEFA fixture remains for this date")
     return {"generated_at": captured.isoformat(), "target_date_utc": target_day.isoformat(),
             "season_year": season, "training_matches": model.n,
+            "model_parameters": {"elo_weight": blend_weight, "poisson_weight": 1 - blend_weight},
             "excluded_unfinished_prior_matches": excluded_unfinished,
             "excluded_target_matches": excluded_target,
             "predictions": predictions,
-            "protocol": "Results-only UEFA Elo/Poisson blend at fixed 0.5 weight from EPL validation. "
+            "protocol": f"Results-only UEFA Elo/Poisson blend at fixed {blend_weight:g} Elo weight. "
                         "All fixtures on the target UTC date use the same prior-date model state. "
                         "Probability order: home/draw/away.",
             "limitations": ["Exploratory probabilities; not calibrated betting recommendations.",
@@ -200,9 +206,10 @@ def forecast_extended(history_dir: Path, cache_dir: Path, target_day: date, seas
     target_body = fetch_body(target_url)
     captured = datetime.now(timezone.utc)
     result = build_forecast(history, {}, json.loads(target_body), target_day, season, captured,
-                            include_current_history=True)
+                            include_current_history=True, blend_weight=EXTENDED_BLEND_WEIGHT)
     result["history_mode"] = "all_ucl_phases_2022_23_through_2026_10_14"
-    result["protocol"] = ("Results-only UEFA Elo/Poisson blend at fixed 0.5 weight from EPL validation. "
+    result["protocol"] = ("Results-only UEFA Elo/Poisson blend at fixed 0.5 Elo weight. A 0.75 candidate selected "
+                          "on the 2024/25 league phase did not pass the paired-bootstrap deployment gate. "
                           "Uses all completed Champions League phases from 2022/23 through 14 October 2026. "
                           "All target-date fixtures use the same prior state. Probability order: home/draw/away.")
     cache_dir.mkdir(parents=True, exist_ok=True)
@@ -250,7 +257,8 @@ def verify_archive(archive: dict) -> dict:
             raise ValueError("Archived calendar and prior match snapshots disagree")
     replay = build_forecast(json.loads(historical_bytes), prior, bodies["target.json"],
                             date.fromisoformat(archive["target_date_utc"]), archive["season_year"],
-                            instant(archive["generated_at"]), include_current_history=extended)
+                            instant(archive["generated_at"]), include_current_history=extended,
+                            blend_weight=archive.get("model_parameters", {}).get("elo_weight", DEFAULT_BLEND_WEIGHT))
     for field in ("training_matches", "excluded_unfinished_prior_matches",
                   "excluded_target_matches", "predictions"):
         if replay[field] != archive[field]:

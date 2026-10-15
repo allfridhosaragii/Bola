@@ -1,0 +1,1886 @@
+{
+  "generated_at": "2026-10-15T15:53:46.722784+00:00",
+  "target_date_utc": "2026-10-20",
+  "matches": [
+    {
+      "match_id": "2049595",
+      "home": "Fenerbahçe",
+      "away": "Slavia Praha",
+      "kickoff": "2026-10-20T16:45:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.606781,
+        0.204127,
+        0.189091
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.606781
+      },
+      "historical_uefa_appearances": {
+        "home": 18,
+        "away": 14
+      },
+      "form": {
+        "Fenerbahçe": {
+          "league": "T1",
+          "games_before_cutoff": 41,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 3,
+                "D": 1,
+                "L": 1
+              },
+              "from": "2026-08-30",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1495.5,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.8,
+              "goals_against_per_game": 0.4,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 6,
+                "D": 2,
+                "L": 2
+              },
+              "from": "2026-05-02",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1488.6,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.8,
+              "goals_against_per_game": 1.0,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 11,
+                "D": 5,
+                "L": 4
+              },
+              "from": "2026-02-14",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1494.2,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.4,
+              "goals_against_per_game": 1.25,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "Slavia Praha": {
+          "league": "Czech 1. Liga",
+          "games_before_cutoff": 44,
+          "source": {
+            "source_label": "fotmob",
+            "source": "https://www.fotmob.com/",
+            "retrieved_at_latest": "2026-10-15T09:17:11.095164+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 5,
+                "D": 0,
+                "L": 0
+              },
+              "from": "2026-08-31",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1517.9,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.4,
+              "goals_against_per_game": 0.2,
+              "shots_for_observed_games": 0
+            },
+            "10": {
+              "record": {
+                "W": 8,
+                "D": 2,
+                "L": 0
+              },
+              "from": "2026-07-26",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1491.8,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.6,
+              "goals_against_per_game": 0.6,
+              "shots_for_observed_games": 0
+            },
+            "20": {
+              "record": {
+                "W": 15,
+                "D": 3,
+                "L": 2
+              },
+              "from": "2026-03-09",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1508.9,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.4,
+              "goals_against_per_game": 0.8,
+              "shots_for_observed_games": 0
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Fenerbahçe": 34,
+        "Slavia Praha": 45
+      },
+      "flagged_players": {
+        "Fenerbahçe": [
+          {
+            "name": "Mert Müldür",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250097238--mert-muldur/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Slavia Praha": [
+          {
+            "name": "Štěpán Chaloupek",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250190353--stepan-chaloupek/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Ivan Schranz",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250012660--ivan-schranz/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Pavel Kačor",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250218489--pavel-kacor/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "David Jurásek",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250166772--david-jurasek/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Adonija Ouanda",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250223132--adonija-ouanda/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049597",
+      "home": "Sabah",
+      "away": "B. Dortmund",
+      "kickoff": "2026-10-20T16:45:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.5155,
+        0.205439,
+        0.279061
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.5155
+      },
+      "historical_uefa_appearances": {
+        "home": 10,
+        "away": 47
+      },
+      "form": {
+        "Sabah": {
+          "league": "Azerbaijan Premier League",
+          "games_before_cutoff": 39,
+          "source": {
+            "source_label": "fotmob",
+            "source": "https://www.fotmob.com/",
+            "retrieved_at_latest": "2026-10-15T09:17:11.095164+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 4,
+                "D": 1,
+                "L": 0
+              },
+              "from": "2026-08-31",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1518.8,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.4,
+              "goals_against_per_game": 0.2,
+              "shots_for_observed_games": 0
+            },
+            "10": {
+              "record": {
+                "W": 7,
+                "D": 1,
+                "L": 2
+              },
+              "from": "2026-05-03",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1504.0,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.0,
+              "goals_against_per_game": 0.5,
+              "shots_for_observed_games": 0
+            },
+            "20": {
+              "record": {
+                "W": 15,
+                "D": 3,
+                "L": 2
+              },
+              "from": "2026-02-16",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1494.0,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.45,
+              "goals_against_per_game": 0.7,
+              "shots_for_observed_games": 0
+            }
+          }
+        },
+        "B. Dortmund": {
+          "league": "D1",
+          "games_before_cutoff": 39,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 4,
+                "D": 1,
+                "L": 0
+              },
+              "from": "2026-08-29",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1501.5,
+              "venue_counts": {
+                "home": 3,
+                "away": 2
+              },
+              "goals_for_per_game": 2.2,
+              "goals_against_per_game": 0.8,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 7,
+                "D": 1,
+                "L": 2
+              },
+              "from": "2026-04-18",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1493.9,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.1,
+              "goals_against_per_game": 0.9,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 14,
+                "D": 2,
+                "L": 4
+              },
+              "from": "2026-02-01",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1499.1,
+              "venue_counts": {
+                "home": 11,
+                "away": 9
+              },
+              "goals_for_per_game": 2.15,
+              "goals_against_per_game": 1.05,
+              "shots_for_observed_games": 20
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Sabah": 27,
+        "B. Dortmund": 29
+      },
+      "flagged_players": {
+        "Sabah": [
+          {
+            "name": "Khayal Aliyev",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250169206--khayal-aliyev/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "B. Dortmund": [
+          {
+            "name": "Nico Schlotterbeck",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250134856--nico-schlotterbeck/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049589",
+      "home": "Paris",
+      "away": "Barcelona",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.532599,
+        0.189005,
+        0.278395
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.532599
+      },
+      "historical_uefa_appearances": {
+        "home": 56,
+        "away": 44
+      },
+      "form": {
+        "Paris": {
+          "league": "F1",
+          "games_before_cutoff": 40,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 3,
+                "D": 1,
+                "L": 1
+              },
+              "from": "2026-08-28",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1522.1,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 1.8,
+              "goals_against_per_game": 1.2,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 5,
+                "D": 3,
+                "L": 2
+              },
+              "from": "2026-05-02",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1522.9,
+              "venue_counts": {
+                "home": 4,
+                "away": 6
+              },
+              "goals_for_per_game": 1.7,
+              "goals_against_per_game": 1.2,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 12,
+                "D": 3,
+                "L": 5
+              },
+              "from": "2026-02-08",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1502.3,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.1,
+              "goals_against_per_game": 1.05,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "Barcelona": {
+          "league": "SP1",
+          "games_before_cutoff": 46,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 5,
+                "D": 0,
+                "L": 0
+              },
+              "from": "2026-09-06",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1487.9,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 4.4,
+              "goals_against_per_game": 1.0,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 9,
+                "D": 0,
+                "L": 1
+              },
+              "from": "2026-05-17",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1489.0,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 3.8,
+              "goals_against_per_game": 1.1,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 18,
+                "D": 0,
+                "L": 2
+              },
+              "from": "2026-03-07",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1497.2,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.9,
+              "goals_against_per_game": 0.85,
+              "shots_for_observed_games": 20
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Paris": 27,
+        "Barcelona": 35
+      },
+      "flagged_players": {
+        "Paris": [
+          {
+            "name": "Senny Mayulu",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250177597--senny-mayulu/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Barcelona": [
+          {
+            "name": "Andreas Christensen",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250041718--andreas-christensen/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Frenkie de Jong",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/50327423--frenkie-de-jong/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Raphinha",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250112880--raphinha/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049590",
+      "home": "Liverpool",
+      "away": "Villarreal",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.675491,
+        0.172877,
+        0.151632
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.675491
+      },
+      "historical_uefa_appearances": {
+        "home": 32,
+        "away": 10
+      },
+      "form": {
+        "Liverpool": {
+          "league": "E0",
+          "games_before_cutoff": 44,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 2,
+                "D": 2,
+                "L": 1
+              },
+              "from": "2026-08-29",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1523.0,
+              "venue_counts": {
+                "home": 3,
+                "away": 2
+              },
+              "goals_for_per_game": 1.0,
+              "goals_against_per_game": 1.0,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 2,
+                "D": 5,
+                "L": 3
+              },
+              "from": "2026-05-03",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1516.8,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 1.3,
+              "goals_against_per_game": 1.6,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 8,
+                "D": 6,
+                "L": 6
+              },
+              "from": "2026-02-08",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1499.0,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 1.55,
+              "goals_against_per_game": 1.35,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "Villarreal": {
+          "league": "SP1",
+          "games_before_cutoff": 46,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 2,
+                "D": 0,
+                "L": 3
+              },
+              "from": "2026-09-05",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1532.1,
+              "venue_counts": {
+                "home": 3,
+                "away": 2
+              },
+              "goals_for_per_game": 1.8,
+              "goals_against_per_game": 1.6,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 3,
+                "D": 2,
+                "L": 5
+              },
+              "from": "2026-05-17",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1524.7,
+              "venue_counts": {
+                "home": 4,
+                "away": 6
+              },
+              "goals_for_per_game": 1.8,
+              "goals_against_per_game": 1.6,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 8,
+                "D": 5,
+                "L": 7
+              },
+              "from": "2026-03-08",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1497.4,
+              "venue_counts": {
+                "home": 9,
+                "away": 11
+              },
+              "goals_for_per_game": 1.85,
+              "goals_against_per_game": 1.4,
+              "shots_for_observed_games": 20
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Liverpool": 48,
+        "Villarreal": 33
+      },
+      "flagged_players": {
+        "Liverpool": [
+          {
+            "name": "Conor Bradley",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250135607--conor-bradley/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Giovanni Leoni",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250203207--giovanni-leoni/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Dominik Szoboszlai",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250104066--dominik-szoboszlai/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Alexander Isak",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250089868--alexander-isak/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Cody Gakpo",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250096849--cody-gakpo/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Hugo Ekitiké",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250144643--hugo-ekitike/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Villarreal": [
+          {
+            "name": "Tajon Buchanan",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250173127--tajon-buchanan/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Nicolas Pépé",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250106003--nicolas-pepe/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049591",
+      "home": "Man City",
+      "away": "AEK Athens",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.62207,
+        0.185177,
+        0.192753
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.62207
+      },
+      "historical_uefa_appearances": {
+        "home": 45,
+        "away": 8
+      },
+      "form": {
+        "Man City": {
+          "league": "E0",
+          "games_before_cutoff": 44,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 5,
+                "D": 0,
+                "L": 0
+              },
+              "from": "2026-08-28",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1513.3,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.8,
+              "goals_against_per_game": 0.8,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 8,
+                "D": 1,
+                "L": 1
+              },
+              "from": "2026-05-09",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1518.4,
+              "venue_counts": {
+                "home": 6,
+                "away": 4
+              },
+              "goals_for_per_game": 2.4,
+              "goals_against_per_game": 0.8,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 15,
+                "D": 4,
+                "L": 1
+              },
+              "from": "2026-02-08",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1505.0,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.2,
+              "goals_against_per_game": 0.85,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "AEK Athens": {
+          "league": "G1",
+          "games_before_cutoff": 38,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 3,
+                "D": 2,
+                "L": 0
+              },
+              "from": "2026-08-30",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1469.6,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.4,
+              "goals_against_per_game": 0.6,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 5,
+                "D": 5,
+                "L": 0
+              },
+              "from": "2026-05-03",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1516.8,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.0,
+              "goals_against_per_game": 0.6,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 11,
+                "D": 9,
+                "L": 0
+              },
+              "from": "2026-02-01",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1517.8,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.05,
+              "goals_against_per_game": 0.55,
+              "shots_for_observed_games": 20
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Man City": 27,
+        "AEK Athens": 22
+      },
+      "flagged_players": {
+        "Man City": [],
+        "AEK Athens": [
+          {
+            "name": "Thomas Strakosha",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250046901--thomas-strakosha/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049592",
+      "home": "Roma",
+      "away": "S. Bratislava",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.470257,
+        0.212056,
+        0.317687
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.470257
+      },
+      "historical_uefa_appearances": {
+        "home": 2,
+        "away": 38
+      },
+      "form": {
+        "Roma": {
+          "league": "I1",
+          "games_before_cutoff": 44,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 3,
+                "D": 2,
+                "L": 0
+              },
+              "from": "2026-08-31",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1548.0,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.0,
+              "goals_against_per_game": 0.6,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 8,
+                "D": 2,
+                "L": 0
+              },
+              "from": "2026-05-04",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1510.0,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.5,
+              "goals_against_per_game": 0.5,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 12,
+                "D": 5,
+                "L": 3
+              },
+              "from": "2026-02-15",
+              "through": "2026-10-11",
+              "mean_opponent_elo_before": 1510.3,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.2,
+              "goals_against_per_game": 1.0,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "S. Bratislava": {
+          "league": "Slovakia 1. liga",
+          "games_before_cutoff": 41,
+          "source": {
+            "source_label": "fotmob",
+            "source": "https://www.fotmob.com/",
+            "retrieved_at_latest": "2026-10-15T09:17:11.095164+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 1,
+                "D": 2,
+                "L": 2
+              },
+              "from": "2026-08-30",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1499.4,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 1.4,
+              "goals_against_per_game": 1.8,
+              "shots_for_observed_games": 0
+            },
+            "10": {
+              "record": {
+                "W": 5,
+                "D": 2,
+                "L": 3
+              },
+              "from": "2026-05-16",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1492.8,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.1,
+              "goals_against_per_game": 1.2,
+              "shots_for_observed_games": 0
+            },
+            "20": {
+              "record": {
+                "W": 13,
+                "D": 3,
+                "L": 4
+              },
+              "from": "2026-02-28",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1512.4,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.0,
+              "goals_against_per_game": 0.85,
+              "shots_for_observed_games": 0
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Roma": 24,
+        "S. Bratislava": 28
+      },
+      "flagged_players": {
+        "Roma": [
+          {
+            "name": "Bryan Cristante",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250041741--bryan-cristante/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Manu Koné",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250132062--manu-kone/",
+            "badges": [
+              "Doubtful"
+            ]
+          }
+        ],
+        "S. Bratislava": []
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049593",
+      "home": "Porto",
+      "away": "PSV",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.458962,
+        0.221207,
+        0.319831
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.458962
+      },
+      "historical_uefa_appearances": {
+        "home": 18,
+        "away": 38
+      },
+      "form": {
+        "Porto": {
+          "league": "P1",
+          "games_before_cutoff": 42,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 5,
+                "D": 0,
+                "L": 0
+              },
+              "from": "2026-08-29",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1508.6,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.8,
+              "goals_against_per_game": 0.8,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 9,
+                "D": 0,
+                "L": 1
+              },
+              "from": "2026-05-10",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1483.9,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.2,
+              "goals_against_per_game": 0.7,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 17,
+                "D": 2,
+                "L": 1
+              },
+              "from": "2026-02-22",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1490.0,
+              "venue_counts": {
+                "home": 11,
+                "away": 9
+              },
+              "goals_for_per_game": 2.15,
+              "goals_against_per_game": 0.75,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "PSV": {
+          "league": "N1",
+          "games_before_cutoff": 42,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 4,
+                "D": 0,
+                "L": 1
+              },
+              "from": "2026-08-30",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1529.2,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 3.4,
+              "goals_against_per_game": 1.2,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 8,
+                "D": 1,
+                "L": 1
+              },
+              "from": "2026-05-10",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1516.3,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 3.5,
+              "goals_against_per_game": 1.2,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 14,
+                "D": 2,
+                "L": 4
+              },
+              "from": "2026-02-13",
+              "through": "2026-10-09",
+              "mean_opponent_elo_before": 1505.5,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 3.05,
+              "goals_against_per_game": 1.45,
+              "shots_for_observed_games": 20
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Porto": 35,
+        "PSV": 52
+      },
+      "flagged_players": {
+        "Porto": [
+          {
+            "name": "William Gomes",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250205755--william-gomes/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "PSV": [
+          {
+            "name": "Kiliann Sildillia",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250177927--kiliann-sildillia/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Paul Wanner",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250163784--paul-wanner/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Ricardo Pepi",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250187620--ricardo-pepi/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Sami Ouaissa",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250216420--sami-ouaissa/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Sam Lammers",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250088106--sam-lammers/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049594",
+      "home": "Napoli",
+      "away": "Bodø/Glimt",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.48243,
+        0.209574,
+        0.307996
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.48243
+      },
+      "historical_uefa_appearances": {
+        "home": 28,
+        "away": 34
+      },
+      "form": {
+        "Napoli": {
+          "league": "I1",
+          "games_before_cutoff": 44,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 2,
+                "D": 1,
+                "L": 2
+              },
+              "from": "2026-08-30",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1544.7,
+              "venue_counts": {
+                "home": 3,
+                "away": 2
+              },
+              "goals_for_per_game": 1.6,
+              "goals_against_per_game": 1.2,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 5,
+                "D": 2,
+                "L": 3
+              },
+              "from": "2026-05-02",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1508.6,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 1.6,
+              "goals_against_per_game": 0.9,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 11,
+                "D": 4,
+                "L": 5
+              },
+              "from": "2026-02-15",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1496.7,
+              "venue_counts": {
+                "home": 11,
+                "away": 9
+              },
+              "goals_for_per_game": 1.6,
+              "goals_against_per_game": 0.95,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "Bodø/Glimt": {
+          "league": "Norway Eliteserien",
+          "games_before_cutoff": 52,
+          "source": {
+            "source_label": "football_data_extra",
+            "source": "https://www.football-data.co.uk/new/",
+            "retrieved_at_latest": "2026-10-15T08:38:59.666060+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 4,
+                "D": 0,
+                "L": 1
+              },
+              "from": "2026-08-30",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1496.7,
+              "venue_counts": {
+                "home": 3,
+                "away": 2
+              },
+              "goals_for_per_game": 2.6,
+              "goals_against_per_game": 1.6,
+              "shots_for_observed_games": 0
+            },
+            "10": {
+              "record": {
+                "W": 9,
+                "D": 0,
+                "L": 1
+              },
+              "from": "2026-07-17",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1499.3,
+              "venue_counts": {
+                "home": 6,
+                "away": 4
+              },
+              "goals_for_per_game": 2.6,
+              "goals_against_per_game": 0.9,
+              "shots_for_observed_games": 0
+            },
+            "20": {
+              "record": {
+                "W": 16,
+                "D": 2,
+                "L": 2
+              },
+              "from": "2026-04-15",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1501.0,
+              "venue_counts": {
+                "home": 11,
+                "away": 9
+              },
+              "goals_for_per_game": 2.65,
+              "goals_against_per_game": 0.75,
+              "shots_for_observed_games": 0
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Napoli": 24,
+        "Bodø/Glimt": 32
+      },
+      "flagged_players": {
+        "Napoli": [
+          {
+            "name": "Mathías Olivera",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250134196--mathias-olivera/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Frank Anguissa",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250086987--frank-anguissa/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Antonio Vergara",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250165363--antonio-vergara/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Alisson Santos",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250211008--alisson-santos/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Bodø/Glimt": [
+          {
+            "name": "Magnus Riisnæs",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250138997--magnus-riisn%C3%A6s/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Håkon Evjen",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250107249--hakon-evjen/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "August Mikkelsen",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250186245--august-mikkelsen/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ]
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    },
+    {
+      "match_id": "2049596",
+      "home": "Stuttgart",
+      "away": "Atleti",
+      "kickoff": "2026-10-20T19:00:00Z",
+      "probabilities_h_d_a_exploratory": [
+        0.420651,
+        0.208887,
+        0.370461
+      ],
+      "top_probability": {
+        "outcome": "home",
+        "probability": 0.420651
+      },
+      "historical_uefa_appearances": {
+        "home": 10,
+        "away": 44
+      },
+      "form": {
+        "Stuttgart": {
+          "league": "D1",
+          "games_before_cutoff": 39,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 2,
+                "D": 0,
+                "L": 3
+              },
+              "from": "2026-08-28",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1553.4,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 1.6,
+              "goals_against_per_game": 1.8,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 3,
+                "D": 3,
+                "L": 4
+              },
+              "from": "2026-04-19",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1547.6,
+              "venue_counts": {
+                "home": 4,
+                "away": 6
+              },
+              "goals_for_per_game": 1.9,
+              "goals_against_per_game": 2.0,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 9,
+                "D": 5,
+                "L": 6
+              },
+              "from": "2026-02-01",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1515.3,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 2.15,
+              "goals_against_per_game": 1.6,
+              "shots_for_observed_games": 20
+            }
+          }
+        },
+        "Atleti": {
+          "league": "SP1",
+          "games_before_cutoff": 46,
+          "source": {
+            "source_label": "football_data",
+            "source": "https://www.football-data.co.uk/",
+            "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+          },
+          "windows": {
+            "5": {
+              "record": {
+                "W": 4,
+                "D": 0,
+                "L": 1
+              },
+              "from": "2026-09-05",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1501.5,
+              "venue_counts": {
+                "home": 2,
+                "away": 3
+              },
+              "goals_for_per_game": 2.2,
+              "goals_against_per_game": 1.0,
+              "shots_for_observed_games": 5
+            },
+            "10": {
+              "record": {
+                "W": 7,
+                "D": 1,
+                "L": 2
+              },
+              "from": "2026-05-17",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1507.5,
+              "venue_counts": {
+                "home": 5,
+                "away": 5
+              },
+              "goals_for_per_game": 2.0,
+              "goals_against_per_game": 1.3,
+              "shots_for_observed_games": 10
+            },
+            "20": {
+              "record": {
+                "W": 12,
+                "D": 1,
+                "L": 7
+              },
+              "from": "2026-03-07",
+              "through": "2026-10-10",
+              "mean_opponent_elo_before": 1507.9,
+              "venue_counts": {
+                "home": 10,
+                "away": 10
+              },
+              "goals_for_per_game": 1.85,
+              "goals_against_per_game": 1.45,
+              "shots_for_observed_games": 20
+            }
+          }
+        }
+      },
+      "registered_players": {
+        "Stuttgart": 32,
+        "Atleti": 47
+      },
+      "flagged_players": {
+        "Stuttgart": [
+          {
+            "name": "Ameen Al-Dakhil",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250127149--ameen-al-dakhil/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Maximilian Mittelstädt",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250090766--maximilian-mittelstadt/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Luca Jaquez",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250186841--luca-jaquez/",
+            "badges": [
+              "Doubtful"
+            ]
+          },
+          {
+            "name": "Nikolas Nartey",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250101564--nikolas-nartey/",
+            "badges": [
+              "Injured"
+            ]
+          },
+          {
+            "name": "Tiago Tomás",
+            "player_url": "https://www.uefa.com/uefachampionsleague/clubs/players/250126369--tiago-tomas/",
+            "badges": [
+              "Injured"
+            ]
+          }
+        ],
+        "Atleti": []
+      },
+      "lineup_status": "NOT_AVAILABLE",
+      "market": null,
+      "evidence_gates": {
+        "before_kickoff": true,
+        "official_fixture_upcoming": true,
+        "official_fixture_snapshot_within_30m": true,
+        "domestic_form_5_10_20_for_both": true,
+        "registered_squad_for_both": true,
+        "official_starting_xi_before_kickoff": false,
+        "fresh_market_screenshot": false,
+        "validated_current_tactical_evidence": false,
+        "model_validated_against_current_market": false
+      },
+      "blocking_gates": [
+        "official_starting_xi_before_kickoff",
+        "fresh_market_screenshot",
+        "validated_current_tactical_evidence",
+        "model_validated_against_current_market"
+      ],
+      "selection_status": "no_selection"
+    }
+  ],
+  "summary": {
+    "matches": 9,
+    "eligible_for_review": 0,
+    "no_selection": 9,
+    "form_complete": 9,
+    "official_lineups": 0,
+    "fresh_markets": 0
+  },
+  "decision_rule": "A match remains no_selection while any evidence gate is false. Exploratory probabilities are recorded for prospective scoring, not treated as selections.",
+  "limitations": [
+    "Domestic form is descriptive and is not an input to the frozen UEFA probability model.",
+    "Player badges do not prove match-specific absence, injury severity, or starting status.",
+    "No current tactical feature has passed a predictive holdout test.",
+    "The results-only UEFA model has not demonstrated a stable edge over current market prices."
+  ],
+  "input_sha256": {
+    "forecast": "be035342996824620b8fab0f65ea813c1e23dd0ec735368ab548aed1fa35dab3",
+    "form": "d57a05d92c5dabb43613a392cbd91825f67046e6b2df4998f465457257169ccb",
+    "squad": "c4d9e72ba00cdf73d4fc1ce31bef75c516beb924cc06c3706414a2e474c7b311"
+  },
+  "market_input_sha256": []
+}
