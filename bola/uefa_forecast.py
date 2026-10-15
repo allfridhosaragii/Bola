@@ -17,9 +17,9 @@ from .uefa_lineup_api import fetch_body
 API = "https://match.uefa.com/v5"
 
 
-def date_matches(day: str) -> tuple[bytes, str]:
+def date_matches(day: str, season_year: int = 2027) -> tuple[bytes, str]:
     url = (f"{API}/matches?competitionId=1&fromDate={day}&limit=50&offset=0"
-           f"&order=ASC&phase=ALL&seasonYear=2027&toDate={day}&utcOffset=0")
+           f"&order=ASC&phase=ALL&seasonYear={season_year}&toDate={day}&utcOffset=0")
     return fetch_body(url), url
 
 

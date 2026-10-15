@@ -59,7 +59,8 @@ def fetch_squads(fixtures_report: dict, cache_dir: Path) -> dict:
         with urlopen(url, timeout=25) as response:
             body = response.read()
         retrieved_at = datetime.now(timezone.utc).isoformat()
-        (cache_dir / f"{row['match_id']}_lineups.html").write_bytes(body)
+        stamp = datetime.fromisoformat(retrieved_at).strftime("%Y%m%dT%H%M%S%fZ")
+        (cache_dir / f"{row['match_id']}_{stamp}_lineups.html").write_bytes(body)
         return parse_squad_page(body, url, retrieved_at)
     with ThreadPoolExecutor(max_workers=4) as pool:
         rows = list(pool.map(fetch, upcoming))

@@ -1,4 +1,4 @@
-"""Snapshot FotMob league pages for Slovak and Ukrainian domestic results."""
+"""Snapshot FotMob domestic league pages for four UEFA clubs."""
 
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
@@ -10,7 +10,8 @@ from urllib.request import urlopen
 
 
 DATA_DIR = Path(".cache/fotmob_form")
-LEAGUES = {"176": "1-liga", "441": "premier-league"}
+LEAGUES = {"176": "1-liga", "441": "premier-league",
+           "122": "1-liga", "262": "premier-league"}
 SEASONS = {"2526": "2025%2F2026", "2627": "2026%2F2027"}
 
 

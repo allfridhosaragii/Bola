@@ -1,0 +1,1137 @@
+{
+  "as_of": "2026-10-15T09:18:26.222730+00:00",
+  "cutoff_exclusive_date_wib": "2026-10-15",
+  "target_date_utc": "2026-10-20",
+  "teams_requested": 18,
+  "teams_covered": 18,
+  "teams_missing": [],
+  "teams": {
+    "AEK Athens": {
+      "league": "G1",
+      "games_before_cutoff": 38,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 3,
+            "D": 2,
+            "L": 0
+          },
+          "from": "2026-08-30",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1469.6,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.4,
+          "goals_against_per_game": 0.6,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 5,
+            "D": 5,
+            "L": 0
+          },
+          "from": "2026-05-03",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1516.8,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.0,
+          "goals_against_per_game": 0.6,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 11,
+            "D": 9,
+            "L": 0
+          },
+          "from": "2026-02-01",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1517.8,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.05,
+          "goals_against_per_game": 0.55,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Atleti": {
+      "league": "SP1",
+      "games_before_cutoff": 46,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 4,
+            "D": 0,
+            "L": 1
+          },
+          "from": "2026-09-05",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1501.5,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.2,
+          "goals_against_per_game": 1.0,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 7,
+            "D": 1,
+            "L": 2
+          },
+          "from": "2026-05-17",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1507.5,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.0,
+          "goals_against_per_game": 1.3,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 12,
+            "D": 1,
+            "L": 7
+          },
+          "from": "2026-03-07",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1507.9,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 1.85,
+          "goals_against_per_game": 1.45,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "B. Dortmund": {
+      "league": "D1",
+      "games_before_cutoff": 39,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 4,
+            "D": 1,
+            "L": 0
+          },
+          "from": "2026-08-29",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1501.5,
+          "venue_counts": {
+            "home": 3,
+            "away": 2
+          },
+          "goals_for_per_game": 2.2,
+          "goals_against_per_game": 0.8,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 7,
+            "D": 1,
+            "L": 2
+          },
+          "from": "2026-04-18",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1493.9,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.1,
+          "goals_against_per_game": 0.9,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 14,
+            "D": 2,
+            "L": 4
+          },
+          "from": "2026-02-01",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1499.1,
+          "venue_counts": {
+            "home": 11,
+            "away": 9
+          },
+          "goals_for_per_game": 2.15,
+          "goals_against_per_game": 1.05,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Barcelona": {
+      "league": "SP1",
+      "games_before_cutoff": 46,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 5,
+            "D": 0,
+            "L": 0
+          },
+          "from": "2026-09-06",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1487.9,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 4.4,
+          "goals_against_per_game": 1.0,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 9,
+            "D": 0,
+            "L": 1
+          },
+          "from": "2026-05-17",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1489.0,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 3.8,
+          "goals_against_per_game": 1.1,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 18,
+            "D": 0,
+            "L": 2
+          },
+          "from": "2026-03-07",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1497.2,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.9,
+          "goals_against_per_game": 0.85,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Bodø/Glimt": {
+      "league": "Norway Eliteserien",
+      "games_before_cutoff": 52,
+      "source": {
+        "source_label": "football_data_extra",
+        "source": "https://www.football-data.co.uk/new/",
+        "retrieved_at_latest": "2026-10-15T08:38:59.666060+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 4,
+            "D": 0,
+            "L": 1
+          },
+          "from": "2026-08-30",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1496.7,
+          "venue_counts": {
+            "home": 3,
+            "away": 2
+          },
+          "goals_for_per_game": 2.6,
+          "goals_against_per_game": 1.6,
+          "shots_for_observed_games": 0
+        },
+        "10": {
+          "record": {
+            "W": 9,
+            "D": 0,
+            "L": 1
+          },
+          "from": "2026-07-17",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1499.3,
+          "venue_counts": {
+            "home": 6,
+            "away": 4
+          },
+          "goals_for_per_game": 2.6,
+          "goals_against_per_game": 0.9,
+          "shots_for_observed_games": 0
+        },
+        "20": {
+          "record": {
+            "W": 16,
+            "D": 2,
+            "L": 2
+          },
+          "from": "2026-04-15",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1501.0,
+          "venue_counts": {
+            "home": 11,
+            "away": 9
+          },
+          "goals_for_per_game": 2.65,
+          "goals_against_per_game": 0.75,
+          "shots_for_observed_games": 0
+        }
+      }
+    },
+    "Fenerbahçe": {
+      "league": "T1",
+      "games_before_cutoff": 41,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 3,
+            "D": 1,
+            "L": 1
+          },
+          "from": "2026-08-30",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1495.5,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.8,
+          "goals_against_per_game": 0.4,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 6,
+            "D": 2,
+            "L": 2
+          },
+          "from": "2026-05-02",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1488.6,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.8,
+          "goals_against_per_game": 1.0,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 11,
+            "D": 5,
+            "L": 4
+          },
+          "from": "2026-02-14",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1494.2,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.4,
+          "goals_against_per_game": 1.25,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Liverpool": {
+      "league": "E0",
+      "games_before_cutoff": 44,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 2,
+            "D": 2,
+            "L": 1
+          },
+          "from": "2026-08-29",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1523.0,
+          "venue_counts": {
+            "home": 3,
+            "away": 2
+          },
+          "goals_for_per_game": 1.0,
+          "goals_against_per_game": 1.0,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 2,
+            "D": 5,
+            "L": 3
+          },
+          "from": "2026-05-03",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1516.8,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 1.3,
+          "goals_against_per_game": 1.6,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 8,
+            "D": 6,
+            "L": 6
+          },
+          "from": "2026-02-08",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1499.0,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 1.55,
+          "goals_against_per_game": 1.35,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Man City": {
+      "league": "E0",
+      "games_before_cutoff": 44,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 5,
+            "D": 0,
+            "L": 0
+          },
+          "from": "2026-08-28",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1513.3,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.8,
+          "goals_against_per_game": 0.8,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 8,
+            "D": 1,
+            "L": 1
+          },
+          "from": "2026-05-09",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1518.4,
+          "venue_counts": {
+            "home": 6,
+            "away": 4
+          },
+          "goals_for_per_game": 2.4,
+          "goals_against_per_game": 0.8,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 15,
+            "D": 4,
+            "L": 1
+          },
+          "from": "2026-02-08",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1505.0,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.2,
+          "goals_against_per_game": 0.85,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Napoli": {
+      "league": "I1",
+      "games_before_cutoff": 44,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 2,
+            "D": 1,
+            "L": 2
+          },
+          "from": "2026-08-30",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1544.7,
+          "venue_counts": {
+            "home": 3,
+            "away": 2
+          },
+          "goals_for_per_game": 1.6,
+          "goals_against_per_game": 1.2,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 5,
+            "D": 2,
+            "L": 3
+          },
+          "from": "2026-05-02",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1508.6,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 1.6,
+          "goals_against_per_game": 0.9,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 11,
+            "D": 4,
+            "L": 5
+          },
+          "from": "2026-02-15",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1496.7,
+          "venue_counts": {
+            "home": 11,
+            "away": 9
+          },
+          "goals_for_per_game": 1.6,
+          "goals_against_per_game": 0.95,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "PSV": {
+      "league": "N1",
+      "games_before_cutoff": 42,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 4,
+            "D": 0,
+            "L": 1
+          },
+          "from": "2026-08-30",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1529.2,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 3.4,
+          "goals_against_per_game": 1.2,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 8,
+            "D": 1,
+            "L": 1
+          },
+          "from": "2026-05-10",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1516.3,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 3.5,
+          "goals_against_per_game": 1.2,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 14,
+            "D": 2,
+            "L": 4
+          },
+          "from": "2026-02-13",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1505.5,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 3.05,
+          "goals_against_per_game": 1.45,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Paris": {
+      "league": "F1",
+      "games_before_cutoff": 40,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 3,
+            "D": 1,
+            "L": 1
+          },
+          "from": "2026-08-28",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1522.1,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 1.8,
+          "goals_against_per_game": 1.2,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 5,
+            "D": 3,
+            "L": 2
+          },
+          "from": "2026-05-02",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1522.9,
+          "venue_counts": {
+            "home": 4,
+            "away": 6
+          },
+          "goals_for_per_game": 1.7,
+          "goals_against_per_game": 1.2,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 12,
+            "D": 3,
+            "L": 5
+          },
+          "from": "2026-02-08",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1502.3,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.1,
+          "goals_against_per_game": 1.05,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Porto": {
+      "league": "P1",
+      "games_before_cutoff": 42,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 5,
+            "D": 0,
+            "L": 0
+          },
+          "from": "2026-08-29",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1508.6,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.8,
+          "goals_against_per_game": 0.8,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 9,
+            "D": 0,
+            "L": 1
+          },
+          "from": "2026-05-10",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1483.9,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.2,
+          "goals_against_per_game": 0.7,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 17,
+            "D": 2,
+            "L": 1
+          },
+          "from": "2026-02-22",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1490.0,
+          "venue_counts": {
+            "home": 11,
+            "away": 9
+          },
+          "goals_for_per_game": 2.15,
+          "goals_against_per_game": 0.75,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Roma": {
+      "league": "I1",
+      "games_before_cutoff": 44,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 3,
+            "D": 2,
+            "L": 0
+          },
+          "from": "2026-08-31",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1548.0,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.0,
+          "goals_against_per_game": 0.6,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 8,
+            "D": 2,
+            "L": 0
+          },
+          "from": "2026-05-04",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1510.0,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.5,
+          "goals_against_per_game": 0.5,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 12,
+            "D": 5,
+            "L": 3
+          },
+          "from": "2026-02-15",
+          "through": "2026-10-11",
+          "mean_opponent_elo_before": 1510.3,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.2,
+          "goals_against_per_game": 1.0,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "S. Bratislava": {
+      "league": "Slovakia 1. liga",
+      "games_before_cutoff": 41,
+      "source": {
+        "source_label": "fotmob",
+        "source": "https://www.fotmob.com/",
+        "retrieved_at_latest": "2026-10-15T09:17:11.095164+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 1,
+            "D": 2,
+            "L": 2
+          },
+          "from": "2026-08-30",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1499.4,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 1.4,
+          "goals_against_per_game": 1.8,
+          "shots_for_observed_games": 0
+        },
+        "10": {
+          "record": {
+            "W": 5,
+            "D": 2,
+            "L": 3
+          },
+          "from": "2026-05-16",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1492.8,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.1,
+          "goals_against_per_game": 1.2,
+          "shots_for_observed_games": 0
+        },
+        "20": {
+          "record": {
+            "W": 13,
+            "D": 3,
+            "L": 4
+          },
+          "from": "2026-02-28",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1512.4,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.0,
+          "goals_against_per_game": 0.85,
+          "shots_for_observed_games": 0
+        }
+      }
+    },
+    "Sabah": {
+      "league": "Azerbaijan Premier League",
+      "games_before_cutoff": 39,
+      "source": {
+        "source_label": "fotmob",
+        "source": "https://www.fotmob.com/",
+        "retrieved_at_latest": "2026-10-15T09:17:11.095164+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 4,
+            "D": 1,
+            "L": 0
+          },
+          "from": "2026-08-31",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1518.8,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.4,
+          "goals_against_per_game": 0.2,
+          "shots_for_observed_games": 0
+        },
+        "10": {
+          "record": {
+            "W": 7,
+            "D": 1,
+            "L": 2
+          },
+          "from": "2026-05-03",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1504.0,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.0,
+          "goals_against_per_game": 0.5,
+          "shots_for_observed_games": 0
+        },
+        "20": {
+          "record": {
+            "W": 15,
+            "D": 3,
+            "L": 2
+          },
+          "from": "2026-02-16",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1494.0,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.45,
+          "goals_against_per_game": 0.7,
+          "shots_for_observed_games": 0
+        }
+      }
+    },
+    "Slavia Praha": {
+      "league": "Czech 1. Liga",
+      "games_before_cutoff": 44,
+      "source": {
+        "source_label": "fotmob",
+        "source": "https://www.fotmob.com/",
+        "retrieved_at_latest": "2026-10-15T09:17:11.095164+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 5,
+            "D": 0,
+            "L": 0
+          },
+          "from": "2026-08-31",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1517.9,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 2.4,
+          "goals_against_per_game": 0.2,
+          "shots_for_observed_games": 0
+        },
+        "10": {
+          "record": {
+            "W": 8,
+            "D": 2,
+            "L": 0
+          },
+          "from": "2026-07-26",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1491.8,
+          "venue_counts": {
+            "home": 5,
+            "away": 5
+          },
+          "goals_for_per_game": 2.6,
+          "goals_against_per_game": 0.6,
+          "shots_for_observed_games": 0
+        },
+        "20": {
+          "record": {
+            "W": 15,
+            "D": 3,
+            "L": 2
+          },
+          "from": "2026-03-09",
+          "through": "2026-10-09",
+          "mean_opponent_elo_before": 1508.9,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.4,
+          "goals_against_per_game": 0.8,
+          "shots_for_observed_games": 0
+        }
+      }
+    },
+    "Stuttgart": {
+      "league": "D1",
+      "games_before_cutoff": 39,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 2,
+            "D": 0,
+            "L": 3
+          },
+          "from": "2026-08-28",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1553.4,
+          "venue_counts": {
+            "home": 2,
+            "away": 3
+          },
+          "goals_for_per_game": 1.6,
+          "goals_against_per_game": 1.8,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 3,
+            "D": 3,
+            "L": 4
+          },
+          "from": "2026-04-19",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1547.6,
+          "venue_counts": {
+            "home": 4,
+            "away": 6
+          },
+          "goals_for_per_game": 1.9,
+          "goals_against_per_game": 2.0,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 9,
+            "D": 5,
+            "L": 6
+          },
+          "from": "2026-02-01",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1515.3,
+          "venue_counts": {
+            "home": 10,
+            "away": 10
+          },
+          "goals_for_per_game": 2.15,
+          "goals_against_per_game": 1.6,
+          "shots_for_observed_games": 20
+        }
+      }
+    },
+    "Villarreal": {
+      "league": "SP1",
+      "games_before_cutoff": 46,
+      "source": {
+        "source_label": "football_data",
+        "source": "https://www.football-data.co.uk/",
+        "retrieved_at_latest": "2026-10-15T08:38:58.735930+00:00"
+      },
+      "windows": {
+        "5": {
+          "record": {
+            "W": 2,
+            "D": 0,
+            "L": 3
+          },
+          "from": "2026-09-05",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1532.1,
+          "venue_counts": {
+            "home": 3,
+            "away": 2
+          },
+          "goals_for_per_game": 1.8,
+          "goals_against_per_game": 1.6,
+          "shots_for_observed_games": 5
+        },
+        "10": {
+          "record": {
+            "W": 3,
+            "D": 2,
+            "L": 5
+          },
+          "from": "2026-05-17",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1524.7,
+          "venue_counts": {
+            "home": 4,
+            "away": 6
+          },
+          "goals_for_per_game": 1.8,
+          "goals_against_per_game": 1.6,
+          "shots_for_observed_games": 10
+        },
+        "20": {
+          "record": {
+            "W": 8,
+            "D": 5,
+            "L": 7
+          },
+          "from": "2026-03-08",
+          "through": "2026-10-10",
+          "mean_opponent_elo_before": 1497.4,
+          "venue_counts": {
+            "home": 9,
+            "away": 11
+          },
+          "goals_for_per_game": 1.85,
+          "goals_against_per_game": 1.4,
+          "shots_for_observed_games": 20
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The form is a snapshot at its retrieval time, not the final pre-kickoff form.",
+    "Domestic leagues differ in strength; within-league Elo cannot be read as cross-league strength.",
+    "Shot data availability differs by league. Post-shot xG and current goalkeeper quality are unavailable.",
+    "This report does not add domestic form to UEFA model probabilities."
+  ],
+  "input_sha256": {
+    "football_data": "ef8dab24ac1adcc7862903745ac0f5643cf0cfe530b2af94b03466fc54fb21ec",
+    "football_data_extra": "a966437e4b397e7c5a4fc36b8ae42c1738f1d303af2f678b34c58cdbec5800d9",
+    "fotmob": "292aa1c66ce90cb3d2ad27397cbe2a6e61a92713ae6993ff8da77bff41cee44f"
+  }
+}

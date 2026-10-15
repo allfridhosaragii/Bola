@@ -1,4 +1,4 @@
-"""Time-censored FotMob league form for Shakhtar and Slovan Bratislava."""
+"""Time-censored FotMob league form for UEFA clubs outside CSV coverage."""
 
 from __future__ import annotations
 
@@ -16,7 +16,9 @@ from .form import summarize_window, team_rows
 
 WIB = ZoneInfo("Asia/Jakarta")
 LEAGUES = {"176": ("Slovakia 1. liga", "SVK", "S. Bratislava", 6019, "Slovan Bratislava"),
-           "441": ("Ukraine Premier League", "UKR", "Shakhtar", 9728, "Shakhtar Donetsk")}
+           "441": ("Ukraine Premier League", "UKR", "Shakhtar", 9728, "Shakhtar Donetsk"),
+           "122": ("Czech 1. Liga", "CZE", "Slavia Praha", 7787, "Slavia Prague"),
+           "262": ("Azerbaijan Premier League", "AZE", "Sabah", 951893, "Sabah FK")}
 SEASONS = {"2526": "2025/2026", "2627": "2026/2027"}
 
 
@@ -110,7 +112,7 @@ def report(folder: Path, cutoff: date) -> dict:
     return {"cutoff_exclusive_date_wib": cutoff.isoformat(), "source": "https://www.fotmob.com/",
             "snapshot_manifest": manifest, "covered_teams": len(teams), "teams": teams,
             "limitations": ["Results are FotMob/enet league-page snapshots, not independent official league score feeds.",
-                            "The pages were first retrieved after the specified historical cutoff, so source availability before kickoff is not proven.",
+                            "Snapshot retrieval time does not establish when each result first appeared on the source.",
                             "Postponed, abandoned, and awarded fixtures are excluded from played-match form.",
                             "No shots, possession, xG, or post-shot goalkeeper metric is included in these league fixture rows.",
                             "Elo adjusts for results and venue within each league, not cross-league team strength."]}

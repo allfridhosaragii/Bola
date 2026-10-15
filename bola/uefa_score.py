@@ -53,7 +53,7 @@ def score(archive: dict, results: list[dict], retrieved_at: str, result_sha256: 
                          for name in ("log_loss", "brier", "correct_top_probability")} for model in models}
     return {"forecast_generated_at": archive["generated_at"], "scored_at": retrieved_at,
             "result_sha256": result_sha256, "n": len(games), "aggregate": aggregate,
-            "games": games, "warning": "Seven matches are a small prospective sample; do not infer calibration or betting value."}
+            "games": games, "warning": "A small prospective sample cannot establish calibration or betting value."}
 
 
 def main() -> None:
@@ -68,7 +68,14 @@ def main() -> None:
     if args.results_json:
         raw = args.results_json.read_bytes()
     else:
-        raw, _ = date_matches("2026-10-14")
+        day = archive.get("target_date_utc")
+        if day is None:
+            days = {datetime.fromisoformat(row["kickoff"].replace("Z", "+00:00")).date().isoformat()
+                    for row in archive["predictions"]}
+            if len(days) != 1:
+                raise ValueError("Archived fixtures span multiple UTC dates; supply --results-json")
+            day = days.pop()
+        raw, _ = date_matches(day, archive.get("season_year", 2027))
     retrieved_at = datetime.now(timezone.utc).isoformat()
     report = score(archive, json.loads(raw), retrieved_at, hashlib.sha256(raw).hexdigest())
     args.output.parent.mkdir(parents=True, exist_ok=True)

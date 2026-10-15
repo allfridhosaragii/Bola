@@ -68,6 +68,57 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 
 `python3 -m bola.uefa_forecast` membekukan ramalan 1X2 **eksploratif** untuk tujuh laga UEFA 15 Oktober 2026 pukul 02.00 WIB, jika dijalankan sebelum kickoff. Ia memasukkan hanya hasil yang sudah `FINISHED` pada tanggal sebelumnya, menolak laga yang sudah dimulai, dan menyimpan waktu pembuatan serta checksum sumber dalam berkas `prospective/` yang tidak ditimpa. Perintah ini khusus untuk periode tersebut; berkasnya dipakai untuk pengujian setelah hasil keluar, bukan dua rekomendasi taruhan.
 
+### Alur analis untuk tanggal UEFA berikutnya
+
+Untuk tanggal pertandingan baru, jalankan `bola.uefa_forecast_live` dengan **tanggal UTC** dan musim UEFA. Misalnya laga 20 Oktober 2026 UTC (dua laga dimulai 23.45 WIB dan sisanya 21 Oktober 02.00 WIB):
+
+```bash
+python3 -m bola.uefa_forecast_live --target-date-utc 2026-10-20 --season-year 2027
+python3 -m bola.uefa_forecast_live --verify prospective/uefa_2026-10-15T09-09-44.309038+00-00.json
+```
+
+Satu perintah untuk penyegaran menyeluruh sebelum kickoff adalah `bash scripts/refresh_uefa_target.sh 2026-10-20`. Perintah ini mengambil ulang data form, membuat arsip peluang baru, memeriksa ulang sumbernya, lalu menyimpan status fixture, skuad, lineup, dan form sebagai laporan bertimestamp di `reports/`. Alur ini telah dijalankan ujung ke ujung pada 15 Oktober: sembilan fixture, sembilan pasangan skuad terdaftar, nol XI resmi, dan form 18/18 tim. Jalankan ulang menjelang pertandingan; hasil lama tidak otomatis menjadi bukti keadaan saat kickoff. Saat ini protokol riwayat model mendukung musim UEFA 2026/27.
+
+Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh yang dibekukan ada di `evidence/analyst_report_2026-10-15.json`. Untuk merakitnya secara manual:
+
+```bash
+python3 -m bola.analyst_report \
+  --forecast prospective/uefa_2026-10-15T09-09-44.309038+00-00.json \
+  --form evidence/uefa_target_form_2026-10-15.json \
+  --squad evidence/uefa_target_squad_2026-10-15.json \
+  --output reports/analyst_report.json
+```
+
+Laporan memeriksa kesamaan ID, tim, kickoff, urutan waktu sumber, kesegaran fixture, form 5/10/20, skuad terdaftar, XI resmi, odds, bukti taktik, dan validasi model terhadap pasar. Peluang model tetap dicatat untuk penilaian prospektif. Selama satu gerbang wajib belum lulus, status pertandingan adalah `no_selection`.
+
+Perintah pertama mengambil kalender, hasil yang telah selesai sebelum tanggal target, dan jadwal target dari API resmi UEFA. Semua laga pada tanggal UTC target dihitung dari keadaan model yang sama agar hasil laga lebih awal pada hari itu tidak bocor ke ramalan laga berikutnya. Respons mentah disimpan di `.cache/uefa_forecast/`; arsip di `prospective/` mencatat checksum dan hash kode model. Perintah kedua menghitung ulang arsip dari snapshot lokal serta memeriksa hash; simpan snapshot tersebut bila ingin memverifikasi arsip pada mesin lain. Arsip tidak ditimpa. Jika kode model berubah, verifikasi membutuhkan versi kode yang tercatat dalam arsip.
+
+Pada hari pertandingan, cocokkan dulu nama tim, kompetisi, waktu, dan ID pertandingan dari sumber resmi. Perbarui form dan bukti skuad dengan cutoff yang sesuai; starting XI hanya dianggap resmi setelah feed UEFA memuat sebelas pemain per tim sebelum kickoff. Tangkapan layar jadwal atau odds adalah petunjuk awal yang harus dicocokkan dengan fixture UEFA. Jangan gunakan data yang pertama kali diambil setelah kickoff untuk mengklaim analisis prapertandingan.
+
+Untuk snapshot resmi fixture, daftar skuad, dan status lineup dari arsip target, jalankan:
+
+```bash
+python3 -m bola.uefa_target_snapshot --forecast prospective/uefa_2026-10-15T09-09-44.309038+00-00.json --output reports/uefa_target_2026-10-20_refresh.json
+```
+
+Snapshot awal 15 Oktober ada di `evidence/uefa_target_squad_2026-10-15.json`: sembilan fixture masih Upcoming; daftar pemain terdaftar tersedia untuk 18 tim, tetapi belum ada starting XI resmi. Nama dan waktu dari halaman UEFA diperiksa terhadap arsip model. Untuk statistik liga, `bola.target_form_audit` menyatukan tiga sumber form yang telah diperiksa waktu pengambilannya. Snapshot awal ada di `evidence/uefa_target_form_2026-10-15.json`: jendela 5/10/20 tersedia untuk **18 dari 18 tim** setelah liga Czech dan Azerbaijan ditambahkan dari FotMob. Dua liga itu hanya memiliki satu penyedia hasil yang diverifikasi dalam proyek ini. Ambil ulang data form setelah pertandingan liga berikutnya sebelum memakai ringkasan itu dekat kickoff.
+
+Jika ada tangkapan layar odds 1X2, transkripsikan nilainya ke JSON lokal dengan `match_id`, `home`, `away`, `kickoff`, `observed_at` berzona waktu, `bookmaker`, `market` bernilai `1X2_regular_time`, `decimal_odds` berisi `home`/`draw`/`away`, dan `screenshot_path`. Lalu jalankan:
+
+```bash
+python3 -m bola.market_snapshot --forecast prospective/uefa_2026-10-15T09-09-44.309038+00-00.json --quote /tmp/odds_quote.json --output reports/odds_quote_comparison.json
+```
+
+Modul ini menolak identitas laga yang berbeda, harga invalid, bukti gambar kosong, serta waktu setelah kickoff. Ia menyimpan SHA-256 gambar, menghitung margin pasar dan probabilitas 1X2 pasar setelah margin dinormalisasi. Jam dan angka di gambar masih memerlukan pemeriksaan manusia: transkripsi JSON tidak membuktikan isi layar atau bahwa harga dapat dipasang saat itu. Perbandingan tersebut bukan sinyal taruhan. Jika odds, lineup, atau bukti kualitas model tidak memadai, hasil analisis adalah **tunda/tidak ada pilihan**, bukan dua pilihan yang dipaksakan.
+
+Setelah semua laga dalam arsip selesai, nilai distribusi yang **sudah dibekukan** terhadap skor resmi UEFA:
+
+```bash
+python3 -m bola.uefa_score prospective/uefa_2026-10-15T09-09-44.309038+00-00.json --output reports/uefa_score_2026-10-20.json
+```
+
+Perintah penilaian menolak hasil yang belum final, perubahan identitas fixture, serta arsip yang dibuat sesudah kickoff. Ulangi pengamatan prospektif pada banyak tanggal sebelum menyimpulkan kalibrasi atau manfaat terhadap pasar.
+
 Ketujuh laga sudah selesai dan arsip dinilai tanpa mengubah peluangnya. Jalankan ulang dengan respons resmi yang dibekukan: `python3 -m bola.uefa_score prospective/uefa_2026-10-14T18-02-34.009581+00-00.json --results-json prospective/uefa_results_2026-10-15T07-58-54Z.json --output reports/uefa_prospective_score.json`. Hapus laporan lama terlebih dahulu jika menjalankan ulang; perintah sengaja menolak menimpanya. Penilai mencocokkan ID/waktu/tim dan menghitung log loss, Brier, serta akurasi pilihan tertinggi. Laporan penilaian yang dapat ditinjau ada di `prospective/uefa_score_2026-10-15T07-58-07Z.json`.
 
 Untuk form terkini, ambil snapshot liga domestik 2025/26 dan 2026/27 dari Football-Data, lalu pakai cutoff tanggal WIB:
@@ -85,7 +136,7 @@ python3 -m bola.fotmob_recent_stats --output reports/fotmob_recent_stats.json
 
 Delapan belas CSV mencakup sembilan liga dalam `.cache/form/`; dua CSV lain untuk Austria dan Norwegia ada di `.cache/form_extra/`. Manifest mencatat URL, waktu pengambilan, dan SHA-256 setiap berkas. Snapshot lama tersimpan di subfolder `snapshots/` dan dapat dijalankan ulang dengan `--data-dir` yang menunjuk foldernya. Kedua pengolah hanya memasukkan hasil bertanggal **sebelum** cutoff serta menghitung jendela 5/10/20 laga, bobot waktu, pembagian kandang/tandang, gol, dan surplus hasil terhadap Elo lawan sebelum pertandingan. Statistik tembakan, corner, kartu, dan xG hanya tersedia pada liga dan baris tertentu. Elo dihitung terpisah per liga dan tidak dapat dibandingkan langsung lintas liga. Form ini tidak mencakup pertandingan UEFA atau piala domestik.
 
-`fetch_fotmob_form.py` membekukan empat halaman liga FotMob/enet Slovakia dan Ukraina 2025/26–2026/27 dengan waktu pengambilan dan SHA-256. `bola.form_fotmob` memeriksa ID liga, musim, ID tim, status serta skor laga, menyingkirkan laga yang dibatalkan atau diputuskan administratif, dan menghitung form Shakhtar serta Slovan Bratislava. Gabungan tiga laporan form kini mencakup **18 dari 18 tim**. Halaman FotMob ini baru diambil **setelah** kickoff 15 Oktober, sehingga angka untuk dua klub tersebut adalah rekonstruksi retrospektif sebelum tanggal laga, bukan bukti informasi sudah tersedia pada saat prediksi prapertandingan. Ringkasan dan manifestnya ada di `evidence/form_fotmob_2026-10-15.json`.
+`fetch_fotmob_form.py` membekukan delapan halaman liga FotMob/enet Slovakia, Ukraina, Czech, dan Azerbaijan untuk 2025/26–2026/27 dengan waktu pengambilan dan SHA-256. `bola.form_fotmob` memeriksa ID liga, musim, ID tim, status serta skor laga, menyingkirkan laga yang dibatalkan atau diputuskan administratif, lalu menghitung form Shakhtar, Slovan Bratislava, Slavia Praha, dan Sabah. Halaman Slovakia/Ukraina pertama kali diambil **setelah** kickoff laga 15 Oktober, sehingga angka dua klub itu hanya rekonstruksi retrospektif untuk laga lama. Halaman Czech/Azerbaijan diambil sebelum laga target 20 Oktober UTC. Semua halaman tetap berupa satu penyedia dan belum menggantikan verifikasi hasil dengan sumber independen.
 
 `fetch_fotmob_recent.py` membekukan halaman pertandingan untuk lima laga liga terakhir sebelum cutoff dari masing-masing dua klub itu. `bola.fotmob_recent_stats` memeriksa identitas laga, waktu, skor, dan checksum, kemudian menghitung rata-rata statistik yang **benar-benar ada** pada halaman. Kedua tim memiliki data tembakan, tepat sasaran, penguasaan bola, dan corner pada 5/5 laga. FotMob menyediakan metrik lebih lengkap untuk Slovan daripada Shakhtar; kolom yang tidak tersedia tidak diisi dengan perkiraan. Rincian dan cakupan tiap metrik ada di `evidence/fotmob_recent_stats_2026-10-15.json`.
 

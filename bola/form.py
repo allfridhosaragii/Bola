@@ -19,8 +19,11 @@ TEAMS = {
     "Aston Villa": ("E0", "Aston Villa"), "Man City": ("E0", "Man City"),
     "Paris": ("F1", "Paris SG"), "B. Dortmund": ("D1", "Dortmund"),
     "Fenerbahçe": ("T1", "Fenerbahce"), "AEK Athens": ("G1", "AEK"),
+    "Barcelona": ("SP1", "Barcelona"), "Villarreal": ("SP1", "Villarreal"),
+    "Napoli": ("I1", "Napoli"), "PSV": ("N1", "PSV Eindhoven"),
+    "Atleti": ("SP1", "Ath Madrid"),
 }
-UNSUPPORTED = ("LASK", "Shakhtar", "S. Bratislava", "Bodø/Glimt")
+UNSUPPORTED = ("LASK", "Shakhtar", "S. Bratislava", "Bodø/Glimt", "Slavia Praha", "Sabah")
 SEASONS = ("2526", "2627")
 FIELDS = ("goals_for", "goals_against", "shots_for", "shots_against", "shots_on_target_for",
           "shots_on_target_against", "corners_for", "corners_against", "yellow_for", "yellow_against",
