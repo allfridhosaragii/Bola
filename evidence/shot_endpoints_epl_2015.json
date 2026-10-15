@@ -1,0 +1,650 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "competition": "EPL 2015/16",
+  "matches": 380,
+  "counts": {
+    "shots": 9908,
+    "psxg_field_present": 0,
+    "goal_or_saved": 3197,
+    "saved_3d": 2209,
+    "saved_outside_nominal_goal_y": 342,
+    "one_opponent_keeper_visible": 3112,
+    "goal_3d": 988,
+    "goal_outside_nominal_goal_y": 1
+  },
+  "outcomes": {
+    "Blocked": 2880,
+    "Saved": 2209,
+    "Off T": 3197,
+    "Wayward": 396,
+    "Goal": 988,
+    "Post": 170,
+    "Saved Off Target": 45,
+    "Saved to Post": 23
+  },
+  "nominal_goal_lateral_interval": [
+    36,
+    44
+  ],
+  "goalkeepers": [
+    {
+      "player_id": 3522,
+      "name": "Heurelho da Silva Gomes",
+      "saved": 125,
+      "goals": 43,
+      "pre_shot_xg": 23.162,
+      "on_target_shots_with_keeper_visible": 168,
+      "save_rate": 0.744,
+      "save_rate_wilson_95": [
+        0.6731,
+        0.8041
+      ]
+    },
+    {
+      "player_id": 3262,
+      "name": "\u0141ukasz Fabia\u0144ski",
+      "saved": 121,
+      "goals": 44,
+      "pre_shot_xg": 21.181,
+      "on_target_shots_with_keeper_visible": 165,
+      "save_rate": 0.7333,
+      "save_rate_wilson_95": [
+        0.6611,
+        0.7949
+      ]
+    },
+    {
+      "player_id": 12608,
+      "name": "Bradley Guzan",
+      "saved": 87,
+      "goals": 53,
+      "pre_shot_xg": 21.57,
+      "on_target_shots_with_keeper_visible": 140,
+      "save_rate": 0.6214,
+      "save_rate_wilson_95": [
+        0.5389,
+        0.6975
+      ]
+    },
+    {
+      "player_id": 3623,
+      "name": "Adri\u00e1n San Miguel del Castillo",
+      "saved": 100,
+      "goals": 33,
+      "pre_shot_xg": 20.052,
+      "on_target_shots_with_keeper_visible": 133,
+      "save_rate": 0.7519,
+      "save_rate_wilson_95": [
+        0.6721,
+        0.8175
+      ]
+    },
+    {
+      "player_id": 3537,
+      "name": "Jack Butland",
+      "saved": 98,
+      "goals": 34,
+      "pre_shot_xg": 18.528,
+      "on_target_shots_with_keeper_visible": 132,
+      "save_rate": 0.7424,
+      "save_rate_wilson_95": [
+        0.6617,
+        0.8094
+      ]
+    },
+    {
+      "player_id": 3815,
+      "name": "Kasper Schmeichel",
+      "saved": 100,
+      "goals": 32,
+      "pre_shot_xg": 17.12,
+      "on_target_shots_with_keeper_visible": 132,
+      "save_rate": 0.7576,
+      "save_rate_wilson_95": [
+        0.6779,
+        0.8227
+      ]
+    },
+    {
+      "player_id": 3461,
+      "name": "Petr \u010cech",
+      "saved": 100,
+      "goals": 27,
+      "pre_shot_xg": 12.9,
+      "on_target_shots_with_keeper_visible": 127,
+      "save_rate": 0.7874,
+      "save_rate_wilson_95": [
+        0.7084,
+        0.8496
+      ]
+    },
+    {
+      "player_id": 20074,
+      "name": "Artur Boruc",
+      "saved": 71,
+      "goals": 48,
+      "pre_shot_xg": 16.48,
+      "on_target_shots_with_keeper_visible": 119,
+      "save_rate": 0.5966,
+      "save_rate_wilson_95": [
+        0.5068,
+        0.6804
+      ]
+    },
+    {
+      "player_id": 3099,
+      "name": "Hugo Lloris",
+      "saved": 86,
+      "goals": 30,
+      "pre_shot_xg": 13.495,
+      "on_target_shots_with_keeper_visible": 116,
+      "save_rate": 0.7414,
+      "save_rate_wilson_95": [
+        0.6549,
+        0.8124
+      ]
+    },
+    {
+      "player_id": 13042,
+      "name": "Tim Howard",
+      "saved": 86,
+      "goals": 30,
+      "pre_shot_xg": 15.145,
+      "on_target_shots_with_keeper_visible": 116,
+      "save_rate": 0.7414,
+      "save_rate_wilson_95": [
+        0.6549,
+        0.8124
+      ]
+    },
+    {
+      "player_id": 3488,
+      "name": "Wayne Hennessey",
+      "saved": 81,
+      "goals": 33,
+      "pre_shot_xg": 16.964,
+      "on_target_shots_with_keeper_visible": 114,
+      "save_rate": 0.7105,
+      "save_rate_wilson_95": [
+        0.6215,
+        0.7858
+      ]
+    },
+    {
+      "player_id": 3539,
+      "name": "Simon Mignolet",
+      "saved": 71,
+      "goals": 39,
+      "pre_shot_xg": 13.836,
+      "on_target_shots_with_keeper_visible": 110,
+      "save_rate": 0.6455,
+      "save_rate_wilson_95": [
+        0.5525,
+        0.7286
+      ]
+    },
+    {
+      "player_id": 3333,
+      "name": "David de Gea Quintana",
+      "saved": 81,
+      "goals": 28,
+      "pre_shot_xg": 13.052,
+      "on_target_shots_with_keeper_visible": 109,
+      "save_rate": 0.7431,
+      "save_rate_wilson_95": [
+        0.6538,
+        0.8159
+      ]
+    },
+    {
+      "player_id": 23635,
+      "name": "John Ruddy",
+      "saved": 69,
+      "goals": 39,
+      "pre_shot_xg": 17.872,
+      "on_target_shots_with_keeper_visible": 108,
+      "save_rate": 0.6389,
+      "save_rate_wilson_95": [
+        0.545,
+        0.7233
+      ]
+    },
+    {
+      "player_id": 3291,
+      "name": "Joe Hart",
+      "saved": 72,
+      "goals": 32,
+      "pre_shot_xg": 16.823,
+      "on_target_shots_with_keeper_visible": 104,
+      "save_rate": 0.6923,
+      "save_rate_wilson_95": [
+        0.5981,
+        0.7728
+      ]
+    },
+    {
+      "player_id": 6871,
+      "name": "Costel Fane Pantilimon",
+      "saved": 71,
+      "goals": 28,
+      "pre_shot_xg": 15.676,
+      "on_target_shots_with_keeper_visible": 99,
+      "save_rate": 0.7172,
+      "save_rate_wilson_95": [
+        0.6216,
+        0.7965
+      ]
+    },
+    {
+      "player_id": 9539,
+      "name": "Vito Mannone",
+      "saved": 74,
+      "goals": 22,
+      "pre_shot_xg": 11.876,
+      "on_target_shots_with_keeper_visible": 96,
+      "save_rate": 0.7708,
+      "save_rate_wilson_95": [
+        0.6773,
+        0.8435
+      ]
+    },
+    {
+      "player_id": 3096,
+      "name": "Rob Elliot",
+      "saved": 58,
+      "goals": 32,
+      "pre_shot_xg": 13.496,
+      "on_target_shots_with_keeper_visible": 90,
+      "save_rate": 0.6444,
+      "save_rate_wilson_95": [
+        0.5415,
+        0.7356
+      ]
+    },
+    {
+      "player_id": 3509,
+      "name": "Thibaut Courtois",
+      "saved": 64,
+      "goals": 26,
+      "pre_shot_xg": 12.219,
+      "on_target_shots_with_keeper_visible": 90,
+      "save_rate": 0.7111,
+      "save_rate_wilson_95": [
+        0.6104,
+        0.7946
+      ]
+    },
+    {
+      "player_id": 5108,
+      "name": "Glyn Oliver Myhill",
+      "saved": 65,
+      "goals": 25,
+      "pre_shot_xg": 10.812,
+      "on_target_shots_with_keeper_visible": 90,
+      "save_rate": 0.7222,
+      "save_rate_wilson_95": [
+        0.622,
+        0.8042
+      ]
+    },
+    {
+      "player_id": 3339,
+      "name": "Asmir Begovi\u0107",
+      "saved": 59,
+      "goals": 22,
+      "pre_shot_xg": 9.743,
+      "on_target_shots_with_keeper_visible": 81,
+      "save_rate": 0.7284,
+      "save_rate_wilson_95": [
+        0.6228,
+        0.8133
+      ]
+    },
+    {
+      "player_id": 3970,
+      "name": "Fraser Forster",
+      "saved": 54,
+      "goals": 17,
+      "pre_shot_xg": 9.138,
+      "on_target_shots_with_keeper_visible": 71,
+      "save_rate": 0.7606,
+      "save_rate_wilson_95": [
+        0.6496,
+        0.8448
+      ]
+    },
+    {
+      "player_id": 16309,
+      "name": "Joel Robles Bl\u00e1zquez",
+      "saved": 47,
+      "goals": 18,
+      "pre_shot_xg": 10.342,
+      "on_target_shots_with_keeper_visible": 65,
+      "save_rate": 0.7231,
+      "save_rate_wilson_95": [
+        0.6042,
+        0.8171
+      ]
+    },
+    {
+      "player_id": 4053,
+      "name": "Ben Foster",
+      "saved": 45,
+      "goals": 15,
+      "pre_shot_xg": 7.151,
+      "on_target_shots_with_keeper_visible": 60,
+      "save_rate": 0.75,
+      "save_rate_wilson_95": [
+        0.6277,
+        0.8422
+      ]
+    },
+    {
+      "player_id": 9467,
+      "name": "Timothy Michael Krul",
+      "saved": 35,
+      "goals": 16,
+      "pre_shot_xg": 8.095,
+      "on_target_shots_with_keeper_visible": 51,
+      "save_rate": 0.6863,
+      "save_rate_wilson_95": [
+        0.5497,
+        0.7967
+      ]
+    },
+    {
+      "player_id": 20201,
+      "name": "Maarten Stekelenburg",
+      "saved": 32,
+      "goals": 19,
+      "pre_shot_xg": 7.976,
+      "on_target_shots_with_keeper_visible": 51,
+      "save_rate": 0.6275,
+      "save_rate_wilson_95": [
+        0.4902,
+        0.7468
+      ]
+    },
+    {
+      "player_id": 9014,
+      "name": "Declan Rudd",
+      "saved": 31,
+      "goals": 18,
+      "pre_shot_xg": 7.902,
+      "on_target_shots_with_keeper_visible": 49,
+      "save_rate": 0.6327,
+      "save_rate_wilson_95": [
+        0.4927,
+        0.7534
+      ]
+    },
+    {
+      "player_id": 3619,
+      "name": "Alex McCarthy",
+      "saved": 33,
+      "goals": 6,
+      "pre_shot_xg": 4.275,
+      "on_target_shots_with_keeper_visible": 39,
+      "save_rate": 0.8462,
+      "save_rate_wilson_95": [
+        0.7027,
+        0.9275
+      ]
+    },
+    {
+      "player_id": 18672,
+      "name": "Mark Bunn",
+      "saved": 22,
+      "goals": 17,
+      "pre_shot_xg": 6.977,
+      "on_target_shots_with_keeper_visible": 39,
+      "save_rate": 0.5641,
+      "save_rate_wilson_95": [
+        0.4098,
+        0.707
+      ]
+    },
+    {
+      "player_id": 3649,
+      "name": "Karl Darlow",
+      "saved": 23,
+      "goals": 11,
+      "pre_shot_xg": 4.564,
+      "on_target_shots_with_keeper_visible": 34,
+      "save_rate": 0.6765,
+      "save_rate_wilson_95": [
+        0.5084,
+        0.8087
+      ]
+    },
+    {
+      "player_id": 24888,
+      "name": "Adam Federici",
+      "saved": 13,
+      "goals": 14,
+      "pre_shot_xg": 6.114,
+      "on_target_shots_with_keeper_visible": 27,
+      "save_rate": 0.4815,
+      "save_rate_wilson_95": [
+        0.3074,
+        0.6601
+      ]
+    },
+    {
+      "player_id": 20066,
+      "name": "Darren Randolph",
+      "saved": 13,
+      "goals": 11,
+      "pre_shot_xg": 5.249,
+      "on_target_shots_with_keeper_visible": 24,
+      "save_rate": 0.5417,
+      "save_rate_wilson_95": [
+        0.3507,
+        0.7211
+      ]
+    },
+    {
+      "player_id": 4276,
+      "name": "David Ospina Ram\u00edrez",
+      "saved": 17,
+      "goals": 5,
+      "pre_shot_xg": 1.6,
+      "on_target_shots_with_keeper_visible": 22,
+      "save_rate": 0.7727,
+      "save_rate_wilson_95": [
+        0.5656,
+        0.8988
+      ]
+    },
+    {
+      "player_id": 41185,
+      "name": "Jakob Haugaard",
+      "saved": 12,
+      "goals": 10,
+      "pre_shot_xg": 3.404,
+      "on_target_shots_with_keeper_visible": 22,
+      "save_rate": 0.5455,
+      "save_rate_wilson_95": [
+        0.3466,
+        0.7308
+      ]
+    },
+    {
+      "player_id": 3659,
+      "name": "Wilfredo Daniel Caballero",
+      "saved": 14,
+      "goals": 5,
+      "pre_shot_xg": 3.176,
+      "on_target_shots_with_keeper_visible": 19,
+      "save_rate": 0.7368,
+      "save_rate_wilson_95": [
+        0.5121,
+        0.8819
+      ]
+    },
+    {
+      "player_id": 3468,
+      "name": "Jordan Pickford",
+      "saved": 11,
+      "goals": 4,
+      "pre_shot_xg": 0.931,
+      "on_target_shots_with_keeper_visible": 15,
+      "save_rate": 0.7333,
+      "save_rate_wilson_95": [
+        0.4805,
+        0.891
+      ]
+    },
+    {
+      "player_id": 9914,
+      "name": "Danny Ward",
+      "saved": 11,
+      "goals": 4,
+      "pre_shot_xg": 1.604,
+      "on_target_shots_with_keeper_visible": 15,
+      "save_rate": 0.7333,
+      "save_rate_wilson_95": [
+        0.4805,
+        0.891
+      ]
+    },
+    {
+      "player_id": 3487,
+      "name": "Juli\u00e1n Speroni",
+      "saved": 10,
+      "goals": 4,
+      "pre_shot_xg": 1.626,
+      "on_target_shots_with_keeper_visible": 14,
+      "save_rate": 0.7143,
+      "save_rate_wilson_95": [
+        0.4535,
+        0.8828
+      ]
+    },
+    {
+      "player_id": 20446,
+      "name": "Shay Given",
+      "saved": 7,
+      "goals": 6,
+      "pre_shot_xg": 3.054,
+      "on_target_shots_with_keeper_visible": 13,
+      "save_rate": 0.5385,
+      "save_rate_wilson_95": [
+        0.2914,
+        0.7679
+      ]
+    },
+    {
+      "player_id": 4892,
+      "name": "Sergio Germ\u00e1n Romero",
+      "saved": 9,
+      "goals": 2,
+      "pre_shot_xg": 0.75,
+      "on_target_shots_with_keeper_visible": 11,
+      "save_rate": 0.8182,
+      "save_rate_wilson_95": [
+        0.523,
+        0.9486
+      ]
+    },
+    {
+      "player_id": 5109,
+      "name": "Paulo Dino Gazzaniga",
+      "saved": 8,
+      "goals": 3,
+      "pre_shot_xg": 1.947,
+      "on_target_shots_with_keeper_visible": 11,
+      "save_rate": 0.7273,
+      "save_rate_wilson_95": [
+        0.4343,
+        0.9025
+      ]
+    },
+    {
+      "player_id": 43121,
+      "name": "Kelvin Davis",
+      "saved": 5,
+      "goals": 2,
+      "pre_shot_xg": 0.792,
+      "on_target_shots_with_keeper_visible": 7,
+      "save_rate": 0.7143,
+      "save_rate_wilson_95": [
+        0.3589,
+        0.9178
+      ]
+    },
+    {
+      "player_id": 9985,
+      "name": "\u00c1d\u00e1m Bogd\u00e1n",
+      "saved": 2,
+      "goals": 4,
+      "pre_shot_xg": 2.003,
+      "on_target_shots_with_keeper_visible": 6,
+      "save_rate": 0.3333,
+      "save_rate_wilson_95": [
+        0.0968,
+        0.7
+      ]
+    },
+    {
+      "player_id": 9563,
+      "name": "Kristoffer Nordfeldt",
+      "saved": 4,
+      "goals": 1,
+      "pre_shot_xg": 1.605,
+      "on_target_shots_with_keeper_visible": 5,
+      "save_rate": 0.8,
+      "save_rate_wilson_95": [
+        0.3755,
+        0.9638
+      ]
+    },
+    {
+      "player_id": 3609,
+      "name": "Michel Vorm",
+      "saved": 1,
+      "goals": 0,
+      "pre_shot_xg": 0.072,
+      "on_target_shots_with_keeper_visible": 1,
+      "save_rate": 1.0,
+      "save_rate_wilson_95": [
+        0.2065,
+        1.0
+      ]
+    },
+    {
+      "player_id": 3807,
+      "name": "Ryan Allsop",
+      "saved": 0,
+      "goals": 1,
+      "pre_shot_xg": 0.117,
+      "on_target_shots_with_keeper_visible": 1,
+      "save_rate": 0.0,
+      "save_rate_wilson_95": [
+        0.0,
+        0.7935
+      ]
+    },
+    {
+      "player_id": 31904,
+      "name": "Giedrius Arlauskis",
+      "saved": 0,
+      "goals": 1,
+      "pre_shot_xg": 0.062,
+      "on_target_shots_with_keeper_visible": 1,
+      "save_rate": 0.0,
+      "save_rate_wilson_95": [
+        0.0,
+        0.7935
+      ]
+    }
+  ],
+  "interpretation": "At least some saved-shot end locations are not interchangeable with goal crossing points. Do not train a post-shot quality proxy from these endpoints without an explicit event definition and validation.",
+  "limitations": [
+    "The 36\u201344 lateral interval is a nominal StatsBomb goal mouth, not a full event-schema audit.",
+    "No vendor post-shot xG field is present in this sample.",
+    "Save rates omit 85 Saved/Goal shots without exactly one opposing goalkeeper in the freeze frame.",
+    "Goalkeeper save rate and faced pre-shot xG are descriptive, not post-shot quality or a validated goals-prevented metric."
+  ]
+}

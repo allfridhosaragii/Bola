@@ -16,6 +16,7 @@ python3 scripts/fetch_worldcup_2018.py
 python3 scripts/fetch_epl_2015.py
 python3 scripts/fetch_form.py
 python3 scripts/fetch_form_extra.py
+python3 scripts/fetch_understat.py
 bash scripts/fetch_odds.sh
 python3 -m unittest discover -s tests -v
 python3 -m bola.backtest --data-dir .cache/openfootball --output reports/backtest.json
@@ -26,6 +27,7 @@ python3 -m bola.tactics --game 2 --data-dir .cache/metrica --output reports/tact
 python3 -m bola.statsbomb --data-dir .cache/statsbomb --output reports/statsbomb.json
 python3 -m bola.worldcup --data-dir .cache/statsbomb --output reports/worldcup.json
 python3 -m bola.xg_transfer --output reports/xg_transfer.json
+python3 -m bola.xg_provider_compare --output reports/xg_provider_compare.json
 python3 -m bola.club_audit --output reports/club_audit.json
 python3 -m bola.tactic_predict --output reports/tactic_predict.json
 python3 -m bola.rotation_predict --output reports/rotation_predict.json
@@ -44,7 +46,9 @@ python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 
 `fetch_worldcup_2018.py` mengambil 64 berkas event Piala Dunia 2018 dengan checksum tetap di `data/statsbomb_2018_sha256.json`. `fetch_epl_2015.py` mengambil 380 laga Premier League 2015/16 dengan checksum tetap di `data/statsbomb_epl_2015_sha256.json` (sekitar 1,1 GB cache). `bola.xg_transfer` membandingkan kalibrasi xG 2018 dan 2022 serta seluruh musim klub; untuk musim klub, ia membekukan frekuensi gol hingga 31 Desember 2015 lalu menilainya pada laga mulai 1 Januari 2016. Ini pemeriksaan transfer antar sampel, bukan validasi independen model xG StatsBomb karena riwayat pelatihannya tidak diketahui.
 
-`bola.shot_endpoint_audit` memeriksa ketersediaan kolom post-shot xG dan letak akhir tembakan Saved/Goal dalam seluruh musim klub. Endpoint Saved di luar interval lateral gawang nominal menunjukkan bahwa koordinat tersebut tidak boleh langsung dipakai sebagai titik sasaran untuk model post-shot.
+`fetch_understat.py` mengambil satu CSV musim EPL 2015/16 dari [cermin komunitas Understat](https://github.com/douglasbc/scraping-understat-dataset), pada commit dan SHA-256 tetap. `bola.xg_provider_compare` mencocokkan seluruh 380 pasangan kandang/tandang dengan skor akhir yang sama dan tanggal selisih paling jauh satu hari, lalu membandingkan xG per tim per laga. Jumlah tembakan berbeda menurut penyedia, jadi modul ini tidak menyatakan telah mencocokkan setiap tembakan. Laporan lengkap ada di `evidence/xg_provider_compare_epl_2015.json`; berkas sumber mentah hanya disimpan di `.cache/`.
+
+`bola.shot_endpoint_audit` memeriksa ketersediaan kolom post-shot xG dan letak akhir tembakan Saved/Goal dalam seluruh musim klub. Ia juga menghitung rasio penyelamatan deskriptif dan interval Wilson per penjaga gawang ketika tepat satu kiper lawan terlihat di freeze frame; salinan laporan ada di `evidence/shot_endpoints_epl_2015.json`. Endpoint Saved di luar interval lateral gawang nominal menunjukkan bahwa koordinat tersebut tidak boleh langsung dipakai sebagai titik sasaran untuk model post-shot.
 
 `fetch_odds.sh` mengambil CSV Premier League dan Bundesliga 2024/25–2025/26 serta Eredivisie 2024/25 dari [Football-Data](https://www.football-data.co.uk/), dengan checksum tetap. `bola.odds` dan `bola.odds_multi` mencocokkan seluruh **1.678** hasil uji menurut pasangan tim, tanggal, dan skor sebelum membandingkan probabilitas 1X2 model dengan odds rata-rata pembukaan/penutupan yang dinormalisasi. CSV tidak menyertakan timestamp tiap kutipan odds, sehingga hasilnya adalah benchmark historis, bukan simulasi keputusan taruhan saat itu.
 
