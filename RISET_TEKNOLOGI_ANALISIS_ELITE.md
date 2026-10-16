@@ -11,6 +11,25 @@ Pemeriksaan: 16 Oktober 2026 UTC. Tujuan dokumen ini ialah membedakan **pemakaia
 | UEFA, kompetisi klub dan tim nasional | Technical Observer Group bekerja bersama unit performance analysis UEFA untuk laporan tentang kompetisi klub dan tim nasional. Hasilnya memeriksa ciri taktik tim dan situasi pertandingan. | [UEFA, laporan teknis 2025/26](https://www.uefa.com/uefachampionsleague/news/02a6-20d7f1dee946-a9e92820d7fc-1000--read-the-official-2025-26-technical-reports/). Ini membuktikan **metode analisis penyelenggara**, bukan perangkat atau prosedur internal masing-masing klub. |
 | FIFA Performance Analysis | Analis menonton laga langsung, memeriksa replay video dan data pertandingan, lalu menyaringnya menjadi laporan untuk staf dan pemain, termasuk pada jeda pertandingan. | [FIFA Training Centre, peran performance analyst, 8 November 2021](https://www.fifatrainingcentre.com/en/environment/interviews/the-team-behind-the-team/the-role-of-the-performance-analyst.php). Ini standar kerja yang dijelaskan FIFA, bukan bukti alat internal klub tertentu. |
 
+## Sepuluh klub yang diminta pengguna
+
+Status berikut adalah **hasil verifikasi dari lingkungan ini**, bukan pernyataan bahwa klub yang belum terverifikasi tidak menggunakan teknologi analisis. Pemeriksaan situs resmi pada 16 Oktober 2026 menggunakan permintaan HTTP tanpa login. Respons `403` dari proksi berarti artikel dan isinya tidak berhasil dibaca.
+
+| Klub | Status bukti teknologi analisis tim dari sumber yang dapat dibaca | Batas kesimpulan |
+| --- | --- | --- |
+| Arsenal | Belum terverifikasi; `arsenal.com` ditolak proksi (403). | Jangan menamai vendor/perangkat internal Arsenal sebagai fakta. |
+| Bayern Munich | Belum terverifikasi; `fcbayern.com` ditolak proksi (403). | Jangan mengubah kabar kemitraan menjadi bukti pemakaian tim utama tanpa artikel yang menjelaskan penerapannya. |
+| Manchester City | Belum terverifikasi; `mancity.com` ditolak proksi (403). | Klaim metode City dari percakapan lama belum mendapat konfirmasi primer di pemeriksaan ini. |
+| Paris Saint-Germain | Belum terverifikasi; `en.psg.fr` ditolak proksi (403). | Tidak ada merek atau sistem analisis internal yang dapat disebut dari pemeriksaan ini. |
+| Barcelona | Belum terverifikasi; `fcbarcelona.com` ditolak proksi dan halaman Barça Innovation Hub merespons 403. | Publikasi riset hub, andaikata tersedia, harus dipisahkan dari penerapan tim utama. |
+| Manchester United | Belum terverifikasi; `manutd.com` ditolak proksi (403). | Jangan mengisi merek alat dengan dugaan. |
+| Aston Villa | Belum terverifikasi; `avfc.co.uk` ditolak proksi (403). | Jangan mengasumsikan produk penyedia data yang menampilkan laga Villa digunakan klub. |
+| Real Madrid | Belum terverifikasi; `realmadrid.com` ditolak proksi (403). | Teknologi fan engagement atau penyiaran tidak membuktikan pemakaian untuk analisis pertandingan. |
+| Inter Milan | Belum terverifikasi; `inter.it` ditolak proksi (403). | Belum ada bukti primer terbaca untuk merek alat internalnya. |
+| Liverpool | **Kolaborasi riset TacticAI terverifikasi** melalui [DeepMind](https://deepmind.google/blog/tacticai-ai-assistant-for-football-tactics/); `liverpoolfc.com` dapat diakses, tetapi tautan lama dalam percakapan mengembalikan 404. | Bukti yang ada menyatakan pengembangan dan evaluasi bersama ahli klub, **belum** penerapan resmi pada keputusan pertandingan. |
+
+Untuk melengkapi sembilan baris kosong di lingkungan lain, cari pernyataan resmi klub atau penyedia yang menyebut klub, produk/metode, tanggal, pengguna di klub, konteks pemakaian (tim utama/akademi/riset/komersial), dan data keluaran. Verifikasi bahwa sumber membahas **analisis performa sepak bola**, bukan sponsor, pengalaman penonton, infrastruktur stadion, atau teknologi operator kompetisi. Jangan menaikkan status hanya karena produk ada di katalog vendor.
+
 ## Klaim percakapan lama yang perlu dikoreksi
 
 - Tautan artikel staf data Liverpool yang tercantum dalam teks percakapan mengembalikan HTTP 404 pada pemeriksaan ini. Klaim terinci tentang perangkat internal Liverpool dari tautan itu belum dapat dikonfirmasi. Kolaborasi TacticAI tetap terkonfirmasi dari Google DeepMind.
