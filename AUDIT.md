@@ -46,6 +46,8 @@ Penyegaran target 20 Oktober yang dijalankan pada 16 Oktober pukul 15.35 WIB men
 
 Pemeriksaan jaringan ulang pada 16 Oktober pukul 08.46 UTC ke `1xbet.com` dan `www.1xbet.com` mengembalikan HTTP 403. Tidak ada odds yang dipakai dari percobaan ini; status gerbang pasar tetap tidak tersedia.
 
+Pada **16 Oktober 2026 pukul 08.59 UTC**, empat URL yang diberikan pengguna diperiksa ulang tanpa login: `https://1xbet.com` dan `/id` berakhir pada HTTP 403 setelah rantai status proxy `[200, 403]`; `https://1xbx.site` dan `https://1xlite-118654.top/id` gagal pada tunnel CONNECT dengan respons 403. Ukuran body yang diterima hanya 17 byte untuk dua URL pertama dan nol untuk dua URL terakhir. **0/4** menghasilkan kutipan odds bertimestamp, sehingga tidak ada harga yang dimasukkan ke model atau dipakai sebagai rekomendasi. Rincian status, checksum body, dan waktu pemeriksaan ada di `evidence/odds_source_audit_2026-10-16.json`.
+
 Skor 95% untuk kelima bagian tidak boleh dideklarasikan sampai gerbang wajib di atas lulus. Dua game anonim, 64 pertandingan dari satu turnamen, atau 1.678 prediksi uji tidak dapat dijadikan pengganti bukti tersebut.
 
 Audit lanjutan: pemisahan 992/686 laga pada uji pasar adalah evaluasi retrospektif pada musim yang sudah pernah diperiksa selama pengembangan. Pemisahan tahun mencegah pemilihan bobot langsung dari periode evaluasi dalam kode, tetapi tidak menghasilkan holdout baru yang independen. Hasilnya tidak menambah jumlah pertandingan unik yang divalidasi.

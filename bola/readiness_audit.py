@@ -36,6 +36,7 @@ def audit(folder: Path) -> dict:
     market = load(folder, "market_incremental_holdout.json")
     uefa = load(folder, "uefa_extended_backtest_2026-10-15.json")
     openfootball = load(folder, "openfootball_crosscheck_2026-10-16.json")
+    odds_sources = load(folder, "odds_source_audit_2026-10-16.json")
     coverage = refresh["coverage"]
 
     sections = {
@@ -76,7 +77,9 @@ def audit(folder: Path) -> dict:
             gate("uefa_metrics", bool(uefa["results"].get("locked_combined")), "UEFA locked-period metrics are recorded", "Locked UEFA metrics are missing."),
             gate("classwise_calibration", "blend_classwise_calibration_5_bins" in uefa["results"]["locked_combined"], "Classwise calibration is recorded", "Classwise calibration is missing."),
             gate("market_incremental_value", market["decision"]["retained"], "Internal model adds validated value above opening market", "Internal model was rejected as a market addition."),
-            gate("timestamped_uefa_odds", False, "No timestamped UEFA odds evidence supplied", "Timestamped current UEFA odds are missing."),
+            gate("timestamped_uefa_odds", odds_sources["quotes_observed"] > 0,
+                 f"{odds_sources['quotes_observed']} timestamped odds quotes observed across {len(odds_sources['results'])} supplied URLs",
+                 "Supplied URLs returned no usable timestamped odds quote."),
             gate("current_market_validation", False, "Current target model-market gate is closed", "The current target model has no validated market edge."),
         ]),
         "validasi_historis": section("validasi_historis", [
@@ -104,6 +107,7 @@ def audit(folder: Path) -> dict:
             "lineup_continuity_transfer_wsl.json", "market_incremental_holdout.json",
             "uefa_extended_backtest_2026-10-15.json",
             "openfootball_crosscheck_2026-10-16.json",
+            "odds_source_audit_2026-10-16.json",
         ],
     }
 

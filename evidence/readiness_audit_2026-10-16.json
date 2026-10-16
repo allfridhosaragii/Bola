@@ -144,8 +144,8 @@
         {
           "name": "timestamped_uefa_odds",
           "passed": false,
-          "evidence": "No timestamped UEFA odds evidence supplied",
-          "blocker": "Timestamped current UEFA odds are missing."
+          "evidence": "0 timestamped odds quotes observed across 4 supplied URLs",
+          "blocker": "Supplied URLs returned no usable timestamped odds quote."
         },
         {
           "name": "current_market_validation",
@@ -207,6 +207,7 @@
     "lineup_continuity_transfer_wsl.json",
     "market_incremental_holdout.json",
     "uefa_extended_backtest_2026-10-15.json",
-    "openfootball_crosscheck_2026-10-16.json"
+    "openfootball_crosscheck_2026-10-16.json",
+    "odds_source_audit_2026-10-16.json"
   ]
 }

@@ -265,3 +265,11 @@ python3 -m bola.openfootball_crosscheck --source-root .cache/openfootball-europe
 ```
 
 Perintah ini hanya menghitung verifikasi independen jika kelima skor final tersedia; sumber yang hilang atau parsial tetap dilaporkan sebagai penghambat.
+
+Pemeriksaan URL odds publik tanpa kredensial dapat diulang dengan:
+
+```bash
+python3 -m bola.odds_source_audit --output evidence/odds_source_audit_2026-10-16.json
+```
+
+Audit ini hanya mencatat status jaringan dan tidak menganggap respons HTTP sebagai kutipan odds. Kutipan baru dapat dipakai setelah memiliki pertandingan, pasar 1X2, tiga harga desimal, dan waktu pengambilan yang dapat diverifikasi.

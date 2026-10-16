@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-10-16T08:59:34.918915+00:00",
+  "urls_requested": [
+    "https://1xbet.com",
+    "https://1xbet.com/id",
+    "https://1xbx.site",
+    "https://1xlite-118654.top/id"
+  ],
+  "quotes_observed": 0,
+  "results": [
+    {
+      "url": "https://1xbet.com",
+      "checked_at": "2026-10-16T08:59:34.476501+00:00",
+      "curl_exit_code": 0,
+      "http_code": 403,
+      "effective_url": "https://1xbet.com/",
+      "content_type": "text/plain; charset=UTF-8",
+      "size_bytes": 17,
+      "status_chain": [
+        200,
+        403
+      ],
+      "body_sha256": "4405f662480d962484c99537f9eb679dea69e850d50e56f187cc364a145323c5",
+      "odds_observed": false,
+      "transport_error": null,
+      "interpretation": "Access denied (HTTP 403); no odds quote was used."
+    },
+    {
+      "url": "https://1xbet.com/id",
+      "checked_at": "2026-10-16T08:59:34.615200+00:00",
+      "curl_exit_code": 0,
+      "http_code": 403,
+      "effective_url": "https://1xbet.com/id",
+      "content_type": "text/plain; charset=UTF-8",
+      "size_bytes": 17,
+      "status_chain": [
+        200,
+        403
+      ],
+      "body_sha256": "4405f662480d962484c99537f9eb679dea69e850d50e56f187cc364a145323c5",
+      "odds_observed": false,
+      "transport_error": null,
+      "interpretation": "Access denied (HTTP 403); no odds quote was used."
+    },
+    {
+      "url": "https://1xbx.site",
+      "checked_at": "2026-10-16T08:59:34.876336+00:00",
+      "curl_exit_code": 56,
+      "http_code": 0,
+      "effective_url": "https://1xbx.site/",
+      "content_type": "",
+      "size_bytes": 0,
+      "status_chain": [
+        403
+      ],
+      "body_sha256": null,
+      "odds_observed": false,
+      "transport_error": "curl: (56) CONNECT tunnel failed, response 403",
+      "interpretation": "Access denied (HTTP 403); no odds quote was used."
+    },
+    {
+      "url": "https://1xlite-118654.top/id",
+      "checked_at": "2026-10-16T08:59:34.892112+00:00",
+      "curl_exit_code": 56,
+      "http_code": 0,
+      "effective_url": "https://1xlite-118654.top/id",
+      "content_type": "",
+      "size_bytes": 0,
+      "status_chain": [
+        403
+      ],
+      "body_sha256": null,
+      "odds_observed": false,
+      "transport_error": "curl: (56) CONNECT tunnel failed, response 403",
+      "interpretation": "Access denied (HTTP 403); no odds quote was used."
+    }
+  ],
+  "limitations": [
+    "The probe uses public unauthenticated HTTP requests and does not log in.",
+    "An access response is not an odds quote and cannot satisfy a timestamped-market gate.",
+    "A page body, if returned, is not parsed as a quote without match, market, three prices, and capture time."
+  ]
+}
