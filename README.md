@@ -31,6 +31,7 @@ python3 -m bola.statsbomb --data-dir .cache/statsbomb --output reports/statsbomb
 python3 -m bola.worldcup --data-dir .cache/statsbomb --output reports/worldcup.json
 python3 -m bola.xg_transfer --output reports/xg_transfer.json
 python3 -m bola.xg_provider_compare --output reports/xg_provider_compare.json
+python3 -m bola.xg_provider_predict --output reports/xg_provider_predict.json
 python3 -m bola.club_audit --output reports/club_audit.json
 python3 -m bola.tactic_predict --output reports/tactic_predict.json
 python3 -m bola.rotation_predict --output reports/rotation_predict.json
@@ -59,6 +60,8 @@ python3 -m bola.uefa_extended_backtest --output reports/uefa_extended_backtest.j
 `fetch_worldcup_2018.py` mengambil 64 berkas event Piala Dunia 2018 dengan checksum tetap di `data/statsbomb_2018_sha256.json`. `fetch_epl_2015.py` mengambil 380 laga Premier League 2015/16 dengan checksum tetap di `data/statsbomb_epl_2015_sha256.json` (sekitar 1,1 GB cache). `bola.xg_transfer` membandingkan kalibrasi xG 2018 dan 2022 serta seluruh musim klub; untuk musim klub, ia membekukan frekuensi gol hingga 31 Desember 2015 lalu menilainya pada laga mulai 1 Januari 2016. Ini pemeriksaan transfer antar sampel, bukan validasi independen model xG StatsBomb karena riwayat pelatihannya tidak diketahui.
 
 `fetch_understat.py` mengambil satu CSV musim EPL 2015/16 dari [cermin komunitas Understat](https://github.com/douglasbc/scraping-understat-dataset), pada commit dan SHA-256 tetap. `bola.xg_provider_compare` mencocokkan seluruh 380 pasangan kandang/tandang dengan skor akhir yang sama dan tanggal selisih paling jauh satu hari, lalu membandingkan xG per tim per laga. Jumlah tembakan berbeda menurut penyedia, jadi modul ini tidak menyatakan telah mencocokkan setiap tembakan. Laporan lengkap ada di `evidence/xg_provider_compare_epl_2015.json`; berkas sumber mentah hanya disimpan di `.cache/`.
+
+Audit lintas penyedia juga memisahkan penalti. StatsBomb memiliki **9.817 tembakan nonpenalti dan 900,08 npxG**, sedangkan Understat **9.690 dan 923,33**; korelasi npxG per tim-laga **0,8960**. `bola.xg_provider_predict` menerapkan koefisien `0,25` yang dipilih dari StatsBomb ke fitur Understat tanpa penyetelan untuk uji utama. Pada 190 laga holdout, log loss turun dari **1,02748** menjadi **1,01763**, tetapi interval bootstrap selisih **[−0,03485; +0,01683]** melintasi nol. Gerbang ketahanan penyedia belum lulus.
 
 `bola.shot_endpoint_audit` memeriksa ketersediaan kolom post-shot xG dan letak akhir tembakan Saved/Goal dalam seluruh musim klub. Ia juga menghitung rasio penyelamatan deskriptif dan interval Wilson per penjaga gawang ketika tepat satu kiper lawan terlihat di freeze frame; salinan laporan ada di `evidence/shot_endpoints_epl_2015.json`. Endpoint Saved di luar interval lateral gawang nominal menunjukkan bahwa koordinat tersebut tidak boleh langsung dipakai sebagai titik sasaran untuk model post-shot.
 

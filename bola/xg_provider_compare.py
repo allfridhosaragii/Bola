@@ -23,7 +23,8 @@ OUTCOMES = {"BlockedShot", "MissedShots", "SavedShot", "Goal", "ShotOnPost", "Ow
 
 
 def _summary() -> dict:
-    return {"shots": [0, 0], "goals": [0, 0], "xg": [0.0, 0.0]}
+    return {"shots": [0, 0], "goals": [0, 0], "xg": [0.0, 0.0],
+            "non_penalty_shots": [0, 0], "npxg": [0.0, 0.0], "penalties": [0, 0]}
 
 
 def understat_rows(folder: Path) -> dict:
@@ -67,6 +68,11 @@ def understat_rows(folder: Path) -> dict:
         entry["shots"][side] += 1
         entry["goals"][side] += row["result"] == "Goal"
         entry["xg"][side] += xg
+        if row["situation"] == "Penalty":
+            entry["penalties"][side] += 1
+        else:
+            entry["non_penalty_shots"][side] += 1
+            entry["npxg"][side] += xg
     if len(matches) != 380 or len(match_ids) != 380 or len(seen_shots) != 9819 or own_goals != 38:
         raise ValueError("Understat mirror does not contain expected complete season")
     return matches
@@ -107,6 +113,11 @@ def statsbomb_rows(folder: Path) -> dict:
             entry["shots"][side] += 1
             entry["goals"][side] += event["shot"]["outcome"]["name"] == "Goal"
             entry["xg"][side] += xg
+            if event["shot"]["type"]["name"] == "Penalty":
+                entry["penalties"][side] += 1
+            else:
+                entry["non_penalty_shots"][side] += 1
+                entry["npxg"][side] += xg
         rows[pair] = entry
     if sum(sum(row["shots"]) for row in rows.values()) != 9908:
         raise ValueError("StatsBomb shot sample disagrees with full-season audit")
@@ -132,8 +143,9 @@ def compare(sb: dict, understat: dict) -> dict:
         rows.append({"home": pair[0], "away": pair[1], "statsbomb_match_id": a["match_id"],
                      "understat_match_id": b["match_id"], "statsbomb_date": a["date"],
                      "understat_date": b["date"], "date_difference_days": days_apart,
-                     "score": a["score"], "statsbomb": {k: a[k] for k in ("shots", "goals", "xg")},
-                     "understat": {k: b[k] for k in ("shots", "goals", "xg")}})
+                     "score": a["score"],
+                     "statsbomb": {k: a[k] for k in ("shots", "goals", "xg", "non_penalty_shots", "npxg", "penalties")},
+                     "understat": {k: b[k] for k in ("shots", "goals", "xg", "non_penalty_shots", "npxg", "penalties")}})
     sx = [v for row in rows for v in row["statsbomb"]["xg"]]
     ux = [v for row in rows for v in row["understat"]["xg"]]
     differences = [x - y for x, y in zip(sx, ux)]
@@ -151,17 +163,30 @@ def compare(sb: dict, understat: dict) -> dict:
               "fixture_goal_event_counts_differ": sum(row["statsbomb"]["goals"] != row["understat"]["goals"]
                                                      for row in rows)}
     totals = {provider: {field: sum(sum(row[provider][field]) for row in rows)
-                         for field in ("shots", "goals", "xg")}
+                         for field in ("shots", "goals", "xg", "non_penalty_shots", "npxg", "penalties")}
               for provider in ("statsbomb", "understat")}
     if totals["statsbomb"]["goals"] != 988 or totals["understat"]["goals"] != 988:
         raise ValueError("Goal event count disagrees with known season audit")
+    if (totals["statsbomb"]["penalties"], totals["understat"]["penalties"]) != (91, 91):
+        raise ValueError("Penalty counts disagree with known season audit")
+    if (totals["statsbomb"]["non_penalty_shots"], totals["understat"]["non_penalty_shots"]) != (9817, 9690):
+        raise ValueError("Non-penalty shot counts disagree with known season audit")
+    sn = [v for row in rows for v in row["statsbomb"]["npxg"]]
+    un = [v for row in rows for v in row["understat"]["npxg"]]
+    nd = [x - y for x, y in zip(sn, un)]
     return {"sources": {"statsbomb_commit": SOURCE_COMMIT, "understat_mirror_sha256": UNDERSTAT_SHA256},
             "counts": counts, "totals": totals,
             "team_game_xg": {"n": 760, "pearson_correlation": round(_correlation(sx, ux), 4),
                              "mean_absolute_difference": round(sum(map(abs, differences)) / 760, 4),
                              "mean_statsbomb_minus_understat": round(sum(differences) / 760, 4),
                              "paired_fixture_bootstrap_95": [round(boot[24], 4), round(boot[975], 4)]},
-            "matches": rows,
+            "team_game_npxg": {"n": 760, "pearson_correlation": round(_correlation(sn, un), 4),
+                               "mean_absolute_difference": round(sum(map(abs, nd)) / 760, 4),
+                               "mean_statsbomb_minus_understat": round(sum(nd) / 760, 4)},
+            "matches": [{**row,
+                         "statsbomb": {key: row["statsbomb"][key] for key in ("shots", "goals", "xg")},
+                         "understat": {key: row["understat"][key] for key in ("shots", "goals", "xg")}}
+                        for row in rows],
             "limitations": ["The Understat CSV is a public community mirror; source publication times and vendor model training provenance are unknown.",
                             "Shot definitions differ. The comparison matches fixtures and team totals, not individual shots.",
                             "OwnGoal rows in Understat are excluded from shot counts and xG; official final scores still include own goals.",

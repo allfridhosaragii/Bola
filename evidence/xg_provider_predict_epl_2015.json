@@ -1,0 +1,60 @@
+{
+  "sources": {
+    "statsbomb_commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+    "understat_sha256": "cdde2434aa027d4cbb8e9ead6510143d219a3df3575daa0f14a18937fece8f4e"
+  },
+  "input_audit": {
+    "fixtures_matched": 380,
+    "date_differed_by_one_day": 13,
+    "understat_non_penalty_shots": 9690,
+    "statsbomb_non_penalty_shots": 9817
+  },
+  "protocol": {
+    "frozen_statsbomb_beta": 0.25,
+    "understat_tuning_period": "Before 2016-01-01; reported as sensitivity, not the primary test.",
+    "understat_selected_beta": 0.25,
+    "primary_test": "Apply the StatsBomb-selected coefficient to Understat five-match npxG on the 190-match holdout.",
+    "same_date_rule": "All matches on a date are predicted before results or xG from that date are observed."
+  },
+  "holdout": {
+    "score_only_elo": {
+      "n": 190,
+      "log_loss": 1.0274758096315517,
+      "brier": 0.615577089627973
+    },
+    "understat_npxg_frozen_statsbomb_beta": {
+      "n": 190,
+      "log_loss": 1.0176305061525475,
+      "brier": 0.6094219245772338
+    },
+    "understat_npxg_retuned_beta_sensitivity": {
+      "n": 190,
+      "log_loss": 1.0176305061525475,
+      "brier": 0.6094219245772338
+    },
+    "statsbomb_npxg_frozen_beta_reference": {
+      "n": 190,
+      "log_loss": 1.0120160059676013,
+      "brier": 0.605811574957872
+    },
+    "frozen_understat_vs_elo": {
+      "log_loss_difference_candidate_minus_reference": -0.009845303479004253,
+      "match_date_bootstrap_95_ci": [
+        -0.03485479323858807,
+        0.016825266135361252
+      ]
+    },
+    "mean_absolute_statsbomb_understat_feature_difference": 0.21232847335169092
+  },
+  "decision": {
+    "rule": "Provider robustness passes only if frozen Understat npxG improves holdout log loss and the entire interval is below zero.",
+    "provider_robustness_passed": false,
+    "result": "Not passed: independent-provider npxG did not clear the uncertainty gate."
+  },
+  "limitations": [
+    "The providers are independent measurements, but the same EPL outcomes are used in both feature audits.",
+    "Understat data come from a pinned community mirror; original publication timestamps and model training history are unavailable.",
+    "Fixture-level npxG is matched; individual shots are not reconciled one by one.",
+    "One historical EPL season does not establish current UEFA transfer or pregame availability."
+  ]
+}

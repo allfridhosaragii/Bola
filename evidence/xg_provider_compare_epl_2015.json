@@ -13,12 +13,18 @@
     "statsbomb": {
       "shots": 9908,
       "goals": 988,
-      "xg": 971.3812945686
+      "xg": 971.3812945686,
+      "non_penalty_shots": 9817,
+      "npxg": 900.0827945686,
+      "penalties": 91
     },
     "understat": {
       "shots": 9781,
       "goals": 988,
-      "xg": 992.5946858902458
+      "xg": 992.5946858902458,
+      "non_penalty_shots": 9690,
+      "npxg": 923.3285423298363,
+      "penalties": 91
     }
   },
   "team_game_xg": {
@@ -30,6 +36,12 @@
       -0.0521,
       -0.0063
     ]
+  },
+  "team_game_npxg": {
+    "n": 760,
+    "pearson_correlation": 0.896,
+    "mean_absolute_difference": 0.2441,
+    "mean_statsbomb_minus_understat": -0.0306
   },
   "matches": [
     {
