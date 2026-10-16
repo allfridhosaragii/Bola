@@ -1,0 +1,113 @@
+{
+  "cutoff_exclusive_date_wib": "2026-10-16",
+  "source_repository": "https://github.com/openfootball/europe.git",
+  "repository_commit": "0bf83f88e8feb22904c5f9d93c6407574c1347e0",
+  "teams": {
+    "Slavia Praha": {
+      "source_status": "verified_partial",
+      "source_path": "czech-republic/2026-27_cz1.txt",
+      "source_sha256": "b7f0daec5be37b109d2069354a1d48c84e012372ac8caff9dd7dc98340477c51",
+      "matches_checked": 5,
+      "matches_matched": 4,
+      "all_scores_agree": false,
+      "matches": [
+        {
+          "source_date": "2026-08-31",
+          "venue": "away",
+          "score": [
+            3,
+            0
+          ],
+          "openfootball": {
+            "date": "2026-08-30",
+            "home": "Sparta Praha",
+            "away": "Slavia Praha",
+            "goals_home": 0,
+            "goals_away": 3
+          }
+        },
+        {
+          "source_date": "2026-09-05",
+          "venue": "home",
+          "score": [
+            4,
+            0
+          ],
+          "openfootball": {
+            "date": "2026-09-05",
+            "home": "Slavia Praha",
+            "away": "Zbrojovka Brno",
+            "goals_home": 4,
+            "goals_away": 0
+          }
+        },
+        {
+          "source_date": "2026-09-13",
+          "venue": "away",
+          "score": [
+            2,
+            0
+          ],
+          "openfootball": {
+            "date": "2026-09-13",
+            "home": "FK Teplice",
+            "away": "Slavia Praha",
+            "goals_home": 0,
+            "goals_away": 2
+          }
+        },
+        {
+          "source_date": "2026-09-20",
+          "venue": "home",
+          "score": [
+            2,
+            1
+          ],
+          "openfootball": {
+            "date": "2026-09-20",
+            "home": "Slavia Praha",
+            "away": "Viktoria Plzeň",
+            "goals_home": 2,
+            "goals_away": 1
+          }
+        },
+        {
+          "source_date": "2026-10-09",
+          "venue": "away",
+          "score": [
+            1,
+            0
+          ],
+          "openfootball": null
+        }
+      ],
+      "blocker": "At least one primary result is not present as a final score."
+    },
+    "Sabah": {
+      "source_status": "missing_current_season_file",
+      "source_path": "azerbaijan/2026-27_az1.txt",
+      "matches_checked": 0,
+      "matches_matched": 0,
+      "all_scores_agree": false,
+      "blocker": "Current-season OpenFootball file is unavailable."
+    },
+    "S. Bratislava": {
+      "source_status": "missing_current_season_file",
+      "source_path": "slovakia/2026-27_sk1.txt",
+      "matches_checked": 0,
+      "matches_matched": 0,
+      "all_scores_agree": false,
+      "blocker": "Current-season OpenFootball file is unavailable."
+    }
+  },
+  "teams_checked": 3,
+  "independent_full_window_teams": 0,
+  "independent_score_matches": 4,
+  "requested_score_matches": 15,
+  "limitations": [
+    "A one-day date tolerance is allowed because source dates can differ by timezone.",
+    "Only final scores are checked; advanced event and shot data are not inferred.",
+    "A missing or partial current-season file does not pass the independent full-window gate."
+  ],
+  "primary_crosscheck_sha256": "66e6837e725ca70c43c7af51381fd94e548bb9e499e9408a58e27c55adb640e7"
+}

@@ -254,3 +254,14 @@ Laporan analis menghitung ulang umur odds pada waktu laporan (batas 10 menit), m
 Snapshot form, jadwal, dan statistik pertandingan juga harus berumur paling lama 24 jam pada saat laporan dibuat. Ketiganya menjadi gerbang terpisah agar data lengkap yang sudah lama tidak dianggap masih mutakhir menjelang kickoff.
 
 `bola.readiness_audit` menghitung cakupan gerbang ketat dari lima gerbang wajib untuk setiap bagian. Pada audit 16 Oktober 2026 hasilnya Statistik 40%, Taktik 20%, Kondisi skuad 20%, Probabilitas 40%, Validasi historis 60%, dan keseluruhan 36%. Skor ini mengukur bukti proses yang tersedia; bukan peluang hasil pertandingan atau akurasi 1X2.
+
+Audit sumber alternatif form target dapat diputar ulang dengan:
+
+```bash
+python3 -m bola.openfootball_crosscheck --source-root .cache/openfootball-europe \
+  --primary-crosscheck reports/form_crosscheck_20261016T083512371218Z.json \
+  --cutoff-date-wib 2026-10-16 \
+  --output evidence/openfootball_crosscheck_2026-10-16.json
+```
+
+Perintah ini hanya menghitung verifikasi independen jika kelima skor final tersedia; sumber yang hilang atau parsial tetap dilaporkan sebagai penghambat.

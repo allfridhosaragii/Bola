@@ -35,6 +35,7 @@ def audit(folder: Path) -> dict:
     lineup = load(folder, "lineup_continuity_transfer_wsl.json")
     market = load(folder, "market_incremental_holdout.json")
     uefa = load(folder, "uefa_extended_backtest_2026-10-15.json")
+    openfootball = load(folder, "openfootball_crosscheck_2026-10-16.json")
     coverage = refresh["coverage"]
 
     sections = {
@@ -42,8 +43,8 @@ def audit(folder: Path) -> dict:
             gate("target_form_coverage", coverage["domestic_form_teams"] == coverage["domestic_form_teams_requested"],
                  "18/18 target teams have a form snapshot", "A target team is missing a complete form snapshot."),
             gate("independent_score_crosscheck", coverage["independent_score_teams"] == coverage["domestic_form_teams_requested"],
-                 f"{coverage['independent_score_teams']}/{coverage['domestic_form_teams_requested']} target teams cross-checked independently",
-                 "Independent score verification does not cover every target team."),
+                 f"{coverage['independent_score_teams']}/{coverage['domestic_form_teams_requested']} primary target teams cross-checked independently; OpenFootball attempt {openfootball['independent_score_matches']}/{openfootball['requested_score_matches']} scores",
+                 "Independent score verification does not cover every target team; the OpenFootball attempt is partial or unavailable for the remaining teams."),
             gate("recent_stats_complete", coverage["recent_observations_with_stats"] == coverage["recent_team_match_observations"],
                  f"{coverage['recent_observations_with_stats']}/{coverage['recent_team_match_observations']} observations have stats",
                  "At least one recent team-match observation lacks statistics."),
@@ -102,6 +103,7 @@ def audit(folder: Path) -> dict:
             "xg_provider_predict_epl_2015.json", "pressure_transfer_wsl.json",
             "lineup_continuity_transfer_wsl.json", "market_incremental_holdout.json",
             "uefa_extended_backtest_2026-10-15.json",
+            "openfootball_crosscheck_2026-10-16.json",
         ],
     }
 
