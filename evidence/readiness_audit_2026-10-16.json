@@ -18,8 +18,8 @@
         {
           "name": "independent_score_crosscheck",
           "passed": false,
-          "evidence": "15/18 target teams cross-checked independently",
-          "blocker": "Independent score verification does not cover every target team."
+          "evidence": "15/18 primary target teams cross-checked independently; OpenFootball attempt 4/15 scores",
+          "blocker": "Independent score verification does not cover every target team; the OpenFootball attempt is partial or unavailable for the remaining teams."
         },
         {
           "name": "recent_stats_complete",
@@ -206,6 +206,7 @@
     "pressure_transfer_wsl.json",
     "lineup_continuity_transfer_wsl.json",
     "market_incremental_holdout.json",
-    "uefa_extended_backtest_2026-10-15.json"
+    "uefa_extended_backtest_2026-10-15.json",
+    "openfootball_crosscheck_2026-10-16.json"
   ]
 }
