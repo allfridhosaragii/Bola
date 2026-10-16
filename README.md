@@ -36,6 +36,7 @@ python3 -m bola.club_audit --output reports/club_audit.json
 python3 -m bola.tactic_predict --output reports/tactic_predict.json
 python3 -m bola.rotation_predict --output reports/rotation_predict.json
 python3 -m bola.pressure_predict --output reports/pressure_predict.json
+python3 -m bola.pressure_transfer --output reports/pressure_transfer.json
 python3 -m bola.shot_quality_predict --output reports/shot_quality_predict.json
 python3 -m bola.shot_quality_transfer --output reports/shot_quality_transfer.json
 python3 -m bola.shot_quality_incremental --output reports/shot_quality_incremental.json
@@ -77,6 +78,8 @@ Audit lintas penyedia juga memisahkan penalti. StatsBomb memiliki **9.817 tembak
 `bola.rotation_predict` menguji jumlah starter berubah dibanding laga sebelumnya sebagai fitur tambahan 1X2: koefisien dipilih dari 180 laga sebelum 1 Januari 2016 dan diuji pada 190 laga berikutnya. Fitur itu juga tidak memperbaiki log loss uji. Ini bukan estimasi dampak pemain absen karena alasan rotasi tidak tersedia.
 
 `bola.pressure_predict` memeriksa 115.402 event tekanan dan 11.295 penguasaan unik yang berpindah ke tim penekan dalam lima detik. Koefisien dipilih tanpa melihat 190 laga holdout; nilai yang terpilih adalah **0**, sehingga fitur tekanan ditolak. `bola.lineup_continuity_predict` memberi bobot pemain yang tidak masuk XI menurut frekuensi start dalam lima laga sebelumnya. Fitur itu dipilih pada 140 laga awal, tetapi log loss holdout memburuk dari **1,02748** menjadi **1,04211** pada 190 laga. Interval perbedaannya melintasi nol. Kedua hasil ini mencegah metrik taktik atau skuad yang belum terbukti masuk ke peluang pertandingan.
+
+`bola.pressure_transfer` menambah **157.628 event tekanan** dan **15.145** perebutan penguasaan unik dari 457 laga WSL. Tiga dataset musim awal memilih koefisien `0,5`, lalu 2023/24 digunakan sebagai holdout 102 laga. Log loss turun dari **0,97354** menjadi **0,95348**, tetapi interval bootstrap selisih **[−0,04389; +0,00437]** melintasi nol. Fitur tetap ditolak karena belum melewati gerbang ketidakpastian.
 
 `bola.lineup_continuity_transfer` membekukan koefisien EPL tersebut lalu mengujinya tanpa penyetelan pada empat dataset musim WSL. Sebanyak **914 Starting XI** dari 457 laga diperiksa dengan 461 checksum. Pada 335 prediksi, log loss memburuk dari **0,95753** menjadi **0,97195**; selisih **+0,01442** dengan interval bootstrap **[−0,00107; +0,03014]**. Karena fitur gagal pada holdout EPL dan transfer WSL, fitur kontinuitas ditolak sebagai input probabilitas.
 

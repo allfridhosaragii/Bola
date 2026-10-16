@@ -1,0 +1,103 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "input_audit": {
+    "matches": 457,
+    "event_rows": 1587305,
+    "pressure_events": 157628,
+    "unique_pressure_led_regains": 15145,
+    "checksums_verified": 461
+  },
+  "protocol": {
+    "feature": "Home minus away mean unique pressure-led regains over exactly five prior same-season matches.",
+    "training_seasons": [
+      "2018/2019",
+      "2019/2020",
+      "2020/2021"
+    ],
+    "holdout_season": "2023/2024",
+    "beta_grid": [
+      -2.0,
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "same_date_rule": "All matches on a date are predicted before events or results from that date are observed.",
+    "epl_reference_selected_beta": 0.0
+  },
+  "by_season": [
+    {
+      "season": "2018/2019",
+      "matches": 107,
+      "eligible_predictions": 78,
+      "pressure_events": 33996,
+      "unique_pressure_led_regains": 3205
+    },
+    {
+      "season": "2019/2020",
+      "matches": 87,
+      "eligible_predictions": 56,
+      "pressure_events": 29640,
+      "unique_pressure_led_regains": 2863
+    },
+    {
+      "season": "2020/2021",
+      "matches": 131,
+      "eligible_predictions": 99,
+      "pressure_events": 42287,
+      "unique_pressure_led_regains": 3958
+    },
+    {
+      "season": "2023/2024",
+      "matches": 132,
+      "eligible_predictions": 102,
+      "pressure_events": 51705,
+      "unique_pressure_led_regains": 5119
+    }
+  ],
+  "training": {
+    "n": 233,
+    "selected_beta": 0.5,
+    "training_log_loss": {
+      "-2.0": 1.371210283938798,
+      "-1.0": 1.1045610802371018,
+      "-0.5": 1.0106427753399085,
+      "0.0": 0.9505242479251818,
+      "0.5": 0.925166759071327,
+      "1.0": 0.9304704321082415,
+      "2.0": 1.0075040847661585
+    }
+  },
+  "holdout": {
+    "n": 102,
+    "score_only_elo": {
+      "n": 102,
+      "log_loss": 0.973543639975676,
+      "brier": 0.578424957339263
+    },
+    "elo_plus_pressure_regains": {
+      "n": 102,
+      "log_loss": 0.9534827414812891,
+      "brier": 0.5642481212733366
+    },
+    "log_loss_difference_augmented_minus_elo": -0.02006089849438686,
+    "match_date_bootstrap_95_ci": [
+      -0.04388741141280764,
+      0.004367555890511578
+    ]
+  },
+  "decision": {
+    "rule": "Retain only if training selects a nonzero coefficient and holdout improvement has an interval fully below zero.",
+    "retained": false,
+    "result": "Rejected: pressure-led regains did not pass the WSL holdout gate."
+  },
+  "limitations": [
+    "Pressure and possession labels are StatsBomb definitions rather than independent video annotations.",
+    "A possession change within five seconds is associated with pressure but does not prove causation.",
+    "The 2023/24 holdout is one season from one competition and has already been used for other feature audits.",
+    "Event files are post-match data and do not establish pregame feed availability for UEFA targets."
+  ]
+}
