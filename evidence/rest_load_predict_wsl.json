@@ -1,0 +1,103 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "input_audit": {
+    "matches": 457,
+    "metadata_checksums_verified": 4,
+    "eligible_predictions": 433,
+    "team_rest_observations": 866
+  },
+  "protocol": {
+    "feature": "Home capped rest days minus away capped rest days before the match.",
+    "rest_cap_days": 14,
+    "training_seasons": [
+      "2018/2019",
+      "2019/2020",
+      "2020/2021"
+    ],
+    "holdout_season": "2023/2024",
+    "beta_grid": [
+      -2.0,
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "same_date_rule": "All matches on a date are predicted before that date updates team history.",
+    "history_reset": "Rest history and Elo reset at each dataset season."
+  },
+  "by_season": [
+    {
+      "season": "2018/2019",
+      "matches": 107,
+      "eligible_predictions": 101
+    },
+    {
+      "season": "2019/2020",
+      "matches": 87,
+      "eligible_predictions": 81
+    },
+    {
+      "season": "2020/2021",
+      "matches": 131,
+      "eligible_predictions": 125
+    },
+    {
+      "season": "2023/2024",
+      "matches": 132,
+      "eligible_predictions": 126
+    }
+  ],
+  "rest_distribution": {
+    "minimum_days": 3,
+    "maximum_days": 44,
+    "mean_days": 11.92378752886836,
+    "team_matches_with_three_or_fewer_rest_days": 13
+  },
+  "training": {
+    "n": 307,
+    "selected_beta": 0.0,
+    "training_log_loss": {
+      "-2.0": 1.058566282989828,
+      "-1.0": 0.9915267342174083,
+      "-0.5": 0.9733320375844805,
+      "0.0": 0.969042265366354,
+      "0.5": 0.9800369640190284,
+      "1.0": 1.0054807515956168,
+      "2.0": 1.0887252895418518
+    }
+  },
+  "holdout": {
+    "n": 126,
+    "score_only_elo": {
+      "n": 126,
+      "log_loss": 0.9943823439665691,
+      "brier": 0.5932592854232156
+    },
+    "elo_plus_rest_difference": {
+      "n": 126,
+      "log_loss": 0.9943823439665691,
+      "brier": 0.5932592854232156
+    },
+    "log_loss_difference_augmented_minus_elo": 0.0,
+    "match_date_bootstrap_95_ci": [
+      0.0,
+      0.0
+    ],
+    "mean_home_rest_days": 10.80952380952381,
+    "mean_away_rest_days": 11.095238095238095
+  },
+  "decision": {
+    "rule": "Retain only if training selects a nonzero coefficient and holdout improvement has an interval fully below zero.",
+    "retained": false,
+    "result": "Rejected: rest-day difference did not pass the WSL holdout gate."
+  },
+  "limitations": [
+    "Calendar-day rest does not measure player minutes, travel, sleep, training load, or squad rotation.",
+    "The cap limits long breaks but is a prespecified modeling choice rather than an estimated fatigue threshold.",
+    "Only league fixtures contained in each StatsBomb season dataset contribute to rest history.",
+    "One WSL holdout does not establish workload effects for current UEFA men's clubs."
+  ]
+}

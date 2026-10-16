@@ -43,6 +43,7 @@ python3 -m bola.shot_quality_transfer --output reports/shot_quality_transfer.jso
 python3 -m bola.shot_quality_incremental --output reports/shot_quality_incremental.json
 python3 -m bola.lineup_continuity_predict --output reports/lineup_continuity_predict.json
 python3 -m bola.lineup_continuity_transfer --output reports/lineup_continuity_transfer.json
+python3 -m bola.rest_load_predict --output reports/rest_load_predict.json
 python3 -m bola.shot_endpoint_audit --output reports/shot_endpoints.json
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
 python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
@@ -85,6 +86,8 @@ Audit lintas penyedia juga memisahkan penalti. StatsBomb memiliki **9.817 tembak
 `bola.feature_family_audit` menyatukan empat fitur pada 102 laga WSL 2023/24 yang sama dan menjalankan 8.000 bootstrap per tanggal. Interval Bonferroni 98,75% per fitur mengendalikan tingkat kesalahan keluarga 5%. Form gol tetap lulus dengan selisih log loss **−0,05851 [−0,09134; −0,02395]**, demikian pula npxG **−0,10892 [−0,16202; −0,05758]**. Tekanan dan kontinuitas XI gagal. Audit ini mengoreksi penggunaan ulang holdout secara retrospektif; ia bukan holdout baru atau izin penerapan UEFA.
 
 `bola.lineup_continuity_transfer` membekukan koefisien EPL tersebut lalu mengujinya tanpa penyetelan pada empat dataset musim WSL. Sebanyak **914 Starting XI** dari 457 laga diperiksa dengan 461 checksum. Pada 335 prediksi, log loss memburuk dari **0,95753** menjadi **0,97195**; selisih **+0,01442** dengan interval bootstrap **[−0,00107; +0,03014]**. Karena fitur gagal pada holdout EPL dan transfer WSL, fitur kontinuitas ditolak sebagai input probabilitas.
+
+`bola.rest_load_predict` menguji selisih hari istirahat yang dibatasi maksimum 14 hari. Tiga dataset musim WSL awal menyediakan 307 prediksi pelatihan dan memilih koefisien `0`; holdout 2023/24 berisi 126 prediksi sehingga hasilnya identik dengan Elo. Dari 866 observasi tim, hanya 13 memiliki istirahat tiga hari atau kurang. Waktu istirahat tetap dilaporkan sebagai konteks jadwal, tetapi tidak mengubah peluang model.
 
 `bola.shot_quality_predict` menguji selisih rata-rata npxG dalam tepat lima laga terdahulu sebagai tambahan pada Elo. Seluruh **380 laga, 1.313.773 event, dan 9.817 tembakan nonpenalti** diperiksa dengan checksum. Koefisien dipilih pada 140 laga awal dan diuji pada 190 laga mulai 1 Januari 2016. Log loss turun dari **1,02748** menjadi **1,01202**, tetapi interval bootstrap selisihnya **[−0,03803; +0,00780]** melintasi nol. Sesuai gerbang yang ditetapkan, fitur belum dimasukkan ke model UEFA.
 
