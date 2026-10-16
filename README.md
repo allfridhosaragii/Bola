@@ -2,6 +2,8 @@
 
 Proyek ini melanjutkan rancangan dalam percakapan pengguna dengan bukti yang dapat dijalankan ulang. Kini tersedia baseline probabilitas 1X2, pengolah event/tracking dari laga anonim, audit xG Piala Dunia 2018 dan 2022, dan pemeriksa kronologi bukti skuad. Hasil ada di [RESULTS.md](RESULTS.md), sedangkan syarat target 95% ada di [AUDIT.md](AUDIT.md). Tidak ada klaim akurasi atau kesiapan 95% tanpa pengujian yang sesuai.
 
+Untuk alur pengguna yang mengirim gambar pertandingan, tersedia [prompt analis siap pakai](PROMPT_ANALISIS_BOLA_DARI_GAMBAR.md) dan [riset sumber primer teknologi analisis sepak bola](RISET_TEKNOLOGI_ANALISIS_ELITE.md). Riset membedakan pemakaian tim, kolaborasi riset, dan teknologi penyelenggara turnamen.
+
 ## Menjalankan
 
 Memerlukan Python 3.10+ dan Git. Pakai checkout yang sudah ada di `/workspace/Bola`; tidak perlu membuat Git worktree.
