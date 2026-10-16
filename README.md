@@ -130,6 +130,15 @@ python3 -m bola.analyst_report \
 
 Laporan memeriksa kesamaan ID, tim, kickoff, urutan waktu sumber, kesegaran fixture, form 5/10/20, beban jadwal, skuad terdaftar, XI resmi, odds, bukti taktik, dan validasi model terhadap pasar. Peluang model tetap dicatat untuk penilaian prospektif. Selama satu gerbang wajib belum lulus, status pertandingan adalah `no_selection`.
 
+Untuk mengubah JSON laporan menjadi ringkasan Markdown yang mudah dibaca, jalankan:
+
+```bash
+python3 -m bola.analyst_markdown reports/analyst_TIMESTAMP.json \
+  --output reports/analyst_brief.md
+```
+
+Ringkasan menampilkan peluang eksploratif, form, jumlah laga statistik/lineup yang tersedia, jadwal, skuad, gerbang penghambat, dan hash input. Angka statistik tetap diberi ukuran sampel; laporan tidak mengubah status `no_selection` atau menyebut peluang eksploratif sebagai rekomendasi.
+
 Perintah pertama mengambil kalender, hasil yang telah selesai sebelum tanggal target, dan jadwal target dari API resmi UEFA. Semua laga pada tanggal UTC target dihitung dari keadaan model yang sama agar hasil laga lebih awal pada hari itu tidak bocor ke ramalan laga berikutnya. Respons mentah disimpan di `.cache/uefa_forecast/`; arsip di `prospective/` mencatat checksum dan hash kode model. Perintah kedua menghitung ulang arsip dari snapshot lokal serta memeriksa hash; simpan snapshot tersebut bila ingin memverifikasi arsip pada mesin lain. Arsip tidak ditimpa. Jika kode model berubah, verifikasi membutuhkan versi kode yang tercatat dalam arsip.
 
 Pada hari pertandingan, cocokkan dulu nama tim, kompetisi, waktu, dan ID pertandingan dari sumber resmi. Perbarui form dan bukti skuad dengan cutoff yang sesuai; starting XI hanya dianggap resmi setelah feed UEFA memuat sebelas pemain per tim sebelum kickoff. Tangkapan layar jadwal atau odds adalah petunjuk awal yang harus dicocokkan dengan fixture UEFA. Jangan gunakan data yang pertama kali diambil setelah kickoff untuk mengklaim analisis prapertandingan.
