@@ -3,10 +3,26 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from bola.readiness_audit import gate, latest_refresh_path, section
+from bola.readiness_audit import gate, latest_refresh_path, section, validate_refresh_manifest
 
 
 class ReadinessAuditTests(unittest.TestCase):
+    @staticmethod
+    def refresh(generated_at: str, *, lineage: bool = True) -> dict:
+        return {
+            "generated_at": generated_at,
+            "evaluation_type": "Prospective pre-match refresh",
+            "source_report_sha256": {name: "a" * 64 for name in
+                                     ("analyst", "coverage", "crosscheck", "form", "odds", "openfootball", "recent", "schedule", "squad")},
+            "lineage_checks": {
+                "analyst_inputs_match_manifest": lineage,
+                "forecast_dependent_reports_match_forecast": True,
+                "openfootball_matches_primary_crosscheck": True,
+                "recent_coverage_matches_recent_report": True,
+            },
+            "coverage": {}, "external_source_checks": {},
+        }
+
     def test_section_requires_five_equal_gates(self):
         gates = [gate(str(i), i < 3, "evidence", "blocked") for i in range(5)]
         result = section("example", gates)
@@ -23,13 +39,29 @@ class ReadinessAuditTests(unittest.TestCase):
             for suffix, generated_at in (("old", "2026-10-16T09:00:00+00:00"),
                                          ("new", "2026-10-16T10:00:00+00:00")):
                 (root / f"target_refresh_evidence_{suffix}.json").write_text(
-                    json.dumps({"generated_at": generated_at}), encoding="utf-8")
+                    json.dumps(self.refresh(generated_at)), encoding="utf-8")
             self.assertEqual(latest_refresh_path(root).name, "target_refresh_evidence_new.json")
 
     def test_latest_refresh_path_requires_a_manifest(self):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(FileNotFoundError):
                 latest_refresh_path(Path(directory))
+
+    def test_latest_refresh_path_rejects_newest_failed_lineage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "target_refresh_evidence_old.json").write_text(
+                json.dumps(self.refresh("2026-10-16T09:00:00+00:00")), encoding="utf-8")
+            (root / "target_refresh_evidence_new.json").write_text(
+                json.dumps(self.refresh("2026-10-16T10:00:00+00:00", lineage=False)), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "lineage"):
+                latest_refresh_path(root)
+
+    def test_manifest_requires_complete_source_contract(self):
+        refresh = self.refresh("2026-10-16T10:00:00+00:00")
+        del refresh["source_report_sha256"]["odds"]
+        with self.assertRaisesRegex(ValueError, "source-report"):
+            validate_refresh_manifest(refresh)
 
 
 if __name__ == "__main__":

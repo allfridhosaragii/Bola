@@ -3,11 +3,18 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import json
 from pathlib import Path
 
 
 SECTIONS = ("statistik", "taktik", "kondisi_skuad", "probabilitas", "validasi_historis")
+REQUIRED_REFRESH_SOURCES = frozenset(("analyst", "coverage", "crosscheck", "form", "odds",
+                                      "openfootball", "recent", "schedule", "squad"))
+REQUIRED_LINEAGE_CHECKS = frozenset(("analyst_inputs_match_manifest",
+                                     "forecast_dependent_reports_match_forecast",
+                                     "openfootball_matches_primary_crosscheck",
+                                     "recent_coverage_matches_recent_report"))
 
 
 def gate(name: str, passed: bool, evidence: str, blocker: str) -> dict:
@@ -27,17 +34,50 @@ def load(folder: Path, filename: str) -> dict:
     return json.loads((folder / filename).read_text(encoding="utf-8"))
 
 
+def validate_refresh_manifest(refresh: dict) -> None:
+    """Require the minimum integrity contract before using target evidence."""
+    if refresh.get("evaluation_type") != "Prospective pre-match refresh":
+        raise ValueError("Refresh manifest has an unexpected evaluation type")
+    try:
+        datetime.fromisoformat(refresh["generated_at"].replace("Z", "+00:00"))
+    except (AttributeError, TypeError, ValueError) as error:
+        raise ValueError("Refresh manifest has an invalid generated_at timestamp") from error
+    sources = refresh.get("source_report_sha256")
+    if not isinstance(sources, dict) or not REQUIRED_REFRESH_SOURCES.issubset(sources):
+        raise ValueError("Refresh manifest lacks required source-report checksums")
+    if any(not isinstance(sources[name], str) or len(sources[name]) != 64
+           for name in REQUIRED_REFRESH_SOURCES):
+        raise ValueError("Refresh manifest contains an invalid source-report checksum")
+    lineage = refresh.get("lineage_checks")
+    if not isinstance(lineage, dict) or any(lineage.get(name) is not True
+                                            for name in REQUIRED_LINEAGE_CHECKS):
+        raise ValueError("Refresh manifest has missing or failed lineage checks")
+    if not isinstance(refresh.get("coverage"), dict) or not isinstance(refresh.get("external_source_checks"), dict):
+        raise ValueError("Refresh manifest lacks coverage or external-source evidence")
+
+
 def latest_refresh_path(folder: Path) -> Path:
     """Return the newest checksum-linked refresh manifest in an evidence folder."""
     candidates = list(folder.glob("target_refresh_evidence_*.json"))
     if not candidates:
         raise FileNotFoundError("No checksum-linked target refresh manifest was found")
-    return max(candidates, key=lambda path: (json.loads(path.read_text(encoding="utf-8"))["generated_at"], path.name))
+    records = []
+    for path in candidates:
+        refresh = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            generated_at = datetime.fromisoformat(refresh["generated_at"].replace("Z", "+00:00"))
+        except (AttributeError, KeyError, TypeError, ValueError) as error:
+            raise ValueError(f"Refresh manifest has an invalid generated_at timestamp: {path.name}") from error
+        records.append((generated_at, path.name, path, refresh))
+    _, _, newest_path, newest_refresh = max(records)
+    validate_refresh_manifest(newest_refresh)
+    return newest_path
 
 
 def audit(folder: Path, refresh_path: Path | None = None) -> dict:
     refresh_path = refresh_path or latest_refresh_path(folder)
     refresh = json.loads(refresh_path.read_text(encoding="utf-8"))
+    validate_refresh_manifest(refresh)
     xg = load(folder, "shot_quality_incremental_epl_wsl.json")
     provider = load(folder, "xg_provider_predict_epl_2015.json")
     pressure = load(folder, "pressure_transfer_wsl.json")
