@@ -1,0 +1,124 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "input_audit": {
+    "competition": "FA Women's Super League 2023/24",
+    "matches": 132,
+    "eligible_predictions": 102,
+    "event_rows": 495189,
+    "starting_xis_verified": 264,
+    "pressure_events": 51705,
+    "pressure_led_regains": 5119,
+    "checksums_verified": 133
+  },
+  "protocol": {
+    "family": [
+      "five_match_goals",
+      "five_match_npxg",
+      "pressure_regains",
+      "lineup_continuity"
+    ],
+    "family_size": 4,
+    "bootstrap_replicates": 8000,
+    "resampling_unit": "match date",
+    "nominal_interval": 0.95,
+    "bonferroni_individual_interval_for_familywise_95": 0.9875,
+    "coefficients": {
+      "five_match_goals": 0.1,
+      "five_match_npxg": 0.25,
+      "pressure_regains": 0.5,
+      "lineup_continuity": 1.0
+    }
+  },
+  "score_only_elo": {
+    "n": 102,
+    "log_loss": 0.973543639975676,
+    "brier": 0.578424957339263
+  },
+  "feature_metrics": {
+    "five_match_goals": {
+      "n": 102,
+      "log_loss": 0.9150336087715515,
+      "brier": 0.5348939691780789
+    },
+    "five_match_npxg": {
+      "n": 102,
+      "log_loss": 0.8646194744177672,
+      "brier": 0.5004547023891476
+    },
+    "pressure_regains": {
+      "n": 102,
+      "log_loss": 0.9534827414812891,
+      "brier": 0.5642481212733366
+    },
+    "lineup_continuity": {
+      "n": 102,
+      "log_loss": 1.0045480079518363,
+      "brier": 0.6024764075011595
+    }
+  },
+  "comparisons_vs_elo": {
+    "five_match_goals": {
+      "log_loss_difference_candidate_minus_elo": -0.05851003120412446,
+      "nominal_bootstrap_95_ci": [
+        -0.08394575719260124,
+        -0.03151659772362107
+      ],
+      "bonferroni_familywise_95_ci": [
+        -0.0913449810246247,
+        -0.02395157820211618
+      ],
+      "passes_familywise_gate": true
+    },
+    "five_match_npxg": {
+      "log_loss_difference_candidate_minus_elo": -0.10892416555790874,
+      "nominal_bootstrap_95_ci": [
+        -0.1507260633342655,
+        -0.06834590323296011
+      ],
+      "bonferroni_familywise_95_ci": [
+        -0.162015877639145,
+        -0.05758497786609121
+      ],
+      "passes_familywise_gate": true
+    },
+    "pressure_regains": {
+      "log_loss_difference_candidate_minus_elo": -0.02006089849438686,
+      "nominal_bootstrap_95_ci": [
+        -0.043797677705834,
+        0.004158722064684184
+      ],
+      "bonferroni_familywise_95_ci": [
+        -0.05069461715217278,
+        0.010032976775058275
+      ],
+      "passes_familywise_gate": false
+    },
+    "lineup_continuity": {
+      "log_loss_difference_candidate_minus_elo": 0.031004367976160352,
+      "nominal_bootstrap_95_ci": [
+        0.00010490659881038026,
+        0.06032682881785972
+      ],
+      "bonferroni_familywise_95_ci": [
+        -0.009053390949102841,
+        0.0685199085492632
+      ],
+      "passes_familywise_gate": false
+    }
+  },
+  "decision": {
+    "features_passing_familywise_gate": [
+      "five_match_goals",
+      "five_match_npxg"
+    ],
+    "result": "Only five_match_goals, five_match_npxg survive the four-feature family-wise correction.",
+    "implementation": "This retrospective audit does not activate any UEFA feature."
+  },
+  "limitations": [
+    "The WSL 2023/24 outcomes were already inspected in earlier feature reports; this is multiplicity correction, not a new holdout.",
+    "Bonferroni controls this declared four-feature family but not every exploratory analysis ever performed in the project.",
+    "All advanced event features use StatsBomb provider definitions and post-match files.",
+    "A WSL result does not establish transfer to current UEFA men's fixtures or value against betting markets."
+  ]
+}

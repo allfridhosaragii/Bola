@@ -257,6 +257,12 @@ Validasi tambahan WSL membaca **1.587.305 event** dari 457 laga dan menemukan **
 
 Batas atas yang positif membuat fitur tetap **ditolak**. Hasil ini lebih menjanjikan daripada EPL, tetapi belum membuktikan stabilitas lintas kompetisi atau label taktik yang independen. Dataset holdout 2023/24 juga sudah dipakai untuk audit fitur lain, sehingga pengulangan kesimpulan pada musim yang sama tidak dianggap sebagai sampel prospektif baru. Artefak lengkap ada di `evidence/pressure_transfer_wsl.json`.
 
+### Koreksi pengujian multipel pada holdout WSL
+
+Empat fitur yang memakai 102 pertandingan WSL 2023/24 yang sama—form gol, npxG, perebutan setelah tekanan, dan kontinuitas XI—diaudit sebagai satu keluarga. Semua baris pertandingan, baseline Elo, hasil, dan tanggal harus identik. Audit menjalankan **8.000 bootstrap per tanggal**. Selain interval nominal 95%, setiap fitur mendapat interval Bonferroni **98,75%**, sehingga tingkat kesalahan keluarga untuk empat pengujian dibatasi 5%.
+
+Form gol memiliki selisih log loss terhadap Elo **−0,05851**, interval keluarga **[−0,09134; −0,02395]**. npxG **−0,10892 [−0,16202; −0,05758]**. Keduanya tetap lulus. Tekanan **−0,02006 [−0,05069; +0,01003]** dan kontinuitas XI **+0,03100 [−0,00905; +0,06852]** gagal. Jadi keunggulan npxG pada sampel ini tidak hilang setelah koreksi empat fitur, sementara tekanan tetap belum pasti. Audit dilakukan setelah hasil holdout pernah diperiksa dan tidak dianggap sebagai sampel baru. Artefak lengkap ada di `evidence/feature_family_audit_wsl_2023.json`.
+
 ### Uji holdout kualitas tembakan lima laga
 
 Eksperimen tambahan membaca ulang **1.313.773 event** pada seluruh 380 laga Premier League 2015/16 dan memverifikasi 381 checksum metadata/event. Setelah penalti dikeluarkan, terdapat **9.817 tembakan** dengan total **900,082795 npxG**. Untuk tiap tim, fitur hanya memakai rata-rata selisih npxG dari tepat lima laga sebelumnya. Seluruh laga pada tanggal yang sama diprediksi sebelum event atau hasil pada tanggal itu diperbarui, sehingga tidak ada kebocoran antar laga pada hari yang sama.
