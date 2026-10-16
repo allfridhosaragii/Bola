@@ -97,11 +97,15 @@ def audit(folder: Path, refresh_path: Path | None = None) -> dict:
     uefa = load(folder, "uefa_extended_backtest_2026-10-15.json")
     coverage = refresh["coverage"]
     odds_sources = refresh["external_source_checks"]
+    model_sample = market["sample"]["total_matches"]
+    source_hashes_valid = (bool(refresh["source_report_sha256"])
+                           and all(refresh.get("lineage_checks", {}).values()))
 
     sections = {
         "statistik": section("statistik", [
             gate("target_form_coverage", coverage["domestic_form_teams"] == coverage["domestic_form_teams_requested"],
-                 "18/18 target teams have a form snapshot", "A target team is missing a complete form snapshot."),
+                 f"{coverage['domestic_form_teams']}/{coverage['domestic_form_teams_requested']} target teams have a form snapshot",
+                 "A target team is missing a complete form snapshot."),
             gate("independent_score_crosscheck", coverage["independent_score_teams"] == coverage["domestic_form_teams_requested"],
                  f"{coverage['independent_score_teams']}/{coverage['domestic_form_teams_requested']} primary target teams cross-checked independently; OpenFootball attempt {coverage['openfootball_independent_score_matches']}/{coverage['openfootball_requested_score_matches']} scores",
                  "Independent score verification does not cover every target team; the OpenFootball attempt is partial or unavailable for the remaining teams."),
@@ -109,15 +113,18 @@ def audit(folder: Path, refresh_path: Path | None = None) -> dict:
                  f"{coverage['recent_observations_with_stats']}/{coverage['recent_team_match_observations']} observations have stats; raw-page audit {coverage['raw_recent_pages_checked']} pages, anomalies {coverage['recent_page_audit_anomalies']}",
                  "At least one recent team-match observation lacks statistics; raw pages confirm source-level missing fields."),
             gate("npxg_transfer_gate", xg["decision"]["incremental_npxg_retained"],
-                 "Frozen npxG transfer gate passed on WSL", "The npxG transfer gate did not pass."),
+                 f"{xg['decision']['result']} ({xg['input_audit']['wsl']['matches']} WSL matches)",
+                 "The npxG transfer gate did not pass."),
             gate("provider_robustness", provider["decision"]["provider_robustness_passed"],
-                 "Independent provider npxG passes its uncertainty gate", "Provider robustness did not pass."),
+                 f"{provider['decision']['result']} ({provider['input_audit']['fixtures_matched']} matched fixtures)",
+                 "Provider robustness did not pass."),
         ]),
         "taktik": section("taktik", [
             gate("audited_event_input", pressure["input_audit"]["pressure_events"] > 0,
                  f"{pressure['input_audit']['pressure_events']} pressure events audited", "No audited pressure event input exists."),
             gate("pressure_predictive_gate", pressure["decision"]["retained"],
-                 "Pressure feature passed a frozen holdout", "Pressure feature was rejected by its holdout gate."),
+                 f"{pressure['decision']['result']} ({pressure['input_audit']['pressure_events']} pressure events audited)",
+                 "Pressure feature was rejected by its holdout gate."),
             gate("target_tactical_feed", False, "No target pre-kickoff tactical event feed", "Target tactical event/video evidence is unavailable."),
             gate("inter_analyst_labels", False, "No independently labelled target tactical sample", "Inter-analyst tactical labels are missing."),
             gate("pre_kickoff_tactical_validation", False, "No current target tactical feature has a validated holdout", "Current tactical evidence is descriptive only."),
@@ -130,12 +137,16 @@ def audit(folder: Path, refresh_path: Path | None = None) -> dict:
             gate("recent_lineups_complete", coverage["recent_observations_with_lineups"] == coverage["recent_team_match_observations"],
                  f"{coverage['recent_observations_with_lineups']}/{coverage['recent_team_match_observations']} recent observations have lineups", "Recent lineup coverage is incomplete."),
             gate("current_availability_status", False, "Registered lists are present but injury/suspension status is unverified", "Match-specific player availability is missing."),
-            gate("player_impact_holdout", lineup["decision"]["implementation_gate_passed"], "Lineup impact feature passes both holdouts", "Lineup impact feature failed its holdout gates."),
+            gate("player_impact_holdout", lineup["decision"]["implementation_gate_passed"],
+                 f"{lineup['decision']['result']} ({lineup['input_audit']['starting_xis_verified']} starting XIs verified)",
+                 "Lineup impact feature failed its holdout gates."),
         ]),
         "probabilitas": section("probabilitas", [
             gate("uefa_metrics", bool(uefa["results"].get("locked_combined")), "UEFA locked-period metrics are recorded", "Locked UEFA metrics are missing."),
             gate("classwise_calibration", "blend_classwise_calibration_5_bins" in uefa["results"]["locked_combined"], "Classwise calibration is recorded", "Classwise calibration is missing."),
-            gate("market_incremental_value", market["decision"]["retained"], "Internal model adds validated value above opening market", "Internal model was rejected as a market addition."),
+            gate("market_incremental_value", market["decision"]["retained"],
+                 f"{market['decision']['result']} ({model_sample} historical matches)",
+                 "Internal model was rejected as a market addition."),
             gate("timestamped_uefa_odds", odds_sources["quotes_observed"] > 0,
                  f"{odds_sources['quotes_observed']} timestamped odds quotes observed across {odds_sources['urls_checked']} supplied URLs",
                  "Supplied URLs returned no usable timestamped odds quote."),
@@ -143,9 +154,12 @@ def audit(folder: Path, refresh_path: Path | None = None) -> dict:
         ]),
         "validasi_historis": section("validasi_historis", [
             gate("chronological_holdouts", bool(uefa["protocol"]), "Chronological UEFA and transfer protocols are recorded", "A chronological holdout protocol is missing."),
-            gate("source_checksums", bool(refresh["source_report_sha256"]) and all(refresh.get("lineage_checks", {}).values()),
-                 "Refresh source hashes and lineage checks are recorded", "Source hashes or lineage checks are missing or failed."),
-            gate("multi_league_sample", market["sample"]["total_matches"] == 1678, "1,678 domestic market-matched fixtures audited", "The multi-league sample is incomplete."),
+            gate("source_checksums", source_hashes_valid,
+                 f"{len(refresh['source_report_sha256'])} source-report hashes and {sum(refresh.get('lineage_checks', {}).values())} lineage checks recorded",
+                 "Source hashes or lineage checks are missing or failed."),
+            gate("multi_league_sample", model_sample == 1678,
+                 f"{model_sample} domestic market-matched fixtures audited (required: 1,678)",
+                 "The multi-league sample is incomplete."),
             gate("untouched_prospective_scoring", False, "Latest target archive has no final results yet", "A sufficiently sized untouched prospective score is unavailable."),
             gate("publication_timestamps", False, "Historical source publication times are not captured", "First-publication timestamps are missing."),
         ]),
