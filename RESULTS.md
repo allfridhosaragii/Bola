@@ -255,6 +255,12 @@ Koefisien `0,25` dari pelatihan EPL kemudian dibekukan dan diterapkan tanpa peny
 
 Secara gabungan, log loss Elo turun dari **0,95753** menjadi **0,85019** dan Brier dari **0,56710** menjadi **0,49037**. Selisih log loss **−0,10734** memiliki interval bootstrap menurut tanggal 95% **[−0,13269; −0,08185]**. Perbaikan titik terjadi pada keempat musim, sehingga gerbang transfer yang ditetapkan lulus. Hasil ini menaikkan status fitur menjadi kandidat yang didukung bukti lintas liga, tetapi belum membuatnya layak dimasukkan ke peluang UEFA: WSL berbeda dari kompetisi target, kedua sampel memakai model xG StatsBomb, dan event tersedia sebagai data pascalaga. Artefak lengkap ada di `evidence/shot_quality_transfer_wsl.json`.
 
+### Nilai npxG di atas form selisih gol
+
+Untuk menguji apakah hasil transfer hanya menangkap momentum skor, eksperimen berikutnya membangun empat model dari riwayat lima laga: Elo saja, Elo plus selisih gol, Elo plus npxG, serta Elo plus keduanya. Semua koefisien dipilih pada **140 laga EPL** sebelum 1 Januari 2016. Bobot form gol terpilih `0,1`; bobot npxG `0,25`. Pada grid gabungan, nilai terbaik adalah npxG `0,25` dan gol `0`, sehingga hasil skor terkini tidak menambah informasi setelah npxG pada sampel pelatihan.
+
+Koefisien itu dibekukan sebelum evaluasi 335 laga WSL. Log loss Elo **0,95753**, form gol **0,89533**, dan npxG **0,85019**. Selisih npxG dikurangi form gol adalah **−0,04514**, interval bootstrap per tanggal 95% **[−0,05932; −0,03039]**. Brier masing-masing **0,56710**, **0,52095**, dan **0,49037**. Gerbang nilai tambah npxG lulus dalam transfer ini. Kesimpulan tetap dibatasi pada data StatsBomb EPL–WSL: penyedia xG sama, data bersifat pascalaga, dan kompetisi UEFA pria belum diuji. Artefak lengkap ada di `evidence/shot_quality_incremental_epl_wsl.json`.
+
 ## Kondisi skuad dan batasan
 
 `bola.squad` sekarang menolak timestamp tanpa zona waktu, mengeluarkan bukti setelah waktu analisis, serta menandai lineup resmi kurang dari 11 pemain dan konflik status. Tesnya memakai **data sintetis**. Sembilan kandidat pertandingan pengguna diperiksa oleh `bola.fixtures`: dua telah melewati waktu mulai yang dilaporkan pada 14 Oktober 2026 pukul 23.47 WIB, tujuh belum. Pemeriksaan UEFA berikutnya memverifikasi kesembilan jadwal dan mendapati empat label matchday salah. Starting XI resmi untuk tujuh laga yang belum dimulai teramati sebelum kickoff dan badge pemain direkonsiliasi dengan peran matchday. Waktu publikasi tiap badge dan dampak absensi terhadap peluang belum tervalidasi.

@@ -1,0 +1,160 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "input_audit": {
+    "epl": {
+      "matches": 380,
+      "event_rows": 1313773,
+      "non_penalty_shots": 9817,
+      "checksums_verified": 381
+    },
+    "wsl": {
+      "matches": 457,
+      "event_rows": 1587305,
+      "non_penalty_shots": 11711,
+      "checksums_verified": 461
+    }
+  },
+  "protocol": {
+    "features": "Home minus away mean team goal difference and non-penalty xG difference over five prior matches.",
+    "training": "All coefficients selected on 140 EPL matches before 2016-01-01.",
+    "transfer_test": "Coefficients frozen before evaluation on 335 eligible WSL matches; no WSL tuning.",
+    "goal_beta_grid": [
+      -0.25,
+      -0.1,
+      -0.05,
+      0.0,
+      0.05,
+      0.1,
+      0.25
+    ],
+    "npxg_beta_grid": [
+      -1.0,
+      -0.5,
+      -0.25,
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "selected_coefficients": {
+      "score_only_elo": {
+        "npxg_beta": 0.0,
+        "goal_beta": 0.0
+      },
+      "elo_plus_goals": {
+        "npxg_beta": 0.0,
+        "goal_beta": 0.1
+      },
+      "elo_plus_npxg": {
+        "npxg_beta": 0.25,
+        "goal_beta": 0.0
+      },
+      "elo_plus_goals_and_npxg": {
+        "npxg_beta": 0.25,
+        "goal_beta": 0.0
+      }
+    },
+    "same_date_rule": "All matches on a date are predicted before results or events from that date are observed."
+  },
+  "epl_training_metrics": {
+    "score_only_elo": {
+      "n": 140,
+      "log_loss": 1.066174978538999,
+      "brier": 0.6432277887723112
+    },
+    "elo_plus_goals": {
+      "n": 140,
+      "log_loss": 1.0608345341284122,
+      "brier": 0.640171690676023
+    },
+    "elo_plus_npxg": {
+      "n": 140,
+      "log_loss": 1.051956545961368,
+      "brier": 0.6330243526266166
+    },
+    "elo_plus_goals_and_npxg": {
+      "n": 140,
+      "log_loss": 1.051956545961368,
+      "brier": 0.6330243526266166
+    }
+  },
+  "epl_holdout_metrics": {
+    "score_only_elo": {
+      "n": 190,
+      "log_loss": 1.0274758096315517,
+      "brier": 0.615577089627973
+    },
+    "elo_plus_goals": {
+      "n": 190,
+      "log_loss": 1.0143465745169913,
+      "brier": 0.6070208500772778
+    },
+    "elo_plus_npxg": {
+      "n": 190,
+      "log_loss": 1.0120160059676013,
+      "brier": 0.605811574957872
+    },
+    "elo_plus_goals_and_npxg": {
+      "n": 190,
+      "log_loss": 1.0120160059676013,
+      "brier": 0.605811574957872
+    }
+  },
+  "wsl_transfer_metrics": {
+    "score_only_elo": {
+      "n": 335,
+      "log_loss": 0.9575331374450338,
+      "brier": 0.5671003866233325
+    },
+    "elo_plus_goals": {
+      "n": 335,
+      "log_loss": 0.8953311453524794,
+      "brier": 0.5209469037477642
+    },
+    "elo_plus_npxg": {
+      "n": 335,
+      "log_loss": 0.8501905322077323,
+      "brier": 0.49036839354432926
+    },
+    "elo_plus_goals_and_npxg": {
+      "n": 335,
+      "log_loss": 0.8501905322077323,
+      "brier": 0.49036839354432926
+    }
+  },
+  "wsl_comparisons": {
+    "joint_vs_score_only_elo": {
+      "log_loss_difference_candidate_minus_reference": -0.10734260523730144,
+      "match_date_bootstrap_95_ci": [
+        -0.13098400440255206,
+        -0.08002461425453632
+      ]
+    },
+    "npxg_only_vs_goals_only": {
+      "log_loss_difference_candidate_minus_reference": -0.045140613144747044,
+      "match_date_bootstrap_95_ci": [
+        -0.059320530735285024,
+        -0.03038528691471147
+      ]
+    },
+    "joint_vs_goals_only_incremental_npxg": {
+      "log_loss_difference_candidate_minus_reference": -0.045140613144747044,
+      "match_date_bootstrap_95_ci": [
+        -0.059320530735285024,
+        -0.03038528691471147
+      ]
+    }
+  },
+  "decision": {
+    "rule": "npxG adds incremental value only if the frozen joint model beats goals-only and its entire 95% interval is below zero.",
+    "incremental_npxg_retained": true,
+    "result": "Passed: npxG adds transfer value beyond five-match goal difference."
+  },
+  "limitations": [
+    "EPL selected the feature coefficients and WSL supplied the external transfer test; UEFA men's transfer remains untested.",
+    "Both datasets use StatsBomb xG, so the result is not independent of the provider model.",
+    "Event data are post-match and do not establish real-time pregame feed availability.",
+    "Goal difference includes all official goals while the xG feature excludes penalties."
+  ]
+}
