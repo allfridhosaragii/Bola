@@ -26,6 +26,9 @@ python3 scripts/fetch_fotmob_target_teams.py > /dev/null
 target_recent_dir="$(python3 scripts/fetch_fotmob_target_recent.py)"
 python3 -m bola.fotmob_recent_stats --data-dir "$target_recent_dir" \
   --output "reports/target_recent_stats_${stamp}.json" > /dev/null
+python3 -m bola.recent_stats_coverage --report "reports/target_recent_stats_${stamp}.json" \
+  --output "reports/recent_stats_coverage_${stamp}.json" > /dev/null
+python3 -m bola.odds_source_audit --output "reports/odds_source_audit_${stamp}.json" > /dev/null
 python3 -m bola.form --cutoff-date-wib "$cutoff_wib" --output "reports/form_${stamp}.json" > /dev/null
 python3 -m bola.form_extra --cutoff-date-wib "$cutoff_wib" --output "reports/form_extra_${stamp}.json" > /dev/null
 python3 -m bola.form_fotmob --cutoff-date-wib "$cutoff_wib" --output "reports/form_fotmob_${stamp}.json" > /dev/null
@@ -45,6 +48,12 @@ python3 -m bola.analyst_report --forecast "$forecast_path" \
   --schedule "reports/schedule_load_${stamp}.json" \
   --recent-stats "reports/target_recent_stats_${stamp}.json" \
   --output "reports/analyst_${stamp}.json" > /dev/null
+python3 -m bola.target_refresh_evidence --forecast "$forecast_path" \
+  --squad "reports/uefa_target_${stamp}.json" --form "reports/target_form_${stamp}.json" \
+  --crosscheck "reports/form_crosscheck_${stamp}.json" --schedule "reports/schedule_load_${stamp}.json" \
+  --recent "reports/target_recent_stats_${stamp}.json" --coverage "reports/recent_stats_coverage_${stamp}.json" \
+  --odds "reports/odds_source_audit_${stamp}.json" --analyst "reports/analyst_${stamp}.json" \
+  --output "reports/target_refresh_evidence_${stamp}.json" > /dev/null
 python3 - "$forecast_path" "$stamp" <<'PY'
 import json
 import sys
@@ -57,6 +66,9 @@ crosscheck = json.loads(Path(f"reports/form_crosscheck_{stamp}.json").read_text(
 analyst = json.loads(Path(f"reports/analyst_{stamp}.json").read_text(encoding="utf-8"))
 schedule = json.loads(Path(f"reports/schedule_load_{stamp}.json").read_text(encoding="utf-8"))
 recent = json.loads(Path(f"reports/target_recent_stats_{stamp}.json").read_text(encoding="utf-8"))
+recent_coverage = json.loads(Path(f"reports/recent_stats_coverage_{stamp}.json").read_text(encoding="utf-8"))
+odds = json.loads(Path(f"reports/odds_source_audit_{stamp}.json").read_text(encoding="utf-8"))
+evidence = json.loads(Path(f"reports/target_refresh_evidence_{stamp}.json").read_text(encoding="utf-8"))
 print("Forecast:", sys.argv[1], "| matches:", len(archive["predictions"]))
 print("UEFA squad/lineup:", f"reports/uefa_target_{stamp}.json",
       "| registered pairs:", sum(bool(row["registered_players"]) for row in squad["fixtures"]),
@@ -73,8 +85,15 @@ print("Recent match stats:", f"reports/target_recent_stats_{stamp}.json",
       "| teams:", recent["summary"]["teams"],
       "| observations with stats:", recent["summary"]["observations_with_stats"], "/",
       recent["summary"]["team_match_observations"])
+print("Recent-source coverage:", f"reports/recent_stats_coverage_{stamp}.json",
+      "| raw pages:", recent_coverage["raw_pages_checked"],
+      "| parser anomalies:", len(recent_coverage["anomalies"]))
+print("Public odds URLs:", f"reports/odds_source_audit_{stamp}.json",
+      "| quotes observed:", odds["quotes_observed"], "/", len(odds["results"]))
 print("Analyst report:", f"reports/analyst_{stamp}.json",
       "| eligible:", analyst["summary"]["eligible_for_review"],
       "| no selection:", analyst["summary"]["no_selection"])
+print("Refresh evidence:", f"reports/target_refresh_evidence_{stamp}.json",
+      "| source reports:", len(evidence["source_report_sha256"]))
 print("Status: exploratory baseline; market odds, validated tactics, and verified player availability are separate gates.")
 PY

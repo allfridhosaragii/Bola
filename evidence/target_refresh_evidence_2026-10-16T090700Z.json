@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-10-16T09:07:51.985167+00:00",
+  "target_date_utc": "2026-10-20",
+  "evaluation_type": "Prospective pre-match refresh",
+  "forecast": {
+    "path": "prospective/uefa_2026-10-16T09-07-01.366676+00-00.json",
+    "sha256": "518db233f9f3d1b40725227fcdc11de55bf7661bef76f83574aab25bca533c43",
+    "matches": 9,
+    "generated_at": "2026-10-16T09:07:01.366676+00:00"
+  },
+  "source_report_sha256": {
+    "squad": "2224f0933b9038bf4e563c59613ab91a88eefb6616accc591eb23d945a311b0c",
+    "form": "428effdcf53ba947dbb7e17649c4fce088c6d6045bd30de139490be8fb534e43",
+    "crosscheck": "2628d3e02799d7542b3bdb06b598c131f6ac29b7dd99f75386f28f040f5a886d",
+    "schedule": "a9c55f3192ce41eabbe4b8f00fa6627f70fb45410708027c6ec9595041b58907",
+    "recent": "1e2ad2dac89f235a41e976f6287d623fe0049eca0905ad37a058253de632ed93",
+    "coverage": "9e68d23e754a9cb15b31a565231de0b4d54a459ff3429636dbdb4d78ba2ed6a4",
+    "odds": "ca987d1e0040ea84aa211387fc3eab13e4f1c1a3c6f8f56fddf3f653ddb7d377",
+    "analyst": "af33bf74f84493ff19c85d5c6c09079784d26cf11b0bf17b65dcc8d292febbb9"
+  },
+  "coverage": {
+    "official_fixture_pairs_checked": 9,
+    "registered_squad_pairs": 9,
+    "official_starting_xi": 0,
+    "domestic_form_teams": 18,
+    "domestic_form_teams_requested": 18,
+    "independent_score_matches": 75,
+    "independent_score_teams": 15,
+    "recent_team_match_observations": 90,
+    "recent_observations_with_stats": 84,
+    "recent_observations_with_lineups": 86,
+    "raw_recent_pages_checked": 90,
+    "recent_page_audit_anomalies": 0,
+    "teams_with_all_five_stats_pages": 14,
+    "teams_with_all_five_lineups": 16,
+    "teams_with_intervening_fixture": 17,
+    "minimum_projected_rest_hours": 72.25
+  },
+  "freshness": {
+    "form_fresh": 9,
+    "schedule_fresh": 9,
+    "recent_stats_fresh": 9
+  },
+  "decision": {
+    "eligible_for_review": 0,
+    "no_selection": 9
+  },
+  "external_source_checks": {
+    "checked_at": "2026-10-16T09:07:37.501974+00:00",
+    "urls_checked": 4,
+    "quotes_observed": 0,
+    "results": [
+      {
+        "url": "https://1xbet.com",
+        "http_code": 403,
+        "status_chain": [
+          200,
+          403
+        ],
+        "curl_exit_code": 0
+      },
+      {
+        "url": "https://1xbet.com/id",
+        "http_code": 403,
+        "status_chain": [
+          200,
+          403
+        ],
+        "curl_exit_code": 0
+      },
+      {
+        "url": "https://1xbx.site",
+        "http_code": 0,
+        "status_chain": [
+          403
+        ],
+        "curl_exit_code": 56
+      },
+      {
+        "url": "https://1xlite-118654.top/id",
+        "http_code": 0,
+        "status_chain": [
+          403
+        ],
+        "curl_exit_code": 56
+      }
+    ]
+  },
+  "limitations": [
+    "Registered-player lists and badges do not establish injuries, suspensions, or the eventual starting XI.",
+    "Recent statistics are descriptive and do not enter the frozen probability model.",
+    "A network response is not a timestamped odds quote; quotes remain unavailable unless match, market, three prices, and capture time are recorded."
+  ]
+}
