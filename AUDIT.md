@@ -42,6 +42,8 @@ Dossier prapertandingan pada 15 Oktober pukul 00.51 WIB menemukan form domestik 
 
 Penyegaran target 20 Oktober yang dijalankan pada 16 Oktober pukul 15.35 WIB mencakup sembilan fixture resmi, form 18/18 tim, 75 hasil independen dari 15 tim, 84/90 observasi statistik, dan 9/9 pasangan jadwal. XI resmi serta odds bertimestamp masih 0/9, sedangkan bukti taktik terkini belum tervalidasi. Karena itu semua sembilan laga tetap `no_selection`; artefak baru tidak dihitung sebagai keberhasilan gerbang yang masih kosong.
 
+Pemeriksaan jaringan ulang pada 16 Oktober pukul 08.46 UTC ke `1xbet.com` dan `www.1xbet.com` mengembalikan HTTP 403. Tidak ada odds yang dipakai dari percobaan ini; status gerbang pasar tetap tidak tersedia.
+
 Skor 95% untuk kelima bagian tidak boleh dideklarasikan sampai gerbang wajib di atas lulus. Dua game anonim, 64 pertandingan dari satu turnamen, atau 1.678 prediksi uji tidak dapat dijadikan pengganti bukti tersebut.
 
 Audit lanjutan: pemisahan 992/686 laga pada uji pasar adalah evaluasi retrospektif pada musim yang sudah pernah diperiksa selama pengembangan. Pemisahan tahun mencegah pemilihan bobot langsung dari periode evaluasi dalam kode, tetapi tidak menghasilkan holdout baru yang independen. Hasilnya tidak menambah jumlah pertandingan unik yang divalidasi.

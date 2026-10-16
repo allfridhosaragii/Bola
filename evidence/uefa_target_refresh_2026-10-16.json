@@ -48,6 +48,12 @@
       "The results-only model has not demonstrated stable value over current market prices."
     ]
   },
+  "external_source_checks": {
+    "checked_at": "2026-10-16T08:46:39Z",
+    "1xbet.com": "HTTP 403",
+    "www.1xbet.com": "HTTP 403",
+    "interpretation": "No public odds quote was used as evidence."
+  },
   "limitations": [
     "Registered-player lists do not establish injuries, suspensions, or the eventual starting XI.",
     "Recent statistics are descriptive and do not enter the frozen probability model.",
