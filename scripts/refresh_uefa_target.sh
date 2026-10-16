@@ -52,6 +52,8 @@ python3 -m bola.analyst_report --forecast "$forecast_path" \
   --schedule "reports/schedule_load_${stamp}.json" \
   --recent-stats "reports/target_recent_stats_${stamp}.json" \
   --output "reports/analyst_${stamp}.json" > /dev/null
+python3 -m bola.analyst_markdown "reports/analyst_${stamp}.json" \
+  --output "reports/analyst_brief_${stamp}.md" > /dev/null
 python3 -m bola.target_refresh_evidence --forecast "$forecast_path" \
   --squad "reports/uefa_target_${stamp}.json" --form "reports/target_form_${stamp}.json" \
   --crosscheck "reports/form_crosscheck_${stamp}.json" --openfootball "reports/openfootball_crosscheck_${stamp}.json" \
@@ -102,6 +104,8 @@ print("Public odds URLs:", f"reports/odds_source_audit_{stamp}.json",
 print("Analyst report:", f"reports/analyst_{stamp}.json",
       "| eligible:", analyst["summary"]["eligible_for_review"],
       "| no selection:", analyst["summary"]["no_selection"])
+brief = Path(f"reports/analyst_brief_{stamp}.md")
+print("Readable analyst brief:", brief, "| bytes:", brief.stat().st_size)
 print("Refresh evidence:", f"reports/target_refresh_evidence_{stamp}.json",
       "| source reports:", len(evidence["source_report_sha256"]))
 print("Status: exploratory baseline; market odds, validated tactics, and verified player availability are separate gates.")

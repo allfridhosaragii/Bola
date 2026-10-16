@@ -1,0 +1,228 @@
+{
+  "rubric": {
+    "meaning": "Strict evidence-gate coverage, not prediction accuracy or probability of winning.",
+    "gates_per_section": 5,
+    "gate_weight_percent": 20,
+    "ninety_five_percent_rule": "A section reaches 95% only when all five mandatory gates pass; partial gates are reported for transparency."
+  },
+  "sections": {
+    "statistik": {
+      "section": "statistik",
+      "gates": [
+        {
+          "name": "target_form_coverage",
+          "passed": true,
+          "evidence": "18/18 target teams have a form snapshot",
+          "blocker": null
+        },
+        {
+          "name": "independent_score_crosscheck",
+          "passed": false,
+          "evidence": "15/18 primary target teams cross-checked independently; OpenFootball attempt 4/15 scores",
+          "blocker": "Independent score verification does not cover every target team; the OpenFootball attempt is partial or unavailable for the remaining teams."
+        },
+        {
+          "name": "recent_stats_complete",
+          "passed": false,
+          "evidence": "84/90 observations have stats; raw-page audit 90 pages, anomalies 0",
+          "blocker": "At least one recent team-match observation lacks statistics; raw pages confirm source-level missing fields."
+        },
+        {
+          "name": "npxg_transfer_gate",
+          "passed": true,
+          "evidence": "Passed: npxG adds transfer value beyond five-match goal difference. (457 WSL matches)",
+          "blocker": null
+        },
+        {
+          "name": "provider_robustness",
+          "passed": false,
+          "evidence": "Not passed: independent-provider npxG did not clear the uncertainty gate. (380 matched fixtures)",
+          "blocker": "Provider robustness did not pass."
+        }
+      ],
+      "passed": 2,
+      "total": 5,
+      "strict_gate_coverage_percent": 40.0,
+      "additional_gates_needed_for_95_percent": 3
+    },
+    "taktik": {
+      "section": "taktik",
+      "gates": [
+        {
+          "name": "audited_event_input",
+          "passed": true,
+          "evidence": "157628 pressure events audited",
+          "blocker": null
+        },
+        {
+          "name": "pressure_predictive_gate",
+          "passed": false,
+          "evidence": "Rejected: pressure-led regains did not pass the WSL holdout gate. (157628 pressure events audited)",
+          "blocker": "Pressure feature was rejected by its holdout gate."
+        },
+        {
+          "name": "target_tactical_feed",
+          "passed": false,
+          "evidence": "No target pre-kickoff tactical event feed",
+          "blocker": "Target tactical event/video evidence is unavailable."
+        },
+        {
+          "name": "inter_analyst_labels",
+          "passed": false,
+          "evidence": "No independently labelled target tactical sample",
+          "blocker": "Inter-analyst tactical labels are missing."
+        },
+        {
+          "name": "pre_kickoff_tactical_validation",
+          "passed": false,
+          "evidence": "No current target tactical feature has a validated holdout",
+          "blocker": "Current tactical evidence is descriptive only."
+        }
+      ],
+      "passed": 1,
+      "total": 5,
+      "strict_gate_coverage_percent": 20.0,
+      "additional_gates_needed_for_95_percent": 4
+    },
+    "kondisi_skuad": {
+      "section": "kondisi_skuad",
+      "gates": [
+        {
+          "name": "registered_squads",
+          "passed": true,
+          "evidence": "9/9 registered-squad pairs",
+          "blocker": null
+        },
+        {
+          "name": "target_starting_xi",
+          "passed": false,
+          "evidence": "0/9 official target XIs",
+          "blocker": "Official target starting XIs are not available for every fixture."
+        },
+        {
+          "name": "recent_lineups_complete",
+          "passed": false,
+          "evidence": "86/90 recent observations have lineups",
+          "blocker": "Recent lineup coverage is incomplete."
+        },
+        {
+          "name": "current_availability_status",
+          "passed": false,
+          "evidence": "Registered lists are present but injury/suspension status is unverified",
+          "blocker": "Match-specific player availability is missing."
+        },
+        {
+          "name": "player_impact_holdout",
+          "passed": false,
+          "evidence": "Rejected: the feature does not pass both independent holdout gates. (914 starting XIs verified)",
+          "blocker": "Lineup impact feature failed its holdout gates."
+        }
+      ],
+      "passed": 1,
+      "total": 5,
+      "strict_gate_coverage_percent": 20.0,
+      "additional_gates_needed_for_95_percent": 4
+    },
+    "probabilitas": {
+      "section": "probabilitas",
+      "gates": [
+        {
+          "name": "uefa_metrics",
+          "passed": true,
+          "evidence": "UEFA locked-period metrics are recorded",
+          "blocker": null
+        },
+        {
+          "name": "classwise_calibration",
+          "passed": true,
+          "evidence": "Classwise calibration is recorded",
+          "blocker": null
+        },
+        {
+          "name": "market_incremental_value",
+          "passed": false,
+          "evidence": "Rejected: the internal model did not add validated information to opening market probabilities. (1678 historical matches)",
+          "blocker": "Internal model was rejected as a market addition."
+        },
+        {
+          "name": "timestamped_uefa_odds",
+          "passed": false,
+          "evidence": "0 timestamped odds quotes observed across 4 supplied URLs",
+          "blocker": "Supplied URLs returned no usable timestamped odds quote."
+        },
+        {
+          "name": "current_market_validation",
+          "passed": false,
+          "evidence": "Current target model-market gate is closed",
+          "blocker": "The current target model has no validated market edge."
+        }
+      ],
+      "passed": 2,
+      "total": 5,
+      "strict_gate_coverage_percent": 40.0,
+      "additional_gates_needed_for_95_percent": 3
+    },
+    "validasi_historis": {
+      "section": "validasi_historis",
+      "gates": [
+        {
+          "name": "chronological_holdouts",
+          "passed": true,
+          "evidence": "Chronological UEFA and transfer protocols are recorded",
+          "blocker": null
+        },
+        {
+          "name": "source_checksums",
+          "passed": true,
+          "evidence": "9 source-report hashes and 4 lineage checks recorded",
+          "blocker": null
+        },
+        {
+          "name": "multi_league_sample",
+          "passed": true,
+          "evidence": "1678 domestic market-matched fixtures audited (required: 1,678)",
+          "blocker": null
+        },
+        {
+          "name": "untouched_prospective_scoring",
+          "passed": false,
+          "evidence": "Latest target archive has no final results yet",
+          "blocker": "A sufficiently sized untouched prospective score is unavailable."
+        },
+        {
+          "name": "publication_timestamps",
+          "passed": false,
+          "evidence": "Historical source publication times are not captured",
+          "blocker": "First-publication timestamps are missing."
+        }
+      ],
+      "passed": 3,
+      "total": 5,
+      "strict_gate_coverage_percent": 60.0,
+      "additional_gates_needed_for_95_percent": 2
+    }
+  },
+  "overall_strict_gate_coverage_percent": 36.0,
+  "overall_gates": {
+    "passed": 9,
+    "total": 25,
+    "minimum_passes_for_95_percent": 24,
+    "additional_passes_needed_for_95_percent": 15
+  },
+  "decision": "No section reaches the 95% evidence threshold.",
+  "target_refresh_manifest": {
+    "path": "target_refresh_evidence_2026-10-16T131752Z.json",
+    "sha256": "b3571bc3f74c2754adfc288cd4c3216ac1843f238bc8085bc2d1457e58ab3a6c",
+    "generated_at": "2026-10-16T13:17:52.258252+00:00",
+    "target_date_utc": "2026-10-20"
+  },
+  "source_evidence": [
+    "target_refresh_evidence_2026-10-16T131752Z.json",
+    "shot_quality_incremental_epl_wsl.json",
+    "xg_provider_predict_epl_2015.json",
+    "pressure_transfer_wsl.json",
+    "lineup_continuity_transfer_wsl.json",
+    "market_incremental_holdout.json",
+    "uefa_extended_backtest_2026-10-15.json"
+  ]
+}
