@@ -255,6 +255,8 @@ Snapshot form, jadwal, dan statistik pertandingan juga harus berumur paling lama
 
 `bola.readiness_audit` menghitung cakupan gerbang ketat dari lima gerbang wajib untuk setiap bagian. Secara bawaan ia memakai manifest refresh berchecksum paling baru dalam `evidence/`, sehingga angka target, audit OpenFootball, statistik halaman mentah, dan odds berasal dari refresh yang sama. Manifest terbaru wajib memiliki sembilan checksum laporan sumber dan empat pemeriksaan garis keturunan yang bernilai benar; audit berhenti jika kontrak ini gagal. Hasil audit juga merekam SHA-256 manifest yang dipakai agar angka dapat dicocokkan kembali. Argumen `--refresh` dapat mengunci audit pada satu manifest tertentu. Pada audit 16 Oktober 2026 hasilnya Statistik 40%, Taktik 20%, Kondisi skuad 20%, Probabilitas 40%, Validasi historis 60%, dan keseluruhan 36%. Skor ini mengukur bukti proses yang tersedia; bukan peluang hasil pertandingan atau akurasi 1X2.
 
+Audit melaporkan jumlah kelulusan tambahan yang dibutuhkan untuk mencapai 95%. Dengan lima gerbang per bagian dan bobot sama, sebuah bagian membutuhkan kelima gerbang untuk melewati ambang 95%; untuk keseluruhan 25 gerbang, dibutuhkan sedikitnya 24 kelulusan.
+
 Audit sumber alternatif form target dapat diputar ulang dengan:
 
 ```bash

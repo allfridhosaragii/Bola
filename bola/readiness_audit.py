@@ -6,6 +6,7 @@ import argparse
 from datetime import datetime
 import hashlib
 import json
+import math
 from pathlib import Path
 
 
@@ -28,7 +29,8 @@ def section(name: str, gates: list[dict]) -> dict:
         raise ValueError("Every section must define exactly five equal gates")
     passed = sum(item["passed"] for item in gates)
     return {"section": name, "gates": gates, "passed": passed, "total": len(gates),
-            "strict_gate_coverage_percent": 100 * passed / len(gates)}
+            "strict_gate_coverage_percent": 100 * passed / len(gates),
+            "additional_gates_needed_for_95_percent": max(0, math.ceil(0.95 * len(gates)) - passed)}
 
 
 def load(folder: Path, filename: str) -> dict:
@@ -165,6 +167,9 @@ def audit(folder: Path, refresh_path: Path | None = None) -> dict:
         ]),
     }
     overall = sum(item["strict_gate_coverage_percent"] for item in sections.values()) / len(sections)
+    gates_total = sum(item["total"] for item in sections.values())
+    gates_passed = sum(item["passed"] for item in sections.values())
+    gates_required_for_95 = math.ceil(0.95 * gates_total)
     return {
         "rubric": {
             "meaning": "Strict evidence-gate coverage, not prediction accuracy or probability of winning.",
@@ -174,6 +179,12 @@ def audit(folder: Path, refresh_path: Path | None = None) -> dict:
         },
         "sections": sections,
         "overall_strict_gate_coverage_percent": overall,
+        "overall_gates": {
+            "passed": gates_passed,
+            "total": gates_total,
+            "minimum_passes_for_95_percent": gates_required_for_95,
+            "additional_passes_needed_for_95_percent": max(0, gates_required_for_95 - gates_passed),
+        },
         "decision": "No section reaches the 95% evidence threshold.",
         "target_refresh_manifest": manifest_provenance(refresh_path, refresh),
         "source_evidence": [

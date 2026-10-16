@@ -29,6 +29,12 @@ class ReadinessAuditTests(unittest.TestCase):
         result = section("example", gates)
         self.assertEqual(result["passed"], 3)
         self.assertEqual(result["strict_gate_coverage_percent"], 60.0)
+        self.assertEqual(result["additional_gates_needed_for_95_percent"], 2)
+
+    def test_five_gates_only_reach_ninety_five_when_all_pass(self):
+        self.assertEqual(section("example", [gate(str(i), i < 4, "evidence", "blocked")
+                                              for i in range(5)])
+                         ["additional_gates_needed_for_95_percent"], 1)
 
     def test_section_rejects_partial_rubric(self):
         with self.assertRaises(ValueError):
