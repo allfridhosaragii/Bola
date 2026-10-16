@@ -199,6 +199,12 @@
   },
   "overall_strict_gate_coverage_percent": 36.0,
   "decision": "No section reaches the 95% evidence threshold.",
+  "target_refresh_manifest": {
+    "path": "target_refresh_evidence_2026-10-16T095727Z.json",
+    "sha256": "fc9108064bd2aa046c73ed2c6415b0f84ee707195bbe2f695a26db5ac639d17c",
+    "generated_at": "2026-10-16T09:57:27.379509+00:00",
+    "target_date_utc": "2026-10-20"
+  },
   "source_evidence": [
     "target_refresh_evidence_2026-10-16T095727Z.json",
     "shot_quality_incremental_epl_wsl.json",

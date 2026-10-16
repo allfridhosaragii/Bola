@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime
+import hashlib
 import json
 from pathlib import Path
 
@@ -54,6 +55,16 @@ def validate_refresh_manifest(refresh: dict) -> None:
         raise ValueError("Refresh manifest has missing or failed lineage checks")
     if not isinstance(refresh.get("coverage"), dict) or not isinstance(refresh.get("external_source_checks"), dict):
         raise ValueError("Refresh manifest lacks coverage or external-source evidence")
+
+
+def manifest_provenance(path: Path, refresh: dict) -> dict:
+    """Freeze the exact manifest identity alongside a readiness result."""
+    return {
+        "path": path.name,
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "generated_at": refresh["generated_at"],
+        "target_date_utc": refresh.get("target_date_utc"),
+    }
 
 
 def latest_refresh_path(folder: Path) -> Path:
@@ -150,6 +161,7 @@ def audit(folder: Path, refresh_path: Path | None = None) -> dict:
         "sections": sections,
         "overall_strict_gate_coverage_percent": overall,
         "decision": "No section reaches the 95% evidence threshold.",
+        "target_refresh_manifest": manifest_provenance(refresh_path, refresh),
         "source_evidence": [
             refresh_path.name, "shot_quality_incremental_epl_wsl.json",
             "xg_provider_predict_epl_2015.json", "pressure_transfer_wsl.json",

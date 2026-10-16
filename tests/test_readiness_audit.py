@@ -3,7 +3,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from bola.readiness_audit import gate, latest_refresh_path, section, validate_refresh_manifest
+from bola.readiness_audit import (gate, latest_refresh_path, manifest_provenance,
+                                  section, validate_refresh_manifest)
 
 
 class ReadinessAuditTests(unittest.TestCase):
@@ -62,6 +63,15 @@ class ReadinessAuditTests(unittest.TestCase):
         del refresh["source_report_sha256"]["odds"]
         with self.assertRaisesRegex(ValueError, "source-report"):
             validate_refresh_manifest(refresh)
+
+    def test_manifest_provenance_records_exact_file_hash(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "target_refresh_evidence_example.json"
+            path.write_bytes(b"exact evidence")
+            result = manifest_provenance(path, self.refresh("2026-10-16T10:00:00+00:00"))
+            self.assertEqual(result["path"], path.name)
+            self.assertEqual(result["sha256"], "f3483f1fe3825d30b7f4df4670e88edcadacd13e17c96fd2baa0009f9ecef2ae")
+            self.assertEqual(result["generated_at"], "2026-10-16T10:00:00+00:00")
 
 
 if __name__ == "__main__":
