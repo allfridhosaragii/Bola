@@ -38,6 +38,8 @@ Upaya berikutnya juga mencoba Sofascore, Scorebing, Global Sports Archive, Trans
 
 Dossier prapertandingan pada 15 Oktober pukul 00.51 WIB menemukan form domestik lengkap untuk kedua tim pada tiga dari tujuh laga, meningkat menjadi lima dari tujuh pada penyegaran 01.33 WIB. Daftar skuad dan starting XI resmi tersedia pada tujuh dari tujuh sebelum kickoff. API lineup sebelumnya menunjukkan `NOT_AVAILABLE` sekitar 00.39 WIB, lalu tersedia sebelum 00.51 WIB. **Nol dari tujuh** lulus semua gerbang untuk dua prediksi: odds bertimestamp dan model probabilitas antarliga yang stabil belum tersedia. Sesudah laga, arsip probabilitas prapertandingan dinilai pada tujuh hasil resmi; itu uji prospektif kecil, bukan bukti gerbang kesiapan sebelum kickoff sudah lulus.
 
+Penyegaran target 20 Oktober yang dijalankan pada 16 Oktober pukul 15.35 WIB mencakup sembilan fixture resmi, form 18/18 tim, 75 hasil independen dari 15 tim, 84/90 observasi statistik, dan 9/9 pasangan jadwal. XI resmi serta odds bertimestamp masih 0/9, sedangkan bukti taktik terkini belum tervalidasi. Karena itu semua sembilan laga tetap `no_selection`; artefak baru tidak dihitung sebagai keberhasilan gerbang yang masih kosong.
+
 Skor 95% untuk kelima bagian tidak boleh dideklarasikan sampai gerbang wajib di atas lulus. Dua game anonim, 64 pertandingan dari satu turnamen, atau 1.678 prediksi uji tidak dapat dijadikan pengganti bukti tersebut.
 
 Audit lanjutan: pemisahan 992/686 laga pada uji pasar adalah evaluasi retrospektif pada musim yang sudah pernah diperiksa selama pengembangan. Pemisahan tahun mencegah pemilihan bobot langsung dari periode evaluasi dalam kode, tetapi tidak menghasilkan holdout baru yang independen. Hasilnya tidak menambah jumlah pertandingan unik yang divalidasi.

@@ -115,7 +115,7 @@ python3 -m bola.uefa_forecast_live --verify prospective/uefa_2026-10-15T15-53-23
 
 Satu perintah untuk penyegaran menyeluruh sebelum kickoff adalah `bash scripts/refresh_uefa_target.sh 2026-10-20`. Perintah ini mengambil ulang data form, kalender, dan lima pertandingan terkini tiap tim, membuat arsip peluang baru, memeriksa ulang sumbernya, lalu menyimpan status fixture, beban jadwal, statistik pertandingan, skuad, lineup, dan form sebagai laporan bertimestamp di `reports/`. Alur ini telah dijalankan ujung ke ujung pada 15 Oktober: sembilan fixture, sembilan pasangan skuad terdaftar, sembilan pasangan kalender yang cocok, statistik terkini 18/18 tim, nol XI target resmi, dan form 18/18 tim. Jalankan ulang menjelang pertandingan; hasil lama tidak otomatis menjadi bukti keadaan saat kickoff. Saat ini protokol riwayat model mendukung musim UEFA 2026/27.
 
-Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Contoh terbaru dengan riwayat UEFA diperluas, parameter model, beban jadwal, dan statistik terkini tercatat ada di `evidence/analyst_report_current_stats_2026-10-15.json`. Untuk merakitnya secara manual:
+Penyegaran itu juga membuat satu laporan analis yang menggabungkan semua bukti. Penyegaran terbaru pada 16 Oktober diringkas di `evidence/uefa_target_refresh_2026-10-16.json`; arsip peluangnya ada di `prospective/uefa_2026-10-16T08-35-13.033288+00-00.json`. Untuk merakitnya secara manual:
 
 ```bash
 python3 -m bola.analyst_report \
@@ -249,3 +249,5 @@ Jalankan `bash scripts/refresh_uefa_prematch.sh` untuk mengambil ulang ketiga su
 Audit lanjutan: pemisahan 992/686 laga pada uji pasar adalah evaluasi retrospektif pada musim yang sudah pernah diperiksa selama pengembangan. Pemisahan tahun mencegah pemilihan bobot langsung dari periode evaluasi dalam kode, tetapi tidak menghasilkan holdout baru yang independen. Hasilnya tidak menambah jumlah pertandingan unik yang divalidasi.
 
 Laporan analis menghitung ulang umur odds pada waktu laporan (batas 10 menit), memeriksa jumlah W/D/L untuk setiap jendela 5/10/20, serta menolak probabilitas NaN, tak hingga, negatif, dan di luar rentang 0–1.
+
+Snapshot form, jadwal, dan statistik pertandingan juga harus berumur paling lama 24 jam pada saat laporan dibuat. Ketiganya menjadi gerbang terpisah agar data lengkap yang sudah lama tidak dianggap masih mutakhir menjelang kickoff.

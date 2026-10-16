@@ -99,6 +99,22 @@ class AnalystReportTests(unittest.TestCase):
             assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z",
                      recent_stats=recent)
 
+    def test_context_older_than_24_hours_is_a_blocker(self):
+        self.form["as_of"] = "2026-10-19T18:44:59Z"
+        schedule = {"generated_at": "2026-10-19T18:44:59Z",
+                    "forecast_generated_at": "2026-10-20T17:00:00Z", "target_date_utc": "2026-10-20",
+                    "teams": {"A": {"rest": 72}, "B": {"rest": 80}},
+                    "target_fixture_crosscheck": [{"match_id": "1", "home": "A", "away": "B"}]}
+        recent = {"generated_at": "2026-10-19T18:44:59Z",
+                  "source_retrieved_at_latest": "2026-10-19T18:44:59Z",
+                  "teams": {"A": {"stats_available_games": 5}, "B": {"stats_available_games": 5}}}
+        report = assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z",
+                          schedule=schedule, recent_stats=recent)
+        gates = report["matches"][0]["evidence_gates"]
+        self.assertFalse(gates["domestic_form_snapshot_within_24h"])
+        self.assertFalse(gates["schedule_snapshot_within_24h"])
+        self.assertFalse(gates["recent_stats_snapshot_within_24h"])
+
 
 if __name__ == "__main__":
     unittest.main()

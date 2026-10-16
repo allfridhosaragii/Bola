@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-10-16T08:35:13.033288+00:00",
+  "target_date_utc": "2026-10-20",
+  "evaluation_type": "Prospective pre-match refresh",
+  "forecast": {
+    "path": "prospective/uefa_2026-10-16T08-35-13.033288+00-00.json",
+    "sha256": "4b77e2f7227b1699d7c3a1229dd33dbebe5b146bb43855205aa7873a699967e8",
+    "matches": 9,
+    "probabilities_unchanged_from_2026_10_15_refresh": true,
+    "reason_probabilities_unchanged": "No additional completed UEFA result entered the frozen historical model between the two refreshes."
+  },
+  "source_report_sha256": {
+    "analyst": "4799933336a8c65f9372b226594656c387eafa098e02eb9198f4154af544c015",
+    "target_form": "130a2b250a94c28bdec6b5cb63d31e9b3795a7589e42424d889f2bef144c092e",
+    "uefa_target": "450368940ba21a81a0af76da33372d1a5aa6a9df11661dd202bec827b889285e",
+    "schedule_load": "5b415c9118d3a0a564278a9c2c9790c9bf1af538b7cc4c946a8f4e0412520f37",
+    "recent_stats": "163d5aa92954da888f9b3cc151796f5414996b2c72a014e1cd821956fe677a4e",
+    "form_crosscheck": "66e6837e725ca70c43c7af51381fd94e548bb9e499e9408a58e27c55adb640e7"
+  },
+  "coverage": {
+    "official_fixture_pairs_checked": 9,
+    "registered_squad_pairs": 9,
+    "official_starting_xi": 0,
+    "domestic_form_teams": 18,
+    "domestic_form_teams_requested": 18,
+    "independent_score_matches": 75,
+    "independent_score_teams": 15,
+    "recent_team_match_observations": 90,
+    "recent_observations_with_stats": 84,
+    "recent_observations_with_lineups": 86,
+    "teams_with_all_five_stats_pages": 14,
+    "teams_with_all_five_lineups": 16,
+    "teams_with_intervening_fixture": 17,
+    "minimum_projected_rest_hours": 72.25
+  },
+  "freshness_at_2026_10_16T08_45_00Z": {
+    "form_snapshot_within_24h": 9,
+    "schedule_snapshot_within_24h": 9,
+    "recent_stats_snapshot_within_24h": 9
+  },
+  "decision": {
+    "eligible_for_review": 0,
+    "no_selection": 9,
+    "blocking_evidence": [
+      "No official target starting XI was available at refresh time.",
+      "No fresh timestamped market evidence was supplied.",
+      "No current target tactical feature has passed a predictive holdout gate.",
+      "The results-only model has not demonstrated stable value over current market prices."
+    ]
+  },
+  "limitations": [
+    "Registered-player lists do not establish injuries, suspensions, or the eventual starting XI.",
+    "Recent statistics are descriptive and do not enter the frozen probability model.",
+    "The refresh is evidence available on 16 October 2026 and must be repeated near kickoff."
+  ]
+}

@@ -13,6 +13,7 @@ from .squad import instant
 
 
 OUTCOMES = ("home", "draw", "away")
+CONTEXT_MAX_AGE = timedelta(hours=24)
 
 
 def complete_form(team: dict | None) -> bool:
@@ -27,6 +28,13 @@ def complete_form(team: dict | None) -> bool:
         if sum(counts) != size:
             return False
     return True
+
+
+def fresh_context(timestamp: str | None, now: datetime) -> bool:
+    if not timestamp:
+        return False
+    age = now - instant(timestamp)
+    return timedelta(0) <= age <= CONTEXT_MAX_AGE
 
 
 def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
@@ -120,9 +128,13 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "official_fixture_upcoming": fixture["status_at_retrieval"] == "Upcoming",
             "official_fixture_snapshot_within_30m": now - fixture_time <= timedelta(minutes=30),
             "domestic_form_5_10_20_for_both": all(complete_form(team) for team in team_form.values()),
+            "domestic_form_snapshot_within_24h": fresh_context(form.get("as_of"), now),
             "schedule_load_for_both": all(team_schedule.values()),
+            "schedule_snapshot_within_24h": fresh_context(schedule.get("generated_at") if schedule else None, now),
             "recent_match_stats_for_both": all(row and row.get("stats_available_games", 0) > 0
                                                 for row in team_recent.values()),
+            "recent_stats_snapshot_within_24h": fresh_context(
+                recent_stats.get("source_retrieved_at_latest") if recent_stats else None, now),
             "registered_squad_for_both": set(registered) == {prediction["home"], prediction["away"]}
                                                 and all(registered.values()),
             "official_starting_xi_before_kickoff": bool(fixture["official_starting_xi_before_kickoff"]),
@@ -158,8 +170,11 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "eligible_for_review": sum(row["selection_status"] == "eligible_for_review" for row in rows),
             "no_selection": sum(row["selection_status"] == "no_selection" for row in rows),
             "form_complete": sum(row["evidence_gates"]["domestic_form_5_10_20_for_both"] for row in rows),
+            "form_fresh": sum(row["evidence_gates"]["domestic_form_snapshot_within_24h"] for row in rows),
             "schedule_load_complete": sum(row["evidence_gates"]["schedule_load_for_both"] for row in rows),
+            "schedule_fresh": sum(row["evidence_gates"]["schedule_snapshot_within_24h"] for row in rows),
             "recent_match_stats_complete": sum(row["evidence_gates"]["recent_match_stats_for_both"] for row in rows),
+            "recent_stats_fresh": sum(row["evidence_gates"]["recent_stats_snapshot_within_24h"] for row in rows),
             "official_lineups": sum(row["evidence_gates"]["official_starting_xi_before_kickoff"] for row in rows),
             "fresh_markets": sum(row["evidence_gates"]["fresh_market_screenshot"] for row in rows),
         },
