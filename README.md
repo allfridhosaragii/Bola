@@ -54,6 +54,7 @@ python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --o
 python3 -m bola.odds_multi --league de.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_bundesliga.json
 python3 -m bola.odds_multi --league nl.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_eredivisie.json
 python3 -m bola.market_incremental --output reports/market_incremental.json
+python3 -m bola.readiness_audit --output reports/readiness_audit.json
 python3 scripts/fetch_uefa_history.py
 python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 python3 scripts/fetch_uefa_extended_history.py
@@ -251,3 +252,5 @@ Audit lanjutan: pemisahan 992/686 laga pada uji pasar adalah evaluasi retrospekt
 Laporan analis menghitung ulang umur odds pada waktu laporan (batas 10 menit), memeriksa jumlah W/D/L untuk setiap jendela 5/10/20, serta menolak probabilitas NaN, tak hingga, negatif, dan di luar rentang 0–1.
 
 Snapshot form, jadwal, dan statistik pertandingan juga harus berumur paling lama 24 jam pada saat laporan dibuat. Ketiganya menjadi gerbang terpisah agar data lengkap yang sudah lama tidak dianggap masih mutakhir menjelang kickoff.
+
+`bola.readiness_audit` menghitung cakupan gerbang ketat dari lima gerbang wajib untuk setiap bagian. Pada audit 16 Oktober 2026 hasilnya Statistik 40%, Taktik 20%, Kondisi skuad 20%, Probabilitas 40%, Validasi historis 60%, dan keseluruhan 36%. Skor ini mengukur bukti proses yang tersedia; bukan peluang hasil pertandingan atau akurasi 1X2.

@@ -302,3 +302,7 @@ Koefisien itu dibekukan sebelum evaluasi 335 laga WSL. Log loss Elo **0,95753**,
 Belum ada odds historis dengan timestamp tiap kutipan, xG lintas musim/kompetisi yang direkonsiliasi, berita skuad lengkap, atau video. Nilai taruhan dan dampak pemain absen belum diukur. Target 95% adalah tujuan kelengkapan proses; belum ada bukti bahwa setiap bagian sudah mencapainya atau bahwa prediksi dapat akurat 95%.
 
 Audit lanjutan: pemisahan 992/686 laga pada uji pasar adalah evaluasi retrospektif pada musim yang sudah pernah diperiksa selama pengembangan. Pemisahan tahun mencegah pemilihan bobot langsung dari periode evaluasi dalam kode, tetapi tidak menghasilkan holdout baru yang independen. Hasilnya tidak menambah jumlah pertandingan unik yang divalidasi.
+
+### Cakupan gerbang kesiapan
+
+Ledger kesiapan memakai lima gerbang wajib dengan bobot sama untuk setiap bagian. Berdasarkan artefak yang diperiksa pada 16 Oktober 2026, Statistik lulus 2/5 gerbang (**40%**), Taktik 1/5 (**20%**), Kondisi skuad 1/5 (**20%**), Probabilitas 2/5 (**40%**), dan Validasi historis 3/5 (**60%**). Rata-rata keseluruhan adalah **36%** atau 9 dari 25 gerbang. Nilai ini hanya mengukur kelengkapan bukti proses dan tidak menyatakan probabilitas menang. Detail setiap gerbang ada di `evidence/readiness_audit_2026-10-16.json`.
