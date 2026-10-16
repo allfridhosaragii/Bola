@@ -27,28 +27,35 @@ def load(folder: Path, filename: str) -> dict:
     return json.loads((folder / filename).read_text(encoding="utf-8"))
 
 
-def audit(folder: Path) -> dict:
-    refresh = load(folder, "uefa_target_refresh_2026-10-16.json")
+def latest_refresh_path(folder: Path) -> Path:
+    """Return the newest checksum-linked refresh manifest in an evidence folder."""
+    candidates = list(folder.glob("target_refresh_evidence_*.json"))
+    if not candidates:
+        raise FileNotFoundError("No checksum-linked target refresh manifest was found")
+    return max(candidates, key=lambda path: (json.loads(path.read_text(encoding="utf-8"))["generated_at"], path.name))
+
+
+def audit(folder: Path, refresh_path: Path | None = None) -> dict:
+    refresh_path = refresh_path or latest_refresh_path(folder)
+    refresh = json.loads(refresh_path.read_text(encoding="utf-8"))
     xg = load(folder, "shot_quality_incremental_epl_wsl.json")
     provider = load(folder, "xg_provider_predict_epl_2015.json")
     pressure = load(folder, "pressure_transfer_wsl.json")
     lineup = load(folder, "lineup_continuity_transfer_wsl.json")
     market = load(folder, "market_incremental_holdout.json")
     uefa = load(folder, "uefa_extended_backtest_2026-10-15.json")
-    openfootball = load(folder, "openfootball_crosscheck_2026-10-16.json")
-    odds_sources = load(folder, "odds_source_audit_2026-10-16.json")
-    recent_coverage = load(folder, "recent_stats_coverage_2026-10-16.json")
     coverage = refresh["coverage"]
+    odds_sources = refresh["external_source_checks"]
 
     sections = {
         "statistik": section("statistik", [
             gate("target_form_coverage", coverage["domestic_form_teams"] == coverage["domestic_form_teams_requested"],
                  "18/18 target teams have a form snapshot", "A target team is missing a complete form snapshot."),
             gate("independent_score_crosscheck", coverage["independent_score_teams"] == coverage["domestic_form_teams_requested"],
-                 f"{coverage['independent_score_teams']}/{coverage['domestic_form_teams_requested']} primary target teams cross-checked independently; OpenFootball attempt {openfootball['independent_score_matches']}/{openfootball['requested_score_matches']} scores",
+                 f"{coverage['independent_score_teams']}/{coverage['domestic_form_teams_requested']} primary target teams cross-checked independently; OpenFootball attempt {coverage['openfootball_independent_score_matches']}/{coverage['openfootball_requested_score_matches']} scores",
                  "Independent score verification does not cover every target team; the OpenFootball attempt is partial or unavailable for the remaining teams."),
             gate("recent_stats_complete", coverage["recent_observations_with_stats"] == coverage["recent_team_match_observations"],
-                 f"{coverage['recent_observations_with_stats']}/{coverage['recent_team_match_observations']} observations have stats; raw-page audit {recent_coverage['raw_pages_checked']} pages, anomalies {len(recent_coverage['anomalies'])}",
+                 f"{coverage['recent_observations_with_stats']}/{coverage['recent_team_match_observations']} observations have stats; raw-page audit {coverage['raw_recent_pages_checked']} pages, anomalies {coverage['recent_page_audit_anomalies']}",
                  "At least one recent team-match observation lacks statistics; raw pages confirm source-level missing fields."),
             gate("npxg_transfer_gate", xg["decision"]["incremental_npxg_retained"],
                  "Frozen npxG transfer gate passed on WSL", "The npxG transfer gate did not pass."),
@@ -79,13 +86,14 @@ def audit(folder: Path) -> dict:
             gate("classwise_calibration", "blend_classwise_calibration_5_bins" in uefa["results"]["locked_combined"], "Classwise calibration is recorded", "Classwise calibration is missing."),
             gate("market_incremental_value", market["decision"]["retained"], "Internal model adds validated value above opening market", "Internal model was rejected as a market addition."),
             gate("timestamped_uefa_odds", odds_sources["quotes_observed"] > 0,
-                 f"{odds_sources['quotes_observed']} timestamped odds quotes observed across {len(odds_sources['results'])} supplied URLs",
+                 f"{odds_sources['quotes_observed']} timestamped odds quotes observed across {odds_sources['urls_checked']} supplied URLs",
                  "Supplied URLs returned no usable timestamped odds quote."),
             gate("current_market_validation", False, "Current target model-market gate is closed", "The current target model has no validated market edge."),
         ]),
         "validasi_historis": section("validasi_historis", [
             gate("chronological_holdouts", bool(uefa["protocol"]), "Chronological UEFA and transfer protocols are recorded", "A chronological holdout protocol is missing."),
-            gate("source_checksums", bool(refresh["source_report_sha256"]), "Refresh source report hashes are recorded", "Source report hashes are missing."),
+            gate("source_checksums", bool(refresh["source_report_sha256"]) and all(refresh.get("lineage_checks", {}).values()),
+                 "Refresh source hashes and lineage checks are recorded", "Source hashes or lineage checks are missing or failed."),
             gate("multi_league_sample", market["sample"]["total_matches"] == 1678, "1,678 domestic market-matched fixtures audited", "The multi-league sample is incomplete."),
             gate("untouched_prospective_scoring", False, "Latest target archive has no final results yet", "A sufficiently sized untouched prospective score is unavailable."),
             gate("publication_timestamps", False, "Historical source publication times are not captured", "First-publication timestamps are missing."),
@@ -103,13 +111,10 @@ def audit(folder: Path) -> dict:
         "overall_strict_gate_coverage_percent": overall,
         "decision": "No section reaches the 95% evidence threshold.",
         "source_evidence": [
-            "uefa_target_refresh_2026-10-16.json", "shot_quality_incremental_epl_wsl.json",
+            refresh_path.name, "shot_quality_incremental_epl_wsl.json",
             "xg_provider_predict_epl_2015.json", "pressure_transfer_wsl.json",
             "lineup_continuity_transfer_wsl.json", "market_incremental_holdout.json",
             "uefa_extended_backtest_2026-10-15.json",
-            "openfootball_crosscheck_2026-10-16.json",
-            "odds_source_audit_2026-10-16.json",
-            "recent_stats_coverage_2026-10-16.json",
         ],
     }
 
@@ -117,9 +122,11 @@ def audit(folder: Path) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--evidence-dir", type=Path, default=Path("evidence"))
+    parser.add_argument("--refresh", type=Path,
+                        help="Checksum-linked target-refresh manifest; defaults to the newest one in --evidence-dir")
     parser.add_argument("--output", type=Path, default=Path("reports/readiness_audit.json"))
     args = parser.parse_args()
-    result = audit(args.evidence_dir)
+    result = audit(args.evidence_dir, args.refresh)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))
