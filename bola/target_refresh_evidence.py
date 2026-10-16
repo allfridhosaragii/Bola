@@ -26,6 +26,8 @@ def assemble(paths: dict[str, Path]) -> dict:
     coverage, odds, analyst = data["coverage"], data["odds"], data["analyst"]
     fixtures = squad["fixtures"]
     fixture_pairs = len(fixtures)
+    badge_counts = [sum(len(players) for players in (row.get("flagged_players") or {}).values())
+                    for row in fixtures]
     return {
         "generated_at": analyst["generated_at"], "target_date_utc": forecast["target_date_utc"],
         "evaluation_type": "Prospective pre-match refresh",
@@ -35,6 +37,8 @@ def assemble(paths: dict[str, Path]) -> dict:
         "coverage": {
             "official_fixture_pairs_checked": fixture_pairs,
             "registered_squad_pairs": sum(bool(row["registered_players"]) for row in fixtures),
+            "fixtures_with_observed_player_badges": sum(count > 0 for count in badge_counts),
+            "observed_player_badges": sum(badge_counts),
             "official_starting_xi": sum(row["official_starting_xi_before_kickoff"] for row in fixtures),
             "domestic_form_teams": form["teams_covered"], "domestic_form_teams_requested": form["teams_requested"],
             "independent_score_matches": crosscheck["independent_matches_checked"],

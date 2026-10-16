@@ -88,7 +88,8 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
         before_kickoff = now < kickoff
         fixture_time = instant(fixture["fixture_retrieved_at"])
         lineup_time = instant(fixture["lineup_retrieved_at"])
-        if fixture_time > now or lineup_time > now:
+        squad_time = fixture.get("squad_retrieved_at")
+        if fixture_time > now or lineup_time > now or (squad_time and instant(squad_time) > now):
             raise ValueError(f"UEFA evidence is newer than report time: {mid}")
         registered = fixture.get("registered_players") or {}
         team_form = {name: form["teams"].get(name) for name in (prediction["home"], prediction["away"])}
@@ -136,7 +137,8 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "recent_stats_snapshot_within_24h": fresh_context(
                 recent_stats.get("source_retrieved_at_latest") if recent_stats else None, now),
             "registered_squad_for_both": set(registered) == {prediction["home"], prediction["away"]}
-                                                and all(registered.values()),
+                                                and all(registered.values()) and bool(squad_time),
+            "registered_squad_snapshot_within_24h": fresh_context(squad_time, now),
             "official_starting_xi_before_kickoff": bool(fixture["official_starting_xi_before_kickoff"]),
             "fresh_market_screenshot": market_valid,
             "validated_current_tactical_evidence": False,
@@ -155,6 +157,9 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "recent_match_stats": team_recent,
             "registered_players": registered,
             "flagged_players": fixture.get("flagged_players"),
+            "flagged_player_counts": {team: len(players) for team, players in
+                                      (fixture.get("flagged_players") or {}).items()},
+            "squad_retrieved_at": squad_time,
             "lineup_status": fixture["lineup_status"],
             "market": market,
             "evidence_gates": gates,
@@ -176,6 +181,9 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
             "recent_match_stats_complete": sum(row["evidence_gates"]["recent_match_stats_for_both"] for row in rows),
             "recent_stats_fresh": sum(row["evidence_gates"]["recent_stats_snapshot_within_24h"] for row in rows),
             "official_lineups": sum(row["evidence_gates"]["official_starting_xi_before_kickoff"] for row in rows),
+            "registered_squads_fresh": sum(row["evidence_gates"]["registered_squad_snapshot_within_24h"] for row in rows),
+            "fixtures_with_observed_player_badges": sum(any(row["flagged_player_counts"].values()) for row in rows),
+            "observed_player_badges": sum(sum(row["flagged_player_counts"].values()) for row in rows),
             "fresh_markets": sum(row["evidence_gates"]["fresh_market_screenshot"] for row in rows),
         },
         "decision_rule": "A match remains no_selection while any evidence gate is false. "

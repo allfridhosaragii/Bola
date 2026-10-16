@@ -19,6 +19,7 @@ class AnalystReportTests(unittest.TestCase):
             "fixtures": [{"match_id": "1", "home": "A", "away": "B",
                           "kickoff": "2026-10-20T19:00:00Z", "status_at_retrieval": "Upcoming",
                           "fixture_retrieved_at": "2026-10-20T18:39:00Z",
+                          "squad_retrieved_at": "2026-10-20T18:40:00Z",
                           "lineup_retrieved_at": "2026-10-20T18:40:00Z",
                           "registered_players": {"A": 25, "B": 24},
                           "flagged_players": {"A": [], "B": []},
@@ -34,6 +35,14 @@ class AnalystReportTests(unittest.TestCase):
         self.assertIn("validated_current_tactical_evidence", row["blocking_gates"])
         self.assertEqual(report["summary"]["form_complete"], 1)
         self.assertEqual(report["summary"]["official_lineups"], 1)
+
+    def test_squad_timestamp_and_badges_are_visible(self):
+        self.squad["fixtures"][0]["flagged_players"] = {"A": [{"name": "Player", "badges": ["Injured"]}], "B": []}
+        report = assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z")
+        row = report["matches"][0]
+        self.assertTrue(row["evidence_gates"]["registered_squad_snapshot_within_24h"])
+        self.assertEqual(row["flagged_player_counts"], {"A": 1, "B": 0})
+        self.assertEqual(report["summary"]["observed_player_badges"], 1)
 
     def test_rejects_identity_and_future_evidence(self):
         self.squad["fixtures"][0]["away"] = "C"
