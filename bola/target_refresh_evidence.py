@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
@@ -16,11 +17,62 @@ def _digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _instant(value: str) -> datetime:
+    """Parse an ISO timestamp while accepting the standard trailing ``Z``."""
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def _require_equal(actual: object, expected: object, description: str) -> None:
+    if actual != expected:
+        raise ValueError(f"Evidence lineage mismatch: {description}")
+
+
+def validate_lineage(paths: dict[str, Path], data: dict[str, dict]) -> None:
+    """Reject a manifest assembled from reports belonging to different runs.
+
+    Checksums in the final record are useful only after the dependent reports
+    have proved which exact inputs they consumed.  This keeps a valid-looking
+    report from silently mixing a new forecast with a stale squad, schedule,
+    recent-statistics, or independent score cross-check.
+    """
+    forecast_digest = _digest(paths["forecast"])
+    form_digest = _digest(paths["form"])
+    squad_digest = _digest(paths["squad"])
+    schedule_digest = _digest(paths["schedule"])
+    recent_digest = _digest(paths["recent"])
+    forecast = data["forecast"]
+    analyst = data["analyst"]
+
+    _require_equal(data["squad"]["forecast_generated_at"], forecast["generated_at"],
+                   "squad forecast timestamp")
+    _require_equal(data["schedule"]["forecast_generated_at"], forecast["generated_at"],
+                   "schedule forecast timestamp")
+    _require_equal(data["schedule"]["target_date_utc"], forecast["target_date_utc"],
+                   "schedule target date")
+    _require_equal(data["analyst"]["target_date_utc"], forecast["target_date_utc"],
+                   "analyst target date")
+    _require_equal(data["openfootball"]["primary_crosscheck_sha256"], _digest(paths["crosscheck"]),
+                   "OpenFootball primary cross-check checksum")
+    _require_equal(Path(data["coverage"]["report_path"]).name, paths["recent"].name,
+                   "recent-source coverage report path")
+
+    analyst_inputs = analyst["input_sha256"]
+    _require_equal(analyst_inputs["forecast"], forecast_digest, "analyst forecast checksum")
+    _require_equal(analyst_inputs["form"], form_digest, "analyst form checksum")
+    _require_equal(analyst_inputs["squad"], squad_digest, "analyst squad checksum")
+    _require_equal(analyst["schedule_input_sha256"], schedule_digest, "analyst schedule checksum")
+    _require_equal(analyst["recent_stats_input_sha256"], recent_digest,
+                   "analyst recent-statistics checksum")
+    if _instant(analyst["generated_at"]) < _instant(data["squad"]["refreshed_at"]):
+        raise ValueError("Evidence lineage mismatch: analyst predates squad snapshot")
+
+
 def assemble(paths: dict[str, Path]) -> dict:
     required = {"forecast", "squad", "form", "crosscheck", "openfootball", "schedule", "recent", "coverage", "odds", "analyst"}
     if set(paths) != required:
-        raise ValueError("Target refresh evidence needs all nine named inputs")
+        raise ValueError("Target refresh evidence needs all ten named inputs")
     data = {name: _load(path) for name, path in paths.items()}
+    validate_lineage(paths, data)
     forecast, squad, form = data["forecast"], data["squad"], data["form"]
     crosscheck, openfootball, schedule, recent = data["crosscheck"], data["openfootball"], data["schedule"], data["recent"]
     coverage, odds, analyst = data["coverage"], data["odds"], data["analyst"]
@@ -34,6 +86,12 @@ def assemble(paths: dict[str, Path]) -> dict:
         "forecast": {"path": str(paths["forecast"]), "sha256": _digest(paths["forecast"]),
                      "matches": len(forecast["predictions"]), "generated_at": forecast["generated_at"]},
         "source_report_sha256": {name: _digest(path) for name, path in paths.items() if name != "forecast"},
+        "lineage_checks": {
+            "analyst_inputs_match_manifest": True,
+            "forecast_dependent_reports_match_forecast": True,
+            "openfootball_matches_primary_crosscheck": True,
+            "recent_coverage_matches_recent_report": True,
+        },
         "coverage": {
             "official_fixture_pairs_checked": fixture_pairs,
             "registered_squad_pairs": sum(bool(row["registered_players"]) for row in fixtures),
