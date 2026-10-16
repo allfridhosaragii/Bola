@@ -1,0 +1,118 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "input_audit": {
+    "matches": 457,
+    "event_rows": 1587305,
+    "starting_xis_verified": 914,
+    "checksums_verified": 461
+  },
+  "protocol": {
+    "feature": "Away minus home absence load; missing players weighted by start share in five prior same-season matches.",
+    "frozen_epl_beta": 1.0,
+    "wsl_tuning": false,
+    "history_reset": "Elo and lineup history reset at the start of each dataset season.",
+    "same_date_rule": "All matches on a date are predicted before lineups or results from that date are observed."
+  },
+  "by_season": [
+    {
+      "season": "2018/2019",
+      "matches": 107,
+      "eligible_predictions": 78,
+      "score_only_elo": {
+        "n": 78,
+        "log_loss": 0.9193104984746486,
+        "brier": 0.5461235022246752
+      },
+      "elo_plus_frozen_continuity": {
+        "n": 78,
+        "log_loss": 0.9329955378358074,
+        "brier": 0.5556970381979242
+      }
+    },
+    {
+      "season": "2019/2020",
+      "matches": 87,
+      "eligible_predictions": 56,
+      "score_only_elo": {
+        "n": 56,
+        "log_loss": 0.9112711319950899,
+        "brier": 0.5334241165278075
+      },
+      "elo_plus_frozen_continuity": {
+        "n": 56,
+        "log_loss": 0.8988438306296113,
+        "brier": 0.5236045175394468
+      }
+    },
+    {
+      "season": "2020/2021",
+      "matches": 131,
+      "eligible_predictions": 99,
+      "score_only_elo": {
+        "n": 99,
+        "log_loss": 0.9973206817557548,
+        "brier": 0.5910090926376735
+      },
+      "elo_plus_frozen_continuity": {
+        "n": 99,
+        "log_loss": 1.0104153635077395,
+        "brier": 0.601699340138906
+      }
+    },
+    {
+      "season": "2023/2024",
+      "matches": 132,
+      "eligible_predictions": 102,
+      "score_only_elo": {
+        "n": 102,
+        "log_loss": 0.973543639975676,
+        "brier": 0.578424957339263
+      },
+      "elo_plus_frozen_continuity": {
+        "n": 102,
+        "log_loss": 1.0045480079518363,
+        "brier": 0.6024764075011595
+      }
+    }
+  ],
+  "wsl_transfer": {
+    "score_only_elo": {
+      "n": 335,
+      "log_loss": 0.9575331374450338,
+      "brier": 0.5671003866233325
+    },
+    "elo_plus_frozen_continuity": {
+      "n": 335,
+      "log_loss": 0.9719520127307604,
+      "brier": 0.5781702991060211
+    },
+    "log_loss_difference_augmented_minus_elo": 0.014418875285726607,
+    "match_date_bootstrap_95_ci": [
+      -0.0010726141600968047,
+      0.03013749384052346
+    ],
+    "mean_home_absence_load": 2.8692537313432838,
+    "mean_away_absence_load": 2.8919402985074627
+  },
+  "decision": {
+    "original_epl_holdout": {
+      "log_loss_difference": 0.01462953963410496,
+      "bootstrap_95_ci": [
+        -0.008335411416120828,
+        0.03708788273904114
+      ],
+      "passed": false
+    },
+    "transfer_gate_passed": false,
+    "implementation_gate_passed": false,
+    "rule": "Implementation requires improvement in both the original EPL holdout and frozen WSL transfer.",
+    "result": "Rejected: the feature does not pass both independent holdout gates."
+  },
+  "limitations": [
+    "A missing regular starter can reflect tactics, transfer, suspension, rotation, or injury.",
+    "Player weights use starts rather than minutes, position, opponent, or independently estimated ability.",
+    "Event lineups are post-match records and do not establish public availability before kickoff.",
+    "WSL transfer does not establish player-impact validity for current UEFA men's teams."
+  ]
+}

@@ -40,6 +40,7 @@ python3 -m bola.shot_quality_predict --output reports/shot_quality_predict.json
 python3 -m bola.shot_quality_transfer --output reports/shot_quality_transfer.json
 python3 -m bola.shot_quality_incremental --output reports/shot_quality_incremental.json
 python3 -m bola.lineup_continuity_predict --output reports/lineup_continuity_predict.json
+python3 -m bola.lineup_continuity_transfer --output reports/lineup_continuity_transfer.json
 python3 -m bola.shot_endpoint_audit --output reports/shot_endpoints.json
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
 python3 -m bola.form_extra --cutoff-date-wib 2026-10-15 --output reports/current_form_extra.json
@@ -76,6 +77,8 @@ Audit lintas penyedia juga memisahkan penalti. StatsBomb memiliki **9.817 tembak
 `bola.rotation_predict` menguji jumlah starter berubah dibanding laga sebelumnya sebagai fitur tambahan 1X2: koefisien dipilih dari 180 laga sebelum 1 Januari 2016 dan diuji pada 190 laga berikutnya. Fitur itu juga tidak memperbaiki log loss uji. Ini bukan estimasi dampak pemain absen karena alasan rotasi tidak tersedia.
 
 `bola.pressure_predict` memeriksa 115.402 event tekanan dan 11.295 penguasaan unik yang berpindah ke tim penekan dalam lima detik. Koefisien dipilih tanpa melihat 190 laga holdout; nilai yang terpilih adalah **0**, sehingga fitur tekanan ditolak. `bola.lineup_continuity_predict` memberi bobot pemain yang tidak masuk XI menurut frekuensi start dalam lima laga sebelumnya. Fitur itu dipilih pada 140 laga awal, tetapi log loss holdout memburuk dari **1,02748** menjadi **1,04211** pada 190 laga. Interval perbedaannya melintasi nol. Kedua hasil ini mencegah metrik taktik atau skuad yang belum terbukti masuk ke peluang pertandingan.
+
+`bola.lineup_continuity_transfer` membekukan koefisien EPL tersebut lalu mengujinya tanpa penyetelan pada empat dataset musim WSL. Sebanyak **914 Starting XI** dari 457 laga diperiksa dengan 461 checksum. Pada 335 prediksi, log loss memburuk dari **0,95753** menjadi **0,97195**; selisih **+0,01442** dengan interval bootstrap **[−0,00107; +0,03014]**. Karena fitur gagal pada holdout EPL dan transfer WSL, fitur kontinuitas ditolak sebagai input probabilitas.
 
 `bola.shot_quality_predict` menguji selisih rata-rata npxG dalam tepat lima laga terdahulu sebagai tambahan pada Elo. Seluruh **380 laga, 1.313.773 event, dan 9.817 tembakan nonpenalti** diperiksa dengan checksum. Koefisien dipilih pada 140 laga awal dan diuji pada 190 laga mulai 1 Januari 2016. Log loss turun dari **1,02748** menjadi **1,01202**, tetapi interval bootstrap selisihnya **[−0,03803; +0,00780]** melintasi nol. Sesuai gerbang yang ditetapkan, fitur belum dimasukkan ke model UEFA.
 
