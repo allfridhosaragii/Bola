@@ -37,6 +37,7 @@ def audit(folder: Path) -> dict:
     uefa = load(folder, "uefa_extended_backtest_2026-10-15.json")
     openfootball = load(folder, "openfootball_crosscheck_2026-10-16.json")
     odds_sources = load(folder, "odds_source_audit_2026-10-16.json")
+    recent_coverage = load(folder, "recent_stats_coverage_2026-10-16.json")
     coverage = refresh["coverage"]
 
     sections = {
@@ -47,8 +48,8 @@ def audit(folder: Path) -> dict:
                  f"{coverage['independent_score_teams']}/{coverage['domestic_form_teams_requested']} primary target teams cross-checked independently; OpenFootball attempt {openfootball['independent_score_matches']}/{openfootball['requested_score_matches']} scores",
                  "Independent score verification does not cover every target team; the OpenFootball attempt is partial or unavailable for the remaining teams."),
             gate("recent_stats_complete", coverage["recent_observations_with_stats"] == coverage["recent_team_match_observations"],
-                 f"{coverage['recent_observations_with_stats']}/{coverage['recent_team_match_observations']} observations have stats",
-                 "At least one recent team-match observation lacks statistics."),
+                 f"{coverage['recent_observations_with_stats']}/{coverage['recent_team_match_observations']} observations have stats; raw-page audit {recent_coverage['raw_pages_checked']} pages, anomalies {len(recent_coverage['anomalies'])}",
+                 "At least one recent team-match observation lacks statistics; raw pages confirm source-level missing fields."),
             gate("npxg_transfer_gate", xg["decision"]["incremental_npxg_retained"],
                  "Frozen npxG transfer gate passed on WSL", "The npxG transfer gate did not pass."),
             gate("provider_robustness", provider["decision"]["provider_robustness_passed"],
@@ -108,6 +109,7 @@ def audit(folder: Path) -> dict:
             "uefa_extended_backtest_2026-10-15.json",
             "openfootball_crosscheck_2026-10-16.json",
             "odds_source_audit_2026-10-16.json",
+            "recent_stats_coverage_2026-10-16.json",
         ],
     }
 

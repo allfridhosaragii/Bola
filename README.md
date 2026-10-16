@@ -273,3 +273,13 @@ python3 -m bola.odds_source_audit --output evidence/odds_source_audit_2026-10-16
 ```
 
 Audit ini hanya mencatat status jaringan dan tidak menganggap respons HTTP sebagai kutipan odds. Kutipan baru dapat dipakai setelah memiliki pertandingan, pasar 1X2, tiga harga desimal, dan waktu pengambilan yang dapat diverifikasi.
+
+Audit alasan statistik/lineup yang kosong dapat diputar ulang dengan:
+
+```bash
+python3 -m bola.recent_stats_coverage \
+  --report reports/target_recent_stats_20261016T083512371218Z.json \
+  --output evidence/recent_stats_coverage_2026-10-16.json
+```
+
+Audit ini memeriksa checksum halaman dan field mentah sumber; ia tidak mengisi data yang memang tidak disediakan sumber.

@@ -24,8 +24,8 @@
         {
           "name": "recent_stats_complete",
           "passed": false,
-          "evidence": "84/90 observations have stats",
-          "blocker": "At least one recent team-match observation lacks statistics."
+          "evidence": "84/90 observations have stats; raw-page audit 90 pages, anomalies 0",
+          "blocker": "At least one recent team-match observation lacks statistics; raw pages confirm source-level missing fields."
         },
         {
           "name": "npxg_transfer_gate",
@@ -208,6 +208,7 @@
     "market_incremental_holdout.json",
     "uefa_extended_backtest_2026-10-15.json",
     "openfootball_crosscheck_2026-10-16.json",
-    "odds_source_audit_2026-10-16.json"
+    "odds_source_audit_2026-10-16.json",
+    "recent_stats_coverage_2026-10-16.json"
   ]
 }
