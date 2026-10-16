@@ -1,0 +1,126 @@
+{
+  "source": "StatsBomb open-data",
+  "commit": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+  "input_audit": {
+    "competition": "FA Women's Super League",
+    "seasons": 4,
+    "matches": 457,
+    "event_rows": 1587305,
+    "non_penalty_shots": 11711,
+    "non_penalty_xg": 1230.018609,
+    "checksums_verified": 461
+  },
+  "transfer_protocol": {
+    "coefficient_source": "Selected on 140 EPL 2015/16 matches before 2016-01-01.",
+    "frozen_beta": 0.25,
+    "wsl_tuning": false,
+    "history": "Exactly five earlier matches in the same season; Elo and xG history reset each season.",
+    "same_date_rule": "Every match on a date is predicted before any match on that date is observed."
+  },
+  "by_season": [
+    {
+      "season": "2018/2019",
+      "matches": 107,
+      "eligible_predictions": 78,
+      "date_range": [
+        "2018-09-09",
+        "2019-05-11"
+      ],
+      "score_only_elo": {
+        "n": 78,
+        "log_loss": 0.9193104984746486,
+        "brier": 0.5461235022246752
+      },
+      "elo_plus_frozen_npxg": {
+        "n": 78,
+        "log_loss": 0.8103917021537309,
+        "brier": 0.46801404880220643
+      }
+    },
+    {
+      "season": "2019/2020",
+      "matches": 87,
+      "eligible_predictions": 56,
+      "date_range": [
+        "2019-09-07",
+        "2020-02-23"
+      ],
+      "score_only_elo": {
+        "n": 56,
+        "log_loss": 0.9112711319950899,
+        "brier": 0.5334241165278075
+      },
+      "elo_plus_frozen_npxg": {
+        "n": 56,
+        "log_loss": 0.8025014318665881,
+        "brier": 0.4551561700193328
+      }
+    },
+    {
+      "season": "2020/2021",
+      "matches": 131,
+      "eligible_predictions": 99,
+      "date_range": [
+        "2020-09-05",
+        "2021-05-09"
+      ],
+      "score_only_elo": {
+        "n": 99,
+        "log_loss": 0.9973206817557548,
+        "brier": 0.5910090926376735
+      },
+      "elo_plus_frozen_npxg": {
+        "n": 99,
+        "log_loss": 0.8936566560248298,
+        "brier": 0.5175069784444696
+      }
+    },
+    {
+      "season": "2023/2024",
+      "matches": 132,
+      "eligible_predictions": 102,
+      "date_range": [
+        "2023-10-01",
+        "2024-05-18"
+      ],
+      "score_only_elo": {
+        "n": 102,
+        "log_loss": 0.973543639975676,
+        "brier": 0.578424957339263
+      },
+      "elo_plus_frozen_npxg": {
+        "n": 102,
+        "log_loss": 0.8646194744177672,
+        "brier": 0.5004547023891476
+      }
+    }
+  ],
+  "combined_transfer_test": {
+    "score_only_elo": {
+      "n": 335,
+      "log_loss": 0.9575331374450338,
+      "brier": 0.5671003866233325
+    },
+    "elo_plus_frozen_npxg": {
+      "n": 335,
+      "log_loss": 0.8501905322077323,
+      "brier": 0.49036839354432926
+    },
+    "log_loss_difference_augmented_minus_elo": -0.10734260523730144,
+    "match_date_bootstrap_95_ci": [
+      -0.13269011540964867,
+      -0.08185019740443293
+    ]
+  },
+  "decision": {
+    "rule": "Retain only if combined log loss improves and the entire bootstrap interval is below zero.",
+    "retained": true,
+    "result": "Retained for further implementation review; the transfer gate passed."
+  },
+  "limitations": [
+    "This tests transfer from one men's league season to a women's league, not to UEFA men's competitions.",
+    "StatsBomb supplies xG in both samples, so provider-model independence is not established.",
+    "The open event files are post-match data and do not establish historical pregame publication timing.",
+    "Four seasons from one competition cannot establish stability in current or future competitions."
+  ]
+}

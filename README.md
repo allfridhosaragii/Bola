@@ -14,6 +14,7 @@ bash scripts/fetch_statsbomb.sh
 python3 scripts/fetch_worldcup.py
 python3 scripts/fetch_worldcup_2018.py
 python3 scripts/fetch_epl_2015.py
+python3 scripts/fetch_wsl.py
 python3 scripts/fetch_form.py
 python3 scripts/fetch_form_extra.py
 python3 scripts/fetch_fotmob_form.py
@@ -35,6 +36,7 @@ python3 -m bola.tactic_predict --output reports/tactic_predict.json
 python3 -m bola.rotation_predict --output reports/rotation_predict.json
 python3 -m bola.pressure_predict --output reports/pressure_predict.json
 python3 -m bola.shot_quality_predict --output reports/shot_quality_predict.json
+python3 -m bola.shot_quality_transfer --output reports/shot_quality_transfer.json
 python3 -m bola.lineup_continuity_predict --output reports/lineup_continuity_predict.json
 python3 -m bola.shot_endpoint_audit --output reports/shot_endpoints.json
 python3 -m bola.form --cutoff-date-wib 2026-10-15 --output reports/current_form.json
@@ -72,6 +74,8 @@ python3 -m bola.uefa_extended_backtest --output reports/uefa_extended_backtest.j
 `bola.pressure_predict` memeriksa 115.402 event tekanan dan 11.295 penguasaan unik yang berpindah ke tim penekan dalam lima detik. Koefisien dipilih tanpa melihat 190 laga holdout; nilai yang terpilih adalah **0**, sehingga fitur tekanan ditolak. `bola.lineup_continuity_predict` memberi bobot pemain yang tidak masuk XI menurut frekuensi start dalam lima laga sebelumnya. Fitur itu dipilih pada 140 laga awal, tetapi log loss holdout memburuk dari **1,02748** menjadi **1,04211** pada 190 laga. Interval perbedaannya melintasi nol. Kedua hasil ini mencegah metrik taktik atau skuad yang belum terbukti masuk ke peluang pertandingan.
 
 `bola.shot_quality_predict` menguji selisih rata-rata npxG dalam tepat lima laga terdahulu sebagai tambahan pada Elo. Seluruh **380 laga, 1.313.773 event, dan 9.817 tembakan nonpenalti** diperiksa dengan checksum. Koefisien dipilih pada 140 laga awal dan diuji pada 190 laga mulai 1 Januari 2016. Log loss turun dari **1,02748** menjadi **1,01202**, tetapi interval bootstrap selisihnya **[−0,03803; +0,00780]** melintasi nol. Sesuai gerbang yang ditetapkan, fitur belum dimasukkan ke model UEFA.
+
+`fetch_wsl.py` mengambil empat dataset musim FA Women's Super League dari commit StatsBomb yang sama: 2018/19, 2019/20 yang terhenti, 2020/21, dan 2023/24. Sebanyak **457 pertandingan dan 457 berkas event** diperiksa terhadap hash SHA-256 yang disimpan di `data/statsbomb_wsl_sha256.json`. `bola.shot_quality_transfer` membekukan koefisien `0,25` yang dipilih pada EPL tanpa menyetel ulang pada WSL. Pada 335 prediksi yang memiliki lima laga riwayat musim itu, log loss turun dari **0,95753** menjadi **0,85019**, dengan interval bootstrap selisih **[−0,13269; −0,08185]**. Gerbang transfer tersebut lulus, tetapi belum membuktikan transfer ke kompetisi UEFA pria atau ketersediaan feed xG sebelum pertandingan.
 
 `fetch_uefa_history.py` mengambil kalender dan hasil resmi 144 laga fase liga UEFA 2024/25, 144 laga 2025/26, serta 18 laga MD1 2026/27 dari [API pertandingan UEFA](https://match.uefa.com/v5/), lalu menyimpan respons mentah, checksum, dan waktu pengambilan dalam folder snapshot. `bola.uefa_backtest` menguji model skor 1X2 lintas klub dan liga secara kronologis dengan ID tim resmi: musim pertama untuk riwayat, musim kedua untuk validasi, dan 18 laga MD1 musim ketiga sebagai uji kecil berikutnya. Bobot campuran 0,5 berasal dari validasi Premier League, bukan dipilih menggunakan laga UEFA. Snapshot historis tidak menyediakan waktu pertama publikasi setiap hasil; uji tanggal mencegah pemakaian hasil laga mendatang dalam kode, tetapi tidak membuktikan histori feed sumber.
 
