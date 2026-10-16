@@ -218,6 +218,7 @@ def report(scores_dir: Path, odds_dir: Path) -> dict:
                        if retained else "Rejected: the internal model did not add validated information to opening market probabilities."),
         },
         "limitations": [
+            "These seasons were already inspected in earlier model development and benchmarks; this is retrospective reuse, not an untouched holdout.",
             "Football-Data labels average opening and closing odds but does not provide a timestamp for each quote.",
             "The experiment is a historical information benchmark, not evidence that a quoted price was available to this system before kickoff.",
             "The holdout covers two men's domestic leagues and does not establish incremental value in UEFA competition.",

@@ -245,3 +245,7 @@ Jalankan `bash scripts/refresh_uefa_prematch.sh` untuk mengambil ulang ketiga su
 - Metrik: akurasi 1X2, Brier multiclass, log loss, RPS, ECE keyakinan 10 bin, dan bootstrap berpasangan menurut tanggal.
 - Dataset adalah snapshot tanpa timestamp publikasi historis per hasil. Pemisahan tanggal mencegah penggunaan hasil laga masa depan dalam model, tetapi belum membuktikan kapan tiap data sumber tersedia.
 - Model 1X2 belum memakai xG, odds, cedera, atau skuad. Prediksinya bukan analisis pasar taruhan lengkap.
+
+Audit lanjutan: pemisahan 992/686 laga pada uji pasar adalah evaluasi retrospektif pada musim yang sudah pernah diperiksa selama pengembangan. Pemisahan tahun mencegah pemilihan bobot langsung dari periode evaluasi dalam kode, tetapi tidak menghasilkan holdout baru yang independen. Hasilnya tidak menambah jumlah pertandingan unik yang divalidasi.
+
+Laporan analis menghitung ulang umur odds pada waktu laporan (batas 10 menit), memeriksa jumlah W/D/L untuk setiap jendela 5/10/20, serta menolak probabilitas NaN, tak hingga, negatif, dan di luar rentang 0–1.

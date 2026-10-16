@@ -1,0 +1,23 @@
+{
+  "evaluation_type": "Historical snapshot replay, not a live refresh or new forecast",
+  "historical_as_of": "2026-10-15T16:30:54.423582+00:00",
+  "summary": {
+    "matches": 9,
+    "eligible_for_review": 0,
+    "no_selection": 9,
+    "form_complete": 9,
+    "schedule_load_complete": 9,
+    "recent_match_stats_complete": 9,
+    "official_lineups": 0,
+    "fresh_markets": 0
+  },
+  "input_sha256": {
+    "forecast": "be035342996824620b8fab0f65ea813c1e23dd0ec735368ab548aed1fa35dab3",
+    "form": "d57a05d92c5dabb43613a392cbd91825f67046e6b2df4998f465457257169ccb",
+    "squad": "c4d9e72ba00cdf73d4fc1ce31bef75c516beb924cc06c3706414a2e474c7b311"
+  },
+  "schedule_input_sha256": "f13cf5de0e5f61a66f78fe67cd9bbc09eec3719ec3cc742f16dc556f1df4a96a",
+  "recent_stats_input_sha256": "f80d2b1ac0ff8398ff2f39479187c3d222819eb6230b29d65bbb2e83efbc8464",
+  "summary_matches_prior_report": true,
+  "regression_tests": "Synthetic edge cases: stale market, incomplete form, invalid probabilities; not real match outcomes"
+}

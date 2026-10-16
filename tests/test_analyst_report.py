@@ -12,7 +12,7 @@ class AnalystReportTests(unittest.TestCase):
                              "historical_uefa_appearances": {"home": 18, "away": 18},
                              "probabilities_h_d_a": {"blend": [0.5, 0.2, 0.3]}}],
         }
-        team = {"windows": {str(n): {"games": n} for n in (5, 10, 20)}}
+        team = {"windows": {str(n): {"record": {"W": n, "D": 0, "L": 0}} for n in (5, 10, 20)}}
         self.form = {"as_of": "2026-10-20T18:35:00Z", "teams": {"A": team, "B": team}}
         self.squad = {
             "refreshed_at": "2026-10-20T18:40:00Z",
@@ -48,6 +48,30 @@ class AnalystReportTests(unittest.TestCase):
         self.squad["fixtures"][0]["fixture_retrieved_at"] = "2026-10-20T18:00:00Z"
         report = assemble(self.forecast, self.form, self.squad, "2026-10-20T18:45:00Z")
         self.assertFalse(report["matches"][0]["evidence_gates"]["official_fixture_snapshot_within_30m"])
+
+    def test_invalid_probabilities_are_rejected(self):
+        for probabilities in ([float('nan'), .2, .8], [-.1, .5, .6], [True, 0, 0]):
+            with self.subTest(probabilities=probabilities):
+                self.forecast['predictions'][0]['probabilities_h_d_a']['blend'] = probabilities
+                with self.assertRaisesRegex(ValueError, 'Invalid frozen probabilities'):
+                    assemble(self.forecast, self.form, self.squad, '2026-10-20T18:45:00Z')
+
+    def test_partial_form_does_not_pass_completeness_gate(self):
+        self.form['teams']['A']['windows']['20']['record']['W'] = 19
+        report = assemble(self.forecast, self.form, self.squad, '2026-10-20T18:45:00Z')
+        self.assertEqual(report['summary']['form_complete'], 0)
+
+    def test_market_freshness_is_recomputed_at_report_time(self):
+        market = {'match_id': '1', 'home': 'A', 'away': 'B',
+                  'kickoff': '2026-10-20T19:00:00Z',
+                  'analyzed_at': '2026-10-20T18:30:00Z',
+                  'quote_observed_at_transcribed': '2026-10-20T18:29:00Z',
+                  'fresh_within_10m': True, 'screenshot_sha256': 'test-fixture'}
+        report = assemble(self.forecast, self.form, self.squad, '2026-10-20T18:45:00Z', [market])
+        self.assertEqual(report['summary']['fresh_markets'], 0)
+        market['analyzed_at'] = market['quote_observed_at_transcribed'] = '2026-10-20T18:35:00Z'
+        report = assemble(self.forecast, self.form, self.squad, '2026-10-20T18:45:00Z', [market])
+        self.assertEqual(report['summary']['fresh_markets'], 1)
 
     def test_schedule_load_is_checked_and_included(self):
         schedule = {"generated_at": "2026-10-20T18:41:00Z",

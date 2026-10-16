@@ -6,12 +6,27 @@ import argparse
 from datetime import datetime, timedelta, timezone
 import hashlib
 import json
+import math
 from pathlib import Path
 
 from .squad import instant
 
 
 OUTCOMES = ("home", "draw", "away")
+
+
+def complete_form(team: dict | None) -> bool:
+    if not team:
+        return False
+    for size in (5, 10, 20):
+        window = team.get("windows", {}).get(str(size), {})
+        record = window.get("record", {})
+        counts = [record.get(key) for key in ("W", "D", "L")]
+        if not all(type(value) is int and value >= 0 for value in counts):
+            return False
+        if sum(counts) != size:
+            return False
+    return True
 
 
 def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
@@ -89,15 +104,22 @@ def assemble(forecast: dict, form: dict, squad: dict, as_of: str,
                 raise ValueError(f"Market and forecast fixture identity disagree: {mid}")
             if instant(market["analyzed_at"]) > now:
                 raise ValueError(f"Market report is newer than analyst report: {mid}")
-            market_valid = bool(market["fresh_within_10m"] and market["screenshot_sha256"])
+            observed = instant(market["quote_observed_at_transcribed"])
+            if observed > instant(market["analyzed_at"]) or observed >= kickoff:
+                raise ValueError(f"Invalid market observation time: {mid}")
+            market_valid = bool(now - observed <= timedelta(minutes=10)
+                                and market["screenshot_sha256"])
         probabilities = prediction["probabilities_h_d_a"]["blend"]
-        if len(probabilities) != 3 or abs(sum(probabilities) - 1) > 2e-6:
+        if (len(probabilities) != 3 or
+                any(type(value) not in (int, float) or not math.isfinite(value)
+                    or not 0 <= value <= 1 for value in probabilities) or
+                abs(sum(probabilities) - 1) > 2e-6):
             raise ValueError(f"Invalid frozen probabilities: {mid}")
         gates = {
             "before_kickoff": before_kickoff,
             "official_fixture_upcoming": fixture["status_at_retrieval"] == "Upcoming",
             "official_fixture_snapshot_within_30m": now - fixture_time <= timedelta(minutes=30),
-            "domestic_form_5_10_20_for_both": all(team_form.values()),
+            "domestic_form_5_10_20_for_both": all(complete_form(team) for team in team_form.values()),
             "schedule_load_for_both": all(team_schedule.values()),
             "recent_match_stats_for_both": all(row and row.get("stats_available_games", 0) > 0
                                                 for row in team_recent.values()),
