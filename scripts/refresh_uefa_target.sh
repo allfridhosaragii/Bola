@@ -35,6 +35,10 @@ python3 -m bola.form_fotmob --cutoff-date-wib "$cutoff_wib" --output "reports/fo
 python3 -m bola.form_crosscheck --form "reports/form_${stamp}.json" \
   --extra-form "reports/form_extra_${stamp}.json" --fotmob-form "reports/form_fotmob_${stamp}.json" \
   --cutoff-date-wib "$cutoff_wib" --output "reports/form_crosscheck_${stamp}.json" > /dev/null
+openfootball_root="$(bash scripts/fetch_openfootball_europe.sh)"
+python3 -m bola.openfootball_crosscheck --source-root "$openfootball_root" \
+  --primary-crosscheck "reports/form_crosscheck_${stamp}.json" --cutoff-date-wib "$cutoff_wib" \
+  --output "reports/openfootball_crosscheck_${stamp}.json" > /dev/null
 fotmob_team_manifest="$(find .cache/fotmob_target_teams -mindepth 2 -maxdepth 2 -name manifest.json -print | sort | tail -1)"
 python3 -m bola.schedule_load --forecast "$forecast_path" --data-dir "$(dirname "$fotmob_team_manifest")" \
   --output "reports/schedule_load_${stamp}.json" > /dev/null
@@ -50,7 +54,8 @@ python3 -m bola.analyst_report --forecast "$forecast_path" \
   --output "reports/analyst_${stamp}.json" > /dev/null
 python3 -m bola.target_refresh_evidence --forecast "$forecast_path" \
   --squad "reports/uefa_target_${stamp}.json" --form "reports/target_form_${stamp}.json" \
-  --crosscheck "reports/form_crosscheck_${stamp}.json" --schedule "reports/schedule_load_${stamp}.json" \
+  --crosscheck "reports/form_crosscheck_${stamp}.json" --openfootball "reports/openfootball_crosscheck_${stamp}.json" \
+  --schedule "reports/schedule_load_${stamp}.json" \
   --recent "reports/target_recent_stats_${stamp}.json" --coverage "reports/recent_stats_coverage_${stamp}.json" \
   --odds "reports/odds_source_audit_${stamp}.json" --analyst "reports/analyst_${stamp}.json" \
   --output "reports/target_refresh_evidence_${stamp}.json" > /dev/null
@@ -63,6 +68,7 @@ stamp = sys.argv[2]
 squad = json.loads(Path(f"reports/uefa_target_{stamp}.json").read_text(encoding="utf-8"))
 form = json.loads(Path(f"reports/target_form_{stamp}.json").read_text(encoding="utf-8"))
 crosscheck = json.loads(Path(f"reports/form_crosscheck_{stamp}.json").read_text(encoding="utf-8"))
+openfootball = json.loads(Path(f"reports/openfootball_crosscheck_{stamp}.json").read_text(encoding="utf-8"))
 analyst = json.loads(Path(f"reports/analyst_{stamp}.json").read_text(encoding="utf-8"))
 schedule = json.loads(Path(f"reports/schedule_load_{stamp}.json").read_text(encoding="utf-8"))
 recent = json.loads(Path(f"reports/target_recent_stats_{stamp}.json").read_text(encoding="utf-8"))
@@ -77,6 +83,9 @@ print("Domestic form:", f"reports/target_form_{stamp}.json",
       "| covered:", form["teams_covered"], "/", form["teams_requested"])
 print("Independent score cross-check:", crosscheck["independent_matches_checked"], "matches across",
       crosscheck["independent_teams"], "teams")
+print("OpenFootball cross-check:", openfootball["independent_score_matches"], "/",
+      openfootball["requested_score_matches"], "scores | full windows:",
+      openfootball["independent_full_window_teams"])
 print("Schedule load:", f"reports/schedule_load_{stamp}.json",
       "| target pairs checked:", schedule["summary"]["target_pairs_agree"],
       "| teams with an intervening match:", schedule["summary"]["teams_with_scheduled_match_before_target"],

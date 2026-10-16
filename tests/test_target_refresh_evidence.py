@@ -16,6 +16,8 @@ class TargetRefreshEvidenceTests(unittest.TestCase):
                 "squad": {"fixtures": [{"registered_players": {"A": 1}, "official_starting_xi_before_kickoff": False}]},
                 "form": {"teams_covered": 2, "teams_requested": 2},
                 "crosscheck": {"independent_matches_checked": 5, "independent_teams": 1},
+                "openfootball": {"independent_score_matches": 4, "requested_score_matches": 15,
+                                 "independent_full_window_teams": 0},
                 "schedule": {"summary": {"teams_with_scheduled_match_before_target": 1, "minimum_projected_rest_hours": 72}},
                 "recent": {"summary": {"team_match_observations": 10, "observations_with_stats": 9,
                                            "observations_with_lineups": 10, "teams_with_all_five_stats_pages": 1,
@@ -33,6 +35,7 @@ class TargetRefreshEvidenceTests(unittest.TestCase):
                 paths[name] = path
             result = assemble(paths)
             self.assertEqual(result["coverage"]["raw_recent_pages_checked"], 10)
+            self.assertEqual(result["coverage"]["openfootball_independent_score_matches"], 4)
             self.assertEqual(result["external_source_checks"]["quotes_observed"], 0)
             self.assertEqual(result["source_report_sha256"]["analyst"], hashlib.sha256(paths["analyst"].read_bytes()).hexdigest())
 

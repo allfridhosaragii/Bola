@@ -17,12 +17,12 @@ def _digest(path: Path) -> str:
 
 
 def assemble(paths: dict[str, Path]) -> dict:
-    required = {"forecast", "squad", "form", "crosscheck", "schedule", "recent", "coverage", "odds", "analyst"}
+    required = {"forecast", "squad", "form", "crosscheck", "openfootball", "schedule", "recent", "coverage", "odds", "analyst"}
     if set(paths) != required:
         raise ValueError("Target refresh evidence needs all nine named inputs")
     data = {name: _load(path) for name, path in paths.items()}
     forecast, squad, form = data["forecast"], data["squad"], data["form"]
-    crosscheck, schedule, recent = data["crosscheck"], data["schedule"], data["recent"]
+    crosscheck, openfootball, schedule, recent = data["crosscheck"], data["openfootball"], data["schedule"], data["recent"]
     coverage, odds, analyst = data["coverage"], data["odds"], data["analyst"]
     fixtures = squad["fixtures"]
     fixture_pairs = len(fixtures)
@@ -43,6 +43,9 @@ def assemble(paths: dict[str, Path]) -> dict:
             "domestic_form_teams": form["teams_covered"], "domestic_form_teams_requested": form["teams_requested"],
             "independent_score_matches": crosscheck["independent_matches_checked"],
             "independent_score_teams": crosscheck["independent_teams"],
+            "openfootball_independent_score_matches": openfootball["independent_score_matches"],
+            "openfootball_requested_score_matches": openfootball["requested_score_matches"],
+            "openfootball_independent_full_window_teams": openfootball["independent_full_window_teams"],
             "recent_team_match_observations": recent["summary"]["team_match_observations"],
             "recent_observations_with_stats": recent["summary"]["observations_with_stats"],
             "recent_observations_with_lineups": recent["summary"]["observations_with_lineups"],
@@ -71,11 +74,11 @@ def assemble(paths: dict[str, Path]) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("forecast", "squad", "form", "crosscheck", "schedule", "recent", "coverage", "odds", "analyst"):
+    for name in ("forecast", "squad", "form", "crosscheck", "openfootball", "schedule", "recent", "coverage", "odds", "analyst"):
         parser.add_argument(f"--{name}", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    paths = {name: getattr(args, name) for name in ("forecast", "squad", "form", "crosscheck", "schedule", "recent", "coverage", "odds", "analyst")}
+    paths = {name: getattr(args, name) for name in ("forecast", "squad", "form", "crosscheck", "openfootball", "schedule", "recent", "coverage", "odds", "analyst")}
     result = assemble(paths)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
