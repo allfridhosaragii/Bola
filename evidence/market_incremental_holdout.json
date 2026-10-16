@@ -1,0 +1,143 @@
+{
+  "source": {
+    "market": "Football-Data average bookmaker 1X2 odds",
+    "results": "OpenFootball football.json",
+    "results_commit": "e6744429ee395bc86f247348c6184bb08d4eb361",
+    "market_file_sha256": {
+      "2425_E0.csv": "d0c8ce4a96d886cf60cf101f570f4a3893844226f91c7bd769eb568c49edbfa4",
+      "2526_E0.csv": "3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "2425_D1.csv": "a295c58033cfe6393cbbc28f7db85671839b960c5f1153fd3678e20ad2adb92e",
+      "2526_D1.csv": "618301a4b39918225a8ccc57f0f839d675e1abd92fa3a3ccd9a67acd7c79dd7f",
+      "2425_N1.csv": "7f97f0a7fd1f9b2cff6ac09588cdc14fd07f19950cb75e821fa58ab41e541d0a"
+    }
+  },
+  "protocol": {
+    "internal_model": "Fixed 0.5 Elo and 0.5 Poisson blend using prior results only.",
+    "candidate": "Linear pool of the internal model and normalized average opening market probabilities.",
+    "model_weight_grid": [
+      0.0,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "selection_season": "2024-25",
+    "holdout_season": "2025-26",
+    "selection_leagues": [
+      "en.1",
+      "de.1",
+      "nl.1"
+    ],
+    "holdout_leagues": [
+      "en.1",
+      "de.1"
+    ],
+    "deployment_rule": "Retain only if training selects a positive model weight and the holdout paired 95% interval is wholly below zero."
+  },
+  "sample": {
+    "total_matches": 1678,
+    "selection_matches": 992,
+    "holdout_matches": 686,
+    "selection_by_league": {
+      "en.1": 380,
+      "de.1": 306,
+      "nl.1": 306
+    },
+    "holdout_by_league": {
+      "en.1": 380,
+      "de.1": 306
+    }
+  },
+  "selection": {
+    "log_loss_by_model_weight": {
+      "0.0": 0.9695652980561749,
+      "0.05": 0.9701211310547555,
+      "0.1": 0.9707608572809101,
+      "0.2": 0.9722825069911346,
+      "0.3": 0.9741145700940986,
+      "0.5": 0.9786677712491545,
+      "0.75": 0.9859670148720925,
+      "1.0": 0.9950358101766057
+    },
+    "selected_model_weight": 0.0
+  },
+  "holdout": {
+    "log_loss_by_model_weight": {
+      "0.0": 0.987597058074257,
+      "0.05": 0.9878553204345433,
+      "0.1": 0.9881774474315824,
+      "0.2": 0.9890091691453442,
+      "0.3": 0.9900851797657844,
+      "0.5": 0.9929503320774522,
+      "0.75": 0.9978415684778019,
+      "1.0": 1.0041852408888436
+    },
+    "market_open": {
+      "n": 686,
+      "accuracy": 0.5189504373177842,
+      "brier": 0.5890256677693199,
+      "log_loss": 0.987597058074257,
+      "rps": 0.19872388184192075,
+      "top_label_ece_10_bins": 0.013857016173272237
+    },
+    "market_close": {
+      "n": 686,
+      "accuracy": 0.5262390670553936,
+      "brier": 0.5872543693158185,
+      "log_loss": 0.9846633919652491,
+      "rps": 0.19805285526672436,
+      "top_label_ece_10_bins": 0.011446492113999238
+    },
+    "internal_model": {
+      "n": 686,
+      "accuracy": 0.5087463556851312,
+      "brier": 0.5989418138823881,
+      "log_loss": 1.0041852408888436,
+      "rps": 0.20316656117585843,
+      "top_label_ece_10_bins": 0.03362496489577543
+    },
+    "selected_mix": {
+      "n": 686,
+      "accuracy": 0.5189504373177842,
+      "brier": 0.5890256677693199,
+      "log_loss": 0.987597058074257,
+      "rps": 0.19872388184192075,
+      "top_label_ece_10_bins": 0.013857016173272237
+    },
+    "selected_mix_minus_market_open": {
+      "difference_candidate_minus_market_open": 0.0,
+      "league_date_blocks": 214,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "by_league": {
+      "en.1": {
+        "matches": 380,
+        "market_open_log_loss": 1.015252382967251,
+        "selected_mix_log_loss": 1.015252382967251,
+        "internal_model_log_loss": 1.02871995204914
+      },
+      "de.1": {
+        "matches": 306,
+        "market_open_log_loss": 0.9532538441548543,
+        "selected_mix_log_loss": 0.9532538441548543,
+        "internal_model_log_loss": 0.9737172989250774
+      }
+    }
+  },
+  "decision": {
+    "retained": false,
+    "result": "Rejected: the internal model did not add validated information to opening market probabilities."
+  },
+  "limitations": [
+    "Football-Data labels average opening and closing odds but does not provide a timestamp for each quote.",
+    "The experiment is a historical information benchmark, not evidence that a quoted price was available to this system before kickoff.",
+    "The holdout covers two men's domestic leagues and does not establish incremental value in UEFA competition.",
+    "Closing odds are reported only as a benchmark and are never used to select the model weight."
+  ]
+}

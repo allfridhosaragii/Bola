@@ -53,6 +53,7 @@ python3 -m bola.recovery --data-dir .cache/statsbomb --seconds 15 --output repor
 python3 -m bola.odds --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_benchmark.json
 python3 -m bola.odds_multi --league de.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_bundesliga.json
 python3 -m bola.odds_multi --league nl.1 --scores-dir .cache/openfootball --odds-dir .cache/odds --output reports/odds_eredivisie.json
+python3 -m bola.market_incremental --output reports/market_incremental.json
 python3 scripts/fetch_uefa_history.py
 python3 -m bola.uefa_backtest --output reports/uefa_backtest.json
 python3 scripts/fetch_uefa_extended_history.py
@@ -70,6 +71,8 @@ Audit lintas penyedia juga memisahkan penalti. StatsBomb memiliki **9.817 tembak
 `bola.shot_endpoint_audit` memeriksa ketersediaan kolom post-shot xG dan letak akhir tembakan Saved/Goal dalam seluruh musim klub. Ia juga menghitung rasio penyelamatan deskriptif dan interval Wilson per penjaga gawang ketika tepat satu kiper lawan terlihat di freeze frame; salinan laporan ada di `evidence/shot_endpoints_epl_2015.json`. Endpoint Saved di luar interval lateral gawang nominal menunjukkan bahwa koordinat tersebut tidak boleh langsung dipakai sebagai titik sasaran untuk model post-shot.
 
 `fetch_odds.sh` mengambil CSV Premier League dan Bundesliga 2024/25–2025/26 serta Eredivisie 2024/25 dari [Football-Data](https://www.football-data.co.uk/), dengan checksum tetap. `bola.odds` dan `bola.odds_multi` mencocokkan seluruh **1.678** hasil uji menurut pasangan tim, tanggal, dan skor sebelum membandingkan probabilitas 1X2 model dengan odds rata-rata pembukaan/penutupan yang dinormalisasi. CSV tidak menyertakan timestamp tiap kutipan odds, sehingga hasilnya adalah benchmark historis, bukan simulasi keputusan taruhan saat itu.
+
+`bola.market_incremental` menguji pertanyaan yang lebih ketat: apakah campuran Elo–Poisson internal menambah informasi di atas probabilitas pasar pembukaan. Bobot dipilih pada **992 laga 2024/25** dari EPL, Bundesliga, dan Eredivisie, lalu dibekukan untuk **686 laga 2025/26** EPL dan Bundesliga. Data pemilihan memilih bobot model internal **0%**; seluruh bobot positif dalam grid juga lebih buruk pada holdout. Log loss holdout pasar pembukaan **0,98760**, model internal **1,00419**, dan pasar penutupan **0,98466**. Model internal ditolak sebagai tambahan pada pasar. Karena CSV tidak memiliki timestamp tiap kutipan, hasil ini tetap merupakan benchmark informasi historis.
 
 `bola.recovery` memeriksa checksum event 64 laga Piala Dunia 2022, lalu mengelompokkan pemulihan bola berhasil pertama per penguasaan bola berdasarkan paruh lapangan. Ia menghitung tembakan tim yang sama dalam penguasaan dan jendela waktu yang sama, serta interval bootstrap menurut pertandingan. Ini mengukur hubungan deskriptif lokasi pemulihan dan tembakan, bukan sebab akibat atau label pressing yang tervalidasi.
 

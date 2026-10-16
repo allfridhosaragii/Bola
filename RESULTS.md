@@ -48,6 +48,12 @@ Pencocokan ketat yang sama juga berhasil untuk **612/612** laga Bundesliga dan *
 
 Pada Bundesliga, selisih log loss campuran dikurangi pasar penutupan **0,02722**, interval bootstrap berpasangan menurut tanggal 95% **[0,01350; 0,04070]**; pada Eredivisie **0,02096 [0,00265; 0,04080]**. Selisih positif berarti pasar lebih baik pada sampel ini. Hasil Bundesliga tetap eksplorasi karena modelnya diperbaiki setelah hasil liga itu dilihat. Ketiadaan timestamp tiap harga juga berlaku pada dua liga tambahan; angka tersebut tidak menguji keputusan taruhan yang dapat dibuat saat itu. Detail di `reports/odds_bundesliga.json` dan `reports/odds_eredivisie.json`.
 
+### Uji nilai tambah di atas pasar pembukaan
+
+Uji berikutnya memisahkan musim untuk mencegah pemilihan bobot menggunakan hasil evaluasi. Campuran Elo–Poisson internal diberi bobot 0–100% terhadap probabilitas pasar pembukaan. Musim 2024/25 menyediakan **992 laga pemilihan**: 380 EPL, 306 Bundesliga, dan 306 Eredivisie. Grid memilih bobot model **0%**; log loss pasar pembukaan **0,96957**, sedangkan setiap bobot positif dalam grid lebih buruk dan model internal murni mencapai **0,99504**.
+
+Bobot nol kemudian dibekukan pada **686 laga holdout 2025/26** EPL dan Bundesliga. Log loss pasar pembukaan **0,98760**, model internal **1,00419**, dan pasar penutupan **0,98466**. Seluruh bobot model positif dalam grid kembali lebih buruk daripada pasar pembukaan. Fitur penambahan model ditolak dan tidak boleh dipakai untuk mengklaim keunggulan terhadap pasar. Lima CSV odds serta commit hasil OpenFootball diperiksa; pencocokan tim, tanggal, dan skor harus lengkap. Keterbatasan timestamp odds tetap berlaku, dan holdout domestik ini belum membuktikan kondisi UEFA. Artefak lengkap ada di `evidence/market_incremental_holdout.json`.
+
 ## Verifikasi jadwal UEFA 14–15 Oktober 2026 WIB
 
 Sitemap dan halaman pertandingan UEFA mengonfirmasi **sembilan** pasangan laga serta jam yang dilaporkan pengguna. Saat diambil sekitar **15 Oktober 2026 pukul 00.01 WIB**, Feyenoord–Como dan LASK–Liverpool berstatus `Live`, sedangkan tujuh laga pukul 02.00 WIB berstatus `Upcoming`. UEFA menandai **kesembilannya sebagai MD2**; empat laga yang dilaporkan sebagai MD3 ternyata MD2. “Madrid” merujuk **Real Madrid**, “VfB” merujuk **Stuttgart**, dan “PSG” ditampilkan UEFA sebagai **Paris**. URL, waktu pengambilan, dan checksum HTML ada di `reports/uefa_fixtures.json`.
